@@ -1,18 +1,16 @@
 ---
 title: "Weighlighting Notebook"
 author: "Nathan Chaney"
-date: "2/11/2017"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output: html_document
 ---
 
 # To Do
 
-## Output
-### Aggregate planned cycles for each lift to printable worksheet/schedule format
-
-## Abstract to program/cycle level 
-### number of cycles/programs dictates order of polynomial fitting
-### compare error of polynomial fitting to ln fitting
+* Aggregate planned cycles for each lift to printable worksheet/schedule format
+* try polynomial fitting instead of log fitting
+* compare error of polynomial fitting to log fitting
+* number of cycles/programs dictates order of polynomial fitting?
 
 # Narrative
 
@@ -26,16 +24,6 @@ Madcow is a 12-week program similar to Stronglifts in that the work set (the max
 
 The Stronglifts app had charts that showed progress over time. However, I haven't found an app I like that lets you customize the lifts you're doing. I've seen things like Strongr that are customizable, but the learning curve seems steep and I'd rather apply that learning to R. 
 
-# Shiny App
-
-This package comes with a couple of Shiny apps. One lets you see your progress across all programs, and you can filter by date, program, and exercise:
-
-![Shiny - Past Progress](./images/shiny.past.progress.png)
-
-The other Shiny app is a custom program builder that lets you specify a number of different variables for each lift, and plots planned tonnages and max work sets against historical progress. The plot also shows a logarithmic model of your historical data so your planned program doesn't stray too far from what's likely possible. This lets you fine-tune your program in the event you need to recover from injury or focus on improving a specific lift.
-
-![Shiny - Custom Programming ](./images/shiny.program.builder.png)
-
 # Libraries
 
 ```{r Setup, include=FALSE, echo = FALSE}
@@ -44,7 +32,7 @@ my.datadir <- "~/.bin/rweightlifting/raw-data/"
 my.imagedir <- "~/.bin/rweightlifting/images/"
 ```
 
-```{r Libraries, echo=FALSE, include=TRUE, warning=FALSE, alert=FALSE}
+```{r Libraries, warning=FALSE, alert=FALSE, message=FALSE}
 library(ggplot2)
 library(plyr)
 library(dplyr)
@@ -62,7 +50,7 @@ The load_csv_data() function reads all CSV files in the specified directory. Eac
 
 Future plans include the ability to import CSV data from the StrongLifts 5x5 app.
 
-```{r}
+```{r warning=FALSE, alert=FALSE, message=FALSE}
 # Expected CSV format:
 # date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set...weight,set...reps,setNweight,setNreps
 # E.g., 2017-01-26,bench,barbell,102.5,5,135,5,155,5,180,5,210,3,155,13
@@ -74,7 +62,7 @@ tail(data)
 
 We've created two different tables here. One contains data for all sets, and the other just contains data for the top work set for each day. Here's what the summary dataset looks like:
 
-```{r include=TRUE, echo=TRUE}
+```{r include=TRUE, echo=TRUE, warning=FALSE, alert=FALSE, message=FALSE}
 start.date <- min(data$date, na.rm=TRUE)
 
 exercises <- c("squat", "bench", "row", "tricep extension", "dips", "body weight", "deadlift", "press", "pullup", "bicep curl")
@@ -109,7 +97,7 @@ As discussed in the introduction, I wound up switching programs due to this stal
 
 One thing weightlifters need to keep an eye on is the total volume of work they perform for a given lift and in a given workout. This is called tonnage. Generally speaking, tonnage needs to keep increasing if you want to get bigger and stronger.
 
-```{r}
+```{r warning=FALSE, alert=FALSE, message=FALSE}
 library(dplyr)
 tonnes <- data %>%
   filter(! exercisef %in% c("tricep extension", "bicep curl", "pullup", "dips")) %>%
@@ -127,7 +115,7 @@ ggsave(paste(my.imagedir, "tonnage.png", sep=""), tonnage, width=6, height=4)
 
 As you can see here, there's a period of time in the summer of 2016 where my tonnages fell off. This was a function of the way the SL 5x5 program works. If you can't lift 5x5 for a certain lift, it backs you off to 3 sets by 5 reps, then 3x3, 1x3, and so on. Unfortunately, the result of this programming "feature" is that my tonnages fell off, essentially causing a stall. I wish I would have been keeping an eye on this!
  
-```{r}
+```{r warning=FALSE, alert=FALSE, message=FALSE}
 stronglifts.stop <- as.Date("2016-09-01")
 stronglifts.tonnage <- data[data$date <= stronglifts.stop, ] %>%
   mutate(tonnage = weight * reps, date = as.POSIXct(paste(date, "18:00:00", sep=""), format = "%Y-%m-%d", tz = "America/Chicago")) %>%
@@ -181,7 +169,7 @@ Ever since I was a kid, my lower body was always stronger. As a seventh grader, 
 
 Let's see if that work paid off:
 
-```{r}
+```{r warning=FALSE, alert=FALSE, message=FALSE}
 #summary(data[data$date <= stronglifts.stop, ], by=exercisef)
 stronglifts.max <- data[data$date <= stronglifts.stop, ] %>% group_by(exercisef) %>% summarize(stronglifts.max = max(weight))
 madcow.max <- data[data$date > stronglifts.stop, ] %>% group_by(exercisef) %>% summarize(madcow.max = max(weight))
@@ -230,7 +218,7 @@ Here we see that bench and row showed the most improvement during the Madcow pro
 
 Finally, here's an overview plot that shows all sets and reps over time. Sometimes lifting seems like it's progressing slowly! This view is useful for seeing incremental advancement over time to avoid discouragement. 
 
-```{r}
+```{r warning=FALSE, alert=FALSE, message=FALSE}
 today <- Sys.Date()
 date.window <- seq(Sys.Date(), length = 2, by = "-6 months")[2]
 
@@ -261,3 +249,12 @@ ggsave(paste(my.imagedir, "all.lifts.png", sep=""), plot.full, width=12, height=
 
 ![All Sets and Reps, by Exercise](./images/all.lifts.png)
 
+# Shiny App
+
+This package comes with a couple of Shiny apps that incorporate the type of information provided above, but let you interact with the charts. One lets you see your progress across all programs, and you can filter by date, program, and exercise:
+
+![Shiny - Past Progress](./images/shiny.past.progress.png)
+
+The other Shiny app is a custom program builder that lets you specify a number of different variables for each lift, and plots planned tonnages and max work sets against historical progress. The plot also shows a logarithmic model of your historical data so your planned program doesn't stray too far from what's likely possible. This lets you fine-tune your program in the event you need to recover from injury or focus on improving a specific lift.
+
+![Shiny - Custom Programming ](./images/shiny.program.builder.png)
