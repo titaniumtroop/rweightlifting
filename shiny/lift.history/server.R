@@ -1,12 +1,3 @@
-#
-# This is the server logic of a Shiny web application. You can run the
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 library(rweightlifting)
 library(plyr)
@@ -16,7 +7,7 @@ library(ggplot2)
 library(RColorBrewer)
 library(plotly)
 
-weightlifting.log <- load_csv_data(datadir = "~/.bin/rweightlifting/raw-data/")
+weightlifting.log <- load_csv_data(datadir = "../../raw-data/")
 weightlifting.log <- weightlifting.log %>%
   arrange(date) %>%
 #  mutate(program = factor(program, levels = weightlifting.log$program, ordered = TRUE)) %>%
