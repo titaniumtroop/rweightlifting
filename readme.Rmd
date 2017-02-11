@@ -91,7 +91,7 @@ tail(summary)
 
 # Program Analysis
 
-As discussed in the introduction, I wound up switching programs due to this stall. I wanted to monitor my progress given the switch, and see how much stronger I got after switching programs. I looked at this by tonnage and by both max lift.
+As discussed in the introduction, I wound up switching programs after the weight got heavy. Moving forward, I wanted to be able to monitor my progress given the switch, and see how much stronger I got after switching programs. 
 
 # Tonnage
 
@@ -114,6 +114,8 @@ ggsave(paste(my.imagedir, "tonnage.png", sep=""), tonnage, width=6, height=4)
 ![Tonnage](./images/tonnage.png)
 
 As you can see here, there's a period of time in the summer of 2016 where my tonnages fell off. This was a function of the way the SL 5x5 program works. If you can't lift 5x5 for a certain lift, it backs you off to 3 sets by 5 reps, then 3x3, 1x3, and so on. Unfortunately, the result of this programming "feature" is that my tonnages fell off, essentially causing a stall. I wish I would have been keeping an eye on this!
+
+ Once I switched programs, I got the tonnages back up pretty quickly. Here's what they looked like compared as between the two programs:
  
 ```{r warning=FALSE, alert=FALSE, message=FALSE}
 stronglifts.stop <- as.Date("2016-09-01")
@@ -165,9 +167,11 @@ ggsave(paste(my.imagedir, "tonnages.percentages.png", sep=""), tonnages.maxes.pl
 
 Ever since I was a kid, my lower body was always stronger. As a seventh grader, I could leg press the entire amount of weight on the machine in the junior high gym. However, I could barely bench press any weight. So, I've focused on increasing the volume of the bench press and row to try and get my upper body up to speed.
 
+As you can see here, the bench tonnage went up almost 2.5x!
+
 ## Max Lift
 
-Let's see if that work paid off:
+Now, let's see if that work paid off in terms of max lift:
 
 ```{r warning=FALSE, alert=FALSE, message=FALSE}
 #summary(data[data$date <= stronglifts.stop, ], by=exercisef)
@@ -212,7 +216,7 @@ ggsave(paste(my.imagedir, "lifts.percentages.png", sep=""), maxes.plot, width=6,
 
 ![Max Lift Improvement](./images/lifts.percentages.png)
 
-Here we see that bench and row showed the most improvement during the Madcow program.
+Here we see that bench and row showed the most improvement during the Madcow program, somewhere around 25% for each.
 
 # Plotting
 
