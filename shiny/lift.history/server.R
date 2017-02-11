@@ -25,7 +25,7 @@ programs <- weightlifting.log %>%
   group_by(program) %>%
   summarize(last.date = max(date)) %>%
   arrange(last.date) %>%
-  mutate(program = factor(program, levels = unique(tonnage$program), ordered = TRUE))
+  mutate(program = factor(program, levels = unique(weightlifting.log$program), ordered = TRUE))
 
 weightlifting.log <- weightlifting.log %>%
   mutate(program = factor(program, levels = programs$program, ordered = TRUE))

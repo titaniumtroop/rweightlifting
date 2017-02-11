@@ -26,14 +26,25 @@ Madcow is a 12-week program similar to Stronglifts in that the work set (the max
 
 The Stronglifts app had charts that showed progress over time. However, I haven't found an app I like that lets you customize the lifts you're doing. I've seen things like Strongr that are customizable, but the learning curve seems steep and I'd rather apply that learning to R. 
 
-## Libraries
+# Shiny App
+
+This package comes with a couple of Shiny apps. One lets you see your progress across all programs, and you can filter by date, program, and exercise:
+
+![Shiny - Past Progress](./images/shiny.past.progress.png)
+
+The other Shiny app is a custom program builder that lets you specify a number of different variables for each lift, and plots planned tonnages and max work sets against historical progress. The plot also shows a logarithmic model of your historical data so your planned program doesn't stray too far from what's likely possible. This lets you fine-tune your program in the event you need to recover from injury or focus on improving a specific lift.
+
+![Shiny - Custom Programming ](./images/shiny.program.builder.png)
+
+# Libraries
 
 ```{r Setup, include=FALSE, echo = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 my.datadir <- "~/.bin/rweightlifting/raw-data/"
+my.imagedir <- "~/.bin/rweightlifting/images/"
 ```
 
-```{r Libraries, echo=FALSE, include=TRUE, warning=FALSE}
+```{r Libraries, echo=FALSE, include=TRUE, warning=FALSE, alert=FALSE}
 library(ggplot2)
 library(plyr)
 library(dplyr)
@@ -43,9 +54,9 @@ library(rweightlifting)
 
 ```
 
-## Data Import & Munging
+# Data Import & Munging
 
-### Weightlifting Data
+## Weightlifting Data
 
 The load_csv_data() function reads all CSV files in the specified directory. Each file should correspond to a specific weightlifting program. The function expects a specific input format that includes a header row.
 
@@ -56,9 +67,12 @@ Future plans include the ability to import CSV data from the StrongLifts 5x5 app
 # date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set...weight,set...reps,setNweight,setNreps
 # E.g., 2017-01-26,bench,barbell,102.5,5,135,5,155,5,180,5,210,3,155,13
 data <- load_csv_data(datadir = my.datadir)
+tail(data)
 ```
 
 # Munge and Summarize
+
+We've created two different tables here. One contains data for all sets, and the other just contains data for the top work set for each day. Here's what the summary dataset looks like:
 
 ```{r include=TRUE, echo=TRUE}
 start.date <- min(data$date, na.rm=TRUE)
@@ -84,11 +98,16 @@ data$exercisef <- factor(data$exercise, levels = exercises, ordered=TRUE)
 summary$exercisef <- factor(summary$exercise, levels = exercises, ordered=TRUE) 
 
 tail(summary)
-tail(data)
-
+#tail(data)
 ```
 
+# Program Analysis
+
+As discussed in the introduction, I wound up switching programs due to this stall. I wanted to monitor my progress given the switch, and see how much stronger I got after switching programs. I looked at this by tonnage and by both max lift.
+
 # Tonnage
+
+One thing weightlifters need to keep an eye on is the total volume of work they perform for a given lift and in a given workout. This is called tonnage. Generally speaking, tonnage needs to keep increasing if you want to get bigger and stronger.
 
 ```{r}
 library(dplyr)
@@ -100,13 +119,14 @@ tonnage <- ggplot(tonnes) +
   geom_bar(aes(date, tonnage, fill = exercisef), stat = "identity") +
   scale_fill_brewer("Exercise", palette="Paired")
 
-ggplotly(tonnage)
-
-#NROW(unique(data$date))
+#ggplotly(tonnage)
+ggsave(paste(my.imagedir, "tonnage.png", sep=""), tonnage, width=6, height=4)
 ```
 
-# Summary by Program
+![Tonnage](./images/tonnage.png)
 
+As you can see here, there's a period of time in the summer of 2016 where my tonnages fell off. This was a function of the way the SL 5x5 program works. If you can't lift 5x5 for a certain lift, it backs you off to 3 sets by 5 reps, then 3x3, 1x3, and so on. Unfortunately, the result of this programming "feature" is that my tonnages fell off, essentially causing a stall. I wish I would have been keeping an eye on this!
+ 
 ```{r}
 stronglifts.stop <- as.Date("2016-09-01")
 stronglifts.tonnage <- data[data$date <= stronglifts.stop, ] %>%
@@ -126,14 +146,14 @@ tonnages.maxes$diff.percent <- round(tonnages.maxes$diff / tonnages.maxes$strong
 tonnages.maxes <- tonnages.maxes %>%
   filter(! exercisef %in% c("tricep extension", "bicep curl", "pullup", "dips"))
 
-ggplot(mdata) +
+mdata.plot <- ggplot(mdata) +
   scale_fill_brewer("Program", palette="Paired") +
   geom_bar(aes(exercisef, value, fill = variable, group=variable), stat = "identity", position = "dodge") +
   xlab("") +
   ylab("Max Tonnage (lbs)") +
   coord_flip()
 
-ggplot(tonnages.maxes) +
+tonnages.maxes.plot <- ggplot(tonnages.maxes) +
   scale_fill_brewer("Exercise", palette="Paired") +
   geom_bar(aes(exercisef, diff.percent, fill = exercisef), stat = "identity", position = "dodge", na.rm = TRUE) +
 #   theme(
@@ -148,7 +168,18 @@ ggplot(tonnages.maxes) +
     legend.position = "none"
   )
 
+ggsave(paste(my.imagedir, "tonnages.maxes.png", sep=""), mdata.plot, width=6, height=4)
+ggsave(paste(my.imagedir, "tonnages.percentages.png", sep=""), tonnages.maxes.plot, width=6, height=4)
 ```
+
+![Max Tonnage by Program](./images/tonnages.maxes.png)
+![Max Tonnage Improvement](./images/tonnages.percentages.png)
+
+Ever since I was a kid, my lower body was always stronger. As a seventh grader, I could leg press the entire amount of weight on the machine in the junior high gym. However, I could barely bench press any weight. So, I've focused on increasing the volume of the bench press and row to try and get my upper body up to speed.
+
+## Max Lift
+
+Let's see if that work paid off:
 
 ```{r}
 #summary(data[data$date <= stronglifts.stop, ], by=exercisef)
@@ -163,14 +194,14 @@ maxes$diff.percent <- round(maxes$diff / maxes$stronglifts.max * 100, 1)
 maxes <- maxes %>%
   filter(! exercisef %in% c("tricep extension", "bicep curl", "pullup", "dips"))
 
-ggplot(mdata) +
+mdata.plot <- ggplot(mdata) +
   scale_fill_brewer(palette="Paired") +
   geom_bar(aes(exercisef, value, fill = variable, group=variable), stat = "identity", position = "dodge") +
   xlab("Exercise") +
   ylab("Max Weight (lbs)") +
   coord_flip()
   
-ggplot(maxes) +
+maxes.plot <- ggplot(maxes) +
   scale_fill_brewer("Exercise", palette="Paired") +
   geom_bar(aes(exercisef, diff.percent, fill = exercisef), stat = "identity", position = "dodge", na.rm = TRUE) +
 #   theme(
@@ -184,14 +215,20 @@ ggplot(maxes) +
   theme(
     legend.position = "none"
   )
+
+ggsave(paste(my.imagedir, "lifts.maxes.png", sep=""), mdata.plot, width=6, height=4)
+ggsave(paste(my.imagedir, "lifts.percentages.png", sep=""), maxes.plot, width=6, height=4)
 ```
 
-Need to calculate by tonnage
+![Max Lift by Program](./images/lifts.maxes.png)
+
+![Max Lift Improvement](./images/lifts.percentages.png)
+
+Here we see that bench and row showed the most improvement during the Madcow program.
 
 # Plotting
 
-## Same size facets
-## Could loop through each and do each exercise separately on same scale for carousel display
+Finally, here's an overview plot that shows all sets and reps over time. Sometimes lifting seems like it's progressing slowly! This view is useful for seeing incremental advancement over time to avoid discouragement. 
 
 ```{r}
 today <- Sys.Date()
@@ -219,5 +256,8 @@ plot.full.trendline <- plot.full +
   geom_line(data=summary, aes(date, weight, color=exercise), size=1, alpha=1) +
   labs(caption = paste("image generated at ", Sys.time(), sep = ""))
 
-ggplotly(plot.full)
+ggsave(paste(my.imagedir, "all.lifts.png", sep=""), plot.full, width=12, height=6)
 ```
+
+![All Sets and Reps, by Exercise](./images/all.lifts.png)
+
