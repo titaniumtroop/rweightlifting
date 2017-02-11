@@ -42,5 +42,6 @@ load_csv_data <- function(files = FALSE, datadir = FALSE) {
     }
   }
   # Return merged dataframe, removing NA values
+  out.file$date <- as.Date(out.file$date)
   out.file[! is.na(out.file$weight) & ! is.na(out.file$reps), ]
 }
