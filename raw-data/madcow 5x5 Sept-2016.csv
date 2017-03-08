@@ -6,15 +6,15 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2017-01-24,squat,low bar,177.5,5,225,5,267.5,5,267.5,5
 2017-01-24,press,barbell,95,5,110,5,130,5,147.5,3,110,8
 2017-01-24,deadlift,barbell,135,5,225,5,267.5,5,310,5,355,5
-2017-01-24,pullup,medium grip chinup,196,5,196,5,196,5
+2017-01-24,pullup,chinup,196,5,196,5,196,5
 2017-01-21,squat,low bar,177.5,5,225,5,267.5,5,310,5,355,5
 2017-01-21,bench,barbell,102.5,5,127.5,5,155,5,180,5,205,5,155,13
 2017-01-21,row,barbell,105,5,135,5,157.5,5,185,5,210,5,157.5,12
-2017-01-21,tricep extension,cable,175,9,175,9,175,8
+2017-01-21,tricep extension,cable - angle bar,175,9,175,9,175,8
 2017-01-18,squat,low bar,175,5,217.5,5,260,5,305,5,355,3,260,9
 2017-01-18,bench,barbell,100,5,125,5,150,5,175,5,205,3,150,12
 2017-01-18,row,barbell,102.5,5,127.5,5,155,5,180,5,210,4,155,10
-2017-01-18,tricep extension,cable,170,10,170,10,170,10
+2017-01-18,tricep extension,cable - angle bar,170,10,170,10,170,10
 2017-01-16,squat,low bar,175,5,217.5,5,260,5,260,5
 2017-01-16,press,barbell,90,5,107.5,5,125,5,142.5,5
 2017-01-16,deadlift,barbell,135,5,217.5,5,260,5,305,5,347.5,5
@@ -23,7 +23,7 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2017-01-14,squat,low bar,175,5,217.5,5,260,5,305,5,347.5,5
 2017-01-14,bench,barbell,100,5,125,5,150,5,175,5,200,5,150,12
 2017-01-14,row,barbell,102.5,5,127.5,5,155,5,180,5,205,5,155,10
-2017-01-14,tricep extension,cable,170,10,170,10,170,9
+2017-01-14,tricep extension,cable - angle bar,170,10,170,10,170,9
 2016-09-03,squat,low bar,135,5,170,5,202.5,5,202.5,5,,,,
 2016-09-03,press,barbell,77.5,5,95,5,110,5,125,5,,
 2016-09-03,deadlift,barbell,135,5,202.5,5,237.5,5,270,5,,,,
@@ -79,7 +79,7 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2016-10-01,bench,barbell,87.5,5,110,5,132.5,5,152.5,5,177.5,4,135,10
 2016-10-01,row,barbell,85,5,107.5,5,127.5,5,150,5,175,3,127.5,10
 2016-10-01,tricep extension,dumbbell,85,7,85,6,,,,,,,,
-2016-10-04,squat,barbell,152.5,5,190,5,230,5,267.5,5,305,5,,
+2016-10-04,squat,low bar,152.5,5,190,5,230,5,267.5,5,305,5,,
 2016-10-04,bench,barbell,90,5,110,5,132.5,5,155,5,177.5,5,,
 2016-10-04,row,barbell,87.5,5,110,5,132.5,5,152.5,5,175,5,,
 2016-10-04,tricep extension,barbell,85,8,85,7,,,,,,,,
@@ -90,11 +90,11 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2016-10-08,squat,low bar,152.5,5,190,5,230,5,267.5,5,312.5,3,230,8
 2016-10-08,bench,barbell,90,5,110,5,135,5,155,5,182.5,4,135,12
 2016-10-08,row,barbell,87.5,5,110,5,135,5,152.5,5,180,4,135,9
-2016-10-08,tricep extension,cable - angle bar pulldown,100,10,115,10,130,9,145,6,,,,
+2016-10-08,tricep extension,cable - angle bar,100,10,115,10,130,9,145,6,,,,
 2016-10-11,squat,low bar,157.5,5,195,5,235,5,272.5,5,312.5,5,,
 2016-10-11,bench,barbell,95,5,115,5,137.5,5,160,5,182.5,5,,
 2016-10-11,row,barbell,95,5,112.5,5,135,5,157.5,5,180,5,,
-2016-10-11,tricep extension,cable - angle bar pulldown,140,8,140,10,140,9,,,,,,
+2016-10-11,tricep extension,cable - angle bar,140,8,140,10,140,9,,,,,,
 2016-10-14,squat,low bar,157.5,5,195,5,235,5,235,5,,,,
 2016-10-14,press,barbell,90,5,107.5,5,125,5,142.5,3,107.5,8,,
 2016-10-14,bicep curl,barbell,92.5,8,92.5,8,,,,,,,,
@@ -102,11 +102,11 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2016-10-16,squat,low bar,157.5,5,195,5,235,5,272.5,5,320,3,235,8
 2016-10-16,bench,barbell,95,5,115,5,137.5,5,160,5,187.5,4,137.5,10
 2016-10-16,row,barbell,95,5,115,5,137.5,5,160,5,187.5,3,137.5,10
-2016-10-16,tricep extension,cable - angle bar pulldown,155,8,155,8,155,8,
+2016-10-16,tricep extension,cable - angle bar,155,8,155,8,155,8,
 2016-10-18,squat,low bar,160,5,200,5,240,5,280,5,320,5
 2016-10-18,bench,barbell,95,5,117.5,5,140,5,165,5,187.5,5
 2016-10-18,row,barbell,95,5,115,5,140,5,162.5,5,185,5
-2016-10-18,tricep extension,cable - angle bar pulldown,160,8,160,8,160,8
+2016-10-18,tricep extension,cable - angle bar,160,8,160,8,160,8
 2016-10-21,squat,low bar,160,5,200,5,240,5,240,5
 2016-10-21,press,barbell,90,5,107.5,5,125,5,142.5,3
 2016-10-21,deadlift,barbell,135,5,200,5,240,5,280,5,320,5
@@ -207,7 +207,7 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2016-12-26,squat,low bar,162.5,5,202.5,5,242.5,5,242.5,5
 2016-12-26,press,barbell,82.5,5,100,5,115,5,132.5,5
 2016-12-26,deadlift,barbell,135,5,202.5,5,242.5,5,282.5,5,322.5,5
-2016-12-26,pullup,medium overhand rock grip,196.8,4,196.8,4,196.8,4
+2016-12-26,pullup,medium overhand grip,196.8,4,196.8,4,196.8,4
 2016-12-26,bicep curl,barbell,90,7,90,7,90,7
 2016-12-28,squat,low bar,162.5,5,202.5,5,232.5,5,282.5,5,330,3,242.5,8
 2016-12-28,bench,barbell,95,5,115,5,140,5,162.5,5,190,5,140,15
@@ -228,7 +228,7 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2017-01-07,squat,low bar,170,5,212.5,5,255,5,297.5,5,340,5
 2017-01-07,bench,barbell,97.5,5,122.5,5,147.5,5,170,5,195,5,147.5,13
 2017-01-07,row,barbell,100,5,125,5,150,5,175,5,200,5
-2017-01-07,tricep extension,cable,170,9,170,9,170,9
+2017-01-07,tricep extension,cable - flat bar,170,9,170,9,170,9
 2017-01-09,squat,low bar,170,5,212.5,5,255,5,255,5
 2017-01-09,press,barbell,87.5,5,105,5,122.5,5,140,5
 2017-01-09,deadlift,barbell,135,5,212.5,5,255,5,297.5,5,340,5
@@ -237,4 +237,4 @@ date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3rep
 2017-01-11,squat,low bar,170,5,212.5,5,255,5,297.5,5,347.5,3,255,8
 2017-01-11,bench,barbell,97.5,5,122.5,5,147.5,5,170,5,200,5,147.5,12
 2017-01-11,row,barbell,100,5,125,5,150,5,175,5,205,4,150,9
-2017-01-11,tricep extension,cable,170,10,170,10,170,8
+2017-01-11,tricep extension,cable - flat bar,170,10,170,10,170,8

@@ -1,12 +1,3 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 
 shinyUI(fluidPage(
@@ -39,9 +30,9 @@ shinyUI(fluidPage(
       #   ".shiny-output-error:before { visibility: hidden; }"
       # ),
       tabsetPanel(
-        tabPanel("Tonnage", plotOutput(outputId = "plot.tonnage")), 
-        tabPanel("Sets vs. Reps", plotOutput(outputId = "plot.full")), 
-        tabPanel("Max Tonnages", plotOutput(outputId = "max.tonnages")), 
+        tabPanel("Tonnage", plotlyOutput(outputId = "plot.tonnage")),
+        tabPanel("Sets vs. Reps", plotlyOutput(outputId = "plot.full")),
+        tabPanel("Max Tonnages", plotlyOutput(outputId = "max.tonnages")),
         tabPanel("Max Weight by Program", plotOutput(outputId = "plot.maxes"))
       )
       # fluidRow(

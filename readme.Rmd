@@ -7,7 +7,8 @@ output: html_document
 
 # To Do
 
-* Aggregate planned cycles for each lift to printable worksheet/schedule format
+* Simple vs. advanced planning (simple gives common routines like 5-3-1, Stronglifts, Madcow, etc.)
+* Aggregate planned cycles for each lift to printable worksheet/schedule format -- Use tabs for each lift desired to plan, then rbind tables created in each tab (will require separate input for each one?)
 * try polynomial fitting instead of log fitting
 * compare error of polynomial fitting to log fitting
 * number of cycles/programs dictates order of polynomial fitting?

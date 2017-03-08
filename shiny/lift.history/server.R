@@ -67,24 +67,24 @@ shinyServer(function(input, output, session) {
     end = today
   )
 
-  output$plot.tonnage <- renderPlot({
+  output$plot.tonnage <- renderPlotly({
 
     temp.plot <- ggplot() +
       geom_bar(data = session.tonnage(),
-               aes(date, tonnage, fill = exercise),
-               width = 2.5,
-               stat = "identity"
-              ) +
-    scale_fill_brewer(name = "Tonnage", palette = "Paired") +
-      labs(
-        title = "Tonnage",
-        x = "", y = ""
-      )
+             aes(date, tonnage, fill = exercise),
+             width = 2.5,
+             stat = "identity"
+            ) +
+      scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+        labs(
+          title = "Tonnage",
+          x = "", y = ""
+        )
 
     temp.plot
  })
 
-  output$max.tonnages <- renderPlot({
+  output$max.tonnages <- renderPlotly({
     temp <- program.tonnage()
     ggplot(temp) +
       scale_fill_brewer("Program", palette="Paired", guide = guide_legend(reverse=TRUE)) +
@@ -93,7 +93,7 @@ shinyServer(function(input, output, session) {
       coord_flip()
   })
 
-  output$plot.full <- renderPlot({
+  output$plot.full <- renderPlotly({
     ggplot(
         data = session.weights(),
         aes(date, weight, color = exercise, size = reps)
@@ -101,12 +101,12 @@ shinyServer(function(input, output, session) {
       scale_color_brewer(palette="Paired") +
       facet_wrap( ~ exercise) +
       geom_point(
-        aes(date, weight, color=exercise),
+        aes(date, weight, color=variant),
         alpha=0.85
       ) +
       scale_radius(
-        range = c(0.5, 4),
-        breaks=c(3,6,9,12,15)
+        range = c(1, 6),
+        breaks=c(3,6,9,12)
       ) +
       scale_y_continuous(
         position="right",
@@ -121,11 +121,25 @@ shinyServer(function(input, output, session) {
       labs(title = "Sets x Reps", x = "", y = "")
 
   })
-  
+
+  # Plot.ly bug transposes negative numbers to positive here
+  # see https://github.com/ropensci/plotly/issues/560
   output$plot.maxes <- renderPlot({
     ggplot(program.maxes()) +
-      scale_fill_brewer("Program", palette="Paired", guide = guide_legend(reverse=TRUE)) +
-      geom_bar(aes(factor(exercise, rev(exercise)), diff.percent, fill = factor(program, levels=rev(program)), group = factor(program, levels=rev(program))), stat = "identity", position = "dodge") +
+      scale_fill_brewer(
+        "Program", 
+        palette="Paired", 
+        guide = guide_legend(reverse=TRUE)
+      ) +
+      geom_bar(
+        aes(
+          factor(exercise, rev(exercise)), 
+          diff.percent, 
+          fill = factor(program, levels=rev(program)), 
+          group = factor(program, levels=rev(program))
+        ), 
+        stat = "identity", 
+        position = "dodge") +
       labs(title = "Max Weight", subtitle = "Percent Improvement over Previous Program", x = "", y = "") +
       coord_flip()
   })
@@ -158,7 +172,6 @@ shinyServer(function(input, output, session) {
   })
 
   program.maxes <- reactive({
-    # Look at Contracts Notes app to get correct piped logic
 #    temp <- weightlifting.log %>%
     temp <- session.weights() %>%
       mutate(exercise = factor(exercise, levels = exercisef())) %>%
@@ -176,10 +189,10 @@ shinyServer(function(input, output, session) {
 
     temp
   })
-  
+
   exercisef <- reactive({
     temp <- factor(input$exercise, ordered = TRUE)
     temp
   })
-  
+
 })
