@@ -28,8 +28,8 @@ load_csv_data <- function(files = FALSE, datadir = FALSE) {
       set.num <- max(gsub("set[_ ]*(\\d+).+", "\\1", set.info), na.rm = TRUE)
 
       # Loop through sets and add to dataframe
-      for (i in seq(1:set.num)) {
-        this.set <- grep(paste("set[_ ]*", i, sep = ""), set.info, ignore.case = TRUE, value = TRUE)
+      for (j in seq(1:set.num)) {
+        this.set <- grep(paste("set[_ ]*", j, sep = ""), set.info, ignore.case = TRUE, value = TRUE)
         temp <- file[ , c(other.info, this.set)]
 
         if (grepl("reps", this.set[1], ignore.case = TRUE)) {

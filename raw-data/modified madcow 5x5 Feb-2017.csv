@@ -1,4 +1,8 @@
 date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps
+2017-03-09,squat,dumbbell,100,10,100,10,100,10
+2017-03-09,bench,dumbbell,100,12,100,12,100,12
+2017-03-09,row,dumbbell,100,12,100,12,100,12
+2017-03-09,bench,incline dumbbell,100,8,100,8
 2017-03-06,squat,low bar,195,5,230,5,260,5,295,5
 2017-03-06,press,barbell,85,5,110,5,125,5,140,3,100,8
 2017-03-06,deadlift,barbell,185,5,225,5,255,5,290,5,325,5

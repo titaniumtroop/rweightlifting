@@ -1,4 +1,5 @@
 library(shiny)
+library(plotly)
 
 shinyUI(fluidPage(
   titlePanel("RWeightlifting — Past Performance"),
