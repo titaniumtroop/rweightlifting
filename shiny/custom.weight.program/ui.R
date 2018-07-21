@@ -37,8 +37,9 @@ shinyUI(fluidPage(
       fluidRow(sliderInput("sets", "No. of sets", 1, 10, 5, step = 1)),
       fluidRow(sliderInput("reps", "No. of repetitions", 1, 25, 5, step = 1)),
       fluidRow(sliderInput("plate", "Smallest plate", 1.25, 5, 2.5, step = 1.25)),
-      fluidRow(sliderInput("ramp", "Ramp % (set-to-set increase)", 0, 20, 12.5, step = 0.5))
-
+      fluidRow(sliderInput("ramp", "Ramp % (set-to-set increase)", 0, 20, 12.5, step = 0.5)),
+      fluidRow(sliderInput("cutoff_reps", "Cutoff Reps (excludes high-rep sets from calcs)", 1, 20, 5, step = 1)),
+      fluidRow(sliderInput("cutoff_percent", "Cutoff % (excludes low-weight sets from calcs)", 0, 100, 50, step = 5))
     ),
     mainPanel(
       # Suppress transient faceting error that appears before page load

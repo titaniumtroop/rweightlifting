@@ -98,24 +98,37 @@ shinyServer(function(input, output, session) {
   })
 
   session.tonnage <- reactive({
-    temp <- tonnage %>%
+    temp <- 
+      weightlifting.log %>%
       filter(
         date >= as.Date(input$date[1], format = "%Y-%m-%d") &
         date <= as.Date(input$date[2], format = "%Y-%m-%d")
       ) %>%
       filter(program %in% input$program) %>%
-      filter(exercise %in% input$exercise)
+      filter(reps <= input$cutoff_reps) %>%
+      filter(exercise %in% input$exercise) %>%
+      group_by(program, date, exercise) %>%
+      summarize(
+        top.set = max(weight),
+        tonnage = sum(tonnage)
+      ) %>%
+      arrange(date, exercise, desc(top.set))
     temp
   })
 
   session.models <- reactive({
-    temp.df <- tonnage %>%
-      filter(program %in% input$program) %>%
-      filter(exercise %in% input$exercise)
+    # Filter cutoff % and reps
+    temp.max <- max(session.tonnage()$top.set, na.rm = TRUE)
 
+    temp.df <- session.tonnage() %>%
+      filter(top.set >= input$cutoff_percent / 100 * temp.max)
+
+    # Now handled with Shiny
     # Remove light day sets (<85% previous top set for exercise), primarily for squat
     true.max <- as.logical(no.light.day.top.sets(temp.df$top.set))
     temp.df <- subset(temp.df, true.max)
+    
+    
 
     plots <- (predicted.vs.planned(
       top.set.history = temp.df,

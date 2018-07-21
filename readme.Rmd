@@ -13,24 +13,14 @@ output: html_document
 * compare error of polynomial fitting to log fitting
 * number of cycles/programs dictates order of polynomial fitting?
 
-# Narrative
-
-I started lifting weights in March 2016 because my belly was too much larger than my shoulders, and I don't want to look like a frail old guy. I've lifted for a few months at a time before, but never stuck with it for more that 3 or 4 months. This time, however, I have been more diligent -- so much so, in fact, that I had to switch from a beginner program [(Stronglifts 5x5)](http://stronglifts.com/5x5/) to an intermediate schedule [(Madcow)](http://stronglifts.com/madcow-5x5-training-programs/) because I had stopped improving.
-
-In Stronglifts 5x5, you alternate between 2 groups of 3 lifts (A: squat, bench, barbell row; B: squat, overtail press, and deadlift). You warm up, then lift 5 sets of 5 reps. When you successfully complete the lift, you add weight (2.5 lbs or 5 lbs, depending on the lift) the next time you perform the lift. If you fail, you deload. If you fail again, you reduce the number of sets and reps (5x3, 3x3, etc.).
-
-Stronglifts is good for beginners like me because the weight starts low and you see rapid improvement. However, once the weight gets heavy (e.g., squatting 300 lbs), the volume of work simply gets to be too much for adequate recovery.
-
-Madcow is a 12-week program similar to Stronglifts in that the work set (the max weight you use on a particular lift) is a heavy weight, low rep set. However, it is just a single set, and you perform incremental lifts to reach that set.
-
-The Stronglifts app had charts that showed progress over time. However, I haven't found an app I like that lets you customize the lifts you're doing. I've seen things like Strongr that are customizable, but the learning curve seems steep and I'd rather apply that learning to R. 
-
 # Libraries
 
 ```{r Setup, include=FALSE, echo = FALSE}
+
 knitr::opts_chunk$set(echo = TRUE)
 my.datadir <- "~/.bin/rweightlifting/raw-data/"
 my.imagedir <- "~/.bin/rweightlifting/images/"
+
 ```
 
 ```{r Libraries, warning=FALSE, alert=FALSE, message=FALSE}
@@ -49,7 +39,7 @@ library(rweightlifting)
 
 The load_csv_data() function reads all CSV files in the specified directory. Each file should correspond to a specific weightlifting program. The function expects a specific input format that includes a header row.
 
-Future plans include the ability to import CSV data from the StrongLifts 5x5 app.
+Future plans include the ability to import CSV data from a variety of weightlifting apps app.
 
 ```{r warning=FALSE, alert=FALSE, message=FALSE}
 # Expected CSV format:

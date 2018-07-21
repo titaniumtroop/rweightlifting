@@ -108,8 +108,8 @@ planned <- function(
 
 no.light.day.top.sets <- function(data)
 {
-  output <- integer(length(data)-1L)
-  for(i in seq_along(output))
+  output <- integer(length(data))
+  for(i in 1:(length(output)-1L))
   {
     output[[i]] <- (data[[i]] >= 0.85 * data[[i+1L]])
   }
