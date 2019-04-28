@@ -105,7 +105,7 @@ planned <- function(
 
 #out.table <- planned(top.set.history = session.models %>% filter(exercise == "squat"))
 
-
+# Deprecated
 no.light.day.top.sets <- function(data)
 {
   output <- integer(length(data))

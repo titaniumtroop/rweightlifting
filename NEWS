@@ -1,6 +1,18 @@
+rweightlifting 0.1.6
+----------------
+* Vectorized one_rep_max and n_rep_max functions
+
+rweightlifting 0.1.5
+----------------
+* Revised import function to import single files as well as directories
+* Revised raw-data files to separate equipment and exercise variant (e.g., "bench,incline dumbbell" to "bench,dumbbell,incline"
+* created programming functions that calculate all top sets (except reload weeks), a training max, and a one-rep max from a weightlifting log; uses rolling means, should provide for additional calculation options in the future
+* created draft function for exercise descriptors, intended to be a library of all exercises so that exercise types can be matched to muscle groups or day groups (e.g., push/pull or upper/lower splits so that balance can be manipulated; incomplete
+
+
 rweightlifting 0.1.4
 ----------------
-* Added a few default weightlifting program templates
+* Added a few default weightlifting program templates that use exercise, equipment, variant
 
 rweightlifting 0.1.3
 ----------------
