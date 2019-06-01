@@ -101,7 +101,9 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
     stop(paste0(
       "Your weightlifting log does not contain ",
       paste0(
-        setdiff(unique(weightlifting.log$exercise), unique(temp.program.schedule$exercise)),
+        unique(temp.program.schedule$exercise)[
+          ! unique(temp.program.schedule$exercise) %in% unique(weightlifting.log$exercise)
+        ],
         collapse = ", "
       ),
       " exercises, so we cannot generate a 1RM. Please provide a weightlifting log that includes all exercises in the program, which are: ",
@@ -120,14 +122,20 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
   unique_exercise_variants_in_program <- unique(temp.program.schedule[ , c("exercise", "equipment", "variant")])
 
   lifts_in_program <- weightlifting.log %>%
-    inner_join(unique_exercise_variants_in_program)
+    inner_join(unique_exercise_variants_in_program, by = c("exercise", "equipment", "variant"))
 
   est.recent.maxes <- one_rep_max_for_program(lifts_in_program)
-  est.recent.maxes$training.max <- n_rep_max(one_RM = est.recent.maxes$training.max, reps = temp.program$RM_reps, method = method)
+  est.recent.maxes$RM.max <- n_rep_max(
+    one_RM = est.recent.maxes$roll.max,
+    reps = temp.program$RM_reps,
+    method = method
+  )
 
   est.recent.maxes %>%
-    mutate(training_max = roll.max * percentage) %>%
-    select(exercise, equipment, variant, training_max)
+    mutate(training_max = RM.max * percentage) %>%
+    select(exercise, equipment, variant, training_max) %>%
+    group_by(exercise, equipment, variant) %>%
+    summarize(training_max = round(mean(training_max), 1))
 
 }
 
@@ -159,7 +167,7 @@ top_sets <- function(weightlifting.log = NULL, method = NA) {
 
 
   temp <- weightlifting.log %>%
-    as.tibble() %>%
+    as_tibble() %>%
     select(-set) %>%
     unique() %>%
     mutate(
@@ -175,7 +183,7 @@ top_sets <- function(weightlifting.log = NULL, method = NA) {
 
   if (! is.na(method) & method %in% rep_max_formulas) {
     temp <- temp %>%
-    filter(method == "epley")
+    filter(method == method)
   }
 
   temp <- temp %>%
@@ -198,4 +206,6 @@ top_sets <- function(weightlifting.log = NULL, method = NA) {
     filter(culled == FALSE) %>% # Removing deload weeks
     select(-culled, -roll.max)
 
+  temp
 }
+

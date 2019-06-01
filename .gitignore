@@ -33,3 +33,4 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 .Rproj.user
+data/base_531_bench_863_schedule.csv

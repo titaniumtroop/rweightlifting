@@ -6,7 +6,47 @@
 # the schedule should list the day, exercise, implement, variant, set, reps, and percentage
 
 available_programs <- function() {
-  c("madcow", "wendler_531", "wendler_531_pyramid")
+  c("madcow", "wendler_531", "wendler_531_pyramid", "base_531_bench_863")
+}
+
+base_531_bench_863 <- function() {
+  # Won't program deadload week
+  base_531_bench_863 <- list()
+  base_531_bench_863$name <- "Base 5-3-1, Bench 8-6-3"
+  base_531_bench_863$duration <- 21
+  base_531_bench_863$RM_reps <- 1
+
+  # Source T-Nation: https://www.t-nation.com/training/8-6-3-for-size-and-strength
+  # So What Does It Look Like?
+  #   Week 1	Week 2	Week 3
+  # Set	Reps	Base Number	Set	Reps	Base Number	Set	Reps	Base Number
+  # 1	8	65%	1	6	70%	1	8	75%
+  # 2	8	75%	2	6	80%	2	6	85%
+  # 3	8	80%	3	6	85%	3	3	90%
+
+  #base_531_bench_863$schedule <- read_csv("./data/base_531_bench_863_schedule.csv", col_types = "iccciid")
+  base_531_bench_863$schedule <- structure(list(
+    day = c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 4L, 4L, 4L, 4L, 4L, 6L, se6L, 6L, 6L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L, 9L, 11L, 11L, 11L, 11L, 11L, 13L, 13L, 13L, 13L, 15L, 15L, 15L, 15L, 15L, 16L, 16L, 16L, 16L, 18L, 18L, 18L, 18L, 18L, 20L, 20L, 20L, 20L),
+    exercise = c("bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift", "bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift", "bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift"),
+    equipment = c("barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell"),
+    variant = c("flat", "flat", "flat", "flat", "flat", "low bar", "low bar", "low bar", "low bar", "overhead", "overhead", "overhead", "overhead", "overhead", "conventional", "conventional", "conventional", "conventional", "flat", "flat", "flat", "flat", "flat", "low bar", "low bar", "low bar", "low bar", "overhead", "overhead", "overhead", "overhead", "overhead", "conventional", "conventional", "conventional", "conventional", "flat", "flat", "flat", "flat", "flat", "low bar", "low bar", "low bar", "low bar", "overhead", "overhead", "overhead", "overhead", "overhead", "conventional", "conventional", "conventional", "conventional"),
+    set = c(1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L),  reps = c(8L, 8L, 8L, 8L, 8L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 6L, 6L, 6L, 6L, 6L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 5L, 3L, 1L, 5L, 5L, 3L, 1L, 3L, 5L, 5L, 3L, 1L, 5L),
+    percentage = c(0.65, 0.75, 0.8, 0.75, 0.65, 0.65, 0.75, 0.85, 0.65, 0.65, 0.75, 0.85, 0.75, 0.65, 0.65, 0.75, 0.85, 0.65, 0.7, 0.8, 0.85, 0.8, 0.7, 0.7, 0.8, 0.9, 0.7, 0.7, 0.8, 0.9, 0.8, 0.7, 0.7, 0.8, 0.9, 0.7, 0.75, 0.85, 0.9, 0.85, 0.75, 0.75, 0.85, 0.95, 0.75, 0.75, 0.85, 0.95, 0.85, 0.75, 0.75, 0.85, 0.95, 0.75)),
+    class = c("spec_tbl_df", "tbl_df", "tbl", "data.frame"
+    ),
+    row.names = c(NA, -54L),
+    spec = structure(list(cols = list(
+      day = structure(list(), class = c("collector_integer", "collector" )),
+      exercise = structure(list(), class = c("collector_character", "collector")),
+      equipment = structure(list(), class = c("collector_character", "collector")),
+      variant = structure(list(), class = c("collector_character", "collector")),
+      set = structure(list(), class = c("collector_integer", "collector")),
+      reps = structure(list(), class = c("collector_integer", "collector")),
+      percentage = structure(list(), class = c("collector_double", "collector"))),
+      default = structure(list(), class = c("collector_guess", "collector")), skip = 1), class = "col_spec"))
+
+  base_531_bench_863
+
 }
 
 madcow <- function(set_interval = .125, increment_percentage = 0.025) {
