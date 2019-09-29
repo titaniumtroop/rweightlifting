@@ -6,7 +6,125 @@
 # the schedule should list the day, exercise, implement, variant, set, reps, and percentage
 
 available_programs <- function() {
-  c("madcow", "wendler_531", "wendler_531_pyramid", "base_531_bench_863")
+  c("madcow", "wendler_531", "wendler_531_pyramid", "base_531_bench_863", "lower_531_lsf_upper_863_pyramid")
+}
+
+lower_531_lsf_upper_863_pyramid <- function() {
+  # Won't program deadload week
+  lower_531_lsf_upper_863_pyramid <- list()
+  lower_531_lsf_upper_863_pyramid$name <- "Lower 5-3-1 Last Set First, Upper 8-6-3 Pyramid, with Deload"
+  lower_531_lsf_upper_863_pyramid$duration <- 28
+  lower_531_lsf_upper_863_pyramid$RM_reps <- 1
+
+  # 8-6-3 with Pyramid for upper body
+  # Source T-Nation: https://www.t-nation.com/training/8-6-3-for-size-and-strength
+  # So What Does It Look Like?
+  #   Week 1	Week 2	Week 3
+  # Set	Reps	Base Number	Set	Reps	Base Number	Set	Reps	Base Number
+  # 1	8	65%	1	6	70%	1	8	75%
+  # 2	8	75%	2	6	80%	2	6	85%
+  # 3	8	80%	3	6	85%	3	3	90%
+
+  # 5-3-1 with Last Set First
+  # Source T-Nation: https://www.t-nation.com/workouts/531-how-to-build-pure-strength
+  # Week 1	Week 2	Week 3	Week 4
+  # Set 1	65% x 5	70% x 3	75% x 5	40% x 5
+  # Set 2	75% x 5	80% x 3	85% x 3	50% x 5
+  # Set 3	85% x 5+	90% x 3+	95% x 1+	60% x 5
+
+
+  #base_531_bench_863$schedule <- read_csv("./data/base_531_bench_863_schedule.csv", col_types = "iccciid")
+  lower_531_lsf_upper_863_pyramid$schedule <- tibble(
+    day = c(
+      rep(1L, 5),
+      rep(2L, 4),
+      rep(4L, 5),
+      rep(6L, 4),
+      rep(8L, 5),
+      rep(9L, 4),
+      rep(11L, 5),
+      rep(13L, 4),
+      rep(15L, 5),
+      rep(16L, 4),
+      rep(18L, 5),
+      rep(20L, 4),
+      rep(22L, 3),
+      rep(23L, 3),
+      rep(25L, 3),
+      rep(27L, 3)
+    ),
+    exercise = c(
+      rep(c(
+        rep("bench", 5),
+        rep("squat", 4),
+        rep("press", 5),
+        rep("deadlift", 4)
+      ), 3),
+      rep("bench", 3),
+      rep("squat", 3),
+      rep("press", 3),
+      rep("deadlift", 3)
+    ),
+    equipment = rep("barbell", 66),
+    variant = c(
+      rep(c(
+        rep("flat", 5),
+        rep("low bar", 4),
+        rep("overhead", 5),
+        rep("conventional", 4)
+      ), 3),
+      rep("flat", 3),
+      rep("low bar", 3),
+      rep("overhead", 3),
+      rep("conventional", 3)
+    ),
+    set = c(
+      rep(
+        c(
+        1:5,
+        1:4,
+        1:5,
+        1:4
+      ), 3),
+      rep(1:3, 4)
+    ),
+    reps = c(
+      rep(8L, 5),
+      rep(5L, 4),
+      rep(8L, 5),
+      rep(5L, 4),
+      rep(6L, 5),
+      rep(3L, 4),
+      rep(6L, 5),
+      rep(3L, 4),
+      rep(3L, 5),
+      rep(1L, 4),
+      rep(3L, 5),
+      rep(1L, 4),
+      rep(5L, 3 * 4)
+    ),
+    percentage = c(
+      0.65, 0.75, 0.8, 0.75, 0.65,
+      0.65, 0.75, 0.85, 0.65,
+      0.65, 0.75, 0.8, 0.75, 0.65,
+      0.65, 0.75, 0.85, 0.65,
+      0.7, 0.8, 0.85, 0.8, 0.7,
+      0.7, 0.8, 0.9, 0.7,
+      0.7, 0.8, 0.85, 0.8, 0.7,
+      0.7, 0.8, 0.9, 0.7,
+      0.75, 0.85, 0.9, 0.85, 0.75,
+      0.75, 0.85, 0.95, 0.75,
+      0.75, 0.85, 0.9, 0.85, 0.75,
+      0.75, 0.85, 0.95, 0.75,
+      0.45, 0.55, 0.65,
+      0.45, 0.55, 0.65,
+      0.45, 0.55, 0.65,
+      0.45, 0.55, 0.65
+    )
+)
+
+  lower_531_lsf_upper_863_pyramid
+
 }
 
 base_531_bench_863 <- function() {
@@ -16,6 +134,7 @@ base_531_bench_863 <- function() {
   base_531_bench_863$duration <- 21
   base_531_bench_863$RM_reps <- 1
 
+  # 8-6-3 with Pyramid for upper body
   # Source T-Nation: https://www.t-nation.com/training/8-6-3-for-size-and-strength
   # So What Does It Look Like?
   #   Week 1	Week 2	Week 3
@@ -24,9 +143,17 @@ base_531_bench_863 <- function() {
   # 2	8	75%	2	6	80%	2	6	85%
   # 3	8	80%	3	6	85%	3	3	90%
 
+  # 5-3-1 with Last Set First
+  # Source T-Nation: https://www.t-nation.com/workouts/531-how-to-build-pure-strength
+  # Week 1	Week 2	Week 3	Week 4
+  # Set 1	65% x 5	70% x 3	75% x 5	40% x 5
+  # Set 2	75% x 5	80% x 3	85% x 3	50% x 5
+  # Set 3	85% x 5+	90% x 3+	95% x 1+	60% x 5
+
+
   #base_531_bench_863$schedule <- read_csv("./data/base_531_bench_863_schedule.csv", col_types = "iccciid")
   base_531_bench_863$schedule <- structure(list(
-    day = c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 4L, 4L, 4L, 4L, 4L, 6L, se6L, 6L, 6L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L, 9L, 11L, 11L, 11L, 11L, 11L, 13L, 13L, 13L, 13L, 15L, 15L, 15L, 15L, 15L, 16L, 16L, 16L, 16L, 18L, 18L, 18L, 18L, 18L, 20L, 20L, 20L, 20L),
+    day = c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 4L, 4L, 4L, 4L, 4L, 6L, 6L, 6L, 6L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L, 9L, 11L, 11L, 11L, 11L, 11L, 13L, 13L, 13L, 13L, 15L, 15L, 15L, 15L, 15L, 16L, 16L, 16L, 16L, 18L, 18L, 18L, 18L, 18L, 20L, 20L, 20L, 20L),
     exercise = c("bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift", "bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift", "bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift"),
     equipment = c("barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell"),
     variant = c("flat", "flat", "flat", "flat", "flat", "low bar", "low bar", "low bar", "low bar", "overhead", "overhead", "overhead", "overhead", "overhead", "conventional", "conventional", "conventional", "conventional", "flat", "flat", "flat", "flat", "flat", "low bar", "low bar", "low bar", "low bar", "overhead", "overhead", "overhead", "overhead", "overhead", "conventional", "conventional", "conventional", "conventional", "flat", "flat", "flat", "flat", "flat", "low bar", "low bar", "low bar", "low bar", "overhead", "overhead", "overhead", "overhead", "overhead", "conventional", "conventional", "conventional", "conventional"),

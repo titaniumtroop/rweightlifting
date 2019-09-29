@@ -1,3 +1,13 @@
+rweightlifting 0.1.8
+----------------
+* New programming template for 8-6-3 upper body with pyramid, 5-3-1 lower body with last set first, and a deload week
+
+rweightlifting 0.1.7
+----------------
+* Added programming templates
+* Wrote shiny dashboard tab for programming with templates
+* roughed out shiny dashboard tab for custom programming with inputs
+
 rweightlifting 0.1.6
 ----------------
 * Vectorized one_rep_max and n_rep_max functions
