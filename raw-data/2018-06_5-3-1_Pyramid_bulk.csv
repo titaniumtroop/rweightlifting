@@ -1,0 +1,578 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2019-02-07,deadlift,barbell,conventional,175,5,220,5,260,5
+2019-02-07,squat,barbell,low bar,245,8,245,8,245,8
+2019-02-05,press,barbell,overhead,75,5,95,5,115,5
+2019-02-05,bench,barbell,decline,155,10,155,10,155,10
+2019-02-05,lat pulldown,cable,conventional,165,5,165,5,165,5
+2019-02-05,shoulder rotation,cable,external,50,24,50,24,50,24
+2019-02-05,shrug,dumbbell,pause,170,10,170,10
+2019-02-05,bicep curl,dumbbell,drop set,80,12,50,12,80,11,50,10
+2019-02-03,squat,barbell,low bar,160,5,200,5,240,5
+2019-02-03,deadlift,barbell,conventional,295,8,295,8,295,8
+2019-02-02,bench,barbell,flat,105,5,135,5,155,5,155,5,155,5
+2019-02-02,row,machine,supported,220,5,220,5,220,5
+2019-02-02,press,dumbbell,overhead,80,12,80,12,80,12
+2019-02-02,face pull,cable,pause,95,12,95,12,95,12
+2019-02-02,dips,body weight,conventional,0,8,0,8,0,8
+2019-02-02,shoulder rotation,cable,external,40,30,50,24,50,24
+2019-01-31,deadlift,barbell,conventional,325,5,370,3,415,6
+2019-01-31,squat,barbell,low bar,245,8,245,8,245,8
+2019-01-29,press,barbell,overhead,145,5,165,3,185,0,185,1,185,1,165,3,145,5
+2019-01-29,bench,barbell,decline,155,10,155,10,155,10,155,10,155,9
+2019-01-29,lat pulldown,cable,conventional,135,5,150,5,165,5,180,4
+2019-01-29,shoulder rotation,cable,external,40,30,40,30,40,30
+2019-01-29,bicep curl,dumbbell,drop set,80,12,50,10,80,12,50,10
+2019-01-29,shrug,dumbbell,pause,160,12,160,12
+2019-01-27,squat,barbell,low bar,295,5,335,3,375,2,375,2,375,2
+2019-01-27,deadlift,barbell,conventional,295,8,295,8,295,8
+2019-01-26,bench,barbell,flat,190,5,220,3,245,1,245,1,245,0,220,2,190,6,190,5
+2019-01-26,row,machine,supported,180,5,200,5,220,5,200,5,180,7
+2019-01-26,press,dumbbell,overhead,80,13,80,12,80,12
+2019-01-26,face pull,cable,pause,95,13,95,12,95,12
+2019-01-26,dips,body weight,conventional,0,8,0,7,0,7
+2019-01-26,shoulder rotation,cable,external,40,24,40,24,40,24
+2019-01-25,deadlift,barbell,conventional,305,3,350,3,395,9
+2019-01-22,squat,barbell,low bar,275,3,315,3,355,6
+2019-01-22,deadlift,barbell,conventional,295,8,295,8,295,8
+2019-01-20,bench,barbell,flat,180,3,205,3,230,3,230,3,230,3,205,3,180,6
+2019-01-20,row,barbell,pendlay,245,3,245,3,245,3
+2019-01-20,press,dumbbell,overhead,80,12,80,12,80,12
+2019-01-20,face pull,cable,neutral,160,10,160,10,160,10
+2019-01-20,shoulder rotation,cable,external,27.5,25,27.5,30,27.5,30
+2019-01-20,dips,body weight,conventional,0,8,0,8,0,8
+2019-01-17,deadlift,barbell,conventional,285,5,325,5,370,11
+2019-01-17,squat,barbell,low bar,245,8,245,8,245,8
+2019-01-15,press,barbell,overhead,125,5,145,5,165,4,165,3,165,3,145,5,125,5
+2019-01-15,row,barbell,pendlay,240,3,240,3,240,3,240,3,240,3
+2019-01-15,bench,barbell,decline,155,11,155,10,155,10,155,10,155,10
+2019-01-15,bicep curl,dumbbell,drop set,80,12,50,10,80,12,50,10
+2019-01-13,squat,barbell,low bar,255,5,295,5,335,6,335,5,335,5
+2019-01-13,deadlift,barbell,conventional,295,8,295,8,295,8
+2019-01-12,bench,barbell,flat,165,5,190,5,220,6,220,2,220,2,220,2,190,6,165,8,165,7
+2019-01-12,row,barbell,pendlay,235,3,235,3,235,3,235,3,235,3
+2019-01-12,press,dumbbell,overhead,120,8,120,6,120,7
+2019-01-12,face pull,cable,neutral,160,15,160,15,160,15
+2019-01-12,dips,body weight,conventional,0,9,0,7,0,6
+2019-01-07,squat,barbell,low bar,175,5,220,5,265,5
+2019-01-07,deadlift,barbell,conventional,295,8,295,8,295,8
+2019-01-05,bench,barbell,flat,100,5,125,5,150,5,150,5,150,5
+2019-01-05,row,barbell,pendlay,235,3,235,3,235,3,235,3,235,2
+2019-01-05,press,dumbbell,overhead,120,8,120,8,120,8
+2019-01-05,face pull,cable,neutral,160,14,160,14,160,14
+2019-01-05,dips,body weight,conventional,0,8,0,8,0,8
+2019-01-04,deadlift,barbell,conventional,360,5,405,3,455,1,455,1,455,1,405,3,360,5
+2019-01-04,squat,barbell,low bar,240,8,240,8,240,8
+2019-01-02,press,barbell,overhead,140,5,160,3,180,3,180,1,180,1,160,3,140,5,140,5
+2019-01-02,row,barbell,pendlay,230,3,230,3,230,3,230,3,230,3
+2019-01-02,bench,barbell,decline,150,12,150,12,150,12,150,11,150,10
+2019-01-02,bicep curl,dumbbell,drop set,70,12,40,12,70,12,40,12
+2019-01-02,shrug,dumbbell,pause,180,13,180,13
+2018-12-31,squat,barbell,low bar,330,5,375,3,420,1,375,3,330,5
+2018-12-31,deadlift,barbell,conventional,290,8,290,8,290,8
+2018-12-30,bench,barbell,flat,190,5,215,3,240,3,240,1,240,1,240,1,215,3,190,6,190,6
+2018-12-30,row,barbell,pendlay,225,5,225,5,225,5
+2018-12-30,press,dumbbell,overhead,110,10,110,8,110,8,110,8,110,7
+2018-12-30,face pull,cable,neutral,165,14,165,14,165,14,165,13,165,12
+2018-12-30,dips,body weight,conventional,0,5,0,5,0,5
+2018-12-28,deadlift,barbell,deficit,335,3,380,3,430,2,430,0,380,3,335,3,335,3
+2018-12-28,squat,machine,low bar,265,8,265,8,265,8
+2018-12-26,press,barbell,overhead,130,3,150,3,170,5,170,2,170,2,150,3,130,7,130,7
+2018-12-26,row,barbell,pendlay,225,4,225,3,225,3
+2018-12-26,bench,barbell,decline,150,10,150,10,150,10,150,10,150,10
+2018-12-26,bicep curl,dumbbell,drop hammer,70,12,50,9,70,12,50,9
+2018-12-26,shrug,dumbbell,pause,170,14,170,14
+2018-12-23,squat,barbell,low bar,315,3,350,3,395,3,395,1,395,1,350,3,315,3
+2018-12-23,deadlift,barbell,conventional,290,8,290,8,290,8,290,8,290,8
+2018-12-22,bench,barbell,flat,175,5,200,3,225,5,225,3,225,3,225,2,200,5,175,7,175,7
+2018-12-22,row,barbell,pendlay,220,5,220,5,220,5
+2018-12-22,press,dumbbell,overhead,110,8,110,7,110,7,110,7,110,6
+2018-12-22,face pull,cable,neutral,160,13,160,13,160,13,160,12,160,12
+2018-12-22,bench,barbell,incline,155,5,155,5,155,5
+2018-12-20,deadlift,barbell,conventional,315,5,360,5,405,6,405,3,405,3,405,2,360,5,315,5
+2018-12-20,squat,barbell,low bar,240,8,240,8,240,8
+2018-12-18,press,barbell,overhead,120,5,140,5,160,6,160,2,160,3,140,6,120,7,120,6
+2018-12-18,row,barbell,pendlay,215,5,215,5,215,5
+2018-12-18,bench,barbell,decline,150,10,150,10,150,10,150,10,150,10
+2018-12-18,shrug,dumbbell,pause,170,13,170,13
+2018-12-16,squat,barbell,low bar,285,5,330,5,375,5,375,2,375,2,330,5,285,5
+2018-12-16,deadlift,barbell,conventional,290,8,290,8,290,8,290,8,290,8
+2018-12-15,bench,barbell,flat,165,5,190,5,215,7,215,3,215,3,215,3,190,5,165,8,165,8
+2018-12-15,row,barbell,pendlay,210,5,210,5,210,5
+2018-12-15,press,dumbbell,overhead,110,9,110,8,110,8,110,6,110,7
+2018-12-15,face pull,cable,neutral,160,14,160,13,160,12,160,12,160,12
+2018-12-15,bench,dumbbell,incline,130,7,130,6,130,6
+2018-12-15,dips,body weight,conventional,10,5,10,4,0,5
+2018-12-13,deadlift,barbell,conventional,185,5,235,5,280,5,280,5,280,5
+2018-12-13,squat,barbell,low bar,240,8,240,8,240,8
+2018-12-11,press,barbell,overhead,75,5,90,5,110,5,110,5,110,5
+2018-12-11,bench,barbell,decline,150,14,150,13,150,12
+2018-12-11,row,barbell,pendlay,205,5,205,5,205,5
+2018-12-11,bicep curl,dumbbell,drop set,100,8,70,8,50,8,100,8,70,8,50,8
+2018-12-11,shrug,dumbbell,pause,170,13,170,13
+2018-12-09,squat,barbell,low bar,175,5,225,5,260,5,260,5,260,5
+2018-12-09,deadlift,barbell,conventional,290,8,290,8,290,8
+2018-12-08,bench,barbell,flat,100,5,125,5,150,5,150,5,150,5
+2018-12-08,press,dumbbell,overhead,110,10,110,10,110,9
+2018-12-08,face pull,cable,neutral,160,12,160,12,160,12
+2018-12-08,bench,dumbbell,incline,140,8,130,8,130,8
+2018-12-08,row,barbell,pendlay,200,5,200,5,200,5
+2018-12-08,dips,body weight,conventional,0,5,0,5,0,5
+2018-12-06,deadlift,barbell,conventional,350,5,400,3,445,3,445,1,445,1,400,3,350,5,350,5
+2018-12-06,squat,barbell,low bar,235,8,235,8,235,8,235,8,235,8
+2018-12-04,press,barbell,overhead,135,5,155,3,175,3,175,1,175,1,175,1,155,3,135,5,135,5
+2018-12-04,bench,barbell,decline,150,10,150,10,150,10,150,10,150,10
+2018-12-04,row,barbell,pendlay,195,5,195,5,195,5
+2018-12-04,bicep curl,dumbbell,drop set,100,8,70,8,50,8,100,7,70,7,50,8
+2018-12-04,shrug,dumbbell,pause,170,13,170,13
+2018-12-02,squat,barbell,low bar,325,5,370,3,415,1,370,3,325,5,325,5
+2018-12-02,deadlift,barbell,conventional,285,8,285,8,285,8
+2018-12-01,bench,barbell,flat,185,5,210,3,235,3,235,1,235,0,235,2,235,1,210,3,185,5,185,6
+2018-12-01,press,dumbbell,overhead,110,8,110,8,110,8,110,7,110,7
+2018-12-01,face pull,cable,neutral,150,14,150,14,150,14,150,14,150,14
+2018-12-01,bench,dumbbell,incline,130,8,130,7,130,5
+2018-12-01,row,barbell,pendlay,190,5,190,5,190,5
+2018-12-01,shrug,dumbbell,pause,170,13,170,13
+2018-11-29,deadlift,barbell,conventional,330,3,375,3,420,6,420,2,420,2,375,3,330,5,330,5
+2018-11-29,squat,barbell,low bar,235,8,235,8,235,8,235,8,235,8
+2018-11-27,press,barbell,overhead,130,3,145,3,165,4,165,2,165,2,165,1,145,4,130,7,130,7
+2018-11-27,bench,barbell,decline,150,10,150,10,150,10,150,10,150,10
+2018-11-27,row,barbell,pendlay,185,5,185,5,185,5
+2018-11-27,bicep curl,dumbbell,drop set,100,9,70,8,50,9,100,7,70,7,50,7
+2018-11-27,shrug,dumbbell,pause,160,14,160,14
+2018-11-25,squat,barbell,low bar,305,3,350,3,390,3,390,1,390,1,390,1,350,3,305,3,305,3
+2018-11-25,deadlift,barbell,conventional,285,8,285,8,285,8,285,8,285,8
+2018-11-24,bench,barbell,flat,170,3,195,3,220,5,220,2,220,2,220,2,195,5,170,8,170,8
+2018-11-24,press,dumbbell,overhead,110,8,110,8,110,7,110,7,110,6
+2018-11-24,face pull,cable,neutral,150,13,150,13,150,13,150,12,150,12
+2018-11-24,bench,dumbbell,incline,130,8,130,6,130,6
+2018-11-24,row,barbell,pendlay,185,5,185,5,185,5
+2018-11-24,shrug,hex bar,standard,210,15,210,15,210,15
+2018-11-21,deadlift,barbell,conventional,305,5,350,5,400,8,400,3,400,3,350,5,305,5,305,5
+2018-11-21,squat,barbell,low bar,235,8,235,8,235,8,235,8,235,8
+2018-11-20,press,barbell,overhead,120,5,135,5,155,6,155,3,155,3,135,6,120,8,120,8
+2018-11-20,bench,barbell,decline,150,10,150,10,150,10,150,10,150,10
+2018-11-20,row,barbell,pendlay,180,5,180,5,180,5
+2018-11-20,shrug,dumbbell,pause,160,13,160,13
+2018-11-20,bicep curl,dumbbell,drop set,100,8,70,7,50,7,100,7,70,7,50,7
+2018-11-18,squat,barbell,low bar,285,5,325,5,370,5,370,2,370,2,325,5,285,5,285,5
+2018-11-18,deadlift,barbell,conventional,285,8,285,8,285,8,285,8,285,8
+2018-11-17,bench,barbell,flat,160,5,185,5,210,7,210,3,210,3,210,3,185,5,160,8,160,7
+2018-11-17,press,dumbbell,overhead,100,10,100,7,100,7
+2018-11-17,face pull,cable,neutral,150,12,150,12,150,12
+2018-11-17,bench,dumbbell,incline,130,7,130,6,130,6
+2018-11-17,row,barbell,pendlay,175,5,175,5,175,5
+2018-11-17,shrug,hex bar,standard,210,15,210,15,210,15
+2018-11-14,deadlift,barbell,conventional,185,5,230,5,275,5,275,5,275,5
+2018-11-14,squat,barbell,low bar,235,8,235,8,235,8
+2018-11-13,press,barbell,overhead,80,5,90,5,105,5,105,5,105,5
+2018-11-13,bench,barbell,decline,150,12,150,12,150,12
+2018-11-13,row,barbell,pendlay,170,5,170,5,170,5
+2018-11-13,bicep curl,dumbbell,drop set,90,11,70,8,40,12,100,7,50,8
+2018-11-13,shrug,dumbbell,pause,140,15,160,12
+2018-11-11,squat,barbell,low bar,170,5,210,5,255,5,255,5,255,5
+2018-11-11,deadlift,barbell,conventional,285,8,285,8,285,8
+2018-11-10,bench,barbell,flat,95,8,120,8,145,5,145,5,145,5
+2018-11-10,press,dumbbell,overhead,110,9,110,9,110,9
+2018-11-10,face pull, machine,neutral,150,12,150,12,150,12
+2018-11-10,bench,dumbbell,incline,130,10,130,8,130,8
+2018-11-10,row,barbell,pendlay,165,5,165,5,165,5
+2018-11-10,shrug,hex bar,standard,210,15,210,15,210,15
+2018-11-08,deadlift,barbell,conventional,345,5,390,3,435,2,435,1,435,1,435,1,390,3,345,5,345,5
+2018-11-08,squat,barbell,low bar,230,8,230,8,230,8,230,8,230,8
+2018-11-06,press,barbell,overhead,135,5,150,3,170,3,170,1,170,1,170,1,150,4,135,6,135,6
+2018-11-06,bench,barbell,decline,145,11,145,11,145,11,145,11,145,11
+2018-11-06,row,machine,supported,160,13,160,13,160,12,160,12,160,12
+2018-11-06,bicep curl,dumbbell,drop set,90,9,70,5,50,8
+2018-11-04,squat,barbell,low bar,320,5,360,3,405,1,360,3,320,5,320,5
+2018-11-04,deadlift,barbell,conventional,280,8,280,8,280,8,280,8,280,8
+2018-11-03,bench,barbell,flat,180,5,205,3,230,2,230,1,230,1,230,1,230,1,205,3,180,6,180,6
+2018-11-03,press,dumbbell,overhead,110,9,110,8,110,8,110,7,110,7
+2018-11-03,face pull,cable,neutral,150,12,150,12,150,12,150,12,150,12
+2018-11-03,row,machine,supported,150,12,160,13,160,12
+2018-11-03,bench,dumbbell,incline,120,11,120,10,120,9
+2018-11-03,shrug,hex bar,standard,205,15,205,15,205,15
+2018-11-01,deadlift,barbell,conventional,320,3,365,3,410,5,410,2,410,2,365,4,320,5,320,5
+2018-11-01,squat,barbell,low bar,230,8,230,8,230,8,230,8,230,8
+2018-10-30,press,barbell,overhead,125,3,140,3,160,5,160,2,160,3,140,5,125,6,125,6
+2018-10-30,bench,barbell,decline,145,11,145,11,145,11,145,11,145,10
+2018-10-30,row,machine,supported,160,12,160,12,160,12
+2018-10-30,bicep curl,dumbbell,drop set,90,9,70,5,50,7
+2018-10-28,squat,barbell,low bar,295,3,340,3,380,3,380,1,380,1,380,1,340,3,295,3,295,3
+2018-10-28,deadlift,barbell,conventional,280,8,280,8,280,8,280,8,280,8
+2018-10-27,bench,barbell,flat,170,3,195,3,215,5,215,2,215,2,215,1,195,4,170,6,170,6
+2018-10-27,press,dumbbell,overhead,110,9,110,8,110,8,110,7,110,7
+2018-10-27,face pull,cable,neutral,150,12,150,12,150,12,150,12,150,12
+2018-10-27,bench,dumbbell,incline,120,9,120,9,120,9
+2018-10-27,row,machine,supported,150,15,150,15,150,13
+2018-10-27,shrug,hex bar,standard,205,15,205,15,205,15
+2018-10-25,deadlift,barbell,conventional,300,5,345,5,390,8,390,4,390,4,345,5,300,5,300,5
+2018-10-25,squat,barbell,low bar,230,8,230,8,230,8,230,8,230,8
+2018-10-23,press,barbell,overhead,115,5,135,5,150,6,150,3,150,3,150,2,135,5,115,6,115,7
+2018-10-23,bench,barbell,decline,145,11,145,11,145,11,145,9,145,10
+2018-10-23,row,machine,supported,150,15,150,15,150,13
+2018-10-21,squat,barbell,low bar,275,5,320,5,360,5,360,2,360,2,320,5,275,5,275,5
+2018-10-21,deadlift,barbell,conventional,280,8,280,8,280,8,280,8,280,8
+2018-10-21,hyperextension,machine,reverse,90,18,140,12,140,14
+2018-10-20,bench,barbell,flat,155,5,180,5,205,7,205,3,205,3,205,3,180,5,155,7,155,7
+2018-10-20,press,dumbbell,overhead,110,8,110,7,100,7,100,7,100,7
+2018-10-20,bench,dumbbell,incline,120,9,120,8,120,8
+2018-10-20,face pull,cable,neutral,150,12,150,12,150,12,150,12,150,12
+2018-10-20,row,machine,supported,140,15,140,14,140,13
+2018-10-20,shrug,hex bar,standard,205,15,205,15,205,15
+2018-10-18,deadlift,barbell,conventional,185,5,225,5,265,5,265,5,265,5
+2018-10-18,squat,barbell,low bar,230,8,230,8,230,8
+2018-10-16,press,barbell,overhead,70,5,85,5,105,5,105,5,105,5
+2018-10-16,bench,barbell,decline,145,12,145,12,145,12
+2018-10-16,row,machine,supported,150,12,150,12,150,12
+2018-10-16,pullup,chinup,close,0,5,0,4,0,4
+2018-10-16,shoulder raise,plate,front,35,30,35,30
+2018-10-16,bicep curl,dumbbell,drop set,90,9,70,6,50,7
+2018-10-14,squat,barbell,low bar,165,5,205,5,250,5
+2018-10-14,deadlift,barbell,conventional,280,8,280,8,280,8
+2018-10-13,bench,barbell,chains,95,5,120,5,140,5,140,5,140,5
+2018-10-13,press,barbell,overhead,115,10,115,10,115,10
+2018-10-13,row,machine,supported,140,12,140,12,140,12
+2018-10-13,face pull,cable,neutral,140,12,140,12,140,12
+2018-10-13,bench,dumbbell,incline,120,9,120,8,120,8
+2018-10-13,shrug,hex bar,standard,205,14,205,15,205,15
+2018-10-11,deadlift,barbell,conventional,335,5,380,3,425,4,425,1,425,1,380,3,335,5,335,5
+2018-10-11,squat,barbell,low bar,225,8,225,8,225,8,225,8,225,8
+2018-10-09,press,barbell,overhead,130,5,145,3,165,3,165,2,165,2,145,3,130,5,130,5
+2018-10-09,bench,barbell,decline,145,10,145,10,145,10,145,10,145,10
+2018-10-09,row,machine,supported,140,12,140,12,140,12
+2018-10-09,pullup,chinup,close,0,5,0,4,0,4,0,3,0,3,0,3
+2018-10-09,shoulder raise,plate,front,35,30,35,30
+2018-10-09,bicep curl,dumbbell,drop set,80,8,70,5,50,6
+2018-10-07,squat,barbell,low bar,310,5,350,3,395,1,350,3,310,5,310,5
+2018-10-07,deadlift,barbell,conventional,275,8,275,8,275,8,275,8,275,8
+2018-10-07,calf raise,machine,seated,175,20,175,20
+2018-10-07,hyperextension,machine,reverse,90,15,90,15,90,15
+2018-10-06,bench,barbell,flat,175,5,200,3,225,3,225,1,225,1,225,1,200,4,175,6,175,6
+2018-10-06,press,dumbbell,overhead,100,10,100,10,100,9
+2018-10-06,row,machine,supported,140,12,140,12,140,12
+2018-10-06,face pull,cable,neutral,130,14,140,12,140,12
+2018-10-06,bench,dumbbell,incline,120,10,120,9,120,7
+2018-10-06,shrug,hex bar,standard,195,15,195,15,195,15
+2018-10-04,deadlift,barbell,conventional,315,3,355,3,400,7,400,3,400,3,355,3,315,6,315,6
+2018-10-04,squat,barbell,low bar,225,8,225,8,225,8,225,8,225,8
+2018-10-04,calf raise,machine,standing,225,15,225,15
+2018-10-04,hyperextension,machine,reverse,90,15,90,15,90,15
+2018-10-02,press,barbell,overhead,120,3,140,3,155,6,155,3,155,3,140,5,120,6,120,6
+2018-10-02,bench,barbell,decline,145,10,145,10,145,10,145,10,145,10
+2018-10-02,row,machine,supported,140,12,140,12,140,12
+2018-10-02,pullup,chinup,close,0,5,0,4,0,4,0,3,0,3,0,3
+2018-10-02,shoulder raise,plate,front,35,27,35,27
+2018-10-02,bicep curl,dumbbell,drop set,90,8,70,3,50,5
+2018-09-30,squat,barbell,low bar,290,3,330,3,370,3,370,1,370,1,370,1,330,3,290,5,290,5
+2018-09-30,deadlift,barbell,conventional,275,8,275,8,275,8,275,8,275,8
+2018-09-30,calf raise,machine,seated,175,15,175,18
+2018-09-30,hyperextension,machine,reverse,90,15,90,15,90,15
+2018-09-29,bench,barbell,flat,165,3,190,3,210,5,210,2,210,2,210,3,190,3,165,6,165,6
+2018-09-29,press,dumbbell,overhead,100,10,100,10,100,9
+2018-09-29,row,machine,supported,130,14,130,14,130,14
+2018-09-29,face pull,cable,neutral,140,12,140,12,140,12
+2018-09-29,shrug,hex bar,standard,195,15,195,15,195,15
+2018-09-29,bench,dumbbell,incline,120,10,120,8,120,8
+2018-09-27,deadlift,barbell,conventional,290,5,335,5,380,9,380,4,380,4,335,7,290,7,290,9
+2018-09-27,squat,barbell,low bar,225,8,225,8,225,8,225,8,225,8
+2018-09-27,calf raise,machine,standing,225,15,225,15
+2018-09-27,hyperextension,machine,reverse,90,15,90,15,90,15
+2018-09-25,press,barbell,overhead,110,5,130,5,145,7,145,4,145,4,130,4,110,8,110,6
+2018-09-25,bench,barbell,decline,145,10,145,10,145,10,145,10,145,9
+2018-09-25,row,machine,supported,110,12,110,12,110,12,110,12,110,12
+2018-09-25,pullup,chinup,close,0,5,0,4,0,4,0,3,0,3,0,3
+2018-09-25,shoulder raise,plate,front,35,25,35,25
+2018-09-25,bicep curl,dumbbell,drop set,90,8,70,4,50,6
+2018-09-23,squat,barbell,low bar,270,5,310,5,350,5,350,2,350,2,310,5,270,5,270,5
+2018-09-23,deadlift,barbell,conventional,275,8,275,8,275,8,275,8,275,8
+2018-09-23,hyperextension,machine,reverse,90,12,90,12,90,15
+2018-09-23,calf raise,machine,seated,175,14,175,14,175,14
+2018-09-22,bench,barbell,flat,155,5,175,5,200,8,200,4,200,3,200,2
+2018-09-22,press,dumbbell,overhead,100,10,100,9,100,7
+2018-09-22,row,machine,supported,110,12,110,12,110,12
+2018-09-22,face pull,cable,neutral,140,12,140,12,140,12
+2018-09-22,shrug,hex bar,standard,195,15,195,15,195,15
+2018-09-22,bench,dumbbell,incline,120,9,120,7,120,7
+2018-09-20,deadlift,barbell,conventional,175,5,225,5,265,5,265,5,265,5
+2018-09-20,squat,barbell,low bar,225,8,225,8,225,8
+2018-09-20,calf raise,machine,standing,225,15,225,15
+2018-09-20,hyperextension,machine,reverse,90,12,90,12
+2018-09-19,press,barbell,overhead,65,5,85,5,100,5,100,5,100,5
+2018-09-19,bench,barbell,decline,145,10,145,10,145,10
+2018-09-19,row,machine,supported,110,10,110,10,110,10
+2018-09-19,pullup,chinup,close,0,5,0,5,0,4
+2018-09-19,row,machine,close,170,12,175,10,175,10
+2018-09-19,bicep curl,dumbbell,drop set,80,10,60,5,40,5
+2018-09-17,squat,barbell,low bar,160,5,200,5,240,5,240,5,240,5
+2018-09-17,deadlift,barbell,conventional,275,8,275,8,275,8
+2018-09-17,hyperextension,machine,reverse,90,12,90,12
+2018-09-17,calf raise,machine,seated,70,15,70,15
+2018-09-14,bench,barbell,chains,95,5,115,5,140,5,140,5,140,5
+2018-09-14,press,dumbbell,overhead,100,12,100,11,100,10
+2018-09-14,row,machine,supported,90,12,90,12,140,8
+2018-09-14,face pull,cable,neutral,137.5,12,137.5,12,137.5,12
+2018-09-14,shrug,hex bar,standard,185,15,185,15,185,15
+2018-09-14,bench,dumbbell,incline,110,12,110,12,110,11
+2018-09-13,deadlift,barbell,conventional,325,5,370,3,415,4,415,2,415,2,370,3,325,5,325,5
+2018-09-13,squat,barbell,low bar,220,8,220,8,220,8,220,8,220,8
+2018-09-13,calf raise,machine,standing,225,15,225,15
+2018-09-13,hyperextension,machine,reverse,90,12,90,12,90,12,90,12
+2018-09-12,press,barbell,overhead,125,5,145,3,160,5,160,2,160,2,145,3,125,5,125,5
+2018-09-12,bench,barbell,decline,140,10,140,10,140,10,140,10,140,10
+2018-09-12,row,machine,close,170,12,170,12,170,11
+2018-09-12,pullup,chinup,close,0,5,0,5,0,4,0,4,0,3
+2018-09-12,row,machine,supported,90,12,90,12,90,12
+2018-09-12,bicep curl,dumbbell,drop set,80,9,70,3,60,4,50,4
+2018-09-09,squat,barbell,low bar,305,5,345,3,385,1,345,3,305,5,305,5
+2018-09-09,deadlift,barbell,conventional,270,8,270,8,270,8,270,8,270,8
+2018-09-09,calf raise,machine,seated,165,18,165,18
+2018-09-09,hyperextension,machine,reverse,90,10,90,10,90,10
+2018-09-08,bench,barbell,flat,175,3,195,3,220,3,220,2,220,1,220,1,195,3,175,7,175,7
+2018-09-08,press,dumbbell,overhead,100,11,100,10,100,9
+2018-09-08,row,machine,neutral,170,10,170,10,170,10
+2018-09-08,face pull,cable,neutral,137.5,12,137.5,12,137.5,12
+2018-09-08,shrug,hex bar,standard,185,15,185,15,185,15
+2018-09-08,bench,dumbbell,incline,110,12,110,9,110,8
+2018-09-06,deadlift,barbell,conventional,305,3,350,3,390,6,390,3,390,3,350,5,305,6,305,6
+2018-09-06,squat,barbell,low bar,220,8,220,8,220,8,220,8,220,8
+2018-09-06,hyperextension,machine,reverse,160,14,160,14
+2018-09-06,calf raise,machine,standing,225,15,225,15
+2018-09-04,press,barbell,overhead,120,3,135,3,150,6,150,3,150,3,150,3,135,5,120,5,120,5
+2018-09-04,bench,barbell,decline,140,10,140,10,140,10,140,10,140,10
+2018-09-04,row,machine,close,170,12,170,12,170,11
+2018-09-04,bicep curl,dumbbell,alternating,70,12,70,12,90,5,70,10
+2018-09-04,pullup,chinup,close,0,5,0,4,0,4
+2018-09-02,squat,barbell,low bar,280,3,325,3,365,3,365,1,365,1,365,1,325,3,280,5,280,5
+2018-09-02,deadlift,barbell,conventional,270,8,270,8,270,8,270,8,270,8
+2018-09-02,hyperextension,machine,reverse,140,12,140,15,140,15
+2018-09-02,calf raise,machine,seated,165,22,165,22
+2018-09-01,bench,barbell,flat,160,3,185,3,210,5,210,2,210,2,210,2,185,5,160,8,160,9
+2018-09-01,press,dumbbell,overhead,100,9,100,8,100,8
+2018-09-01,row,machine,close,170,11,170,12,170,11
+2018-09-01,face pull,cable,neutral,137.5,12,137.5,12,137.5,12
+2018-09-01,bench,dumbbell,incline,110,12,110,10,110,8
+2018-09-01,shrug,hex bar,standard,185,15,185,15,185,15
+2018-08-30,deadlift,barbell,conventional,285,5,320,5,370,9,370,4,370,4,325,5,285,6,285,6
+2018-08-30,squat,barbell,low bar,220,8,220,8,220,8,220,8,220,8
+2018-08-30,calf raise,machine,standing,270,14,270,14
+2018-08-30,hyperextension,machine,reverse,140,12,140,14
+2018-08-29,press,barbell,overhead,110,5,125,5,145,7,145,3,145,3,145,3,125,7,110,7,110,7
+2018-08-29,bench,barbell,decline,140,10,140,10,140,10,140,10,140,10
+2018-08-29,row,machine,close,170,10,170,10,170,10
+2018-08-29,pullup,chinup,close,0,5,0,5,0,5,0,4,0,4
+2018-08-29,bicep curl,dumbbell,alternating,70,12,70,12
+2018-08-26,squat,barbell,low bar,260,5,305,5,345,5,345,2,345,2,305,5,260,5,260,5
+2018-08-26,deadlift,barbell,conventional,270,8,270,8,270,8,270,8,270,8
+2018-08-26,hyperextension,machine,reverse,90,15,110,12,110,12
+2018-08-26,calf raise,machine,seated,165,22,165,22
+2018-08-25,bench,barbell,flat,150,5,175,5,195,9,195,4,195,4,195,3,175,5,150,8,150,7
+2018-08-25,press,dumbbell,overhead,100,9,100,7,90,8
+2018-08-25,row,machine,close,170,12,170,12,170,11
+2018-08-25,face pull,cable,neutral,137.5,10,137.5,10,137.5,10
+2018-08-25,bench,dumbbell,incline,100,12,100,11,100,9
+2018-08-25,shrug,hex bar,standard,175,15,175,15,175,15
+2018-08-23,deadlift,barbell,conventional,170,5,215,5,255,5,255,5,255,5
+2018-08-23,squat,barbell,low bar,220,8,220,8,220,8
+2018-08-23,calf raise,machine,standing,225,22,225,21
+2018-08-20,press,barbell,overhead,75,5,90,5,100,5,100,5,100,5
+2018-08-20,bench,barbell,decline,140,10,140,10,140,10
+2018-08-20,row,machine,close,170,10,170,10,170,10
+2018-08-20,pullup,chinup,close,0,5,0,3
+2018-08-20,bicep curl,dumbbell,alternating,70,12,70,12
+2018-08-19,squat,barbell,low bar,155,5,195,5,235,5,235,5,235,5
+2018-08-19,deadlift,barbell,conventional,270,8,270,8,270,8
+2018-08-19,calf raise,machine,seated,165,15,165,15,165,15
+2018-08-18,bench,barbell,chains,95,5,115,5,135,5,135,5,135,5,135,5,135,5
+2018-08-18,press,dumbbell,overhead,100,10,100,10,100,9
+2018-08-18,row,machine,close,170,10,170,10,170,10
+2018-08-18,face pull,cable,neutral,130,12,130,12,130,12
+2018-08-18,bench,dumbbell,incline,130,8,130,8,130,8
+2018-08-18,shrug,hex bar,standard,175,14,175,14,175,14
+2018-08-16,deadlift,barbell,conventional,320,5,360,3,405,4,405,2,405,2,360,3,320,6,320,5
+2018-08-16,squat,barbell,low bar,215,8,215,8,215,8,215,8,215,8
+2018-08-16,calf raise,machine,standing,225,22,225,20
+2018-08-15,press,barbell,overhead,120,5,140,3,155,5,155,2,155,2,140,4,120,6,120,6
+2018-08-15,bench,barbell,decline,135,10,135,10,135,10,135,10,135,10
+2018-08-15,row,machine,close,165,10,165,10,165,10
+2018-08-15,pullup,chinup,neutral,0,5,0,5,0,4
+2018-08-15,bicep curl,dumbbell,alternating,70,14,80,11
+2018-08-12,squat,barbell,low bar,295,5,335,3,375,2,375,1,335,3,295,5,295,5
+2018-08-12,deadlift,barbell,conventional,265,8,265,8,265,8,265,8,265,8
+2018-08-12,calf raise,machine,seated,140,25,165,15,165,15
+2018-08-11,bench,barbell,flat,170,5,190,3,215,2,215,1,215,1,215,1,215,1,190,3,170,6,170,6
+2018-08-11,press,dumbbell,overhead,90,10,100,10,100,9,100,8,90,9
+2018-08-11,face pull,cable,neutral,130,12,130,12,130,12,130,12,130,12
+2018-08-11,shrug,barbell,overhead,100,15,100,15,100,15
+2018-08-11,shrug,hex bar,standard,165,15,165,15,165,15
+2018-08-11,row,machine,close,165,10,165,10,165,10
+2018-08-09,deadlift,barbell,conventional,300,3,340,3,385,6,385,3,385,3,340,6,300,6,300,6
+2018-08-09,squat,barbell,low bar,215,8,215,8,215,8,215,8,215,8
+2018-08-09,calf raise,machine,standing,225,21,225,20
+2018-08-07,press,barbell,overhead,115,3,130,3,145,7,145,3,145,3,145,3,130,5,115,8,115,6
+2018-08-07,bench,barbell,decline,135,10,135,10,135,10,135,10,135,10
+2018-08-07,row,machine,close,165,10,165,10,165,10
+2018-08-07,shoulder raise,plate,front,25,50
+2018-08-07,pullup,chinup,neutral,0,5,0,5,0,4
+2018-08-07,bicep curl,dumbbell,alternating,90,5,70,11
+2018-08-05,squat,barbell,low bar,275,3,315,3,355,3,355,2,355,2,315,3,275,5,275,5
+2018-08-05,deadlift,barbell,conventional,265,8,265,8,265,8,265,8,265,8
+2018-08-05,calf raise,machine,seated,140,25,140,23,140,23
+2018-08-04,bench,barbell,flat,160,3,180,3,205,5,205,2,205,2,205,2,180,5,160,7,160,6
+2018-08-04,press,dumbbell,overhead,90,10,90,10,90,10
+2018-08-04,row,machine,close,165,10,165,10,165,10
+2018-08-04,face pull,cable,neutral,130,11,130,11,130,11
+2018-08-04,shrug,hex bar,standard,165,15,165,15,165,15
+2018-08-04,shrug,barbell,overhead,95,15,95,15,95,15
+2018-08-02,deadlift,barbell,conventional,275,5,320,5,360,9,360,4,360,4,320,5,275,8,275,8
+2018-08-02,squat,barbell,low bar,215,8,215,8,215,8
+2018-08-02,calf raise,machine,standing,225,20,225,20
+2018-07-31,press,barbell,overhead,105,5,120,5,140,8,140,5,140,3,120,5,105,8,105,7
+2018-07-31,bench,barbell,decline,135,10,135,10,135,10,135,10,135,10
+2018-07-31,bicep curl,EZ bar,preacher,90,10,90,10,90,10
+2018-07-31,row,dumbbell,kroc,70,32
+2018-07-31,pullup,chinup,close,0,5,0,5,0,4
+2018-07-31,shoulder raise,plate,front,25,50
+2018-07-29,squat,barbell,low bar,255,5,295,5,335,5,335,2,335,2,295,5,255,5,255,5
+2018-07-29,deadlift,barbell,conventional,265,8,265,8,265,8,265,8,265,8
+2018-07-29,calf raise,machine,seated,140,24,140,23,140,22
+2018-07-27,bench,barbell,flat,145,5,170,5,190,9,190,5,190,3,190,3,170,5,145,7,145,6
+2018-07-27,press,dumbbell,overhead,90,10,90,10,90,9
+2018-07-27,row,barbell,pendlay,165,10,165,10,165,9
+2018-07-27,shrug,hex bar,standard,165,15,165,15,165,15
+2018-07-27,face pull,cable,neutral,130,11,130,11,130,11
+2018-07-27,shrug,barbell,overhead,95,15,95,15,95,15
+2018-07-25,deadlift,barbell,conventional,165,5,210,5,250,5,250,5,250,5,210,5,165,5
+2018-07-25,squat,barbell,low bar,215,8,215,8,215,8
+2018-07-25,calf raise,machine,seated,140,16,140,16
+2018-07-23,press,barbell,overhead,65,5,85,5,95,5,95,5,95,5,95,5,95,5
+2018-07-23,bench,barbell,decline,135,10,135,10,135,10
+2018-07-23,bicep curl,EZ bar,preacher,95,7,85,10,85,10
+2018-07-23,row,dumbbell,kroc,70,32
+2018-07-23,pullup,chinup,close,0,5,0,5,0,3
+2018-07-23,shoulder raise,plate,front,25,50
+2018-07-20,squat,barbell,low bar,155,5,190,5,230,5,190,5,155,5
+2018-07-20,deadlift,barbell,conventional,265,8,265,8,265,8
+2018-07-20,calf raise,machine,seated,140,23,140,23
+2018-07-19,bench,barbell,chains,95,8,115,8,135,8,135,8,115,8,95,8,95,8
+2018-07-19,press,dumbbell,overhead,90,10,90,10
+2018-07-19,row,barbell,pendlay,165,10,165,10
+2018-07-19,face pull,cable,neutral,125,11,125,11
+2018-07-19,shrug,barbell,overhead,45,20,95,15,115,10
+2018-07-19,shrug,hex bar,standard,165,14,165,14
+2018-07-15,deadlift,barbell,conventional,315,5,355,3,395,4,395,2,395,2,355,4,315,5,315,6
+2018-07-15,squat,barbell,low bar,210,8,210,8,210,8,210,8,210,8
+2018-07-15,calf raise,machine,standing,225,18,225,18
+2018-07-14,press,barbell,overhead,150,5,135,5,150,6,150,3,150,3,135,4,120,6,120,5
+2018-07-14,bench,barbell,decline,135,10,135,10,135,10,135,10,135,10
+2018-07-14,bicep curl,EZ bar,preacher,85,11,85,11,85,11
+2018-07-14,row,dumbbell,kroc,70,32
+2018-07-14,pullup,chinup,close,0,5,0,5,0,4
+2018-07-14,shoulder raise,plate,front,25,50
+2018-07-12,squat,barbell,low bar,290,5,325,3,365,2,365,1,365,1,325,3,290,5,290,5
+2018-07-12,deadlift,barbell,conventional,260,8,260,8,260,8,260,8,260,8
+2018-07-12,calf raise,machine,seated,140,20,140,20
+2018-07-11,bench,barbell,flat,165,3,190,3,210,3,210,1,210,1,210,1,210,1,210,1,190,3,165,6,165,6
+2018-07-11,press,dumbbell,overhead,90,10,90,10,90,9
+2018-07-11,row,barbell,pendlay,160,10,160,10,160,10
+2018-07-11,shrug,dumbbell,overhead,20,10,30,8,30,8
+2018-07-11,shrug,hex bar,standard,160,12,160,12,160,15
+2018-07-11,shrug,barbell,overhead,45,20
+2018-07-11,face pull,cable,neutral,125,12,125,12,125,12
+2018-07-08,deadlift,barbell,conventional,290,3,330,3,375,6,375,3,375,3,330,5,290,7,290,7
+2018-07-08,squat,barbell,low bar,210,8,210,8,210,8,210,8,210,8
+2018-07-08,calf raise,machine,seated,140,20,140,20,140,20
+2018-07-07,press,barbell,overhead,110,3,125,3,140,8,140,4,140,3,125,5,110,7,110,6
+2018-07-07,bench,barbell,decline,130,10,130,10,130,10,130,10,130,10
+2018-07-07,bicep curl,EZ bar,preacher,85,10,85,10,85,10
+2018-07-07,pullup,chinup,close,0,5,0,5,0,4
+2018-07-07,row,dumbbell,kroc,70,30
+2018-07-07,shoulder raise,plate,front,25,45
+2018-07-05,squat,barbell,low bar,270,3,305,3,345,4,345,2,345,2,305,3,270,5,270,5
+2018-07-05,deadlift,barbell,conventional,260,8,260,8,260,8
+2018-07-05,calf raise,machine,standing,225,16,225,16
+2018-07-04,bench,barbell,flat,155,3,175,3,200,4,200,2,200,2,200,2,175,5,155,8,155,8
+2018-07-04,press,dumbbell,overhead,90,12,90,10,90,9
+2018-07-04,row,barbell,pendlay,160,10,160,10,160,10
+2018-07-04,shrug,hex bar,standard,160,12,160,12,160,15
+2018-07-04,face pull,cable,neutral,125,10,125,10,125,10
+2018-07-02,deadlift,barbell,conventional,270,5,315,5,355,8,355,4,355,4,315,5,270,9,270,9
+2018-07-02,squat,barbell,low bar,210,8,210,8,210,8
+2018-07-02,calf raise,machine,standing,225,16,225,16,225,16
+2018-07-01,press,barbell,overhead,105,5,120,5,135,8,135,4,135,4,120,5,105,5,105,6
+2018-07-01,bench,dumbbell,incline,120,11,140,5,140,5,120,6
+2018-06-27,squat,barbell,low bar,250,5,290,5,325,5,325,3,325,2,290,5,250,5,250,5
+2018-06-27,deadlift,barbell,conventional,260,8,260,8,260,8
+2018-06-26,bench,barbell,flat,145,5,165,5,190,7,190,4,190,3,190,2,165,5,145,6,145,6
+2018-06-26,press,dumbbell,overhead,90,10,90,10,90,8
+2018-06-26,row,barbell,pendlay,160,10,160,10,160,10
+2018-06-26,shrug,hex bar,standard,160,10,160,10,160,12
+2018-06-26,face pull,cable,neutral,125,10,125,10,125,10
+2018-06-24,deadlift,barbell,conventional,160,5,205,5,245,5,205,5,160,5
+2018-06-24,squat,barbell,low bar,205,8,205,8,205,8
+2018-06-24,calf raise,machine,standing,225,16,225,16,225,16
+2018-06-23,press,barbell,overhead,60,5,85,5,100,5,85,5,60,5
+2018-06-23,bench,dumbbell,incline,120,10,120,11,120,10
+2018-06-23,bicep curl,EZ bar,preacher,85,10,85,10
+2018-06-23,shoulder raise,plate,front,25,40
+2018-06-23,pullup,chinup,close,0,6,0,5,0,5
+2018-06-23,row,dumbbell,kroc,70,28
+2018-06-22,squat,barbell,low bar,150,5,185,5,225,5,185,5,150,5
+2018-06-22,deadlift,barbell,conventional,255,8,255,8,255,8
+2018-06-22,calf raise,machine,seated,140,18,140,18
+2018-06-21,bench,barbell,flat,95,5,115,5,135,5,135,5,115,5,95,5,95,5
+2018-06-21,press,dumbbell,overhead,90,12,90,10,90,9
+2018-06-21,row,barbell,pendlay,155,10,155,10,155,10
+2018-06-21,shrug,hex bar,standard,155,10,155,10,155,10
+2018-06-21,face pull,cable,neutral,125,10,125,10,125,10
+2018-06-17,deadlift,barbell,conventional,305,5,345,3,385,2,385,1,345,3,305,5,305,5
+2018-06-17,squat,barbell,low bar,205,8,205,8,205,8
+2018-06-17,calf raise,machine,standing,180,21,180,21
+2018-06-16,press,barbell,overhead,115,5,130,3,145,6,145,3,145,2,145,2,145,2,130,5,115,5,115,6
+2018-06-16,bench,dumbbell,incline,120,10,120,10,120,10
+2018-06-16,bicep curl,EZ bar,preacher,80,10,80,10
+2018-06-16,face pull,cable,neutral,125,10,125,10,125,10
+2018-06-16,pullup,chinup,close,0,5,0,5,0,4
+2018-06-15,squat,barbell,low bar,280,5,315,3,355,3,315,3,280,5,280,5
+2018-06-15,deadlift,barbell,conventional,255,8,255,8,255,8,255,8,255,8
+2018-06-15,calf raise,machine,seated,100,28,125,20,125,20,100,28
+2018-06-14,bench,barbell,flat,160,5,185,3,205,3,205,2,205,2,205,2,205,2,185,3,160,5,160,6
+2018-06-14,press,dumbbell,overhead,90,11,90,10,90,8
+2018-06-14,row,barbell,pendlay,155,10,155,10,155,10
+2018-06-14,shrug,hex bar,standard,155,10,155,10,155,10
+2018-06-14,face pull,cable,neutral,125,10,125,10,125,10
+2018-06-10,deadlift,barbell,conventional,285,3,325,3,365,7,365,4,365,3,325,4,285,5,285,8
+2018-06-10,squat,barbell,low bar,205,8,205,8,205,8,205,8,205,8
+2018-06-10,calf raise,machine,standing,135,24,180,18,180,18,135,24
+2018-06-09,press,barbell,overhead,105,3,120,3,140,6,140,4,140,3,140,3
+2018-06-09,bench,dumbbell,incline,130,9,130,8,130,7,130,7,130,6
+2018-06-09,face pull,cable,neutral,125,10,125,10,125,10,125,10,125,10
+2018-06-09,bicep curl,EZ bar,preacher,80,10,80,10,80,10
+2018-06-09,row,dumbbell,kroc,65,36
+2018-06-09,pullup,chinup,close,0,5,0,4,0,4,0,4,0,4
+2018-06-07,squat,barbell,low bar,265,3,305,3,335,3,300,3,260,3,260,3
+2018-06-07,deadlift,barbell,conventional,255,8,255,8,255,8,255,8,255,8
+2018-06-07,calf raise,machine,seated,100,25,125,18,125,18,100,25
+2018-06-06,bench,barbell,flat,150,3,175,3,195,6,195,3,195,3,195,2,195,2,175,3,150,6,150,6
+2018-06-06,press,dumbbell,overhead,90,10,90,10,90,9,90,7,90,7
+2018-06-06,row,barbell,pendlay,155,10,155,10,155,10
+2018-06-06,shrug,hex bar,standard,155,10,155,10,155,10
+2018-06-06,face pull,cable,neutral,125,10,125,10,125,10,125,10,125,10
+2018-06-06,shoulder raise,plate,front,25,15,25,15,25,15,25,15,25,15
+2018-06-03,deadlift,barbell,conventional,265,5,305,5,345,8,345,4,345,4,305,6,265,9,265,8
+2018-06-03,squat,barbell,low bar,205,8,205,8,205,8,205,8,205,8
+2018-06-03,calf raise,machine,standing,135,22,180,18,180,18,135,22
+2018-06-02,press,barbell,overhead,100,5,115,5,130,9,130,4,130,4,115,6,100,8,100,8
+2018-06-02,bench,dumbbell,incline,120,10,120,10,120,9,120,9,120,8
+2018-06-02,face pull,cable,neutral,125,10,125,10,125,10,125,10,125,10
+2018-06-02,bicep curl,EZ bar,preacher,80,10,80,10,80,10
+2018-06-02,row,dumbbell,kroc,65,36
+2018-06-02,pullup,chinup,close,0,5,0,4,0,4,0,4,0,3
+2018-05-31,squat,barbell,low bar,245,5,280,5,315,5,315,3,315,2,280,5,245,5,245,5
+2018-05-31,deadlift,barbell,conventional,255,8,255,8,255,8,255,8,255,8
+2018-05-31,calf raise,machine,seated,100,25,125,18,125,18,100,25
+2018-05-30,bench,barbell,flat,140,5,160,5,185,8,185,6,185,5,160,6,140,7,140,7
+2018-05-30,press,dumbbell,overhead,90,10,90,9,90,8,90,7,90,8
+2018-05-30,row,barbell,pendlay,155,10,155,10,155,10
+2018-05-30,shrug,hex bar,standard,155,10,155,10,155,10
+2018-05-30,face pull,cable,neutral,125,15,125,15,125,15,125,15,125,15
+2018-05-30,shoulder raise,plate,front,25,15,25,15,25,15

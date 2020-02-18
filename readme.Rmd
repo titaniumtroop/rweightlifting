@@ -136,7 +136,7 @@ There are many other views shown in the dashboard located in the `shiny` directo
 
 Weightlifters change programming periodically in order to accommodate different goals, such as to increase the amount of work performed, to change set/rep ranges, or to start fresh after a layoff due to illness. The rweightlifting package contains functions designed to assist the coach or lifter in preparing a new program. The starting position for the new program is tied to a specific percentage of the lifter's previous one-rep maximum, which is called the training max. For instance, a typical starting point after a week's vacation might set the training max at 90% of the lifter's calculated 1RM over the last month. The functions contain sensible defaults; the dashboard permits a user to adjust pertinent variables in order to get the desired level of difficulty.
 
-For the lifter identified above, the package provides the following cycle for a new program based on Jim Wendler's basic 3-week 5-3-1 program:
+For the lifter identified above, the package provides the following of a new program based on Jim Wendler's basic 3-week 5-3-1 program (this is the first week only):
 
 ```{r new_program, echo = F}
 

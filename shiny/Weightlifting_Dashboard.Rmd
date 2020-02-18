@@ -1,1 +1,2319 @@
-/Users/nathan/Dropbox (Personal)/WebServer/shiny/Weightlifting/index.Rmd
+---
+title: "&#127947; Lifting Logbook"
+runtime: shiny
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, echo = FALSE, include=FALSE}
+
+# DT fills full container in Dashboard but starts vertical scroll if goes beyond 100%(v)iew(h)eight of container
+options(DT.options = list(scrollY="90vh"))
+
+packages <- c("lubridate", "readr", "tidyverse", "plotly", "flexdashboard", "shiny", "ggridges", "viridis", "ggsci", "data.table", "scales", "rweightlifting", "zoo", "DT")
+missing.packages <- ! packages %in% installed.packages()
+lapply(packages[missing.packages], install.packages, repos='http://cran.us.r-project.org')
+lapply(packages, require, character.only = TRUE)
+rm(packages, missing.packages)
+
+```
+
+```{r read data, echo = F, include = F}
+
+ifelse(
+  dir.exists("/data/fitness/Weightlifting/"),
+  data.dir <- "/data/fitness/Weightlifting/",
+  data.dir <- "~/.fitness/Data/Weightlifting/"
+)
+
+weightlifting.log <- load_csv_data(datadir = data.dir)
+weightlifting.log <- weightlifting.log %>%
+#  filter(reps > 0) %>%
+  arrange(date) %>%
+  mutate(
+#    exercise = exercise,
+    tonnage = weight * reps,
+    date = as.Date(date),
+    program = factor(program) # arranging by date puts this factor in date order
+  )
+
+```
+
+```{r read weight data, echo=F, include=F}
+
+ifelse(
+  dir.exists("/data/fitness/"),
+  imagedir <- "/data/fitness/",
+  imagedir <- "~/.fitness/Data/"
+)
+
+
+body.weight <- read.csv(paste(imagedir, "body_weight.csv", sep=""), stringsAsFactors = FALSE)
+body.weight$date <- as.Date(body.weight$date, "%Y-%m-%d")
+
+all.dates <- data.frame(date = seq.Date(from = min(body.weight$date), to = Sys.Date(), by = 1))
+
+body.weight <- body.weight %>%
+  full_join(all.dates) %>%
+  arrange(date)
+
+names(body.weight) <- c("date", "actual") # We're going to calculate a rolling mean for weight to eliminate outliers and calculate strength for most dates where there's no weight measurement
+body.weight$rolling.weight <- rollapply(body.weight$actual, 4, mean, by = 1, fill = NA, na.rm = TRUE, align = "center", partial = T)
+
+body.weight <- body.weight %>%
+  mutate(rolling.weight = ifelse(is.na(rolling.weight), NA, round(rolling.weight, 2)))
+
+#body.weight$actual <- NULL
+
+```
+
+```{r set the start date}
+
+start.date <- min(weightlifting.log$date, na.rm=TRUE)
+today <- Sys.Date()
+
+```
+
+```{r initial data munging, echo = FALSE, include=FALSE}
+
+programs <- weightlifting.log %>%
+  group_by(program) %>%
+  summarize(last.date = max(date, na.rm = TRUE)) %>%
+  ungroup() %>%
+  arrange(last.date) %>%
+  mutate(
+    program = as.character(program)
+  ) %>%
+  select(program) %>%
+  unlist(use.names = FALSE)
+
+# Order the exercise factor by descending maximum weight, so deadlift/squat and bench/press will be paired together
+#exercises <- unique(weightlifting.log$exercise)
+exercises <- weightlifting.log %>%
+  group_by(exercise) %>%
+  arrange(desc(weight)) %>%
+  distinct(exercise) %>%
+  unlist(use.names = FALSE)
+
+equipment <- weightlifting.log %>%
+  group_by(equipment) %>%
+  count() %>%
+  ungroup() %>%
+  arrange(desc(n)) %>%
+  distinct(equipment) %>%
+  unlist(use.names = FALSE)
+
+variants <- weightlifting.log %>%
+  group_by(variant) %>%
+  count() %>%
+  ungroup() %>%
+  arrange(desc(n)) %>%
+  distinct(variant) %>%
+  unlist(use.names = FALSE)
+
+#exercise.descriptors <- exercise_descriptors()
+
+weightlifting.log$exercise <- factor(weightlifting.log$exercise, levels = exercises, ordered = TRUE)
+weightlifting.log$equipment <- factor(weightlifting.log$equipment, levels = equipment, ordered = TRUE)
+weightlifting.log$variants <- factor(weightlifting.log$variant, levels = variants, ordered = TRUE)
+#weightlifting.log$equipment <- factor(weightlifting.log$equipment, levels = levels(exercise.descriptors$exercise_equipment), ordered = TRUE)
+
+top.sets <- top_sets(weightlifting.log) %>%
+  rename(., lift.weight = weight) %>%
+  left_join(., body.weight, by = c("date" = "date")) %>%
+  mutate(strength.to.weight.ratio = round(est.max / rolling.weight, 3)) %>%
+  mutate(intensity = round(lift.weight /est.max, 3))
+
+weightlifting.log <- top.sets %>%
+  group_by(program, date, exercise, equipment, variant) %>%
+  summarize(
+    est.max = round(mean(est.max, na.rm = TRUE), 1)
+  ) %>%
+  ungroup() %>%
+  right_join(weightlifting.log) %>%
+  arrange(desc(date)) %>%
+  mutate(
+    intensity = round(weight / est.max, 3)
+  ) %>%
+  mutate(
+    relevant.tonnage = round(tonnage * intensity)
+  )
+
+tonnage <- weightlifting.log %>%
+  group_by(program, date, exercise, equipment, variant) %>%
+  summarize(
+    top.set = max(weight),
+    tonnage = sum(tonnage),
+    relevant.tonnage = sum(relevant.tonnage, na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  arrange(date, exercise, desc(top.set))
+
+intensity <- weightlifting.log %>%
+  group_by(program, date, exercise, equipment, variant) %>%
+  summarize(
+    mean.intensity = weighted.mean(intensity, reps),
+    intensity = max(intensity),
+    tonnage = sum(tonnage),
+    volume = sum(reps)
+  ) %>%
+  ungroup() %>%
+  group_by(program, exercise, equipment, variant) %>%
+  mutate(
+    volume_scaled = round(rescale(volume, to = c(0, 1), from = c(0, max(volume, na.rm = T))), 3)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    relevant.tonnage = tonnage * mean.intensity
+  )%>%
+  arrange(desc(date))
+
+session.weights <- weightlifting.log
+session.tonnage <- tonnage
+
+```
+
+```{r calendar prep}
+
+theme_calendar_plot <- function(plot) {
+  theme(
+  	panel.grid.major.y = element_blank(),
+  	panel.grid.minor.y = element_blank(),
+  	panel.grid.minor.x = element_blank(),
+  	panel.grid.major.x = element_blank(),
+    panel.spacing.x = unit(1, "points"),
+    panel.spacing.y = unit(8, "points"),
+    # strip.background = element_rect(fill=alpha("white", .25), color=NA),
+  # strip.text = element_text(color="gray95"),
+    axis.ticks = element_blank(),
+  	axis.text = element_blank(),
+  	axis.title = element_blank(),	
+  	# legend.text = element_text(color="gray75"),
+  	# legend.title = element_text(color="gray75"),
+  	# plot.title = element_text(color="gray75"),
+  	panel.background = element_blank()
+  	# legend.background = element_rect(fill="transparent", color=NA),
+  	# plot.background = element_rect(fill="transparent", color=NA),
+  	# legend.key = element_rect(fill=alpha("white", 0.33), color=NA)
+  )
+
+}
+
+```
+
+
+```{r, eval = F}
+
+weightlifting.log %>%
+  # mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+  # mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+  bind_rows(
+    rweightlifting::program_schedule(
+      program = "base_531_bench_863",
+      weightlifting.log = weightlifting.log,
+      smallest_plate = 2.5,
+      cycles = 5,
+      increment = 0.025,
+      percentage = 0.925
+    ) %>%
+      mutate(
+        date = as.Date("2019-06-01") + (cycle - 1) * 21 + (day - 1)
+      ) %>%
+      select(-percentage, -training_max, -cycle, -day) %>%
+      mutate(program = "base_531_bench_863") %>%
+      mutate(tonnage = reps * weight) %>%
+      select(program, everything())
+  )
+
+```
+
+
+```{r reactive weights, echo = FALSE, include=FALSE}
+
+session.weights.filtered <- reactive({
+  weightlifting.log %>%
+    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+    filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
+    filter(program %in% input$program) %>%
+    filter(exercise %in% input$exercise) %>%
+    filter(equipment %in% input$equipment) %>%
+    filter(variant %in% input$variant)
+})
+
+session.weights <- reactive({
+  
+  temp <- session.weights.filtered()
+  
+  if (input$showProgramming == TRUE) {
+    
+    temp <- temp %>%
+      bind_rows(projected.log())
+  }
+  
+  temp
+})
+
+session.top.sets <- reactive({
+  top.sets %>%
+    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+    filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
+    filter(program %in% input$program) %>%
+    filter(exercise %in% input$exercise) %>%
+    filter(equipment %in% input$equipment) %>%
+    filter(variant %in% input$variant)
+})
+
+session.intensity <- reactive({
+  intensity %>%
+    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+    filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
+    filter(program %in% input$program) %>%
+    filter(exercise %in% input$exercise) %>%
+    filter(equipment %in% input$equipment) %>%
+    filter(variant %in% input$variant)
+    
+})
+
+comp.lifts <- reactive({
+  
+  # comp_exercises <- factor(c("squat", "bench", "deadlift"), levels = c("squat", "bench", "deadlift"), ordered = TRUE)
+ comp_exercises <- factor(input$comp_exercises, levels = input$comp_exercises, ordered = TRUE)
+  
+  comp_percentages <- c(
+    # 0.9, 0.975, 1.025
+    as.numeric(input$first_attempt),
+    as.numeric(input$second_attempt),
+    as.numeric(input$third_attempt)
+  )
+  
+  comp <- expand.grid(comp_exercises, comp_percentages) %>% as_tibble()
+  names(comp) <- c("exercise", "percentage")
+  comp <- comp %>% arrange(exercise)
+  comp$attempt <- rep(c(1,2,3), length(comp_exercises))
+  comp <- comp[c("attempt", "exercise", "percentage")]
+  
+ recent.1RM.est <- top.sets %>%
+    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+    filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
+    filter(program %in% input$program) %>%
+    filter(exercise %in% input$exercise) %>%
+    filter(equipment %in% input$equipment) %>%
+    filter(variant %in% input$variant) %>%
+  # recent.1RM.est <- top.sets %>% 
+    arrange(desc(date)) %>% 
+    filter(exercise %in% comp_exercises) %>% 
+    filter(equipment == "barbell") %>%
+    filter(variant %in% c("flat", "low bar", "conventional", "overhead")) %>%
+    group_by(date, exercise, equipment, variant) %>% 
+    select(date, exercise, equipment, variant, method, est.max) %>% 
+    nest(.) %>% 
+    group_by(exercise, equipment, variant) %>%
+    top_n(input$num_lifts, date) %>%
+    # top_n(4, date) %>%
+    unnest()
+
+#  one_RM_method <- "conservative"
+  one_RM_method <- input$one_RM_method
+  
+  if (one_RM_method == "mean") {
+    recent.1RM.est <- recent.1RM.est %>% 
+      group_by(exercise) %>% 
+      summarize(est.max = mean(est.max, na.rm = TRUE))
+  } else if (one_RM_method == "conservative") {
+    recent.1RM.est <- recent.1RM.est %>% 
+      group_by(exercise) %>% 
+      summarize(est.max = min(est.max, na.rm = TRUE))
+  } else {
+    recent.1RM.est <- recent.1RM.est %>% 
+      group_by(exercise) %>% 
+      summarize(est.max = max(est.max, na.rm = TRUE))
+  }
+
+  # comp_plate <- 1.25 * 2
+  comp_plate <- input$comp_plate * 2 
+  
+  comp %>% 
+    left_join(recent.1RM.est) %>%
+    mutate(
+      est.max = round(est.max, 1),
+      lift.weight = round(est.max * percentage / comp_plate) * comp_plate
+    ) %>%
+    arrange(desc(exercise))
+
+})
+
+```
+
+```{r reactive volume, echo = FALSE, include = FALSE}
+
+session.volume <- reactive({
+  weightlifting.log %>%
+    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+    filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
+    filter(program %in% input$program) %>%
+    filter(exercise %in% input$exercise) %>%
+    filter(equipment %in% input$equipment) %>%
+    filter(variant %in% input$variant) %>%
+    group_by(date, program, exercise) %>%
+    summarize(
+      volume = sum(reps)
+    ) %>%
+    ungroup()
+})
+
+  weekly.volume <- reactive ({
+    session.volume() %>%
+    mutate(week = 
+          interval(
+             min(weightlifting.log$date) - wday(min(weightlifting.log$date)) + 1, # Start at Sunday before minimum date in dataset
+             date
+          ) %/% weeks(1)
+        ) %>%
+      #mutate(week = as.numeric(date - start.date) %/% 7) %>%
+      group_by(program, week, exercise) %>%
+      summarize(
+        volume = sum(volume),
+        weekof = min(date) - wday(min(date)) + 1,
+      ) %>%
+      ungroup() %>%
+      arrange(desc(exercise), desc(program), week)
+  })
+
+
+```
+
+
+```{r reactive tonnage, echo = FALSE, include=FALSE}
+
+session.tonnage <- reactive({
+  temp <- tonnage %>%
+    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+    filter(
+      date >= as.Date(input$date[1], format = "%Y-%m-%d") &
+      date <= as.Date(input$date[2], format = "%Y-%m-%d")
+    ) %>%
+    filter(program %in% input$program) %>%
+    filter(exercise %in% input$exercise) %>%
+    filter(equipment %in% input$equipment) %>%
+    filter(variant %in% input$variant) %>%
+    arrange(desc(exercise), desc(program), date)
+  
+  if (input$showProgramming == TRUE) {
+    
+    temp.tonnage <- projected.log() %>%
+      group_by(program, date, exercise, equipment, variant) %>%
+      summarize(
+        top.set = max(weight),
+        tonnage = sum(tonnage)
+      ) %>%
+      ungroup() %>%
+      arrange(date, exercise, desc(top.set))
+    
+    temp <- temp %>%
+      bind_rows(temp.tonnage)
+  }
+  temp
+})
+
+weekly.tonnages <- reactive ({
+  session.tonnage() %>%
+    mutate(week = 
+          interval(
+             min(weightlifting.log$date) - wday(min(weightlifting.log$date)) + 1, # Start at Sunday before minimum date in dataset
+             date
+          ) %/% weeks(1)
+    ) %>%
+    group_by(program, week, exercise) %>%
+    summarize(
+      top.set = max(top.set),
+      tonnage = sum(tonnage),
+      relevant.tonnage = sum(relevant.tonnage),
+      weekof = min(date) - wday(min(date)) + 1,
+    ) %>%
+    ungroup() %>%
+    arrange(desc(exercise), desc(program), week)
+})
+
+program.tonnage <- reactive({
+  temp <- session.tonnage() %>%
+    group_by(program, date, exercise) %>%
+    summarize(
+      top.set = max(top.set),
+      tonnage = sum(tonnage),
+      relevant.tonnage = sum(relevant.tonnage)
+    ) %>%
+    ungroup()
+  
+  temp <- temp %>%
+    group_by(program, exercise) %>%
+    summarize(
+      max.tonnage = max(tonnage),
+      max.relevant.tonnage = max(relevant.tonnage)
+    ) %>%
+    ungroup() %>%
+    left_join(
+     temp,
+      by = c("program" = "program", "exercise" = "exercise", "max.tonnage" = "tonnage")
+    ) %>%
+    distinct() %>%
+    group_by(program, exercise, max.tonnage) %>%
+    summarise(
+      date = max(date)
+    ) %>%
+    ungroup() %>%
+    arrange(exercise, program)
+})
+
+```
+
+```{r reactive PRs, echo = FALSE, include=FALSE}
+
+  program.maxes <- reactive({
+    temp.program.maxes <- session.weights() %>%
+      filter(reps > 0) %>%
+      group_by(program, exercise) %>%
+      summarize(
+        max.lift = max(weight),
+        last.date = max(date)
+      ) %>%
+      arrange(exercise)
+
+    temp.program.maxes <- temp.program.maxes %>%
+      arrange(desc(program)) %>%
+      group_by(exercise) %>%
+      mutate(prev.max = lag(max.lift, default = 0)) %>%
+      mutate(diff = max.lift - prev.max) %>%
+      mutate(diff.percent = ifelse(is.na(diff), diff, paste(as.character(round(diff / max.lift * 100), 1), "%", sep=""))) %>%
+      ungroup() %>%
+      arrange(exercise)
+#      mutate(diff.percent = as.numeric(diff.percent))
+
+    temp.program.maxes
+  })
+
+  rep.maxes <- reactive({
+    temp.rep.max <- session.weights() %>%
+    #temp.rep.max <- session.weights %>%
+      #filter(weight >= input$minweight) %>% # Removed this input and did top_n instead
+      #filter(reps > 0) %>%
+      group_by(exercise, equipment, variant, weight) %>%
+      summarize(
+        max.reps = max(reps)
+      ) %>%
+      ungroup() %>%
+      left_join(
+        session.weights(),
+        #session.weights,
+        by = c("max.reps" = "reps", "exercise" = "exercise", "equipment" = "equipment", "variant" = "variant", "weight" = "weight")
+      ) %>%
+      #filter(reps > 0) %>%
+      group_by(exercise, equipment, variant, weight, max.reps) %>%
+      summarise(
+        count = n(),
+        date = max(date)
+      ) %>%
+      ungroup() %>%
+      left_join(
+        session.weights(),
+        by = c("max.reps" = "reps", "exercise" = "exercise", "equipment" = "equipment", "variant" = "variant", "weight" = "weight", "date" = "date")
+      ) %>%
+      select(-set) %>%
+      filter(max.reps > 0) %>%
+      distinct()
+
+    temp.rep.max
+  })
+
+```
+
+```{r reactive exercises, echo = FALSE, include=FALSE}
+
+exercisef <- reactive({
+  factor(input$exercise, levels = input$exercise, ordered = TRUE)
+})
+
+programf <- reactive({
+  factor(rev(input$program), levels = rev(input$program), ordered = TRUE)
+})
+
+```
+
+```{r reactive calendar}
+
+all.days  <- reactive({
+  
+  # Today's date and year
+# get vector of all days in relevant data range
+#start_year <- "2015"
+# start_year <- format(input$date[1], "%Y") # Calculate start_year from data
+# firstday <- format(paste(start_year, "-01-01", sep=""))
+# lastday <- format(input$date[2], "%Y-12-31")
+# alldays <- seq(c(ISOdate(start_year,01,01)), by="day", length.out=as.Date(lastday) - as.Date(firstday) + 1)
+alldays <- seq(c(as.Date(input$date[1])), by="day", length.out = as.Date(input$date[2]) - as.Date(input$date[1]) + 1)
+
+alldays <- as.data.frame(alldays)
+names(alldays) <- c("date")
+alldays[["date"]] <- as.Date(alldays[["date"]], "%Y-%m-%d")
+
+# Uses 53-week year when week 1 has < 4 days 
+alldays <- alldays %>%
+    mutate(
+    week = as.numeric(format(date, "%U")),
+    wday = as.numeric(format(date, "%w"))+1,
+    month = as.POSIXlt(date)$mon + 1,
+    year = as.POSIXlt(date)$year + 1900
+  ) %>%
+  mutate(yearmonth = as.yearmon(date)) %>%
+  group_by(yearmonth) %>%
+  mutate(
+    monthweek = 1 + week - min(week)
+  ) %>%
+  mutate(
+    monthf = factor(
+      month, 
+      levels = as.character(1:12),
+      labels=c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"), 
+      ordered=TRUE
+    ),
+    weekdayf = factor(
+      wday, 
+      levels=rev(1:7),
+      labels=rev(c("Sun","Mon","Tue","Wed","Thu","Fri","Sat")),
+      ordered=TRUE
+    ),
+    day = format(date, "%d")
+  ) 
+
+})
+
+```
+
+```{r reactive programming}
+
+custom.program <- reactive({
+  rweightlifting::program_schedule(
+    program = as.character(input$next_program),
+    weightlifting.log = session.weights.filtered(),
+    smallest_plate = as.numeric(input$plate),
+    cycles = as.numeric(input$cycles),
+    increment = as.numeric(input$progression),
+    percentage = as.numeric(input$TM_percent), 
+    deload_every = as.numeric(input$deload_cycles)
+  )
+})
+
+projected.log <- reactive({
+
+  temp.program <- eval(call(input$next_program))
+  duration <- temp.program$duration[1]
+  deload_duration <- temp.program$deload_duration[1]
+
+  
+  if (input$deload_cycles > 0 &
+      ! is.null(temp.program$deload_schedule)
+  ) {
+    temp <- custom.program() %>%
+      mutate(
+        date = as.Date(input$programStartDate) + (cycle - 1) * duration + (deload_duration * ((cycle - 1) %/% as.numeric(input$deload_cycles))) + (day - 1)
+      )
+    } else {
+      temp <- custom.program() %>%
+        mutate(
+          date = as.Date(input$programStartDate) + (cycle - 1) * duration + (day - 1)
+        )
+  }
+
+  temp %>%
+    select(-percentage, -training_max, -cycle, -day) %>%
+    mutate(program = as.character(input$next_program)) %>%
+    mutate(tonnage = reps * weight) %>%
+    select(program, date, everything())
+
+})
+
+```
+
+
+
+Sidebar {.sidebar}
+=====================================
+
+```{r inputs}
+
+dateRangeInput(
+  "date", 
+  "Date Range", 
+  start = start.date,
+  end = today
+  )
+
+selectInput(
+  "program",
+  "Program name",
+  choices = programs,
+  selected = programs,
+  multiple = TRUE,
+  selectize = TRUE
+)
+
+selectInput(
+  "exercise",
+  "Exercise",
+  choices = exercises,
+  selected = c("deadlift", "squat", "bench", "press"),
+  multiple = TRUE,
+  selectize = TRUE
+)
+
+selectInput(
+  "equipment",
+  "Equipment",
+  choices = equipment,
+  selected = c("barbell", "dumbbell", "machine", "safety bar"),
+  multiple = TRUE,
+  selectize = TRUE
+)
+
+selectInput(
+  "variant",
+  "Variants",
+  choices = variants,
+  selected = variants,
+  multiple = TRUE,
+  selectize = TRUE
+)
+
+selectInput(
+  "one_rm_method",
+  "Strength: One-Rep Max Method",
+  choices = rep_max_formulas(),
+  selected = "epley",
+  multiple = FALSE,
+  selectize = FALSE
+)
+
+checkboxInput(
+  "showProgramming",
+  label = "Show Programming estimates?",
+  value = FALSE
+)
+
+# sliderInput(
+#   "minweight",
+#   "Rep PR Minimum Weight",
+#   0,
+#   500,
+#   125,
+#   step = 5,
+#   sep = ""
+# )
+
+```
+
+
+Sets/Reps
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+
+### Sets vs. Reps
+
+```{r sets v reps }
+
+renderPlotly({
+  temp.plot <- ggplot(
+      data = session.weights(),
+      aes(date, weight, color = exercise, size = reps)
+    ) +
+    #scale_color_brewer(type="qual") +
+    facet_wrap( ~ factor(exercise, levels = input$exercise, ordered = TRUE), ncol = 1, scales = "free_y") +
+    geom_point(
+      aes(
+        date,
+        weight,
+        shape = reps > 0,
+        size = reps,
+        color = interaction(equipment, variant, sep = ", ", lex.order = TRUE),
+        text = paste(
+          "date: ", date, 
+          "<br>exercise: ", exercise, 
+          "<br>weight: ", weight, 
+          "<br>reps: ", reps,
+          "<br>equipment: ", equipment,
+          "<br>variant: ", variant)
+      ),
+      alpha=0.5
+    ) +
+    scale_shape_manual(values = c("TRUE" = 16, "FALSE" = 4)) +
+    scale_radius(
+      range = c(1, 6),
+      breaks=c(0,3,6,9,12)
+    ) +
+    scale_y_continuous(
+      position="right",
+      minor_breaks=function(x){
+        seq(0, ceiling(max(x)), 25)
+      }) +
+    scale_x_date(
+      date_breaks = "3 month", date_labels = "%b %y",
+      date_minor_breaks = "1 month"
+    ) +
+    theme(
+      panel.background = element_rect(fill = "gray95")
+    ) +
+    geom_vline(
+      aes(xintercept = as.numeric(Sys.Date())), 
+      color=alpha("green", 0.5), 
+      linetype="dashed"
+    ) +
+    labs(title = "", x = "", y = "")
+
+  ggplotly(temp.plot, tooltip = "text") %>% 
+    layout(legend = list(traceorder = "reversed"))
+})
+
+```
+
+
+Intensity {data-orientation=rows}
+=======================================================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Max Daily Intensity
+
+```{r plot weekly intensity}
+
+renderPlotly({
+  ggplot(
+    data = session.intensity(),
+    #data = intensity,
+    aes(
+      x = date,
+      y = intensity,
+      fill = exercise
+    )
+  ) +
+  geom_point(alpha = 0.5, color = "transparent") +
+  geom_smooth(se = F, span = 0.25, na.rm = TRUE) +
+  facet_wrap(~ exercise, ncol = 1) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_jama() +
+  labs(title = "", x = "", y = "")
+})
+
+```
+
+### Intensity vs. Volume
+
+```{r intensity vs volume}
+
+
+
+renderPlotly({
+  
+  temp <- session.intensity() %>%
+    gather(., key = "metric", value = "value", intensity, volume_scaled)
+  
+  ggplot(
+    data = temp,
+    aes(
+      x = date,
+      y = value,
+      color = metric
+    )
+  ) +
+    geom_point(alpha = 0.33) +
+    geom_smooth(se = F, span = 0.35) + 
+    scale_y_continuous(labels = scales::percent) +
+    facet_wrap(~ exercise)
+  
+})
+
+```
+
+
+Tonnage {data-orientation=rows}
+=======================================================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Gross Weekly Tonnage
+
+```{r plot gross weekly tonnage}
+
+renderPlotly({
+  ggplot(
+    data = weekly.tonnages(),
+    aes(
+      x = week,
+      y = tonnage,
+      fill = exercise,
+      text = paste(
+        "week of: ", weekof, 
+        "<br>top set: ", top.set
+      )
+    ),
+    width = 2.5
+  ) +
+  geom_col() +
+  # geom_col(
+  #   data = function(x) {
+  #     x %>%
+  #     group_by(exercise) %>%
+  #     summarize(
+  #       week = max(week),
+  #       weekof = max(weekof),
+  #       top.set = max(top.set),
+  #       tonnage = max(tonnage)
+  #     ) %>%
+  #     ungroup()
+  #   },
+  #   aes(x = week, y = tonnage, group = exercise),
+  #   fill = "goldenrod", 
+  #   alpha = 0.5
+  # ) +
+  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+  labs(title = "", x = "", y = "")
+})
+
+```
+
+### Gross Weekly Tonnage Trends
+
+```{r plot gross weekly tonnage trends}
+
+renderPlotly({
+  weekly.tonnages() %>%
+  arrange(desc(week)) %>%
+  ggplot(
+    aes(
+      x = week,
+      y = tonnage
+    ),
+    width = 2.5
+  ) +
+  facet_wrap(~ exercise, scales = "free_y") +
+  geom_col(
+    aes(
+      fill = program,
+      text = paste(
+        "week of: ", weekof, 
+        "<br>top set: ", top.set
+      )
+    )
+  ) +
+  geom_col(
+    data = function(x) {
+      x %>%
+      group_by(exercise) %>%
+      summarize(
+        week = max(week), 
+        tonnage = max(tonnage) + sd(tonnage)^0.5
+      ) %>%
+      ungroup()
+    },
+    aes(x = week, y = tonnage, group = exercise),
+    fill = "goldenrod", 
+    alpha = 0.5
+  ) +
+  geom_smooth(data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
+  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+  labs(title = "", x = "", y = "")
+})
+
+```
+
+### Weighted Weekly Tonnage
+
+```{r plot relevant weekly tonnage}
+
+renderPlotly({
+  ggplot(
+    data = weekly.tonnages(),
+    aes(
+      x = week,
+      y = relevant.tonnage,
+      fill = exercise,
+      text = paste(
+        "week of: ", weekof, 
+        "<br>top set: ", top.set
+      )
+    ),
+    width = 2.5
+  ) +
+  geom_col() +
+  # geom_col(
+  #   data = function(x) {
+  #     x %>%
+  #     group_by(exercise) %>%
+  #     summarize(
+  #       week = max(week),
+  #       weekof = max(weekof),
+  #       top.set = max(top.set),
+  #       relevant.tonnage = max(relevant.tonnage)
+  #     ) %>%
+  #     ungroup()
+  #   },
+  #   aes(x = week, y = relevant.tonnage, group = exercise),
+  #   fill = "goldenrod", 
+  #   alpha = 0.5
+  # ) +
+  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+  labs(title = "", x = "", y = "")
+})
+
+```
+
+### Weighted Weekly Tonnage Trends
+
+```{r plot relevant weekly tonnage trends}
+
+renderPlotly({
+  weekly.tonnages() %>%
+  arrange(desc(week)) %>%
+  ggplot(
+    aes(
+      x = week,
+      y = relevant.tonnage
+    ),
+    width = 2.5
+  ) +
+  facet_wrap(~ exercise, scales = "free_y") +
+  geom_col(
+    aes(
+      fill = program,
+      text = paste(
+        "week of: ", weekof, 
+        "<br>top set: ", top.set
+      )
+    )
+  ) +
+  geom_col(
+    data = function(x) {
+      x %>%
+      group_by(exercise) %>%
+      summarize(
+        week = max(week), 
+        relevant.tonnage = max(relevant.tonnage) + sd(relevant.tonnage)^0.5
+      ) %>%
+      ungroup()
+    },
+    aes(x = week, y = relevant.tonnage, group = exercise),
+    fill = "goldenrod", 
+    alpha = 0.5
+  ) +
+  geom_smooth(data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
+  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+  labs(title = "", x = "", y = "")
+})
+
+```
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Daily Tonnage
+
+```{r plot daily tonnage}
+
+renderPlotly({
+  session.tonnage() %>%
+    group_by(program, date, exercise) %>%
+    summarize(
+      top.set = max(top.set),
+      tonnage = sum(tonnage)
+    ) %>%
+  arrange(desc(date)) %>%
+  ggplot(
+      aes(
+        x = date,
+        y = tonnage,
+        fill = exercise,
+        text = paste(
+          "top set: ", top.set
+        )
+      ),
+      width = 2.5
+    ) +
+    geom_bar(position = "stack", stat = "identity") +
+    #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+    labs(title = "", x = "", y = "")
+ })
+
+```
+
+### Daily Tonnage Trends
+
+```{r plot daily tonnage trends}
+
+renderPlotly({
+  session.tonnage() %>%
+  group_by(date, program, exercise) %>%
+  summarize(
+    top.set = max(top.set),
+    tonnage = sum(tonnage)
+  ) %>%
+  ungroup() %>%
+  arrange(desc(date)) %>%
+  ggplot(
+      aes(
+        x = date,
+        y = tonnage
+      ),
+      width = 2.5
+    ) +
+    geom_col(
+      aes(
+        fill = program,
+        text = paste(
+          "top set: ", top.set
+        )
+      )
+    ) +
+    facet_wrap(~ exercise, scales = "free_y") +
+    stat_smooth(data = function(x) { slice(x, -1) }, span = 0.35, level = NA, na.rm = TRUE) +
+    #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+    labs(title = "", x = "", y = "")
+ })
+
+```
+
+
+Volume {data-orientation=rows}
+=======================================================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Weekly Volume
+
+```{r plot weekly volume}
+
+renderPlotly({
+  ggplot(
+    data = weekly.volume(),
+    aes(
+      x = week,
+      y = volume,
+      fill = exercise,
+      text = paste(
+        "week of: ", weekof
+      )
+    ),
+    width = 2.5
+  ) +
+  geom_col() +
+  geom_col(
+    data = function(x) {
+      x %>%
+      group_by(exercise) %>%
+      summarize(
+        week = max(week),
+        weekof = max(weekof),
+        volume = max(volume)
+      ) %>%
+      ungroup()
+    },
+    aes(x = week, y = volume, group = exercise),
+    fill = "goldenrod", 
+    alpha = 0.5
+  ) +
+  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+  labs(title = "", x = "", y = "")
+})
+
+
+```
+
+### Weekly Volume Trends
+
+```{r plot weekly volume trends}
+
+renderPlotly({
+  weekly.volume() %>%
+  arrange(desc(week)) %>%
+  ggplot(
+    aes(
+      x = week,
+      y = volume
+    ),
+    width = 2.5
+  ) +
+  facet_wrap(~ exercise, scales = "free_y") +
+  geom_col(
+    aes(
+      fill = program,
+      text = paste(
+        "week of: ", weekof 
+      )
+    )
+  ) +
+  geom_col(
+    data = function(x) {
+      x %>%
+      group_by(exercise) %>%
+      summarize(
+        week = max(week), 
+        volume = max(volume) + sd(volume)^0.5
+      ) %>%
+      ungroup()
+    },
+    aes(x = week, y = volume, group = exercise),
+    fill = "goldenrod", 
+    alpha = 0.5
+  ) +
+  geom_smooth(data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
+  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+  labs(title = "", x = "", y = "")
+})
+
+```
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Daily Volume
+
+```{r plot daily volume}
+
+renderPlotly({
+  session.volume() %>%
+  arrange(desc(date)) %>%
+  ggplot(
+      aes(
+        x = date,
+        y = volume,
+        fill = exercise
+      ),
+      width = 2.5
+    ) +
+    geom_bar(position = "stack", stat = "identity") +
+    #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+    labs(title = "", x = "", y = "")
+ })
+
+```
+
+### Daily Volume Trends
+
+```{r plot daily volume trends}
+
+renderPlotly({
+  session.volume() %>%
+  arrange(desc(date)) %>%
+  ggplot(
+      aes(
+        x = date,
+        y = volume
+      ),
+      width = 2.5
+    ) +
+    geom_col(
+      aes(
+        fill = program
+      )
+    ) +
+    facet_wrap(~ exercise, scales = "free_y") +
+    stat_smooth(data = function(x) { slice(x, -1) }, span = 0.35, level = NA, na.rm = TRUE) +
+    #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
+    labs(title = "", x = "", y = "")
+ })
+
+```
+
+Weight PRs {data-orientation=columns, data-navmenu="PRs"}
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+### Weight PRs
+
+```{r plot PR weights}
+
+renderPlotly({
+  p <- ggplot(
+    program.maxes(),
+    aes(
+      x = exercise,
+      y = max.lift,
+      fill = program,
+      text = paste(
+        "most recent date: ", last.date, "<br>",
+        "percent diff from previous: ", diff.percent
+      )
+    )
+  ) +
+  scale_fill_brewer("Program", palette="Paired") +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "", x = "", y = "") +
+  coord_flip()
+  
+  ggplotly(p) %>% 
+    layout(
+      legend = list(
+        title = "Program",
+        traceorder = "reversed",
+        orientation = "h",   # show entries horizontally
+        xanchor = "center",  # use center of legend as anchor
+        x = 0.5,
+        yanchor = "top",
+        y = 1.15
+      )
+    )
+})
+
+```
+
+Column
+-----------------------------------------------------------------------
+
+### Tonnage PRs
+
+```{r plot PR tonnages}
+
+renderPlotly({
+  p <- ggplot(
+    program.tonnage(),
+    aes(
+      x = exercise,
+      y = max.tonnage,
+      fill = program,
+      text = paste(
+        "most recent date: ", date
+      )
+    )
+  ) +
+    scale_fill_brewer("Program", palette="Paired") +
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(title = "", x = "", y = "") +
+    coord_flip()
+  
+  ggplotly(p) %>% 
+    layout(
+      legend = list(
+        title = "Program",
+        traceorder = "reversed",
+        orientation = "h",   # show entries horizontally
+        xanchor = "center",  # use center of legend as anchor
+        x = 0.5,
+        yanchor = "top",
+        y = 1.15
+      )
+    )
+})
+
+```
+
+Rep PRs {data-orientation=rows, data-navmenu="PRs"}
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+
+### Rep PRs (top 20 weights)
+
+```{r plot Rep PRs}
+
+renderPlotly({
+  
+  temp <- rep.maxes() %>%
+    group_by(exercise, equipment, variant) %>%
+    top_n(20, weight) %>%
+    ungroup() 
+  
+  p <- ggplot(
+    temp,
+    aes(
+      x = weight,
+      y = max.reps,
+      size = count,
+      fill = program,
+      text = paste(
+        "most recent date: ", date,
+        "<br>exercise: ", exercise
+        
+      )
+    )
+  ) +
+  facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE) + interaction(equipment, variant), scales = "free_y") +
+  scale_fill_brewer("Program", palette="Paired") +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "", x = "", y = "") +
+  coord_flip()
+  
+  ggplotly(p) %>% 
+    layout(legend = list(traceorder = "reversed"))
+})
+
+```
+
+Reps Across PRs {data-orientation=rows, data-navmenu="PRs"}
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+
+### Reps Across PRs (top 20 weights x sets)
+
+```{r, eval = T}
+
+# Reps across PRs
+
+renderPlotly({
+
+  temp <- session.weights() %>%
+    group_by(program, date, exercise, equipment, variant, weight) %>%
+    summarize(
+      sets = n(),
+      reps_across = min(reps)
+    ) %>%
+    ungroup() %>%
+    filter(sets > 1) %>%
+    filter(reps_across > 0) %>%
+    group_by(exercise, equipment, variant, weight, sets) %>%
+    summarize(
+      reps_across = max(reps_across),
+      count = n(),
+      last_date = max(date)
+    ) %>%
+    # ungroup() %>%
+    # group_by(exercise, equipment, variant, weight, sets, reps_across) %>%
+    # summarize(
+    #   last_date = max(last_date)
+    # ) %>%
+    ungroup() %>%
+    left_join(
+      session.weights() %>% select(-set) %>% distinct(),
+      # weightlifting.log %>% select(-set) %>% distinct(),
+      by = c("reps_across" = "reps", "exercise" = "exercise", "equipment" = "equipment", "variant" = "variant", "weight" = "weight", "last_date" = "date")
+    ) %>%
+    group_by(exercise, weight, sets) %>%
+    top_n(1, reps_across) %>%
+    ungroup() %>%
+    group_by(exercise, weight, reps_across) %>%
+    top_n(1, sets) %>%
+    arrange(desc(weight))
+  
+  p <- temp %>%
+    ggplot(
+      aes(
+        x = weight,
+        y = sets,
+        size = reps_across,
+        fill = program,
+        color = program,
+        text = paste(
+          "most recent date: ", last_date,
+          "<br>exercise: ", exercise,
+          "<br>count ", count 
+          
+        )
+      )
+    ) +
+    facet_wrap(~ factor(exercise), scales = "free_y") +
+    scale_fill_brewer("Program", palette="Paired") +
+    scale_color_brewer("Program", palette="Paired") +
+  #  geom_bar(stat = "identity", position = "dodge") +
+    geom_point() +
+    labs(title = "", x = "", y = "") +
+    coord_flip()
+  
+    plotly::ggplotly(p) %>% 
+      layout(legend = list(traceorder = "reversed"))
+})
+
+```
+
+
+Ranges
+=======================================================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Weight
+
+```{r }
+
+renderPlotly({
+  temp <- session.weights() %>%
+    filter(reps > 0) %>%
+    ggplot(aes(exercise, weight, fill = program)) +
+      geom_boxplot(alpha = 0.5) +
+      coord_flip()
+
+  ggplotly(temp) %>%
+    layout(
+      legend = list(
+        traceorder = "reversed",
+        font = list(size = 8)
+      ),
+      boxmode = "group"
+    )
+
+})
+
+
+```
+
+### Tonnage
+
+```{r }
+
+renderPlotly({
+  temp <- session.tonnage() %>%
+    group_by(date, program, exercise) %>%
+    summarize(tonnage = sum(tonnage)) %>%
+    ggplot(aes(exercise, tonnage, fill = program)) +
+      geom_boxplot(alpha = 0.5) +
+      coord_flip() +
+      labs(x = "", y = "", title = "Total Exercise Tonnage per Session")
+
+  ggplotly(temp) %>%
+    layout(
+      legend = list(
+        traceorder = "reversed",
+        font = list(size = 8)
+      ),
+      boxmode = "group"
+    )
+
+})
+
+
+```
+
+### Ridgeline, weight frequency by set
+
+```{r plot ridgeline}
+
+renderPlot({
+    ggplot(
+      data = session.weights(),
+      aes(x = weight, y = program, fill = program)
+    ) +
+    #scale_fill_brewer("Program", palette="Paired") +
+    geom_density_ridges(na.rm = TRUE, col = "grey70", scale = 2, bandwidth = 5) +
+    #scale_fill_distiller(name = "Tonnage", palette = "Paired", direction = 1) +
+    theme_ridges(font_size = 10) +
+    facet_wrap(~ exercise, scales = "free") +
+    labs(x = "", y = "") +
+    theme(
+      legend.position = "none"
+    )
+})
+
+```
+
+Strength
+=======================================================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Estimated Max to Body Weight Ratio
+
+```{r}
+
+renderPlotly({
+
+  temp <- session.top.sets() %>%
+    filter(! is.na(strength.to.weight.ratio)) %>%
+    filter(method == input$one_rm_method)
+
+  # temp <- top.sets %>%
+  #   filter(! is.na(strength.to.weight.ratio)) %>%
+  #   filter(exercise %in% c("deadlift", "squat", "bench", "press"))
+
+  temp %>%
+  ggplot(aes(date, strength.to.weight.ratio)) +
+    geom_point(aes(
+      fill = program,
+      color = program,
+      text = paste0(
+        "Lift Weight = ", lift.weight,
+        "<br>Reps = ", reps,
+        "<br>Est. Max = ", round(est.max, 0),
+        "<br>Rolling Body Weight = ", rolling.weight
+      )
+    ), 
+    alpha = 0.5, na.rm = TRUE) +
+    geom_smooth(se = TRUE, span = 0.25, na.rm = TRUE) +
+    facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE), scales = "free_y") +
+#    facet_wrap(~ exercise, scales = "free_y") +
+    labs(y = "", x = "")
+  
+})
+
+```
+
+### Estimated Maxes
+
+```{r}
+
+renderPlotly({
+
+  temp <- session.top.sets() %>%
+    filter(! is.na(est.max)) %>%
+    filter(method == input$one_rm_method)
+
+  temp %>%
+  ggplot(aes(date, est.max)) +
+    geom_point(aes(
+      fill = program, 
+      #color = program,
+      text = paste0(
+        "Lift Weight = ", lift.weight,
+        "<br>Reps = ", reps,
+        "<br>Rolling Body Weight = ", rolling.weight
+      )
+    ), 
+    alpha = 0.5, stroke = 0, size = 2, na.rm = TRUE) +
+    geom_smooth(se = TRUE, span = 0.25, na.rm = TRUE) +
+    facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE), scales = "free_y") +
+#    facet_wrap(~ exercise, scales = "free_y") +
+    labs(y = "", x = "")
+})
+
+```
+
+### Estimated Max Ranges
+
+```{r eval = F}
+
+renderPlotly({
+
+  session.top.sets() %>%
+  filter(! is.na(est.max)) %>%
+  mutate(exercise = factor(exercise, levels = input$exercise, ordered = TRUE)) %>%
+  ggplot(aes(date, est.max)) +
+    geom_point(aes(
+      fill = program, 
+      color = program,
+      text = paste0(
+        "Lift Weight = ", lift.weight,
+        "<br>Reps = ", reps,
+        "<br>Rolling Body Weight = ", rolling.weight
+      )
+    ), 
+    alpha = 0.1, size = 0.5, na.rm = TRUE) +
+    stat_smooth(geom = "line", aes(color = method), se = FALSE, span = 0.25, na.rm = TRUE, alpha = 0.75) +
+    #gghighlight(method == input$one_rm_method, use_direct_label = FALSE) +
+    facet_wrap(~ exercise, scales = "free_y") +
+    labs(y = "", x = "") +
+    theme(
+      legend.position = "none"
+    )
+
+})
+
+```
+
+```{r}
+
+renderPlotly({
+#  top.sets %>%
+  session.top.sets() %>%
+    filter(! is.na(est.max)) %>%
+  #  filter(exercise == "squat") %>%
+    mutate(exercise = factor(exercise, levels = input$exercise, ordered = TRUE)) %>%
+    group_by(program, date, exercise) %>%
+    summarize(
+      low.est = min(est.max),
+      high.est = max(est.max),
+      mean.est = mean(est.max),
+      lift.weight = mean(lift.weight),
+      reps = max(reps),
+      rolling.weight = max(rolling.weight)
+    ) %>%
+    ungroup() %>%
+    arrange(desc(date)) %>%
+    ggplot(aes(x = date)) +
+      # geom_segment(aes(
+      #   y = low.est, xend = date, yend = high.est,
+      #   fill = program, 
+      #   color = program,
+      #   text = paste0(
+      #     "Lift Weight = ", lift.weight,
+      #     "<br>Reps = ", reps,
+      #     "<br>Rolling Body Weight = ", rolling.weight
+      #   )
+      # ), alpha = 0.5, size = 0.5, na.rm = TRUE) +
+      geom_ribbon(
+        data = . %>% filter(reps > 1),
+        aes(ymin = low.est, ymax = high.est, fill = program),
+        alpha = 0.5,
+        linetype = "none"
+      ) +
+      geom_point(
+        data = . %>% filter(reps == 1),
+        aes(x = date, y = mean.est, color = program),
+        size = 1,
+        alpha = 1,
+        shape = 3
+      ) +
+      stat_smooth(
+        mapping = aes(x = date, y = mean.est), 
+        geom = "line", 
+        se = FALSE, 
+        span = 0.25, 
+        na.rm = TRUE, 
+        alpha = 0.75
+      ) +
+      # #gghighlight(method == input$one_rm_method, use_direct_label = FALSE) +
+      facet_wrap(~ exercise, scales = "free_y") +
+      labs(y = "", x = "") +
+      theme(
+        legend.position = "none"
+      )
+
+})
+
+```
+
+Calendars
+=======================================================================
+
+Column {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Lift Days
+
+```{r}
+
+renderPlot({
+
+  all.days() %>%
+    filter(date >= min(session.weights()$date)) %>%
+    left_join(session.weights(), by = c("date" = "date")) %>%
+    ggplot(aes(wday, monthweek)) +
+      geom_tile(aes(fill = program), na.rm = FALSE) +
+      facet_grid(year ~ monthf, switch="y") +
+      geom_text(aes(label=day), color="gray75", size=1.75) +
+      scale_y_reverse(limits=c(6.5,0.5), breaks=c(.5,1.5,2.5,3.5,4.5,5.5,6.5)) +
+      scale_x_discrete(limits=c("Sun","Mon","Tue","Wed","Thu","Fri","Sat"), drop = FALSE) +
+      theme_calendar_plot()
+})
+
+```
+
+### Weight PRs
+
+```{r}
+
+renderPlotly({
+  
+  temp <- session.weights() %>%
+    filter(reps > 0) %>%
+    group_by(exercise, equipment, variant) %>%
+    distinct(program, date, exercise, equipment, variant, weight) %>%
+    arrange(date) %>%
+    mutate(rollmax = rollapply(weight, NROW(weightlifting.log), max, align = "right", partial = TRUE)) %>%
+    filter(rollmax == weight) %>%
+    ungroup()
+  
+  all.days() %>%
+  filter(date >= min(temp$date)) %>%
+  left_join(temp, by = c("date" = "date")) %>%
+  ggplot(
+    aes(
+      wday, 
+      monthweek,
+      text = paste(
+        "date: ", date, 
+        "<br>weight: ", weight, 
+        "<br>exercise: ", exercise, 
+        "<br>equipment: ", equipment,
+        "<br>variant: ", variant
+      )
+    )
+  ) +
+    geom_tile(aes(fill = interaction(exercise, equipment, variant)), na.rm = FALSE) +
+    facet_grid(year ~ monthf, switch="y") +
+    geom_text(aes(label=day), color="gray75", size=1.75) +
+    scale_y_reverse(limits=c(6.5,0.5), breaks=c(.5,1.5,2.5,3.5,4.5,5.5,6.5)) +
+    scale_x_discrete(limits=c("Sun","Mon","Tue","Wed","Thu","Fri","Sat"), drop = FALSE) +
+    theme_calendar_plot()
+  
+})
+
+```
+
+
+### Tonnage PRs
+
+```{r}
+
+renderPlotly({
+
+session.tonnage() %>%
+#weightlifting.log %>%
+  #filter(reps > 0) %>%
+  group_by(exercise, equipment, variant) %>%
+  distinct(program, date, exercise, equipment, variant, tonnage) %>%
+  arrange(date) %>%
+  mutate(rollmax = rollapply(tonnage, NROW(session.tonnage()), max, align = "right", partial = TRUE)) %>%
+  filter(rollmax == tonnage) %>%
+  ungroup() %>%
+  right_join(all.days(), by = c("date" = "date")) %>%
+  ggplot(
+    aes(
+      wday, 
+      monthweek,
+      text = paste(
+        "date: ", date, 
+        "<br>tonnage: ", tonnage, 
+        "<br>exercise: ", exercise, 
+        "<br>equipment: ", equipment,
+        "<br>variant: ", variant
+      )
+    )
+  ) +
+    geom_tile(
+      aes(
+        fill = interaction(exercise, equipment, variant)
+      ), 
+      na.rm = FALSE
+    ) +
+    facet_grid(year ~ monthf, switch="y") +
+    geom_text(aes(label=day), color="gray75", size=1.75) +
+    scale_y_reverse(limits=c(6.5,0.5), breaks=c(.5,1.5,2.5,3.5,4.5,5.5,6.5)) +
+    scale_x_discrete(limits=c("Sun","Mon","Tue","Wed","Thu","Fri","Sat"), drop = FALSE) +
+    theme_calendar_plot()
+  
+})
+
+```
+
+### Rep PRs
+
+```{r}
+
+renderPlotly({
+  
+ temp <- session.weights() %>%
+  # temp <- weightlifting.log %>%
+    filter(reps > 0) %>%
+    group_by(exercise, equipment, variant, weight) %>%
+    summarize(
+      max.reps = max(reps)
+    ) %>%
+    ungroup() %>%
+    group_by(exercise, equipment, variant, max.reps) %>%
+    # left_join(weightlifting.log, by = c("exercise", "equipment", "variant", "weight", "max.reps" = "reps")) %>%
+    left_join(session.weights(), by = c("exercise", "equipment", "variant", "weight", "max.reps" = "reps")) %>%
+    arrange(date) %>%
+    mutate(rollmax = rollapply(weight, NROW(weightlifting.log), max, align = "right", partial = TRUE)) %>%
+    filter(rollmax == weight)
+    
+    all.days() %>%
+    filter(date >= min(temp$date)) %>%
+    left_join(temp, by = c("date" = "date")) %>%
+    ggplot(
+      aes(
+        wday, 
+        monthweek,
+        text = paste(
+          "date: ", date, 
+          "<br>weight: ", weight, 
+          "<br>reps: ", max.reps, 
+          "<br>exercise: ", exercise, 
+          "<br>equipment: ", equipment,
+          "<br>variant: ", variant
+        )
+      )
+    ) +
+      geom_tile(aes(fill = interaction(exercise, equipment, variant)), na.rm = FALSE) +
+      facet_grid(year ~ monthf, switch="y") +
+      geom_text(aes(label=day), color="gray75", size=1.75) +
+      scale_y_reverse(limits=c(6.5,0.5), breaks=c(.5,1.5,2.5,3.5,4.5,5.5,6.5)) +
+      scale_x_discrete(limits=c("Sun","Mon","Tue","Wed","Thu","Fri","Sat"), drop = FALSE) +
+      theme_calendar_plot()
+})
+
+```
+
+
+Tables
+=======================================================================
+
+Column
+-----------------------------------------------------------------------
+
+### Sets, Weights, and Reps Summary
+
+```{r print sets-reps summary table}
+
+renderDataTable({
+    exercise.stats <- session.weights() %>%
+      group_by(exercise) %>%
+      summarize(
+        total.sets = n(),
+        total.reps = sum(reps),
+        avg.reps = round(mean(reps), 1),
+        avg.weight = round(mean(weight), 1),
+        median.weight = median(weight),
+        sd.weight = round(sd(weight), 1)
+      ) %>%
+      ungroup() %>%
+      arrange(desc(total.sets))
+
+    exercise.stats
+  })
+
+```
+
+### Tonnage Summary
+
+```{r print tonnage summary table}
+
+renderDataTable({
+  tonnage.stats <- session.tonnage() %>%
+    group_by(exercise) %>%
+    summarize(
+      `total sessions` = n(),
+      `avg top set` = round(mean(top.set), 1),
+      `median top set` = round(median(top.set), 1),
+      `max top set` = round(max(top.set, na.rm = T), 1),
+      `sd top set` = round(sd(top.set), 1),
+      `avg tonnage` = round(mean(tonnage), 1),
+      `median tonnage` = round(median(tonnage), 1),
+      `max tonnage` = round(max(tonnage, na.rm = T), 1),
+      `sd tonnage` = round(sd(tonnage), 1)
+    ) %>%
+    ungroup() %>%
+    arrange(desc(`max top set`))
+})
+
+```
+
+Column
+-----------------------------------------------------------------------
+
+### Top Sets Summary
+
+```{r top sets summary}
+
+renderDataTable({
+  
+  session.top.sets()
+
+})
+
+```
+
+Program Templates {data-navmenu="Programming"}
+=======================================================================
+
+Column {data-width=150 }
+-----------------------------------------------------------------------
+
+### Programming Variables
+
+```{r}
+
+selectInput(
+  "next_program",
+  "Program Templates",
+  choices = available_programs(),
+  selected = available_programs()[2],
+  multiple = FALSE
+)
+
+sliderInput(
+  "TM_percent",
+  "Training Max -- % of Est. n-rep RM",
+  .75,
+  1,
+  .90,
+  step = 0.025,
+  sep = ""
+)
+
+sliderInput(
+  "plate",
+  "Smallest Plate Size",
+  1.25,
+  10,
+  2.5,
+  step = 1.25,
+  sep = ""
+)
+
+sliderInput(
+  "cycles",
+  "Number of Cycles",
+  1,
+  12,
+  4,
+  step = 1,
+  sep = ""
+)
+
+sliderInput(
+  "progression",
+  "Progression Percentage",
+  0.01,
+  0.1,
+  0.025,
+  step = 0.005,
+  sep = ""
+)
+
+sliderInput(
+  "deload_cycles",
+  "Number of Cycles between Deloads",
+  0,
+  12,
+  3,
+  step = 1,
+  sep = ""
+)
+
+dateInput(
+  "programStartDate",
+  "Start Date of New Program",
+  value = Sys.Date()
+)
+
+
+```
+
+The programming feature will ideally permit the user to (a) select from a pre-defined template, or (b) upload a CSV file containing a full program cycle. Several metrics will be available to customize the program, such as:
+
+* training max percentage
+* plate size
+* progression percentage
+* number of cycles
+
+The program will be keyed on a training RM calculated from the user's historical progress. Once the user has completed the metrics, the planned program will be added to the list of programs available in the other tabs so the user can visualize what the program will look like over time.
+
+Another, custom program builder will let users select excerise, equipment, and variants one by one and build a complete program (main and accessory lifts):
+
+* day
+* ramp percentage
+* ramp sets
+* backoff sets
+
+
+Column
+-----------------------------------------------------------------------
+
+### Suggested Program
+
+```{r}
+
+DT::dataTableOutput('DTactive')
+# 
+# output$DTactive <- DT::renderDataTable(
+#   rweightlifting::program_schedule(
+#     program = as.character(input$next_program),
+#     weightlifting.log = session.weights(),
+#     smallest_plate = as.numeric(input$plate),
+#     cycles = as.numeric(input$cycles),
+#     increment = as.numeric(input$progression),
+#     percentage = as.numeric(input$TM_percent)
+#   ),
+#   options = list(
+#     pageLength = 250,
+#     lengthMenu = c(25, 50, 100, 150, 200, 250)
+#   )
+# )
+
+# renderTable({
+#   
+#   temp <- custom.program()
+#   
+#   temp.program <- eval(call(input$next_program))
+#   duration <- temp.program$duration[1]
+#   
+#   temp %>%
+#     mutate(
+#       date = as.character(as.Date(input$programStartDate) + (cycle - 1) * duration + (day - 1))
+#     ) %>%
+#     mutate(
+#       cycle = as.integer(cycle), 
+#       day = as.integer(day), 
+#       reps = as.integer(reps),
+#       percentage = paste0(percentage * 100, "%")
+#     ) %>%
+#     select(cycle, day, date, everything())
+#   
+# })
+
+output$DTactive <- DT::renderDataTable({
+  
+  temp <- custom.program()
+  
+  temp.program <- eval(call(input$next_program))
+  duration <- temp.program$duration[1]
+  deload_duration <- temp.program$deload_duration[1]
+
+  if (input$deload_cycles > 0 &
+      ! is.null(temp.program$deload_schedule)
+  ) {
+    temp <- temp %>%
+      mutate(
+        date = as.Date(input$programStartDate) + (cycle - 1) * duration + (deload_duration * ((cycle - 1) %/% as.numeric(input$deload_cycles))) + (day - 1)
+      )
+    } else {
+      temp <- temp %>%
+        mutate(
+          date = as.Date(input$programStartDate) + (cycle - 1) * duration + (day - 1)
+        )
+  }
+
+  temp %>%
+   mutate(
+      cycle = as.integer(cycle), 
+      day = as.integer(day), 
+      reps = as.integer(reps),
+      percentage = paste0(percentage * 100, "%")
+    ) %>%
+    select(cycle, day, date, everything()) %>%
+    left_join(
+      rep.maxes() %>% select(exercise, equipment, variant, weight, max.reps), 
+      by = c("exercise", "equipment", "variant", "weight")
+    )
+  
+}, 
+  extensions = c('Buttons', 'Scroller'),
+  rownames = FALSE,
+  server = FALSE,
+  options = list(
+    dom = 'Bfrtip',
+    deferRender = TRUE,
+#    scrollY = 400,
+    scroller = TRUE,
+#    server = FALSE,
+    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+  )
+)
+
+```
+
+Custom Program {data-navmenu="Programming"}
+=======================================================================
+
+Column {data-width=150 }
+-----------------------------------------------------------------------
+
+### Lift-by-Lift Program Design
+
+```{r}
+
+selectInput(
+  "next_exercise",
+  "Exercise:",
+  choices = c("deadlift", "squat", "bench press", "press", "row", "shrug", "pullup", "dip", "tricep extension", "calf raise", "hyperextension", "face pull", "lat pulldown", "bicep curl", "fly", "shoulder rotation", "shoulder raise", "leg raise", "leg extension")
+)
+
+selectInput(
+  "ramp",
+  "Set Structure:",
+  choices = c("sets across", "pyramid", "ramp", "last set first"),
+  selected = c("ramp")
+)
+
+sliderInput(
+  # Not used for sets across 
+  "ramp_rate",
+  "Ramp Percentage:",
+  0,
+  50,
+  10,
+  step = 0.5,
+  sep = ""
+)
+
+sliderInput(
+  "total_sets",
+  "Total Number of Sets:",
+  1,
+  10,
+  5,
+  step = 1,
+  sep = ""
+)
+
+
+```
+
+Competition {data-navmenu="Programming"}
+=======================================================================
+
+Column {data-width=150 }
+-----------------------------------------------------------------------
+
+### Comeptition Attempts
+
+```{r}
+
+selectInput(
+  "comp_exercises",
+  "Exercise:",
+  choices = exercises,
+  selected = c("squat", "bench", "deadlift"),
+  multiple = TRUE
+)
+
+selectInput(
+  "one_RM_method",
+  "Method to estimate 1RM:",
+  choices = c("aggressive", "mean", "conservative"),
+  selected = c("mean"),
+  multiple = FALSE
+)
+
+sliderInput(
+  "first_attempt",
+  "First Attempt (% est 1RM):",
+  0.85,
+  1.15,
+  .9,
+  step = 0.025,
+  sep = ""
+)
+
+sliderInput(
+  "second_attempt",
+  "Second Attempt (% est 1RM):",
+  0.85,
+  1.15,
+  .975,
+  step = 0.025,
+  sep = ""
+)
+
+sliderInput(
+  "third_attempt",
+  "Third Attempt (% est 1RM):",
+  0.85,
+  1.15,
+  1.05,
+  step = 0.025,
+  sep = ""
+)
+
+sliderInput(
+  "num_lifts",
+  "# of recent lifts to use for 1RM estimate:",
+  1,
+  12,
+  4,
+  step = 1,
+  sep = ""
+)
+
+sliderInput(
+  "comp_plate",
+  "Smallest Plate Size",
+  1.25,
+  10,
+  2.5,
+  step = 1.25,
+  sep = ""
+)
+
+```
+
+Column {data-width=300, orientation=rows }
+-----------------------------------------------------------------------
+
+### Comeptition Program
+
+```{r}
+
+# renderTable({
+#  comp.lifts()
+# })
+
+DT::dataTableOutput('compLifts')
+
+output$compLifts <- DT::renderDataTable({
+  
+  comp.lifts()
+  
+}, 
+  extensions = c('Buttons', 'Scroller'),
+  rownames = FALSE,
+  server = FALSE,
+  options = list(
+    dom = 'Bfrtip',
+    deferRender = TRUE,
+#    scrollY = 400,
+    scroller = TRUE,
+#    server = FALSE,
+    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+  )
+)
+
+
+
+```
+
+### Attempt 1 Total
+
+```{r}
+
+renderValueBox({
+  comp <- comp.lifts() %>%
+    filter(attempt == 1) %>%
+    summarize(total = sum(lift.weight))
+ 
+  valueBox(
+    comp,
+    color = "success",
+    icon = "fa-dumbbell"
+  )
+})
+
+```
+
+### Attempt 2 Total
+
+```{r}
+
+renderValueBox({
+  comp <- comp.lifts() %>%
+    filter(attempt == 2) %>%
+    summarize(total = sum(lift.weight))
+ 
+  valueBox(
+    comp,
+    color = "warning",
+    icon = "fa-dumbbell"
+  )
+})
+
+```
+
+### Attempt 3 Total
+
+```{r}
+
+renderValueBox({
+  comp <- comp.lifts() %>%
+    filter(attempt == 3) %>%
+    summarize(total = sum(lift.weight))
+ 
+  valueBox(
+    comp,
+    color = "danger",
+    icon = "fa-dumbbell"
+  )
+})
+
+```

@@ -1,0 +1,305 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps
+2017-03-09,squat,dumbbell,front,100,10,100,10,100,10
+2017-03-09,bench,dumbbell,flat,100,12,100,12,100,12
+2017-03-09,row,dumbbell,kroc,100,12,100,12,100,12
+2017-03-09,bench,dumbbell,incline,100,8,100,8
+2017-03-06,squat,barbell,low bar,195,5,230,5,260,5,295,5
+2017-03-06,press,barbell,overhead,85,5,110,5,125,5,140,3,100,8
+2017-03-06,deadlift,barbell,conventional,185,5,225,5,255,5,290,5,325,5
+2017-03-06,pullup,chinup,neutral,0,5,0,5,0,4
+2017-03-06,bicep curl,dumbbell,alternating,70,12,80,10,90,6
+2017-03-04,squat,barbell,low bar,195,5,230,5,260,5,295,5,330,3,260,8
+2017-03-04,bench,barbell,flat,120,5,140,5,160,5,180,5,200,3,160,10
+2017-03-04,row,barbell,pendlay,120,5,145,5,165,5,185,5,205,3,165,8
+2017-03-04,bench,barbell,incline,120,8,140,8,160,3
+2017-03-04,dips,body weight,conventional,0,8
+2017-03-01,squat,barbell,low bar,195,5,230,5,260,5,295,5,330,3,260,8
+2017-03-01,bench,barbell,flat,120,5,140,5,160,5,180,5,200,3,160,10
+2017-03-01,row,barbell,pendlay,120,5,145,5,165,5,185,5,205,3,165,8
+2017-03-01,bench,barbell,incline,120,9,140,8,160,3
+2017-03-01,dips,body weight,conventional,0,6,0,5,0,3
+2017-02-27,squat,barbell,low bar,195,5,225,5,260,5,290,5
+2017-02-27,press,barbell,overhead,85,5,112.5,5,127.5,5,142.5,2,112.5,8,97.5,8
+2017-02-27,deadlift,barbell,conventional,185,5,225,5,255,5,285,5,320,5
+2017-02-27,pullup,pullup,wide,0,5,0,5,0,4
+2017-02-27,bicep curl,dumbbell,alternating,60,12,70,10,80,8
+2017-02-25,squat,barbell,low bar,195,5,225,5,260,5,290,5,325,5
+2017-02-25,bench,barbell,flat,120,5,140,5,160,5,180,5,200,3,160,10
+2017-02-25,row,barbell,pendlay,115,5,140,5,160,5,180,5,200,5
+2017-02-25,bench,barbell,incline,95,8,115,8,135,8
+2017-02-25,dips,body weight,conventional,0,10,0,6,0,5
+2017-02-22,squat,barbell,low bar,195,5,225,5,260,5,290,5,325,3,260,8
+2017-02-22,bench,barbell,flat,120,5,140,5,160,5,180,5,200,4,160,10
+2017-02-22,row,barbell,pendlay,120,5,140,5,160,5,180,5,200,3,160,8
+2017-02-22,dips,body weight,conventional,0,10,0,10,0,10
+2017-02-19,squat,barbell,low bar,185,5,225,5,255,5,285,5
+2017-02-19,press,barbell,overhead,82.5,5,97.5,5,110,5,125,5,140,5,110,8
+2017-02-19,deadlift,barbell,conventional,180,5,215,5,250,5,280,5,315,5
+2017-02-19,pullup,chinup,neutral,0,5,0,5,0,5
+2017-02-17,squat,barbell,low bar,190,5,225,5,255,5,285,5,320,5
+2017-02-17,bench,barbell,flat,120,5,140,5,160,5,180,5,200,3,160,10
+2017-02-17,row,barbell,pendlay,115,5,135,5,155,5,175,5,195,5
+2017-02-17,dips,body weight,conventional,0,10,0,10,0,10
+2017-02-14,squat,barbell,low bar,190,5,225,5,255,5,285,5,320,4,255,8
+2017-02-14,bench,barbell,flat,120,5,140,5,160,5,180,5,200,3,160,9
+2017-02-14,row,barbell,pendlay,115,5,135,5,155,5,175,5,195,4,155,9
+2017-02-14,dips,body weight,conventional,0,10,0,10,0,10
+2017-02-12,squat,barbell,low bar,185,5,220,5,250,5,280,5
+2017-02-12,press,barbell,overhead,82.5,5,95,5,110,5,122.5,5,137.5,5
+2017-02-12,deadlift,barbell,conventional,180,5,210,5,245,5,275,5,310,5
+2017-02-12,pullup,chinup,neutral,0,5,0,5,0,5
+2017-02-10,squat,barbell,low bar,185,5,220,5,250,5,280,5,315,5
+2017-02-10,bench,barbell,flat,115,5,135,5,155,5,175,5,195,5,155,11
+2017-02-10,row,barbell,pendlay,115,5,135,5,150,5,170,5,190,5
+2017-02-10,dips,body weight,conventional,0,9,0,9,0,9
+2017-02-07,squat,barbell,low bar,185,5,225,5,270,5,280,5,315,3,250,8
+2017-02-07,bench,barbell,flat,115,5,135,5,155,5,175,5,195,3,155,10
+2017-02-07,row,barbell,pendlay,115,5,135,5,150,5,170,5,190,4,150,10
+2017-02-07,dips,body weight,conventional,0,8,0,9,0,8
+2017-02-02,squat,barbell,low bar,155,5,190,5,230,5,270,5,310,5
+2017-02-02,bench,barbell,flat,115,5,135,5,155,5,170,5,190,5,155,8
+2017-02-02,row,barbell,pendlay,110,5,130,5,150,5,165,5,185,5
+2017-02-02,dips,body weight,conventional,0,8,0,8,0,8
+2017-02-05,squat,barbell,low bar,185,5,215,5,245,5,275,5
+2017-02-05,press,barbell,overhead,90,5,95,5,107.5,5,120,5,135,5
+2017-02-05,deadlift,barbell,conventional,175,5,210,5,240,5,270,5,305,5
+2017-02-05,pullup,chinup,neutral,0,5,0,5,0,5
+2017-01-26,squat,barbell,low bar,177.5,5,225,5,267.5,5,310,5,365,2,267.5,8
+2017-01-26,bench,barbell,flat,102.5,5,135,5,155,5,180,5,210,3,155,13
+2017-01-26,row,barbell,pendlay,105,5,135,5,157.5,5,185,5,215,3,157.5,10
+2017-01-26,dips,body weight,conventional,0,7,0,7,0,7
+2017-01-24,squat,barbell,low bar,177.5,5,225,5,267.5,5,267.5,5
+2017-01-24,press,barbell,overhead,95,5,110,5,130,5,147.5,3,110,8
+2017-01-24,deadlift,barbell,conventional,135,5,225,5,267.5,5,310,5,355,5
+2017-01-24,pullup,chinup,neutral,0,5,0,5,0,5
+2017-01-21,squat,barbell,low bar,177.5,5,225,5,267.5,5,310,5,355,5
+2017-01-21,bench,barbell,flat,102.5,5,127.5,5,155,5,180,5,205,5,155,13
+2017-01-21,row,barbell,pendlay,105,5,135,5,157.5,5,185,5,210,5,157.5,12
+2017-01-21,tricep extension,cable,90-degree,175,9,175,9,175,8
+2017-01-18,squat,barbell,low bar,175,5,217.5,5,260,5,305,5,355,3,260,9
+2017-01-18,bench,barbell,flat,100,5,125,5,150,5,175,5,205,3,150,12
+2017-01-18,row,barbell,pendlay,102.5,5,127.5,5,155,5,180,5,210,4,155,10
+2017-01-18,tricep extension,cable,90-degree,170,10,170,10,170,10
+2017-01-16,squat,barbell,low bar,175,5,217.5,5,260,5,260,5
+2017-01-16,press,barbell,overhead,90,5,107.5,5,125,5,142.5,5
+2017-01-16,deadlift,barbell,conventional,135,5,217.5,5,260,5,305,5,347.5,5
+2017-01-16,pullup,pullup,wide,0,4,0,4,0,4
+2017-01-16,bicep curl,barbell,standing,90,9,90,8
+2017-01-14,squat,barbell,low bar,175,5,217.5,5,260,5,305,5,347.5,5
+2017-01-14,bench,barbell,flat,100,5,125,5,150,5,175,5,200,5,150,12
+2017-01-14,row,barbell,pendlay,102.5,5,127.5,5,155,5,180,5,205,5,155,10
+2017-01-14,tricep extension,cable,90-degree,170,10,170,10,170,9
+2016-09-03,squat,barbell,low bar,135,5,170,5,202.5,5,202.5,5
+2016-09-03,press,barbell,overhead,77.5,5,95,5,110,5,125,5
+2016-09-03,deadlift,barbell,conventional,135,5,202.5,5,237.5,5,270,5
+2016-09-05,squat,barbell,low bar,135,5,170,5,202.5,5,237.5,5,277.5,3,202.5,8
+2016-09-05,bench,barbell,flat,80,5,97.5,5,117.5,5,137.5,5,162.5,3,117.5,11
+2016-09-05,row,barbell,pendlay,77.5,5,97.5,5,117.5,5,135,5,160,3,117.5,10
+2016-09-05,tricep extension,dumbbell,overhead,50,9,60,8
+2016-09-08,squat,barbell,low bar,140,5,172.5,5,207.5,5,242.5,5,277.5,5
+2016-09-08,bench,barbell,flat,82.5,5,102.5,5,122.5,5,142.5,5,162.5,5
+2016-09-08,row,barbell,pendlay,80,5,100,5,120,5,140,5,160,5
+2016-09-08,tricep extension,dumbbell,overhead,60,9,65,8
+2016-09-10,squat,barbell,low bar,140,5,172.5,5,207.5,5,207.5,5
+2016-09-10,press,barbell,overhead,80,5,95,5,112.5,5,112.5,5
+2016-09-10,deadlift,barbell,conventional,135,5,172.5,5,207.5,5,242.5,5,277.5,5
+2016-09-10,bicep curl,barbell,standing,90,7,90,6
+2016-09-12,squat,barbell,low bar,140,5,172.5,5,207.5,5,242.5,5,282.5,3,207.5,8
+2016-09-12,bench,barbell,flat,82.5,5,102.5,5,122.5,5,142.5,5,165,3,122.5,8
+2016-09-12,row,barbell,pendlay,80,5,100,5,120,5,140,5,162.5,3,120,8
+2016-09-12,tricep extension,dumbbell,overhead,65,10,70,8
+2016-09-14,squat,barbell,low bar,142.5,5,172.5,5,212.5,5,247.5,5,282.5,5
+2016-09-14,bench,barbell,flat,82.5,5,102.5,5,125,5,145,5,165,5
+2016-09-14,row,barbell,pendlay,82.5,5,102.5,5,122.5,5,142.5,5,162.5,5
+2016-09-14,tricep extension,dumbbell,overhead,70,9,75,8
+2016-09-16,squat,barbell,low bar,142.5,5,177.5,5,212.5,5,212.5,8,212.5,8
+2016-09-16,press,barbell,overhead,82.5,5,100,5,115,5,132.5,5
+2016-09-16,deadlift,barbell,conventional,135,5,177.5,5,212.5,5,247.5,5,282.5,5
+2016-09-16,bicep curl,barbell,standing,90,7,90,6
+2016-09-18,squat,barbell,low bar,142.5,5,177.5,5,212.5,5,247.5,5,290,3,212.5,8
+2016-09-18,bench,barbell,flat,82.5,5,102.5,5,125,5,145,5,170,4,125,12
+2016-09-18,row,barbell,pendlay,82.5,5,102.5,5,122.5,5,142.5,5,167.5,3,122.5,10
+2016-09-18,tricep extension,dumbbell,overhead,75,9,75,8
+2016-09-20,squat,barbell,low bar,145,5,182.5,5,217.5,5,255,5,290,5
+2016-09-20,bench,barbell,flat,85,5,107.5,5,127.5,5,150,5,170,5
+2016-09-20,row,barbell,pendlay,85,5,105,5,125,5,147.5,5,167.5,5
+2016-09-20,tricep extension,dumbbell,overhead,80,7,80,6
+2016-09-22,squat,barbell,low bar,145,5,182.5,5,217.5,5,217.5,5
+2016-09-22,press,barbell,overhead,85,5,102.5,5,117.5,5,135,5
+2016-09-22,deadlift,barbell,conventional,135,5,182.5,5,217.5,5,255,5,290,5
+2016-09-22,bicep curl,barbell,standing,90,7,90,7
+2016-09-25,squat,barbell,low bar,145,5,182.5,5,217.5,5,255,5,297.5,3,217.5,8
+2016-09-25,bench,barbell,flat,85,5,107.5,5,127.5,5,150,5,175,4,127.5,10
+2016-09-25,row,barbell,pendlay,85,5,105,5,125,5,147.5,5,170,3,125,9
+2016-09-25,tricep extension,dumbbell,overhead,80,7,80,7
+2016-09-27,squat,barbell,low bar,150,5,185,5,222.5,5,260,5,297.5,2,297.5,5
+2016-09-27,bench,barbell,flat,87.5,5,110,5,132.5,5,152.5,5,175,5
+2016-09-27,row,barbell,pendlay,85,5,107.5,5,127.5,5,150,5,170,5
+2016-09-27,tricep extension,dumbbell,overhead,80,8,80,8
+2016-09-29,squat,barbell,low bar,150,5,185,5,222.5,5,222.5,5
+2016-09-29,press,barbell,overhead,85,5,102.5,5,120,5,137.5,3
+2016-09-29,deadlift,barbell,conventional,135,5,185,5,222.5,5,260,5,297.5,5
+2016-09-29,bicep curl,barbell,standing,90,6,90,6
+2016-10-01,squat,barbell,low bar,150,5,185,5,222.5,5,260,5,305,3,222.5,8
+2016-10-01,bench,barbell,flat,87.5,5,110,5,132.5,5,152.5,5,177.5,4,135,10
+2016-10-01,row,barbell,pendlay,85,5,107.5,5,127.5,5,150,5,175,3,127.5,10
+2016-10-01,tricep extension,dumbbell,overhead,85,7,85,6
+2016-10-04,squat,barbell,low bar,152.5,5,190,5,230,5,267.5,5,305,5
+2016-10-04,bench,barbell,flat,90,5,110,5,132.5,5,155,5,177.5,5
+2016-10-04,row,barbell,pendlay,87.5,5,110,5,132.5,5,152.5,5,175,5
+2016-10-04,tricep extension,EZ bar,lying,85,8,85,7
+2016-10-06,squat,barbell,low bar,152.5,5,190,5,230,5,230,5
+2016-10-06,press,barbell,overhead,85,5,102.5,5,120,5,137.5,5
+2016-10-06,deadlift,barbell,conventional,135,5,190,5,230,5,267.5,5,305,5
+2016-10-06,bicep curl,barbell,standing,90,8,90,8
+2016-10-08,squat,barbell,low bar,152.5,5,190,5,230,5,267.5,5,312.5,3,230,8
+2016-10-08,bench,barbell,flat,90,5,110,5,135,5,155,5,182.5,4,135,12
+2016-10-08,row,barbell,pendlay,87.5,5,110,5,135,5,152.5,5,180,4,135,9
+2016-10-08,tricep extension,cable,90-degree,100,10,115,10,130,9,145,6
+2016-10-11,squat,barbell,low bar,157.5,5,195,5,235,5,272.5,5,312.5,5
+2016-10-11,bench,barbell,flat,95,5,115,5,137.5,5,160,5,182.5,5
+2016-10-11,row,barbell,pendlay,95,5,112.5,5,135,5,157.5,5,180,5
+2016-10-11,tricep extension,cable,90-degree,140,8,140,10,140,9
+2016-10-14,squat,barbell,low bar,157.5,5,195,5,235,5,235,5
+2016-10-14,press,barbell,overhead,90,5,107.5,5,125,5,142.5,3,107.5,8
+2016-10-14,bicep curl,barbell,standing,92.5,8,92.5,8
+2016-10-14,deadlift,barbell,conventional,135,5,195,5,235,5,272.5,5,312.5,5,235,5
+2016-10-16,squat,barbell,low bar,157.5,5,195,5,235,5,272.5,5,320,3,235,8
+2016-10-16,bench,barbell,flat,95,5,115,5,137.5,5,160,5,187.5,4,137.5,10
+2016-10-16,row,barbell,pendlay,95,5,115,5,137.5,5,160,5,187.5,3,137.5,10
+2016-10-16,tricep extension,cable,90-degree,155,8,155,8,155,8
+2016-10-18,squat,barbell,low bar,160,5,200,5,240,5,280,5,320,5
+2016-10-18,bench,barbell,flat,95,5,117.5,5,140,5,165,5,187.5,5
+2016-10-18,row,barbell,pendlay,95,5,115,5,140,5,162.5,5,185,5
+2016-10-18,tricep extension,cable,90-degree,160,8,160,8,160,8
+2016-10-21,squat,barbell,low bar,160,5,200,5,240,5,240,5
+2016-10-21,press,barbell,overhead,90,5,107.5,5,125,5,142.5,3
+2016-10-21,deadlift,barbell,conventional,135,5,200,5,240,5,280,5,320,5
+2016-10-21,bicep curl,barbell,standing,95,8,95,7
+2016-10-23,squat,barbell,low bar,160,5,200,5,240,5,280,5,330,3,240,8
+2016-10-23,bench,barbell,flat,95,5,117.5,5,140,5,165,5,192.5,4,140,12
+2016-10-23,row,barbell,pendlay,95,5,115,5,140,5,162.5,5,190,3,140,10
+2016-10-23,tricep extension,cable,90-degree,170,8,170,7,170,6
+2016-10-25,squat,barbell,low bar,165,5,207.5,5,247.5,5,290,5,330,4
+2016-10-25,bench,barbell,flat,97.5,5,120,5,145,5,167.5,5,192.5,4
+2016-10-25,row,barbell,pendlay,95,5,120,5,142.5,5,167.5,5,190,5
+2016-10-25,tricep extension,cable,90-degree,170,8,170,7,170,7
+2016-11-02,squat,barbell,low bar,150,5,185,5,225,5,260,5,297.5,5
+2016-11-02,bench,barbell,flat,87.5,5,107.5,5,130,5,150,5,172.5,5,135,10
+2016-11-02,row,barbell,pendlay,95,5,110,5,135,5,155,5,177.5,5,135,8
+2016-11-02,tricep extension,cable,90-degree,145,10,145,10,145,10
+2016-11-04,squat,barbell,low bar,150,5,185,5,225,5,225,5
+2016-11-04,press,barbell,overhead,77.5,5,95,5,110,5,125,5
+2016-11-04,deadlift,barbell,conventional,135,5,187.5,5,225,5,262.5,5,300,5
+2016-11-04,bicep curl,barbell,standing,80,8,80,8,80,8
+2016-11-06,squat,barbell,low bar,150,5,185,5,225,5,260,5,305,3,225,10
+2016-11-06,bench,barbell,flat,95,5,115,5,135,5,155,5,177.5,5,135,12
+2016-11-06,row,barbell,pendlay,95,5,115,5,135,5,155,5,182.5,4,135,12
+2016-11-06,tricep extension,cable,90-degree,150,10,150,10,150,10
+2016-11-09,squat,barbell,low bar,152.5,5,190,5,230,5,267.5,5,305,5
+2016-11-09,bench,barbell,flat,95,5,115,5,135,5,155,5,177.5,6
+2016-11-09,row,barbell,pendlay,95,5,115,5,135,5,155,5,182.5,5
+2016-11-09,tricep extension,cable,90-degree,155,10,155,10,155,10
+2016-11-11,squat,barbell,low bar,152.5,5,190,5,230,5,230,5
+2016-11-11,press,barbell,overhead,80,5,95,5,112.5,5,127.5,5
+2016-11-11,deadlift,barbell,conventional,135,5,192.5,5,230,5,270,5,307.5,5
+2016-11-11,bicep curl,barbell,standing,80,10,80,10,80,10
+2016-11-13,squat,barbell,low bar,152.5,5,190,5,230,5,267.5,5,312.5,4,230,10
+2016-11-13,bench,barbell,flat,95,5,115,5,135,5,155,5,180,5,135,15
+2016-11-13,row,barbell,pendlay,95,5,115,5,137.5,5,160,5,187.5,4,137.5,10
+2016-11-13,tricep extension,cable,90-degree,160,10,160,10,160,10
+2016-11-16,squat,barbell,low bar,157.5,5,195,5,235,5,275,5,312.5,5
+2016-11-16,bench,barbell,flat,95,5,115,5,135,5,157.5,5,180,6,135,15
+2016-11-16,row,barbell,pendlay,95,5,117.5,5,140,5,165,5,187.5,5,140,10
+2016-11-16,tricep extension,cable,90-degree,165,10,165,10,165,10
+2016-11-18,squat,barbell,low bar,157.5,5,195,5,235,5,235,5
+2016-11-18,press,barbell,overhead,82.5,5,100,5,115,5,132.5,5
+2016-11-18,deadlift,barbell,conventional,135,5,197.5,5,237.5,5,275,5,315,5,237.5,5
+2016-11-18,bicep curl,barbell,standing,80,11,80,11,80,10
+2016-11-20,squat,barbell,low bar,157.5,5,195,5,235,5,275,5,320,4,235,9
+2016-11-20,bench,barbell,flat,95,5,115,5,135,5,157.5,5,185,4,135,15
+2016-11-20,row,barbell,pendlay,95,5,117.5,5,140,5,165,5,190,4,140,11
+2016-11-20,tricep extension,cable,90-degree,170,10,170,10,170,10
+2016-11-23,squat,barbell,low bar,160,5,200,5,240,5,280,5,320,5,240,8
+2016-11-23,bench,barbell,flat,95,5,115,5,140,5,162.5,5,185,5,140,13
+2016-11-23,row,barbell,pendlay,95,5,120,5,142.5,5,167.5,5,190,5,142.5,10
+2016-11-23,tricep extension,cable,90-degree,175,8,175,8,175,8
+2016-11-25,squat,barbell,low bar,160,5,200,5,240,5,240,5
+2016-11-25,press,barbell,overhead,85,5,102.5,5,117.5,5,135,5,102.5,5
+2016-11-25,deadlift,barbell,conventional,135,5,202.5,5,245.5,5,282.5,5,322.5,5,245.5,8
+2016-11-25,bicep curl,barbell,standing,82.5,10,82.5,10,82.5,10
+2016-11-27,squat,barbell,low bar,160,5,200,5,240,5,280,5,327.5,4,240,10
+2016-11-27,bench,barbell,flat,95,5,115,5,140,5,162.5,5,190,5,140,15
+2016-11-27,row,barbell,pendlay,95,5,120,5,142.5,5,167.5,5,195,4,142.5,10
+2016-11-27,tricep extension,cable,90-degree,175,10,175,9,175,8
+2016-11-30,squat,barbell,low bar,165,5,205,5,245,5,287.5,5,327.5,5,245,5
+2016-11-30,bench,barbell,flat,95,5,120,5,142.5,5,167.5,5,190,5,142.5,13
+2016-11-30,row,barbell,pendlay,97.5,5,122.5,5,147.5,5,170,5,195,5,147.5,10
+2016-12-02,squat,barbell,low bar,165,5,205,5,245,5,245,5
+2016-12-02,press,barbell,overhead,85,5,102.5,5,120,5,137.5,5,102.5,8
+2016-12-02,deadlift,barbell,conventional,135,5,207.5,5,247.5,5,290,5,330,5
+2016-12-02,pullup,pullup,wide,0,4,0,3,0,3
+2016-12-02,bicep curl,barbell,standing,85,9,85,9,85,8
+2016-12-04,squat,barbell,low bar,165,5,205,5,245,5,287.5,5,337.5,4,245,8
+2016-12-04,bench,barbell,flat,95,5,120,5,142.5,5,167.5,5,195,5,142.5,13
+2016-12-04,row,barbell,pendlay,97.5,5,122.5,5,147.5,5,170,5,200,4,147.5,10
+2016-12-04,tricep extension,cable,90-degree,175,10,175,8,175,7
+2016-12-07,squat,barbell,low bar,170,5,210,5,252.5,5,295,5,295,5,337.5,5
+2016-12-07,bench,barbell,flat,97.5,5,122.5,5,147.5,5,170,5,195,5
+2016-12-07,row,barbell,pendlay,100,5,125,5,150,5,175,5,200,5
+2016-12-07,tricep extension,cable,90-degree,180,10,180,10,180,8
+2016-12-09,squat,barbell,low bar,170,5,210,5,252.5,5,252.5,5
+2016-12-09,press,barbell,overhead,90,5,107.5,5,125,5,142.5,1
+2016-12-09,deadlift,barbell,conventional,135,5,212.5,5,255,5,297.5,5,340,5
+2016-12-09,bicep curl,barbell,standing,90,8,90,7,90,6
+2016-12-09,pullup,pullup,wide,0,4,0,4,0,4
+2016-12-11,squat,barbell,low bar,170,5,210,5,252.5,5,295,5,345,3,252.5,8
+2016-12-11,bench,barbell,flat,97.5,5,125,5,147.5,5,170,5,200,4,147.5,13
+2016-12-11,row,barbell,pendlay,100,5,125,5,150,5,175,5,205,4,150,11
+2016-12-11,tricep extension,cable,90-degree,185,8,185,7,185,7
+2016-12-14,squat,barbell,low bar,172.5,5,215,5,260,5,302.5,5,345,5
+2016-12-14,bench,barbell,flat,100,5,125,5,150,5,175,5,200,5,150,11
+2016-12-14,row,barbell,pendlay,102.5,5,127.5,5,155,5,180,5,205,5,155,8
+2016-12-17,squat,barbell,low bar,172.5,5,215,5,260,5,260,5
+2016-12-17,press,barbell,overhead,90,5,107.5,5,125,5,142.5,5,107.5,8
+2016-12-17,deadlift,barbell,conventional,135,5,217.5,5,260,5,305,5,347.5,5
+2016-12-17,pullup,pullup,wide,0,5,0,4,0,2
+2016-12-17,bicep curl,barbell,standing,90,8,90,8,90,6
+2016-12-24,squat,barbell,low bar,162.5,5,202.5,5,242.5,5,282.5,5,322.5,5
+2016-12-24,bench,barbell,flat,95,5,115,5,140,5,162.5,5,185,5,140,13
+2016-12-24,row,barbell,pendlay,95,5,120,5,142.5,5,167.5,5,190,5
+2016-12-24,tricep extension,cable,90-degree,155,10,155,10,155,10
+2016-12-26,squat,barbell,low bar,162.5,5,202.5,5,242.5,5,242.5,5
+2016-12-26,press,barbell,overhead,82.5,5,100,5,115,5,132.5,5
+2016-12-26,deadlift,barbell,conventional,135,5,202.5,5,242.5,5,282.5,5,322.5,5
+2016-12-26,pullup,pullup,wide,0,4,0,4,0,4
+2016-12-26,bicep curl,barbell,standing,90,7,90,7,90,7
+2016-12-28,squat,barbell,low bar,162.5,5,202.5,5,232.5,5,282.5,5,330,3,242.5,8
+2016-12-28,bench,barbell,flat,95,5,115,5,140,5,162.5,5,190,5,140,15
+2016-12-28,row,barbell,pendlay,95,5,120,5,142.5,5,167.5,5,195,5,142.5,10
+2016-12-28,tricep extension,cable,90-degree,160,10,160,10,160,10
+2016-12-31,squat,barbell,low bar,165,5,207.5,5,247.5,5,290,5,330,5
+2016-12-31,bench,barbell,flat,95,5,120,5,142.5,5,167.5,5,190,5,142.5,15
+2016-12-31,row,barbell,pendlay,97.5,5,122.5,5,147.5,5,170,5,195,5,147.5,10
+2016-12-31,tricep extension,cable,90-degree,165,10,165,10,165,10
+2017-01-02,squat,barbell,low bar,165,5,207.5,5,247.5,5,247.5,5
+2017-01-02,press,barbell,overhead,85,5,102.5,5,117.5,5,135,5
+2017-01-02,deadlift,barbell,conventional,135,5,207.5,5,247.5,5,290,5,330,5
+2017-01-02,pullup,pullup,wide,0,5,0,4,0,3
+2017-01-02,bicep curl,barbell,standing,90,7,90,7,90,7
+2017-01-04,squat,barbell,low bar,165,5,207.5,5,247.5,5,290,5,340,3,247.5,8
+2017-01-04,bench,barbell,flat,95,5,120,5,147.5,5,167.5,5,195,4,147.5,13
+2017-01-04,row,barbell,pendlay,97.5,5,122.5,5,147.5,5,170,5,200,5,147.5,10
+2017-01-07,squat,barbell,low bar,170,5,212.5,5,255,5,297.5,5,340,5
+2017-01-07,bench,barbell,flat,97.5,5,122.5,5,147.5,5,170,5,195,5,147.5,13
+2017-01-07,row,barbell,pendlay,100,5,125,5,150,5,175,5,200,5
+2017-01-07,tricep extension,cable,90-degree,170,9,170,9,170,9
+2017-01-09,squat,barbell,low bar,170,5,212.5,5,255,5,255,5
+2017-01-09,press,barbell,overhead,87.5,5,105,5,122.5,5,140,5
+2017-01-09,deadlift,barbell,conventional,135,5,212.5,5,255,5,297.5,5,340,5
+2017-01-09,bicep curl,barbell,standing,90,8,90,8
+2017-01-09,pullup,pullup,wide,0,4,0,4
+2017-01-11,squat,barbell,low bar,170,5,212.5,5,255,5,297.5,5,347.5,3,255,8
+2017-01-11,bench,barbell,flat,97.5,5,122.5,5,147.5,5,170,5,200,5,147.5,12
+2017-01-11,row,barbell,pendlay,100,5,125,5,150,5,175,5,205,4,150,9
+2017-01-11,tricep extension,cable,90-degree,170,10,170,10,170,8

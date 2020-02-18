@@ -1,0 +1,497 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps
+2017-12-03,press,barbell,overhead,120,3,140,3,155,3,140,3,120,3,120,7
+2017-12-03,bench,barbell,incline,120,10,120,10,120,10,120,10,120,10
+2017-12-03,lat pulldown,cable,conventional,120,10,120,10,120,10,120,10,120,10
+2017-12-03,bicep curl,EZ bar,preacher,70,10,70,10,70,10,70,10,70,10
+2017-12-03,shoulder rotation,cable,external,10,20,10,20,10,20,10,20,10,20,10,20
+2017-12-02,deadlift,barbell,conventional,295,3,335,3,375,3,295,3,295,3,295,3
+2017-12-02,squat,barbell,low bar,205,10,205,10,205,10,205,10,205,10
+2017-12-02,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-11-30,bench,barbell,flat,165,3,190,3,210,3,190,3,165,3,165,8
+2017-11-30,press,barbell,overhead,90,10,90,10,90,10,90,10,90,10
+2017-11-30,row,barbell,pendlay,120,10,120,10,120,10,120,10,120,10
+2017-11-30,fly,kettlebell,combination,50,24,50,24,50,24,50,24,50,24
+2017-11-30,face pull,cable,neutral,50,10,50,10,50,10,50,10,50,10
+2017-11-29,squat,barbell,low bar,285,3,325,3,365,3,285,3,285,3,285,3
+2017-11-29,deadlift,barbell,conventional,210,8,210,8,210,8,210,8,210,8
+2017-11-29,hyperextension,machine,reverse,120,8,120,8,120,8,120,8,120,8
+2017-11-26,press,barbell,overhead,115,5,130,5,145,5,115,5,115,5,115,5
+2017-11-26,bench,barbell,incline,120,10,120,10,120,10,120,10,120,10
+2017-11-26,lat pulldown,cable,conventional,120,10,120,10,120,10,120,10,120,10
+2017-11-26,bicep curl,EZ bar,preacher,70,10,70,10,70,10,70,10,70,10
+2017-11-25,deadlift,barbell,conventional,275,5,315,5,355,5,275,5
+2017-11-25,squat,barbell,low bar,205,10,205,10,205,10,205,10,205,10
+2017-11-25,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-11-24,bench,barbell,flat,155,5,175,5,200,5,155,5,155,5,155,5
+2017-11-24,press,barbell,overhead,90,10,90,10,90,10,90,10,90,10
+2017-11-24,row,barbell,pendlay,120,10,120,10,120,10,120,10,120,10
+2017-11-24,fly,kettlebell,combination,50,24,50,24,50,24,50,24,50,24
+2017-11-22,squat,barbell,low bar,265,5,305,5,345,5,265,5
+2017-11-22,deadlift,barbell,conventional,210,8,210,8,210,8,210,8,210,8
+2017-11-22,hyperextension,machine,reverse,120,8,120,8,120,8,120,8,120,8
+2017-11-19,press,barbell,overhead,80,5,85,5,105,5
+2017-11-19,bench,barbell,incline,115,10,115,10,115,10
+2017-11-19,lat pulldown,cable,conventional,115,10,115,10,115,10
+2017-11-19,bicep curl,EZ bar,preacher,70,9,70,9,70,9
+2017-11-18,deadlift,barbell,conventional,165,5,205,5,245,5
+2017-11-18,squat,barbell,low bar,200,10,200,10,200,10
+2017-11-18,leg raise,body weight,supported,0,12,0,12,0,12
+2017-11-17,bench,barbell,flat,95,5,115,5,140,5
+2017-11-17,press,barbell,overhead,85,10,85,10,85,10
+2017-11-17,row,barbell,pendlay,115,10,115,10,115,10
+2017-11-17,fly,kettlebell,combination,50,21,50,21,50,21
+2017-11-15,squat,barbell,low bar,160,5,200,5,240,5
+2017-11-15,deadlift,barbell,conventional,205,8,205,8,205,8
+2017-11-15,hyperextension,machine,reverse,110,8,110,8,110,8
+2017-11-12,press,barbell,overhead,130,5,145,3,165,0,165,0
+2017-11-12,bench,barbell,incline,115,10,115,10,115,10,115,10,115,10
+2017-11-12,lat pulldown,cable,conventional,115,10,115,10,115,10,115,10,115,10
+2017-11-12,bicep curl,EZ bar,preacher,70,9,70,9,70,9,70,9,70,9
+2017-11-11,deadlift,barbell,conventional,305,5,350,3,390,2
+2017-11-11,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-11-11,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-11-09,bench,barbell,flat,175,5,195,3,220,2,225,1
+2017-11-09,press,barbell,overhead,85,10,85,10,85,10,85,10,85,10
+2017-11-09,row,barbell,pendlay,115,10,115,10,115,10,115,10,115,10
+2017-11-09,fly,kettlebell,combination,50,21,50,21,50,21,50,21,50,21
+2017-11-08,squat,barbell,low bar,300,5,340,3,380,1
+2017-11-08,deadlift,barbell,conventional,205,8,205,8,205,8,205,8,205,8
+2017-11-08,hyperextension,machine,reverse,110,8,110,8,110,8,110,8,110,8
+2017-11-05,press,barbell,overhead,120,3,140,3,155,3
+2017-11-05,bench,barbell,incline,115,10,115,10,115,10,115,10,115,10
+2017-11-05,lat pulldown,cable,conventional,115,10,115,10,115,10,115,10,115,10
+2017-11-05,bicep curl,EZ bar,preacher,70,9,70,9,70,9,70,9,70,9
+2017-11-04,deadlift,barbell,conventional,285,3,330,3,370,4
+2017-11-04,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-11-04,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-11-02,bench,barbell,flat,160,3,185,5,210,3
+2017-11-02,press,barbell,overhead,85,10,85,10,85,10,85,10,85,10
+2017-11-02,row,barbell,pendlay,115,10,115,10,115,10,115,10,115,10
+2017-11-02,fly,kettlebell,combination,50,21,50,21,50,21,50,21,50,21
+2017-11-01,squat,barbell,low bar,280,3,320,3,360,3
+2017-11-01,deadlift,barbell,conventional,205,8,205,8,205,8,205,8,205,8
+2017-11-01,hyperextension,machine,reverse,110,8,110,8,110,8,110,8,110,8
+2017-10-29,press,barbell,overhead,115,5,130,5,145,5
+2017-10-29,bench,barbell,incline,115,10,115,10,115,10,115,10,115,10
+2017-10-29,lat pulldown,cable,conventional,115,10,115,10,115,10,115,10,115,10
+2017-10-29,bicep curl,EZ bar,preacher,70,9,70,9,70,9,70,9,70,9
+2017-10-28,deadlift,barbell,conventional,265,5,305,5,350,5
+2017-10-28,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-10-28,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-10-26,bench,barbell,flat,150,5,175,5,195,6
+2017-10-26,press,barbell,overhead,85,10,85,10,85,10,85,10,85,10
+2017-10-26,row,barbell,pendlay,115,10,115,10,115,10,115,10,115,10
+2017-10-26,fly,kettlebell,combination,50,21,50,21,50,21,50,21,50,21
+2017-10-25,squat,barbell,low bar,260,5,300,5,340,5
+2017-10-25,deadlift,barbell,conventional,205,8,205,8,205,8,205,8,205,8
+2017-10-25,hyperextension,machine,reverse,110,8,110,8,110,8,110,8,110,8
+2017-10-22,press,barbell,overhead,65,5,85,5,100,5
+2017-10-22,bench,barbell,incline,115,10,115,10,115,10
+2017-10-22,lat pulldown,cable,conventional,115,10,115,10,115,10
+2017-10-22,bicep curl,EZ bar,preacher,65,10,65,10,65,10
+2017-10-21,deadlift,barbell,conventional,160,5,200,5,240,5
+2017-10-21,squat,barbell,low bar,200,10,200,10,200,10
+2017-10-21,leg raise,body weight,supported,0,12,0,12,0,12
+2017-10-19,bench,barbell,flat,95,5,115,5,135,5
+2017-10-19,press,barbell,overhead,85,10,85,10,85,10
+2017-10-19,row,barbell,pendlay,115,10,115,10,115,10
+2017-10-19,fly,kettlebell,combination,40,30,40,30,40,30
+2017-10-18,squat,barbell,low bar,160,5,195,5,235,5
+2017-10-18,deadlift,barbell,conventional,200,8,200,8,200,8
+2017-10-18,hyperextension,machine,reverse,100,8,100,8,100,8
+2017-10-15,press,barbell,overhead,125,5,145,3,160,2
+2017-10-15,bench,barbell,incline,115,10,115,10,115,10,115,10,115,10
+2017-10-15,lat pulldown,cable,conventional,115,10,115,10,115,10,115,10,115,10
+2017-10-15,bicep curl,EZ bar,preacher,65,10,65,10,65,10,65,10,65,10
+2017-10-14,deadlift,barbell,conventional,300,5,340,3,380,3
+2017-10-14,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-10-14,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-10-12,bench,barbell,flat,170,5,190,3,215,1
+2017-10-12,press,barbell,overhead,85,10,85,10,85,10,85,10,85,10
+2017-10-12,row,barbell,pendlay,115,10,115,10,115,10,115,10,115,10
+2017-10-12,fly,kettlebell,combination,40,30,40,30,40,30,40,30,40,30
+2017-10-11,squat,barbell,low bar,295,5,335,3,375,1
+2017-10-11,deadlift,barbell,conventional,200,8,200,8,200,8,200,8,200,8
+2017-10-11,hyperextension,machine,reverse,100,8,100,8,100,8,100,8,100,8
+2017-10-08,press,barbell,overhead,120,3,135,3,150,4
+2017-10-08,bench,barbell,incline,115,10,115,10,115,10,115,10,115,10
+2017-10-08,lat pulldown,cable,conventional,115,10,115,10,115,10,115,10,115,10
+2017-10-08,bicep curl,EZ bar,preacher,65,10,65,10,65,10,65,10,65,10
+2017-10-07,deadlift,barbell,conventional,280,3,320,3,360,3
+2017-10-07,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-10-07,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-10-05,bench,barbell,flat,160,5,180,3,205,4
+2017-10-05,press,barbell,overhead,85,10,85,10,85,10,85,10,85,10
+2017-10-05,row,barbell,pendlay,115,10,115,10,115,10,115,10,115,10
+2017-10-05,fly,kettlebell,combination,40,30,40,30,40,30,40,30,40,30
+2017-10-04,squat,barbell,low bar,275,3,315,3,355,3
+2017-10-04,deadlift,barbell,conventional,200,8,200,8,200,8,200,8,200,8
+2017-10-04,hyperextension,machine,reverse,100,8,100,8,100,8,100,8,100,8
+2017-10-01,press,barbell,overhead,110,5,125,5,145,5
+2017-10-01,bench,barbell,incline,115,10,115,10,115,10,115,10,115,10
+2017-10-01,lat pulldown,cable,conventional,115,10,115,10,115,10,115,10,115,10
+2017-10-01,bicep curl,EZ bar,preacher,65,10,65,10,65,10,65,10,65,10
+2017-09-30,deadlift,barbell,conventional,260,5,300,5,340,6
+2017-09-30,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-09-30,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-09-28,bench,barbell,flat,155,5,170,5,190,7
+2017-09-28,press,barbell,overhead,85,10,85,10,85,10,85,10,85,10
+2017-09-28,row,barbell,pendlay,115,10,115,10,115,10,115,10,115,10
+2017-09-28,fly,kettlebell,combination,40,30,40,30,40,30,40,30,40,30
+2017-09-27,squat,barbell,low bar,255,5,295,5,335,5
+2017-09-27,deadlift,barbell,conventional,200,8,200,8,200,8,200,8,200,8
+2017-09-27,hyperextension,machine,reverse,100,8,100,8,100,8,100,8,100,8
+2017-09-24,deadlift,barbell,conventional,155,5,195,5,235,5
+2017-09-24,squat,barbell,low bar,200,10,200,10,200,10
+2017-09-24,leg raise,body weight,supported,0,12,0,12,0,12
+2017-09-23,press,barbell,overhead,65,5,85,5,100,5
+2017-09-23,bench,barbell,incline,110,10,110,10,110,10
+2017-09-23,lat pulldown,cable,conventional,110,10,110,10,110,10
+2017-09-23,bicep curl,dumbbell,alternating,80,10,80,10,80,10
+2017-09-21,bench,barbell,flat,95,5,115,5,135,5
+2017-09-21,press,barbell,overhead,80,10,80,10,80,10
+2017-09-21,row,barbell,pendlay,110,10,110,10,110,10
+2017-09-21,fly,kettlebell,combination,40,27,40,27,40,27
+2017-09-20,squat,barbell,low bar,155,5,195,5,235,5
+2017-09-20,deadlift,barbell,conventional,195,8,195,8,195,8
+2017-09-20,hyperextension,machine,reverse,90,8,90,8,90,8
+2017-09-17,press,barbell,overhead,120,5,140,3,155,3
+2017-09-17,bench,barbell,incline,110,10,110,10,110,10,110,10,110,10
+2017-09-17,lat pulldown,cable,conventional,110,10,110,10,110,10,110,10,110,10
+2017-09-17,bicep curl,dumbbell,alternating,80,10,80,10,80,10,80,10,80,10
+2017-09-16,deadlift,barbell,conventional,290,5,330,3,370,3
+2017-09-16,squat,barbell,low bar,200,10,200,10,200,10,200,10,200,10
+2017-09-16,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-09-14,bench,barbell,flat,165,5,190,3,210,3
+2017-09-14,press,barbell,overhead,80,10,80,10,80,10,80,10,80,10
+2017-09-14,row,barbell,pendlay,110,10,110,10,110,10,110,10,110,10
+2017-09-14,fly,kettlebell,combination,40,27,40,27,40,27,40,27,40,27
+2017-09-13,squat,barbell,low bar,290,5,330,3,370,1
+2017-09-13,deadlift,barbell,conventional,195,8,195,8,195,8,195,8,195,8
+2017-09-13,hyperextension,machine,reverse,90,8,90,8,90,8,90,8,90,8
+2017-09-10,press,barbell,overhead,115,3,130,3,145,5
+2017-09-10,bench,barbell,incline,110,10,110,10,110,10,110,10,110,10
+2017-09-10,lat pulldown,cable,conventional,110,10,110,10,110,10,110,10,110,10
+2017-09-10,bicep curl,dumbbell,alternating,80,10,80,10,80,10,80,10,80,10
+2017-09-09,deadlift,barbell,conventional,275,3,310,3,350,5
+2017-09-09,squat,barbell,low bar,195,10,195,10,195,10,195,10,195,10
+2017-09-09,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-09-07,bench,barbell,flat,155,3,175,3,200,4
+2017-09-07,press,barbell,overhead,80,10,80,10,80,10,80,10,80,10
+2017-09-07,row,barbell,pendlay,110,10,110,10,110,10,110,10,110,10
+2017-09-07,fly,kettlebell,combination,40,27,40,27,40,27,40,27,40,27
+2017-09-06,squat,barbell,low bar,270,3,310,3,350,3
+2017-09-06,deadlift,barbell,conventional,195,8,195,8,195,8,195,8,195,8
+2017-09-06,hyperextension,machine,reverse,90,8,90,8,90,8,90,8,90,8
+2017-09-03,press,barbell,overhead,105,5,120,5,140,6
+2017-09-03,bench,barbell,incline,110,10,110,10,110,10,110,10,110,10
+2017-09-03,lat pulldown,cable,conventional,110,10,110,10,110,10,110,10,110,10
+2017-09-03,bicep curl,dumbbell,alternating,80,10,80,10,80,10,80,10,80,10
+2017-09-02,deadlift,barbell,conventional,255,5,290,5,330,7
+2017-09-02,squat,barbell,low bar,195,10,195,10,195,10,195,10,195,10
+2017-09-02,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-08-31,bench,barbell,flat,145,5,165,5,190,7
+2017-08-31,press,barbell,overhead,80,10,80,10,80,10,80,10,80,10
+2017-08-31,row,barbell,pendlay,110,10,110,10,110,10,110,10,110,10
+2017-08-31,fly,kettlebell,combination,40,27,40,27,40,27,40,27,40,27
+2017-08-30,squat,barbell,low bar,255,5,290,5,330,5
+2017-08-30,deadlift,barbell,conventional,195,8,195,8,195,8,195,8,195,8
+2017-08-30,hyperextension,machine,reverse,90,8,90,8,90,8,90,8,90,8
+2017-08-27,press,barbell,overhead,65,5,80,5,95,5
+2017-08-27,bench,barbell,incline,110,10,110,10,110,10
+2017-08-27,lat pulldown,cable,conventional,110,10,110,10,110,10
+2017-08-27,bicep curl,dumbbell,alternating,80,8,80,8,80,8
+2017-08-26,deadlift,barbell,conventional,150,5,190,5,230,5
+2017-08-26,squat,barbell,low bar,190,10,190,10,190,10
+2017-08-26,leg raise,body weight,supported,0,12,0,12,0,12
+2017-08-24,bench,barbell,flat,85,5,110,5,130,5
+2017-08-24,press,barbell,overhead,80,10,80,10,80,10
+2017-08-24,row,barbell,pendlay,110,10,110,10,110,10
+2017-08-24,fly,kettlebell,combination,40,24,40,24,40,24
+2017-08-23,squat,barbell,low bar,155,5,190,5,230,5
+2017-08-23,deadlift,barbell,conventional,190,8,190,8,190,8
+2017-08-23,hyperextension,machine,reverse,80,8,80,8,80,8
+2017-08-20,press,barbell,overhead,120,5,135,3,150,4
+2017-08-20,bench,barbell,incline,110,10,110,10,110,10,110,10,110,10
+2017-08-20,lat pulldown,cable,conventional,110,10,110,10,110,10,110,10,110,10
+2017-08-20,bicep curl,dumbbell,alternating,80,8,80,8,80,8,80,8,80,8
+2017-08-19,deadlift,barbell,conventional,285,5,320,3,360,4
+2017-08-19,squat,barbell,low bar,190,10,190,10,190,10,190,10,190,10
+2017-08-19,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-08-17,bench,barbell,flat,160,5,185,5,205,4
+2017-08-17,press,barbell,overhead,80,10,80,10,80,10,80,10,80,10
+2017-08-17,row,barbell,pendlay,110,10,110,10,110,10,110,10,110,10
+2017-08-17,fly,kettlebell,combination,40,24,40,24,40,24,40,24,40,24
+2017-08-16,squat,barbell,low bar,290,5,325,3,365,2
+2017-08-16,deadlift,barbell,conventional,190,8,190,8,190,8,190,8,190,8
+2017-08-16,hyperextension,machine,reverse,80,8,80,8,80,8,80,8,80,8
+2017-08-13,press,barbell,overhead,110,3,125,3,140,6
+2017-08-13,bench,barbell,incline,110,10,110,10,110,10,110,10,110,10
+2017-08-13,lat pulldown,cable,conventional,110,10,110,10,110,10,110,10,110,10
+2017-08-13,bicep curl,dumbbell,alternating,80,8,80,8,80,8,80,8,80,8
+2017-08-11,deadlift,barbell,conventional,265,3,305,3,340,3
+2017-08-11,squat,barbell,low bar,190,10,190,10,190,10,190,10,190,10
+2017-08-11,leg raise,body weight,supported,0,12,0,12,0,12
+2017-08-09,bench,barbell,flat,155,3,175,3,195,5
+2017-08-09,press,barbell,overhead,75,10,80,10,80,10,80,10,80,10
+2017-08-09,row,barbell,pendlay,110,10,110,10,110,10,110,10,110,10
+2017-08-09,fly,dumbbell,combination,40,24,40,24,40,24,40,24,40,24
+2017-08-08,squat,barbell,low bar,265,3,305,3,345,3
+2017-08-08,deadlift,barbell,conventional,185,8,185,8,185,8,185,8,185,8
+2017-08-05,press,barbell,overhead,105,5,120,5,135,6
+2017-08-05,bench,barbell,incline,110,10,110,10,110,10,110,10,110,10
+2017-08-05,lat pulldown,cable,conventional,110,10,110,10,110,10,110,10,110,10
+2017-08-05,bicep curl,dumbbell,alternating,80,8,80,8,80,8,80,8,80,8
+2017-08-04,deadlift,barbell,conventional,245,5,285,5,320,7
+2017-08-04,squat,barbell,low bar,190,10,190,10,190,10,190,10,190,10
+2017-08-04,leg raise,body weight,supported,0,12,0,12,0,12,0,12,0,12
+2017-08-02,bench,barbell,flat,140,5,160,5,185,8
+2017-08-02,press,barbell,overhead,80,10,80,10,80,10,80,10,80,10
+2017-08-02,row,barbell,pendlay,110,10,110,10,110,10,110,10,110,10
+2017-08-02,fly,kettlebell,combination,40,24,40,24,40,24,40,24,40,24
+2017-08-01,squat,barbell,low bar,250,5,290,5,325,6
+2017-08-01,deadlift,barbell,conventional,190,8,190,8,190,8,190,8,190,8
+2017-08-01,hyperextension,machine,reverse,80,8,80,8,80,8,80,8,80,8
+2017-07-29,press,barbell,overhead,60,5,75,5,90,5
+2017-07-29,bench,barbell,incline,105,10,105,10,105,10
+2017-07-29,lat pulldown,cable,conventional,105,10,105,10,105,10
+2017-07-29,bicep curl,dumbbell,alternating,70,12,70,12,70,12
+2017-07-28,deadlift,barbell,conventional,150,5,185,5,220,5
+2017-07-28,squat,barbell,low bar,185,10,185,10,185,10
+2017-07-28,leg raise,body weight,supported,0,12,0,12,0,12
+2017-07-26,bench,barbell,flat,85,5,105,5,125,5
+2017-07-26,press,barbell,overhead,75,10,75,10,75,10
+2017-07-26,row,barbell,pendlay,105,10,105,10,105,10
+2017-07-26,fly,kettlebell,combination,40,21,40,21,40,21
+2017-07-25,squat,barbell,low bar,150,5,185,5,225,5
+2017-07-25,deadlift,barbell,conventional,185,8,185,8,185,8
+2017-07-25,hyperextension,machine,reverse,70,8,70,8,70,8
+2017-07-23,press,barbell,overhead,115,5,130,3,145,4
+2017-07-23,bench,barbell,incline,105,10,105,10,105,10,105,10,105,10
+2017-07-23,lat pulldown,cable,conventional,105,10,105,10,105,10,105,10,105,10
+2017-07-23,bicep curl,dumbbell,alternating,70,12,70,12,70,12,70,12,70,12
+2017-07-22,deadlift,barbell,conventional,275,5,315,3,350,3
+2017-07-22,squat,barbell,low bar,185,10,185,10,185,10,185,10,185,10
+2017-07-22,leg raise,body weight,supported,0,12,0,12,0,12
+2017-07-20,bench,barbell,flat,160,5,180,3,200,4
+2017-07-20,press,barbell,overhead,75,10,75,10,75,10,75,10,75,10
+2017-07-20,row,barbell,pendlay,105,10,105,10,105,10,105,10,105,10
+2017-07-20,fly,kettlebell,combination,40,21,40,21,40,21,40,21,40,21
+2017-07-19,squat,barbell,low bar,280,5,320,3,355,2
+2017-07-19,deadlift,barbell,conventional,185,8,185,8,185,8,185,8,185,8
+2017-07-19,hyperextension,machine,reverse,70,8,70,8,70,8,70,8,70,8
+2017-07-16,press,barbell,overhead,105,3,125,3,140,5
+2017-07-16,bench,barbell,incline,105,10,105,10,105,10,105,10,105,10
+2017-07-16,lat pulldown,cable,conventional,105,10,105,10,105,10,105,10,105,10
+2017-07-16,bicep curl,dumbbell,alternating,70,12,70,12,70,12,70,12,70,12
+2017-07-15,deadlift,barbell,conventional,260,3,295,3,330,5
+2017-07-15,squat,barbell,low bar,185,10,185,10,185,10,185,10,185,10
+2017-07-15,leg raise,body weight,supported,0,12,0,12,0,12
+2017-07-13,bench,barbell,flat,150,3,170,3,190,6
+2017-07-13,press,barbell,overhead,75,10,75,10,75,10,75,10,75,10
+2017-07-13,row,barbell,pendlay,105,10,105,10,105,10,105,10,105,10
+2017-07-13,fly,kettlebell,combination,40,21,40,21,40,21,40,21,40,21
+2017-07-12,squat,barbell,low bar,260,3,300,3,335,4
+2017-07-12,deadlift,barbell,conventional,185,8,185,8,185,8,185,8,185,8
+2017-07-12,hyperextension,machine,reverse,70,8,70,8,70,8,70,8
+2017-07-09,press,barbell,overhead,100,5,115,5,130,7
+2017-07-09,bench,barbell,incline,105,10,105,10,105,10,105,10,105,10
+2017-07-09,lat pulldown,cable,conventional,105,10,105,10,105,10,105,10,105,10
+2017-07-09,bicep curl,dumbbell,alternating,70,12,70,12,70,12,70,12,70,12
+2017-07-08,deadlift,barbell,conventional,240,5,275,5,315,7
+2017-07-08,squat,barbell,low bar,185,10,185,10,185,10,185,10,185,10
+2017-07-08,leg raise,body weight,supported,0,12,0,12,0,12
+2017-07-06,bench,barbell,flat,135,5,160,5,180,8
+2017-07-06,press,barbell,overhead,75,10,75,10,75,10,75,10,75,10
+2017-07-06,row,barbell,pendlay,105,10,105,10,105,10,105,10,105,10
+2017-07-06,fly,kettlebell,combination,40,21,40,21,40,21,40,21,40,21
+2017-07-05,squat,barbell,low bar,245,5,280,5,320,5
+2017-07-05,deadlift,barbell,conventional,185,8,185,8,185,8,185,8,185,8
+2017-07-05,hyperextension,machine,reverse,70,8,70,8,70,8
+2017-07-03,bench,dumbbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-07-03,fly,dumbbell,combination,40,21,40,21,40,21,40,21,40,21
+2017-07-01,press,barbell,overhead,60,5,75,5,90,5
+2017-07-01,bench,barbell,incline,105,10,105,10,105,10
+2017-07-01,lat pulldown,cable,conventional,105,10,105,10,105,10
+2017-07-01,bicep curl,dumbbell,alternating,70,10,70,10,70,10
+2017-06-30,deadlift,barbell,conventional,145,5,180,5,215,5
+2017-06-30,squat,barbell,low bar,180,10,180,10,180,10
+2017-06-28,bench,barbell,flat,80,5,105,5,125,5
+2017-06-28,press,barbell,overhead,75,10,75,10,75,10
+2017-06-28,row,barbell,pendlay,105,10,105,10,105,10
+2017-06-28,fly,kettlebell,combination,40,15,40,21,40,21
+2017-06-27,squat,barbell,low bar,145,5,180,5,220,5
+2017-06-27,deadlift,barbell,conventional,180,8,180,8,180,8
+2017-05-27,hyperextension,machine,reverse,50,8,50,8,50,8
+2017-06-26,bench,dumbbell,incline,80,12,100,10,120,8,140,5,120,8
+2017-06-26,fly,kettlebell,combination,40,15,40,21,40,21,40,15
+2017-06-24,press,barbell,overhead,110,5,125,3,140,5
+2017-06-24,bench,barbell,incline,105,10,105,10,105,10,105,10,105,10
+2017-06-24,lat pulldown,cable,conventional,105,10,105,10,105,10,105,10,105,10
+2017-06-24,bicep curl,dumbbell,alternating,70,10,70,10,70,10,70,10,70,10
+2017-06-23,deadlift,barbell,conventional,270,5,305,3,340,5
+2017-06-23,squat,barbell,low bar,180,10,180,10,180,10,180,10,180,10
+2017-06-21,bench,barbell,flat,155,5,175,3,195,5
+2017-06-21,press,barbell,overhead,75,10,75,10,75,10,75,10,75,10
+2017-06-21,row,barbell,pendlay,105,10,105,10,105,10,105,10,105,10
+2017-06-20,squat,barbell,low bar,275,5,310,3,345,2
+2017-06-20,deadlift,barbell,conventional,180,8,180,8,180,8,180,8,180,8
+2017-06-20,hyperextension,machine,reverse,50,8,50,8,50,8
+2017-06-17,press,barbell,overhead,105,3,120,3,135,6
+2017-06-17,bench,barbell,incline,105,10,105,10,105,10,105,10,105,10
+2017-06-17,lat pulldown,cable,conventional,105,10,105,10,105,10,105,10,105,10
+2017-06-17,bicep curl,dumbbell,alternating,70,10,70,10,70,10,70,10,70,10
+2017-06-16,deadlift,barbell,conventional,250,3,290,3,325,6
+2017-06-16,squat,barbell,low bar,180,10,180,10,180,10,180,10,180,10
+2017-06-14,bench,barbell,flat,145,3,165,3,185,5
+2017-06-14,press,barbell,overhead,75,10,75,10,75,10,75,10,75,10
+2017-06-14,row,barbell,pendlay,105,10,105,10,105,10,105,10,105,10
+2017-06-13,squat,barbell,low bar,255,3,290,3,330,3
+2017-06-13,deadlift,barbell,conventional,180,8,180,8,180,8,180,8,180,8
+2017-06-13,hyperextension,machine,reverse,50,8,50,8,50,8
+2017-06-11,press,barbell,overhead,95,5,110,5,125,8
+2017-06-11,bench,barbell,incline,105,10,105,10,105,10,105,10,105,10
+2017-06-11,lat pulldown,cable,conventional,105,10,105,10,105,10,105,10,105,10
+2017-06-11,bicep curl,dumbbell,alternating,70,10,70,10,70,10,70,10,70,10
+2017-06-10,deadlift,barbell,conventional,235,5,270,5,305,8
+2017-06-10,squat,barbell,low bar,180,10,180,10,180,10,180,10,180,10
+2017-06-08,bench,barbell,flat,135,5,155,5,175,9
+2017-06-08,press,barbell,overhead,75,10,75,10,75,10,75,10,75,10
+2017-06-08,row,barbell,pendlay,105,10,105,10,105,10,105,10,105,10
+2017-06-07,squat,barbell,low bar,235,5,275,5,310,5
+2017-06-07,deadlift,barbell,conventional,180,8,180,8,180,8,180,8,180,8
+2017-06-07,hyperextension,machine,reverse,50,8,50,8,50,8
+2017-06-04,press,barbell,overhead,55,5,70,5,85,5
+2017-06-04,bench,barbell,incline,100,10,100,10,100,10
+2017-06-04,lat pulldown,cable,conventional,100,10,100,10,100,10
+2017-06-04,bicep curl,dumbbell,alternating,70,8,70,8,70,8
+2017-06-03,deadlift,barbell,conventional,140,5,175,5,210,5
+2017-06-03,squat,barbell,low bar,175,10,175,10,175,10
+2017-06-01,bench,barbell,flat,80,5,100,5,120,5
+2017-06-01,press,barbell,overhead,70,10,70,10,70,10
+2017-06-01,row,barbell,pendlay,100,10,100,10,100,10
+2017-05-31,squat,barbell,low bar,140,5,175,5,210,5
+2017-05-31,deadlift,barbell,conventional,175,8,175,8,175,8
+2017-05-31,hyperextension,machine,reverse,50,8,50,8
+2017-05-28,press,barbell,overhead,105,5,120,3,135,5
+2017-05-28,bench,barbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-05-28,lat pulldown,cable,conventional,100,10,100,10,100,10,100,10,100,10
+2017-05-28,bicep curl,dumbbell,alternating,70,8,70,8,70,8,70,8,70,8
+2017-05-27,deadlift,barbell,conventional,260,5,295,3,330,3
+2017-05-27,squat,barbell,low bar,175,10,175,10,175,10,175,10,175,10
+2017-05-25,bench,barbell,flat,150,5,170,3,190,5
+2017-05-25,press,barbell,overhead,70,10,70,10,70,10,70,10,70,10
+2017-05-25,row,barbell,pendlay,100,10,100,10,100,10,100,10,100,10
+2017-05-24,squat,barbell,low bar,265,5,300,3,335,2
+2017-05-24,deadlift,barbell,conventional,175,8,175,8,175,8,175,8,175,8
+2017-05-24,hyperextension,machine,reverse,50,10,50,10
+2017-05-21,press,barbell,overhead,100,3,115,3,130,5
+2017-05-21,bench,barbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-05-21,lat pulldown,cable,conventional,100,10,100,10,100,10,100,10,100,10
+2017-05-21,bicep curl,dumbbell,alternating,70,8,70,8,70,8,70,8,70,8
+2017-05-20,deadlift,barbell,conventional,245,3,280,3,315,6
+2017-05-20,squat,barbell,low bar,175,10,175,10,175,10,175,10,175,10
+2017-05-18,bench,barbell,flat,140,3,160,3,180,8
+2017-05-18,press,barbell,overhead,70,10,70,10,70,10,70,10,70,10
+2017-05-18,row,barbell,pendlay,100,10,100,10,100,10,100,10,100,10
+2017-05-17,squat,barbell,low bar,250,3,285,3,320,3
+2017-05-17,deadlift,barbell,conventional,175,8,175,8,175,8,175,8,175,8
+2017-05-14,press,barbell,overhead,95,5,105,5,120,7
+2017-05-14,bench,barbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-05-14,lat pulldown,cable,conventional,100,10,100,10,100,10,100,10,100,10
+2017-05-14,bicep curl,dumbbell,alternating,70,8,70,8,70,8,70,8,70,8
+2017-05-13,deadlift,barbell,conventional,225,5,260,5,295,8
+2017-05-13,squat,barbell,low bar,175,10,175,10,175,10,175,10,175,10
+2017-05-11,bench,barbell,flat,135,5,150,5,170,8
+2017-05-11,press,barbell,overhead,70,10,70,10,70,10,70,10,70,10
+2017-05-11,row,barbell,pendlay,100,10,100,10,100,10,100,10,100,10
+2017-05-10,squat,barbell,low bar,230,5,265,5,300,5
+2017-05-10,deadlift,barbell,conventional,175,8,175,8,175,8,175,8,175,8
+2017-05-07,press,barbell,overhead,55,5,70,5,85,5
+2017-05-07,bench,barbell,incline,100,10,100,10,100,10
+2017-04-07,lat pulldown,cable,conventional,100,10,100,10,100,10
+2017-05-07,bicep curl,dumbbell,alternating,60,12,60,12,60,12
+2017-05-06,deadlift,barbell,conventional,135,5,170,5,205,5
+2017-05-06,squat,barbell,low bar,170,10,170,10,170,10
+2017-05-04,bench,barbell,flat,80,5,100,5,115,5
+2017-05-04,press,barbell,overhead,70,10,70,10,70,10
+2017-05-04,row,barbell,pendlay,100,10,100,10,100,10
+2017-05-03,squat,barbell,low bar,140,5,170,5,205,5
+2017-05-03,deadlift,barbell,conventional,170,8,170,8,170,8
+2017-04-30,press,barbell,overhead,105,5,115,3,130,6
+2017-04-30,bench,barbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-04-30,lat pulldown,cable,conventional,100,10,100,10,100,10,100,10,100,10
+2017-04-30,bicep curl,dumbbell,alternating,60,12,60,12,60,12,60,12,60,12
+2017-04-29,deadlift,barbell,conventional,255,5,290,3,320,5
+2017-04-29,squat,barbell,low bar,170,10,170,10,170,10,170,10,170,10
+2017-04-27,bench,barbell,flat,145,5,165,3,185,5
+2017-04-27,press,barbell,overhead,70,10,70,10,70,10,70,10,70,10
+2017-04-27,row,barbell,pendlay,100,10,100,10,100,10,100,10,100,10
+2017-04-26,squat,barbell,low bar,260,5,290,3,325,2
+2017-04-26,deadlift,barbell,conventional,170,8,170,8,170,8,170,8,170,8
+2017-04-23,press,barbell,overhead,95,3,110,3,125,7
+2017-04-23,bench,barbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-04-23,lat pulldown,cable,conventional,100,10,100,10,100,10,100,10,100,10
+2017-04-23,bicep curl,dumbbell,alternating,60,12,60,12,60,12,60,12,60,12
+2017-04-22,deadlift,barbell,conventional,240,3,270,3,305,7
+2017-04-22,squat,barbell,low bar,170,10,170,10,170,10,170,10,170,10
+2017-04-20,bench,barbell,flat,135,3,155,3,175,8
+2017-04-20,press,barbell,overhead,70,10,70,10,70,10,70,10,70,10
+2017-04-20,row,barbell,pendlay,100,10,100,10,100,10,100,10,100,10
+2017-04-19,squat,barbell,low bar,185,3,240,3,275,3,310,3
+2017-04-19,deadlift,barbell,conventional,170,8,170,8,170,8,170,8,170,8
+2017-04-16,press,barbell,overhead,90,5,105,5,115,7
+2017-04-16,bench,barbell,incline,100,10,100,10,100,10,100,10,100,10
+2017-04-16,lat pulldown,cable,conventional,100,10,100,10,100,10,100,10,100,10
+2017-04-16,bicep curl,dumbbell,alternating,60,12,60,12,60,12,60,12,60,12
+2017-04-15,deadlift,barbell,conventional,225,5,255,8,290,8
+2017-04-15,squat,barbell,low bar,170,10,170,10,170,10,170,10,170,10
+2017-04-13,bench,barbell,flat,125,5,145,5,165,10
+2017-04-13,press,barbell,overhead,70,10,70,10,70,10,70,10,70,10
+2017-04-13,row,barbell,pendlay,100,10,100,10,100,10,100,10,100,10
+2017-04-12,squat,barbell,low bar,225,5,260,5,290,5
+2017-04-12,deadlift,barbell,conventional,170,8,170,8,170,8,170,8,170,8
+2017-04-08,deadlift,barbell,conventional,135,5,165,5,200,5
+2017-04-08,squat,barbell,low bar,165,10,165,10,165,10
+2017-04-09,press,barbell,overhead,55,5,65,5,80,5
+2017-04-09,bench,barbell,incline,95,10,95,10,95,10
+2017-04-09,lat pulldown,cable,conventional,95,10,95,10,95,10
+2017-04-09,bicep curl,dumbbell,alternating,60,10,60,10,60,10
+2017-04-06,bench,barbell,flat,75,5,95,5,115,5
+2017-04-06,press,barbell,overhead,65,10,65,10,65,10
+2017-04-06,row,barbell,pendlay,95,10,95,10,95,10
+2017-04-05,squat,barbell,low bar,135,5,165,5,200,5
+2017-04-05,deadlift,barbell,conventional,165,8,165,8,165,8
+2017-04-02,press,barbell,overhead,100,5,115,3,125,8
+2017-04-02,bench,barbell,incline,95,10,95,10,95,10,95,10,95,10
+2017-04-02,lat pulldown,cable,conventional,95,10,95,10,95,10,95,10,95,10
+2017-04-02,bicep curl,dumbbell,alternating,60,10,60,10,60,10,60,10,60,10
+2017-03-31,deadlift,barbell,conventional,185,3,245,5,280,3,315,7
+2017-03-31,squat,barbell,low bar,165,10,165,10,165,10,165,10,165,10
+2017-03-30,bench,barbell,flat,145,5,160,3,180,8
+2017-03-30,press,barbell,overhead,65,10,65,10,65,10,65,10,65,10
+2017-03-30,row,barbell,pendlay,95,10,95,10,95,10,95,10,95,10
+2017-03-29,squat,barbell,low bar,185,2,250,5,285,3,315,5
+2017-03-29,deadlift,barbell,conventional,165,8,165,8,165,8,165,8,165,8
+2017-03-26,press,barbell,overhead,95,3,105,3,120,8
+2017-03-26,bench,barbell,incline,95,10,95,10,95,10,95,10,95,10
+2017-03-26,lat pulldown,cable,conventional,95,10,95,10,95,10,95,10,95,10
+2017-03-26,bicep curl,dumbbell,alternating,60,10,60,10,60,10,60,10,60,10
+2017-03-25,deadlift,barbell,conventional,185,3,230,3,265,3,295,8
+2017-03-25,squat,barbell,low bar,165,10,165,10,165,10,165,10,165,10
+2017-03-23,bench,barbell,flat,135,3,155,3,170,9
+2017-03-23,press,barbell,overhead,75,10,65,10,65,10,65,10,65,10
+2017-03-23,row,barbell,pendlay,95,10,95,10,95,10,95,10,95,10
+2017-03-22,squat,barbell,low bar,185,3,235,3,265,3,300,7
+2017-03-22,deadlift,barbell,conventional,165,8,165,8,165,8,165,8,165,8
+2017-03-19,press,barbell,overhead,85,5,100,5,115,10
+2017-03-19,bench,barbell,incline,95,10,95,10,95,10,95,10,95,10
+2017-03-19,lat pulldown,cable,conventional,90,10,90,10,90,10,90,10,90,10
+2017-03-19,bicep curl,dumbbell,alternating,60,10,60,10,60,10
+2017-03-18,deadlift,barbell,conventional,185,5,215,5,245,5,280,5
+2017-03-18,squat,barbell,low bar,165,10,165,10,165,10,165,10,165,10
+2017-03-15,squat,barbell,low bar,135,5,185,5,215,5,250,5,285,8
+2017-03-15,deadlift,barbell,conventional,165,8,165,8,165,8,165,8,165,8
+2017-03-16,bench,barbell,flat,125,5,145,5,160,10
+2017-03-16,press,barbell,overhead,65,10,65,10,65,10,65,10,65,10
+2017-03-16,row,barbell,pendlay,95,10,95,10,95,10,95,10,95,10

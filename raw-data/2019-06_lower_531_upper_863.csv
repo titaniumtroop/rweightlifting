@@ -1,0 +1,378 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2019-10-29,bench,barbell,flat,225,2,255,3,255,3,225,2,255,1
+2019-10-27,squat,barbell,low bar,315,2,355,1,395,1,415,1,435,0
+2019-10-27,deadlift,barbell,conventional,405,1,465,1,485,0
+2019-10-26,bench,barbell,flat,185,3,225,2,245,1,255,1,270,1,280,0,225,3
+2019-10-26,press,barbell,overhead,135,3,175,1,190,1,200,1
+2019-10-26,pullup,chinup,neutral,0,5,0,5
+2019-10-26,row,machine,supported,270,8,320,6
+2019-10-24,deadlift,barbell,conventional,315,3,405,2,455,1,475,1,495,0,495,0
+2019-10-24,squat,barbell,low bar,315,2,365,1,405,1
+2019-10-22,press,barbell,overhead,135,3,160,2,180,3,180,3,180,3
+2019-10-22,bench,barbell,decline,195,10,195,10,195,10
+2019-10-22,pullup,pullup,wide,0,7,0,6
+2019-10-22,bench,barbell,incline,180,8,180,8
+2019-10-22,lat pulldown,cable,wide,150,11,150,11
+2019-10-22,row,machine,supported,230,11,230,11
+2019-10-20,squat,barbell,low bar,365,5,405,2,405,2,405,2
+2019-10-20,deadlift,barbell,conventional,365,5,365,5,365,5
+2019-10-19,bench,barbell,flat,225,2,245,3,245,3,245,3
+2019-10-19,press,barbell,overhead,150,5,150,5,150,5
+2019-10-19,pullup,chinup,neutral,0,7,0,6
+2019-10-19,lat pulldown,cable,wide,150,8,150,8
+2019-10-19,bench,dumbbell,15-degree,150,12,160,8
+2019-10-19,row,machine,supported,230,10,230,10
+2019-10-19,fly,cable,reverse,55,14,55,14
+2019-10-17,deadlift,barbell,conventional,315,3,405,2,455,1,495,0,495,0
+2019-10-17,squat,barbell,low bar,345,3,345,3,345,3
+2019-10-15,press,barbell,overhead,135,3,160,2,185,1,195,1,205,0,185,2,160,5
+2019-10-15,bench,barbell,decline,195,8,195,8,195,8
+2019-10-15,pullup,pullup,wide,0,5,0,5
+2019-10-15,bench,barbell,incline,175,8,175,8
+2019-10-15,fly,cable,reverse,55,10,55,10
+2019-10-13,squat,barbell,low bar,315,2,355,1,385,1,405,1,425,1,445,0
+2019-10-13,deadlift,barbell,2-inch deficit,340,8,340,8
+2019-10-12,bench,barbell,flat,185,3,225,2,250,1,265,1,275,1,250,2,225,5
+2019-10-12,press,barbell,overhead,150,5,150,5,150,5
+2019-10-12,pullup,chinup,neutral,0,9,0,5
+2019-10-12,lat pulldown,cable,wide,150,9,150,10
+2019-10-12,bench,dumbbell,15-degree,150,12,150,10
+2019-10-12,fly,cable,reverse,55,10,55,10
+2019-10-09,deadlift,barbell,conventional,350,5,395,3,440,5,440,2,440,2,350,5
+2019-10-09,squat,barbell,low bar,275,8,275,8
+2019-10-08,press,barbell,overhead,135,3,155,3,165,7,165,4,165,4,155,4,135,7
+2019-10-08,bench,barbell,decline,195,8,195,8,195,8
+2019-10-08,pullup,pullup,wide,0,6,0,6
+2019-10-08,row,machine,supported,250,10,250,10
+2019-10-08,bench,barbell,incline,170,8,170,8
+2019-10-08,lat pulldown,cable,wide,150,9,150,10
+2019-10-08,fly,cable,reverse,55,15,55,14
+2019-10-06,squat,barbell,low bar,295,5,335,3,375,4,375,2,375,2,295,5
+2019-10-06,deadlift,barbell,2-inch deficit,335,8,335,8
+2019-10-05,bench,barbell,flat,195,3,220,3,235,5,235,2,235,2,220,4,195,6
+2019-10-05,press,barbell,overhead,145,5,145,5,145,5
+2019-10-05,pullup,chinup,neutral,0,9,25,3,45,2,0,6
+2019-10-05,row,machine,supported,250,9,250,9
+2019-10-05,lat pulldown,cable,wide,150,9,150,9
+2019-10-05,bench,dumbbell,15-degree,150,11,150,9
+2019-10-05,fly,cable,reverse,65,12,65,12
+2019-10-03,deadlift,barbell,conventional,325,3,370,3,415,8,415,3,415,3,325,5
+2019-10-03,squat,barbell,low bar,275,8,275,8
+2019-10-01,press,barbell,overhead,125,6,145,6,155,8,155,4,155,4,145,6,125,8
+2019-10-01,bench,barbell,decline,195,8,195,8,195,8
+2019-10-01,pullup,chinup,neutral,45,2,25,4,0,8
+2019-10-01,bench,barbell,incline,165,8,165,8
+2019-10-01,row,machine,supported,250,9,250,9
+2019-10-01,lat pulldown,cable,wide,145,10,145,8
+2019-10-01,fly,cable,reverse,65,12,65,12
+2019-09-29,squat,barbell,low bar,275,3,315,3,355,6,355,3,355,3,275,6
+2019-09-29,deadlift,barbell,2-inch deficit,335,8,335,8
+2019-09-28,bench,barbell,flat,180,6,205,6,220,8,220,4,220,4,205,5,180,8
+2019-09-28,press,barbell,overhead,145,5,145,5,145,5
+2019-09-28,pullup,chinup,neutral,0,8,25,3,45,2,25,3,0,7
+2019-09-28,row,machine,supported,250,8,250,9
+2019-09-28,lat pulldown,cable,wide,150,8,150,8
+2019-09-28,bench,dumbbell,15-degree,150,10,150,9
+2019-09-28,fly,cable,reverse,65,12,65,12
+2019-09-26,deadlift,barbell,conventional,295,5,350,5,395,9,395,3,395,3,300,5
+2019-09-25,press,barbell,overhead,120,8,135,8,145,9,145,5,145,4,135,4,120,7
+2019-09-25,bench,barbell,decline,195,8,195,8,195,8
+2019-09-25,pullup,chinup,neutral,45,2,25,3,0,2
+2019-09-25,bench,barbell,incline,160,8,160,8,160,8
+2019-09-25,row,machine,supported,250,8,250,8
+2019-09-25,lat pulldown,cable,wide,135,12,135,12
+2019-09-23,squat,barbell,low bar,255,5,295,5,335,7,335,3,335,3,335,3,335,2,255,8
+2019-09-23,deadlift,barbell,2-inch deficit,335,8,335,8
+2019-09-20,bench,barbell,flat,170,8,195,8,205,10,205,5,205,5,195,5,170,6
+2019-09-20,press,barbell,overhead,145,5,145,5,145,5
+2019-09-20,pullup,chinup,neutral,0,5,0,5
+2019-09-20,row,machine,supported,240,10,240,10
+2019-09-20,lat pulldown,cable,wide,135,12,135,12
+2019-09-20,bench,dumbbell,15-degree,150,10,150,9
+2019-09-19,deadlift,barbell,conventional,315,3,405,2,460,1,480,1,495,0,495,0,405,1
+2019-09-19,squat,barbell,low bar,275,8,275,8
+2019-09-17,press,barbell,overhead,135,3,155,2,180,1,190,1,200,0,200,0
+2019-09-17,bench,barbell,decline,195,10,195,10
+2019-09-17,pullup,chinup,neutral,45,2,45,2,0,7
+2019-09-17,bench,dumbbell,15-degree,150,10,150,10
+2019-09-17,row,machine,supported,240,10,240,10
+2019-09-17,lat pulldown,cable,wide,135,11,135,11
+2019-09-17,bicep curl,cable,standing,155,10
+2019-09-17,fly,cable,reverse,65,12,65,12
+2019-09-15,squat,barbell,low bar,345,1,380,1,400,1,415,1
+2019-09-15,deadlift,barbell,2-inch deficit,335,8,335,8
+2019-09-14,bench,barbell,flat,185,3,225,2,245,1,260,1,270,1,275,0,245,2,225,4
+2019-09-14,press,barbell,overhead,145,5,145,5,145,5
+2019-09-14,pullup,chinup,neutral,45,3,45,2,0,8
+2019-09-14,row,machine,supported,235,10,235,10
+2019-09-14,lat pulldown,cable,wide,135,10,135,11
+2019-09-14,bench,barbell,incline,155,10,155,10
+2019-09-14,fly,cable,reverse,60,14,60,14
+2019-09-12,deadlift,barbell,conventional,340,5,385,3,430,6,430,2,430,2,340,5
+2019-09-12,squat,barbell,low bar,270,8,270,8,270,8
+2019-09-11,press,barbell,overhead,135,3,155,3,165,6,165,4,165,3,155,3,135,6
+2019-09-11,bench,barbell,decline,190,8,190,8,190,8
+2019-09-11,pullup,chinup,neutral,35,3,35,3,0,7,0,6
+2019-09-11,bench,barbell,incline,155,9,155,9,155,9
+2019-09-11,row,machine,supported,230,10,230,10,230,10
+2019-09-11,lat pulldown,cable,wide,135,10,135,10,135,10
+2019-09-11,bicep curl,cable,standing,155,8,155,8
+2019-09-11,fly,cable,reverse,60,12,60,12
+2019-09-08,squat,barbell,low bar,295,5,330,3,370,4,370,2,370,2,295,5
+2019-09-08,deadlift,barbell,conventional,330,8,330,8,330,8
+2019-09-07,bench,barbell,flat,180,3,200,3,215,9,215,5,215,5,200,5,180,7
+2019-09-07,press,barbell,overhead,140,5,140,5,140,5,140,5,140,5
+2019-09-07,row,machine,supported,225,10,225,10,225,10
+2019-09-07,pullup,chinup,neutral,0,6,0,5
+2019-09-07,lat pulldown,cable,wide,135,9,135,10,135,10
+2019-09-07,bench,dumbbell,15-degree,150,9,150,8,150,8
+2019-09-05,deadlift,barbell,conventional,320,3,365,3,410,8,410,3,410,3,320,5
+2019-09-05,squat,barbell,low bar,270,8,270,8,270,8
+2019-09-04,press,barbell,overhead,125,6,145,6,155,8,155,4,155,4,145,5,125,6
+2019-09-04,bench,barbell,decline,190,8,190,8,190,8
+2019-09-04,pullup,chinup,neutral,35,3,35,3,0,7
+2019-09-04,bench,barbell,incline,155,8,155,8,155,8
+2019-09-04,row,machine,supported,220,10,220,10,220,10
+2019-09-04,lat pulldown,cable,wide,135,9,135,9,135,9
+2019-09-04,fly,cable,reverse,60,12,60,12
+2019-09-02,squat,barbell,low bar,275,3,315,3,350,6,350,2,350,3
+2019-09-02,deadlift,barbell,2-inch deficit,330,8,330,8,330,8
+2019-08-31,bench,barbell,flat,165,6,190,6,200,11,200,6,200,6,190,6,165,8
+2019-08-31,press,barbell,overhead,140,5,140,5,140,5,140,5,140,5
+2019-08-31,row,machine,supported,215,10,215,10,215,10
+2019-08-31,pullup,chinup,neutral,35,3,35,3,0,8
+2019-08-31,lat pulldown,cable,wide,135,8,135,8,135,8
+2019-08-31,bench,dumbbell,15-degree,150,8,150,8,150,8
+2019-08-31,fly,cable,reverse,55,12,55,12
+2019-08-30,deadlift,barbell,conventional,295,5,340,5,385,10,385,3,385,3,295,5
+2019-08-30,squat,barbell,low bar,270,8,270,8
+2019-08-27,press,barbell,overhead,120,8,135,8,145,8,145,5,145,5,135,6,120,8
+2019-08-27,bench,barbell,decline,190,8,190,8,190,8
+2019-08-27,pullup,pullup,wide,0,5,0,5
+2019-08-27,pullup,chinup,neutral,35,3,35,3
+2019-08-27,bench,barbell,incline,135,8,155,8,155,8
+2019-08-27,row,machine,supported,210,10,210,10,210,10
+2019-08-27,lat pulldown,cable,wide,135,8,135,8,135,8
+2019-08-27,fly,cable,reverse,60,11,60,11
+2019-08-27,bicep curl,cable,standing,155,8,155,7
+2019-08-26,squat,barbell,low bar,255,5,295,5,330,8,330,5,330,5,255,8
+2019-08-24,bench,barbell,flat,155,8,180,8,190,12,190,8,190,6,180,7,155,8
+2019-08-24,press,barbell,overhead,140,5,140,5,140,5,140,5,140,5
+2019-08-24,row,machine,supported,205,10,205,10,205,10
+2019-08-24,pullup,chinup,neutral,35,3,35,3,0,6
+2019-08-24,pullup,pullup,wide,0,5
+2019-08-24,lat pulldown,cable,wide,135,8,135,8,135,8
+2019-08-24,bench,dumbbell,15-degree,150,8,150,8,150,8
+2019-08-24,fly,cable,reverse,55,10,55,10
+2019-08-22,deadlift,barbell,conventional,315,5,365,3,405,1,455,1,495,0,495,0,405,1
+2019-08-22,squat,barbell,low bar,270,8,270,8
+2019-08-20,press,barbell,overhead,135,3,150,2,170,1,185,1,195,1,200,0
+2019-08-20,bench,barbell,decline,175,10,175,10,175,12
+2019-08-20,row,machine,supported,200,10,200,10
+2019-08-20,pullup,chinup,neutral,30,4,30,3
+2019-08-20,pullup,pullup,wide,0,5
+2019-08-20,lat pulldown,cable,wide,135,8,135,8
+2019-08-20,bicep curl,cable,standing,140,12,140,12
+2019-08-20,fly,cable,reverse,55,10,55,10
+2019-08-18,squat,barbell,low bar,275,3,315,2,345,1,375,1,405,1
+2019-08-18,deadlift,barbell,2-inch deficit,330,8,330,8
+2019-08-17,bench,barbell,flat,175,3,195,3,215,2,240,1,265,0,265,0,240,2,240,2,240,2
+2019-08-17,press,barbell,overhead,140,5,140,5,140,5
+2019-08-17,row,machine,supported,200,10,200,10
+2019-08-17,pullup,chinup,neutral,25,25,4
+2019-08-17,pullup,pullup,wide,0,4
+2019-08-17,lat pulldown,cable,wide,120,12,120,12
+2019-08-17,bench,dumbbell,15-degree,140,12,140,11
+2019-08-17,fly,cable,reverse,40,10,55,10
+2019-08-15,deadlift,barbell,conventional,330,5,375,3,420,6,420,2,420,2,330,5
+2019-08-15,squat,barbell,low bar,265,8,265,8,265,8
+2019-08-13,press,barbell,overhead,135,5,150,3,170,5,170,3,170,3,150,4,135,5
+2019-08-13,bench,barbell,decline,170,10,170,10,170,10,170,10,170,10
+2019-08-13,row,machine,supported,195,10,195,10,195,10
+2019-08-13,pullup,chinup,neutral,20,5,20,4,20,4
+2019-08-13,lat pulldown,cable,wide,120,11,120,11,120,11
+2019-08-13,bicep curl,cable,standing,140,11,140,11
+2019-08-13,face pull,band,pull-apart,0,12,0,12  
+2019-08-11,squat,barbell,low bar,285,5,325,3,360,4,360,2,360,2,285,5
+2019-08-11,deadlift,barbell,2-inch deficit,325,8,325,8,325,8
+2019-08-10,bench,barbell,flat,175,3,195,3,210,9,210,5,210,5,195,5,175,6
+2019-08-10,press,barbell,overhead,135,5,135,5,135,5,135,5,135,5
+2019-08-10,row,machine,supported,190,10,190,10,190,10
+2019-08-10,pullup,chinup,neutral,15,5,15,5,15,5,0,5
+2019-08-10,lat pulldown,cable,wide,120,10,120,10,120,10
+2019-08-10,bench,dumbbell,15-degree,140,10,140,9,140,8
+2019-08-09,deadlift,barbell,conventional,310,3,355,3,400,8,400,3,400,3,310,5
+2019-08-09,squat,barbell,low bar,265,8,265,8,265,8
+2019-08-06,press,barbell,overhead,125,3,140,3,160,6,160,3,160,3,140,5,125,6
+2019-08-06,bench,barbell,decline,170,10,170,10,170,10,170,10,170,10
+2019-08-06,row,machine,supported,185,10,185,10,185,10
+2019-08-06,pullup,chinup,neutral,15,5,15,5,15,4
+2019-08-06,lat pulldown,cable,wide,120,9,120,9,120,9
+2019-08-06,bicep curl,cable,standing,140,11,140,11
+2019-08-06,face pull,cable,drop set,95,10,65,10,40,10
+2019-08-04,squat,barbell,low bar,265,3,305,3,345,6,345,3,345,3,265,6
+2019-08-04,deadlift,barbell,2-inch deficit,325,8,325,8,325,8
+2019-08-03,bench,barbell,flat,160,6,185,6,195,11,195,6,195,6,185,6,160,8
+2019-08-03,press,barbell,overhead,135,5,135,5,135,5,135,5,135,5
+2019-08-03,row,machine,supported,180,10,180,10,180,10
+2019-08-03,pullup,chinup,neutral,20,2,10,3,10,3
+2019-08-03,lat pulldown,cable,wide,120,8,120,8,120,8
+2019-08-03,bench,dumbbell,15-degree,140,8,140,8,140,8
+2019-08-01,deadlift,barbell,conventional,290,5,330,5,375,10,375,6
+2019-08-01,squat,barbell,low bar,265,8,265,8,265,8
+2019-07-31,press,barbell,overhead,115,5,135,5,150,8,150,5,150,4,135,5,115,5
+2019-07-31,bench,barbell,decline,170,10,170,10,170,10,170,10,170,9
+2019-07-31,row,machine,supported,175,10,175,10,175,10
+2019-07-31,pullup,chinup,neutral,15,4,15,4,15,3
+2019-07-31,lat pulldown,cable,wide,105,12,105,12,105,12
+2019-07-31,bicep curl,cable,standing,125,14,125,12
+2019-07-28,squat,barbell,low bar,235,5,270,5,310,8,310,3,310,3,250,8
+2019-07-28,deadlift,barbell,2-inch deficit,325,8,325,8,325,8
+2019-07-27,bench,barbell,flat,150,8,175,8,185,12,185,8,185,7,175,6,160,8
+2019-07-27,press,barbell,overhead,135,5,135,5,135,5,135,5,135,5
+2019-07-27,row,machine,supported,170,10,170,10,170,10
+2019-07-27,pullup,chinup,neutral,15,5,-75,5,15,4
+2019-07-27,lat pulldown,cable,wide,105,11,105,11,105,11
+2019-07-27,bench,dumbbell,15-degree,140,9,140,8,140,7
+2019-07-25,deadlift,barbell,conventional,185,5,225,5,275,5
+2019-07-25,squat,barbell,low bar,265,8,265,8,265,8
+2019-07-24,press,barbell,overhead,155,5,165,4,165,3,165,3,165,3,165,2
+2019-07-24,bench,barbell,decline,170,12,170,10,170,10
+2019-07-24,row,machine,supported,165,10,165,10,165,10
+2019-07-24,pullup,chinup,neutral,10,5,10,5,10,5
+2019-07-24,lat pulldown,cable,wide,105,8,105,8,105,8
+2019-07-24,bicep curl,cable,standing,125,16,125,14
+2019-07-22,squat,barbell,low bar,150,5,185,5,225,5
+2019-07-22,deadlift,barbell,2-inch deficit,325,8,325,8,325,8
+2019-07-21,bench,barbell,flat,185,5,205,5,225,2,225,2,225,2,185,6
+2019-07-21,press,barbell,overhead,165,3,165,3,165,3
+2019-07-21,row,machine,supported,150,10,150,10,150,10
+2019-07-21,bicep curl,barbell,standing,60,10,60,10
+2019-07-21,pullup,chinup,neutral,0,3,0,3,0,3
+2019-07-21,bench,dumbbell,30-degree,130,10,140,6
+2019-07-18,deadlift,barbell,conventional,325,5,365,3,410,5
+2019-07-17,press,barbell,overhead,160,5,160,5,160,5
+2019-07-17,bench,barbell,decline,170,10,170,10,170,10,170,10,170,10
+2019-07-17,row,machine,supported,160,10,160,10,160,10
+2019-07-17,pullup,chinup,neutral,10,5,10,5,10,4
+2019-07-17,lat pulldown,cable,wide,90,8,90,8,90,8
+2019-07-17,bicep curl,cable,standing,125,14,140,9,140,9,125,12
+2019-07-15,squat,barbell,low bar,280,5,315,3,355,4,355,2,355,2,280,5
+2019-07-15,deadlift,barbell,2-inch deficit,325,8,325,8,325,8
+2019-07-14,bench,barbell,flat,170,3,190,3,205,8,205,4,205,4,190,5,170,8
+2019-07-14,press,barbell,overhead,160,3,160,3,160,3,160,3,160,3
+2019-07-14,row,machine,supported,155,10,155,10,155,10
+2019-07-14,pullup,chinup,neutral,10,10,5,10,5
+2019-07-14,bench,dumbbell,15-degree,130,11,140,9,130,10
+2019-07-14,face pull,band,pull-apart,0,17,0,17,0,17
+2019-07-11,deadlift,barbell,conventional,295,3,345,3,390,8,390,3,390,3,300,8
+2019-07-11,squat,barbell,low bar,265,8,265,8,265,8
+2019-07-09,press,barbell,overhead,155,5,155,5,155,5
+2019-07-09,bench,barbell,decline,170,10,170,10,170,10,170,10,170,10
+2019-07-09,row,machine,supported,150,10,150,10,150,10
+2019-07-09,pullup,chinup,neutral,10,5,10,5,10,4
+2019-07-09,bicep curl,cable,standing,125,12,140,9,140,9,125,12
+2019-07-09,face pull,band,pull-apart,0,16,0,16
+2019-07-07,squat,barbell,low bar,260,3,300,3,335,6,335,3,335,3,260,8
+2019-07-07,deadlift,barbell,1-inch deficit,325,8,325,8,325,8
+2019-07-07,farmers walk,kettlebell,1-sided,50,8
+2019-07-07,farmers walk,plate,2-sided,90,2,90,2
+2019-07-05,bench,barbell,flat,160,6,180,6,190,10,190,6,190,6,180,6,160,8
+2019-07-05,press,barbell,overhead,155,3,155,3,155,3,155,3,155,2
+2019-07-05,row,machine,supported,145,10,145,10,145,10
+2019-07-05,pullup,chinup,neutral,0,6,0,6,10,5
+2019-07-05,bench,dumbbell,15-degree,130,10,140,7,130,8
+2019-07-05,face pull,band,pull-apart,0,15,0,15,0,15
+2019-07-04,deadlift,barbell,conventional,280,5,325,5,365,10,365,3,365,3,280,10
+2019-07-04,squat,safety bar,conventional,240,8,240,8,240,8
+2019-07-04,farmers walk,kettlebell,1-sided,50,8
+2019-07-04,farmers walk,plate,2-sided,90,2,90,2
+2019-07-02,press,barbell,overhead,150,5,150,5,150,6
+2019-07-02,bench,barbell,decline,170,10,170,10,170,10,170,10,170,9
+2019-07-02,row,machine,supported,140,10,140,10,140,10
+2019-07-02,pullup,chinup,neutral,0,7,0,6,0,6
+2019-07-02,bicep curl,cable,standing,125,14,140,9,140,9,125,12
+2019-07-02,face pull,band,pull-apart,0,15,0,15,0,15,0,15
+2019-06-30,squat,barbell,low bar,240,5,280,5,315,7,315,3,240,8
+2019-06-30,deadlift,barbell,conventional,325,8,325,8,325,8
+2019-06-30,farmers walk,kettlebell,1-sided,50,8
+2019-06-30,farmers walk,plate,2-sided,90,2,90,2
+2019-06-28,bench,barbell,flat,145,8,170,8,180,12,180,7,180,6,170,6,145,8
+2019-06-28,press,barbell,overhead,150,3,150,3,150,3,150,3,150,3
+2019-06-28,row,machine,supported,140,9,140,10,140,10
+2019-06-28,bench,dumbbell,30-degree,120,12,130,8,120,8
+2019-06-28,pullup,chinup,neutral,0,5,0,5,0,5
+2019-06-28,face pull,band,pull-apart,0,15,0,15,0,15,0,15
+2019-06-26,deadlift,barbell,conventional,255,5,275,5,295,5
+2019-06-26,squat,safety bar,conventional,240,8,240,8,240,8
+2019-06-24,press,machine,overhead,150,3,150,3,150,3,150,3,150,3
+2019-06-24,bench,machine,decline,165,5,165,5,165,5
+2019-06-24,row,cable,seated,200,8,200,8,200,8
+2019-06-24,pullup,chinup,neutral,0,8,0,6,0,6
+2019-06-24,face pull,band,pull-apart,0,22,0,22
+2019-06-24,bicep curl,cable,standing,125,12,140,8,140,8,125,12
+2019-06-24,bench,dumbbell,15-degree,100,15,100,13,100,13
+2019-06-23,squat,machine,low bar,250,5,250,5,250,5
+2019-06-23,deadlift,machine,conventional,320,8,320,8,320,8
+2019-06-23,farmers walk,plate,1-sided,45,6
+2019-06-23,farmers walk,plate,2-sided,90,1
+2019-06-21,bench,barbell,flat,165,3,185,3,205,3,225,1,235,1,225,1,205,3,185,4,165,7
+2019-06-21,press,barbell,overhead,150,4,150,3,150,3,150,3,150,2
+2019-06-21,row,machine,supported,200,11,200,10,200,10
+2019-06-21,face pull,band,pull-apart,0,22,0,22,0,22,0,22,0,22,0,22
+2019-06-21,pullup,chinup,neutral,0,6,0,6,0,6
+2019-06-21,bicep curl,cable,standing,125,12,140,8,140,8,125,12
+2019-06-21,bench,dumbbell,15-degree,120,12,130,9,130,9
+2019-06-20,deadlift,barbell,conventional,315,5,360,3,400,6,400,2,400,1,315,5
+2019-06-18,press,barbell,overhead,145,5,145,5,145,5
+2019-06-18,bench,barbell,decline,165,10,165,10,165,10,165,10,165,10
+2019-06-18,row,machine,supported,200,14,220,12,220,12
+2019-06-18,pullup,chinup,neutral,0,5,10,4,10,4
+2019-06-18,bicep curl,cable,standing,125,13,140,8,140,8,125,12
+2019-06-18,face pull,band,pull-apart,0,22,0,22
+2019-06-17,squat,barbell,low bar,270,5,310,3,345,4,345,2,270,5
+2019-06-17,deadlift,barbell,conventional,320,8,320,8,320,8
+2019-06-17,farmers walk,kettlebell,1-sided,50,8
+2019-06-17,farmers walk,plate,2-sided,90,4
+2019-06-15,bench,barbell,flat,165,3,185,3,200,7,200,3,200,3,185,6,165,6
+2019-06-15,press,barbell,overhead,140,5,140,5,140,5
+2019-06-15,row,machine,supported,200,10,200,10,200,10
+2019-06-15,pullup,chinup,neutral,0,6,0,6,0,5
+2019-06-15,bicep curl,cable,standing,125,12,140,8,140,9,125,12
+2019-06-15,bench,dumbbell,15-degree,110,12,130,8,130,8
+2019-06-15,face pull,band,pull-apart,0,22,0,22
+2019-06-13,deadlift,barbell,conventional,295,3,335,3,380,8,380,3,380,3,295,8
+2019-06-13,squat,safety bar,conventional,235,8,235,8,235,8
+2019-06-13,farmers walk,plate,2-sided,90,2
+2019-06-11,press,barbell,overhead,135,5,135,5,135,7
+2019-06-11,bench,barbell,decline,165,10,165,10,165,10,165,10,165,10
+2019-06-11,row,machine,supported,180,14,200,12,220,10
+2019-06-11,face pull,band,pull-apart,0,22,0,22
+2019-06-11,bicep curl,cable,standing,125,12,140,8,140,8,125,10
+2019-06-11,pullup,chinup,neutral,0,0,5,0,5
+2019-06-09,squat,barbell,low bar,255,3,290,3,325,5,325,2,255,6
+2019-06-09,deadlift,barbell,conventional,320,8,320,8,320,8
+2019-06-09,farmers walk,kettlebell,1-sided,50,8
+2019-06-09,farmers walk,plate,2-sided,90,2
+2019-06-08,bench,barbell,flat,155,6,175,6,185,10,185,6,185,6,175,6,155,7
+2019-06-08,press,barbell,overhead,130,5,130,5,130,5
+2019-06-08,row,machine,supported,200,10,200,10,200,9
+2019-06-08,pullup,chinup,neutral,0,5,0,5,0,5
+2019-06-08,bicep curl,cable,standing,125,12,140,8,140,7,125,10
+2019-06-08,bench,dumbbell,15-degree,90,14,110,10,110,10
+2019-06-08,face pull,band,pull-apart,0,21,0,21,0,21
+2019-06-06,deadlift,barbell,conventional,275,5,315,5,360,10,275,10
+2019-06-04,press,barbell,overhead,115,5,125,5,125,8,125,6
+2019-06-04,bench,barbell,decline,165,10,165,10,165,10,165,10,165,9
+2019-06-04,pullup,chinup,neutral,0,5,0,5,0,5
+2019-06-04,row,machine,supported,180,11,200,10,220,9
+2019-06-04,bicep curl,cable,standing,125,12,140,8,140,7,125,10
+2019-06-04,face pull,band,pull-apart,0,21,0,21
+2019-06-02,squat,barbell,low bar,235,5,270,5,310,5,235,5
+2019-06-01,bench,barbell,flat,145,8,165,8,175,11,175,8,165,8,145,8
+2019-06-01,press,barbell,overhead,95,5,105,5,115,5
+2019-06-01,row,machine,supported,200,9,200,9,200,9
+2019-06-01,pullup,chinup,neutral,0,6,0,6,0,5
+2019-06-01,bicep curl,cable,standing,110,15,125,10,125,10,110,12
+2019-06-01,face pull,band,pull-apart,0,21,0,21
+2019-06-01,bench,dumbbell,15-degree,90,12,110,9,90,11
