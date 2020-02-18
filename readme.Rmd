@@ -1,19 +1,10 @@
 ---
-title: "Weighlighting Notebook"
+title: "rweighlighting"
 author: "Nathan Chaney"
 date: '`r format(Sys.Date(), "%B %d, %Y")`'
-output: html_document
+output: github_document
+keep_md: TRUE
 ---
-
-# To Do
-
-* Simple vs. advanced planning (simple gives common routines like 5-3-1, Stronglifts, Madcow, etc.)
-* Aggregate planned cycles for each lift to printable worksheet/schedule format -- Use tabs for each lift desired to plan, then rbind tables created in each tab (will require separate input for each one?)
-* try polynomial fitting instead of log fitting
-* compare error of polynomial fitting to log fitting
-* number of cycles/programs dictates order of polynomial fitting?
-
-# Libraries
 
 ```{r Setup, include=FALSE, echo = FALSE}
 
@@ -23,233 +14,211 @@ my.imagedir <- "~/.bin/rweightlifting/images/"
 
 ```
 
-```{r Libraries, warning=FALSE, alert=FALSE, message=FALSE}
-library(ggplot2)
-library(plyr)
-library(dplyr)
+```{r Libraries, warning=FALSE, alert=FALSE, message=FALSE, include=F}
+library(tidyverse)
 library(data.table)
-library(plotly)
+library(zoo)
 library(rweightlifting)
 
 ```
 
-# Data Import & Munging
+# Introduction
 
-## Weightlifting Data
+The rweightlifting package is designed to assist weightlifters and their coaches with creating programs and monitoring trainees' progress. The package contains functions for calculating common variables used in barbell training, such as 1-rep max, N-rep max, training maxes, tonnage, etc. The package includes an interactive shiny dashboard that allows weightlifters to visualize progress and compare common training programs against past results.
 
-The load_csv_data() function reads all CSV files in the specified directory. Each file should correspond to a specific weightlifting program. The function expects a specific input format that includes a header row.
+# Reading Data
 
-Future plans include the ability to import CSV data from a variety of weightlifting apps app.
+The load_csv_data() function reads all CSV files in the specified directory. Each file should correspond to a specific weightlifting program. The function expects a specific input format that includes a header row, as follows:
 
-```{r warning=FALSE, alert=FALSE, message=FALSE}
-# Expected CSV format:
-# date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set...weight,set...reps,setNweight,setNreps
-# E.g., 2017-01-26,bench,barbell,102.5,5,135,5,155,5,180,5,210,3,155,13
-data <- load_csv_data(datadir = my.datadir)
-tail(data)
+`date, exercise, variant, set1weight, set1reps, set2weight, set2reps, ..., setNweight, setNreps`
+
+```{r}
+
+weightlifting.log <- load_csv_data(datadir = my.datadir) %>% as_tibble()
+
 ```
 
-# Munge and Summarize
+The function creates a data table with one set per row, as follows:
 
-We've created two different tables here. One contains data for all sets, and the other just contains data for the top work set for each day. Here's what the summary dataset looks like:
+```{r, echo=F}
 
-```{r include=TRUE, echo=TRUE, warning=FALSE, alert=FALSE, message=FALSE}
-start.date <- min(data$date, na.rm=TRUE)
+knitr::kable(tail(weightlifting.log, addrownums = FALSE))
 
-exercises <- c("squat", "bench", "row", "tricep extension", "dips", "body weight", "deadlift", "press", "pullup", "bicep curl")
-
-Comp.opt <- function(data)
-{
-    output <- integer(length(data)-1L)
-    for(i in seq_along(output))
-    {
-        output[[i]] <- (data[[i]] >= 0.85 * data[[i+1L]])
-    }
-    return(output)
-}
-
-summary <- ddply(data, date ~ exercise, function(x)x[which.max(x$weight), ])
-summary <- summary[with(summary, order(exercise, date)),]
-true.max <- as.logical(Comp.opt(summary$weight))
-summary <- subset(summary, true.max)
-
-data$exercisef <- factor(data$exercise, levels = exercises, ordered=TRUE) 
-summary$exercisef <- factor(summary$exercise, levels = exercises, ordered=TRUE) 
-
-tail(summary)
-#tail(data)
 ```
 
-# Program Analysis
+# Visualizing Data
 
-As discussed in the introduction, I wound up switching programs after the weight got heavy. Moving forward, I wanted to be able to monitor my progress given the switch, and see how much stronger I got after switching programs. 
+The dashboard provided in the `shiny` directory contains many available visualizations for common metrics used in weightlifting. A few examples are provided below.
 
-# Tonnage
+## Diary View
 
-One thing weightlifters need to keep an eye on is the total volume of work they perform for a given lift and in a given workout. This is called tonnage. Generally speaking, tonnage needs to keep increasing if you want to get bigger and stronger.
+This view shows each set performed; it is a way to show progress (and consistency) at a glance, as follows:
 
-```{r warning=FALSE, alert=FALSE, message=FALSE}
-library(dplyr)
-tonnes <- data %>%
-  filter(! exercisef %in% c("tricep extension", "bicep curl", "pullup", "dips")) %>%
-  mutate(tonnage = weight * reps, date = as.POSIXct(paste(date, "18:00:00", sep=""), format = "%Y-%m-%d", tz = "America/Chicago"))
+```{r sets_reps, echo = F, fig.width=10}
 
-tonnage <- ggplot(tonnes) +
-  geom_bar(aes(date, tonnage, fill = exercisef), stat = "identity") +
-  scale_fill_brewer("Exercise", palette="Paired")
-
-#ggplotly(tonnage)
-ggsave(paste(my.imagedir, "tonnage.png", sep=""), tonnage, width=6, height=4)
-```
-
-![Tonnage](./images/tonnage.png)
-
-As you can see here, there's a period of time in the summer of 2016 where my tonnages fell off. This was a function of the way the SL 5x5 program works. If you can't lift 5x5 for a certain lift, it backs you off to 3 sets by 5 reps, then 3x3, 1x3, and so on. Unfortunately, the result of this programming "feature" is that my tonnages fell off, essentially causing a stall. I wish I would have been keeping an eye on this!
-
- Once I switched programs, I got the tonnages back up pretty quickly. Here's what they looked like compared as between the two programs:
- 
-```{r warning=FALSE, alert=FALSE, message=FALSE}
-stronglifts.stop <- as.Date("2016-09-01")
-stronglifts.tonnage <- data[data$date <= stronglifts.stop, ] %>%
-  mutate(tonnage = weight * reps, date = as.POSIXct(paste(date, "18:00:00", sep=""), format = "%Y-%m-%d", tz = "America/Chicago")) %>%
-  group_by(exercisef) %>% summarize(stronglifts.max = max(tonnage)) 
-
-madcow.tonnage <- data[data$date > stronglifts.stop, ] %>%
-  mutate(tonnage = weight * reps, date = as.POSIXct(paste(date, "18:00:00", sep=""), format = "%Y-%m-%d", tz = "America/Chicago")) %>%
-  group_by(exercisef) %>% 
-  summarize(madcow.max = max(tonnage))
-
-tonnages.maxes <- merge(stronglifts.tonnage, madcow.tonnage, all = TRUE)
-mdata <- melt(tonnages.maxes, id=c("exercisef"))
-tonnages.maxes$diff <- tonnages.maxes$madcow.max - tonnages.maxes$stronglifts.max
-tonnages.maxes$diff.percent <- round(tonnages.maxes$diff / tonnages.maxes$stronglifts.max * 100, 1)
-# This will change to in SELECTED instead of ! IN this static list
-tonnages.maxes <- tonnages.maxes %>%
-  filter(! exercisef %in% c("tricep extension", "bicep curl", "pullup", "dips"))
-
-mdata.plot <- ggplot(mdata) +
-  scale_fill_brewer("Program", palette="Paired") +
-  geom_bar(aes(exercisef, value, fill = variable, group=variable), stat = "identity", position = "dodge") +
-  xlab("") +
-  ylab("Max Tonnage (lbs)") +
-  coord_flip()
-
-tonnages.maxes.plot <- ggplot(tonnages.maxes) +
-  scale_fill_brewer("Exercise", palette="Paired") +
-  geom_bar(aes(exercisef, diff.percent, fill = exercisef), stat = "identity", position = "dodge", na.rm = TRUE) +
-#   theme(
-# 	  axis.text.x = element_text(angle = 45),
-#   ) +
-  labs(title = "% Improvement (tonnage)", 
-       subtitle = "Madcow over Stronglifts",
-       x = "",
-       y = "") +
-  coord_flip() +
-  theme(
-    legend.position = "none"
-  )
-
-ggsave(paste(my.imagedir, "tonnages.maxes.png", sep=""), mdata.plot, width=6, height=4)
-ggsave(paste(my.imagedir, "tonnages.percentages.png", sep=""), tonnages.maxes.plot, width=6, height=4)
-```
-
-![Max Tonnage by Program](./images/tonnages.maxes.png)
-![Max Tonnage Improvement](./images/tonnages.percentages.png)
-
-Ever since I was a kid, my lower body was always stronger. As a seventh grader, I could leg press the entire amount of weight on the machine in the junior high gym. However, I could barely bench press any weight. So, I've focused on increasing the volume of the bench press and row to try and get my upper body up to speed.
-
-As you can see here, the bench tonnage went up almost 2.5x!
-
-## Max Lift
-
-Now, let's see if that work paid off in terms of max lift:
-
-```{r warning=FALSE, alert=FALSE, message=FALSE}
-#summary(data[data$date <= stronglifts.stop, ], by=exercisef)
-stronglifts.max <- data[data$date <= stronglifts.stop, ] %>% group_by(exercisef) %>% summarize(stronglifts.max = max(weight))
-madcow.max <- data[data$date > stronglifts.stop, ] %>% group_by(exercisef) %>% summarize(madcow.max = max(weight))
-
-maxes <- merge(stronglifts.max, madcow.max, all = TRUE)
-mdata <- melt(maxes, id=c("exercisef"))
-maxes$diff <- maxes$madcow.max - maxes$stronglifts.max
-maxes$diff.percent <- round(maxes$diff / maxes$stronglifts.max * 100, 1)
-
-maxes <- maxes %>%
-  filter(! exercisef %in% c("tricep extension", "bicep curl", "pullup", "dips"))
-
-mdata.plot <- ggplot(mdata) +
-  scale_fill_brewer(palette="Paired") +
-  geom_bar(aes(exercisef, value, fill = variable, group=variable), stat = "identity", position = "dodge") +
-  xlab("Exercise") +
-  ylab("Max Weight (lbs)") +
-  coord_flip()
-  
-maxes.plot <- ggplot(maxes) +
-  scale_fill_brewer("Exercise", palette="Paired") +
-  geom_bar(aes(exercisef, diff.percent, fill = exercisef), stat = "identity", position = "dodge", na.rm = TRUE) +
-#   theme(
-# 	  axis.text.x = element_text(angle = 45),
-#   ) +
-  labs(title = "% Improvement (max work set)", 
-       subtitle = "Madcow over Stronglifts",
-       x = "",
-       y = "") +
-  coord_flip() +
-  theme(
-    legend.position = "none"
-  )
-
-ggsave(paste(my.imagedir, "lifts.maxes.png", sep=""), mdata.plot, width=6, height=4)
-ggsave(paste(my.imagedir, "lifts.percentages.png", sep=""), maxes.plot, width=6, height=4)
-```
-
-![Max Lift by Program](./images/lifts.maxes.png)
-
-![Max Lift Improvement](./images/lifts.percentages.png)
-
-Here we see that bench and row showed the most improvement during the Madcow program, somewhere around 25% for each.
-
-# Plotting
-
-Finally, here's an overview plot that shows all sets and reps over time. Sometimes lifting seems like it's progressing slowly! This view is useful for seeing incremental advancement over time to avoid discouragement. 
-
-```{r warning=FALSE, alert=FALSE, message=FALSE}
-today <- Sys.Date()
-date.window <- seq(Sys.Date(), length = 2, by = "-6 months")[2]
-
-plot.full <- ggplot(data=data, aes(date, weight, color=exercise, size=reps)) +
-  scale_color_brewer(palette="Paired") +
-  facet_wrap( ~ exercisef, ncol=5) +
-  geom_point(data=data, aes(date, weight, color=exercise), alpha=0.5) +
-  scale_radius(range = c(0.5, 4), breaks=c(3,6,9,12,15)) +
+weightlifting.log %>%
+  filter(exercise %in% c("squat", "deadlift")) %>%
+  ggplot(aes(date, weight, color=interaction(equipment, variant), size=reps)) +
+  facet_wrap( ~ exercise, ncol = 1) +
+  geom_point(
+    aes(
+      date, 
+      weight, 
+      color = interaction(equipment, variant, lex.order = TRUE, sep = ","), 
+      shape = reps > 0
+    ), 
+    alpha=0.33
+  ) +
+  scale_shape_manual(values = c(4, 16)) +
+  scale_radius(range = c(1.5, 8), breaks=c(3,6,9,12,15)) +
   scale_y_continuous(
     position="right",
     minor_breaks=function(x){
       seq(0, ceiling(max(x)), 25)
       }) +
   scale_x_date(
-    date_breaks = "3 month", date_labels = "%b %y",
-    date_minor_breaks = "1 month"
+    date_breaks = "6 month", date_labels = "%b %Y",
+    date_minor_breaks = "2 month"
   ) +
-  #coord_cartesian(xlim = c(date.window, today)) +
-  coord_cartesian(xlim = c(start.date, today)) +
+  labs(x = "", y = "") +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "none"
+  ) +
   geom_vline(aes(xintercept = as.numeric(Sys.Date())), color=alpha("green", 0.5), linetype="dashed")
 
-plot.full.trendline <- plot.full +
-  geom_line(data=summary, aes(date, weight, color=exercise), size=1, alpha=1) +
-  labs(caption = paste("image generated at ", Sys.time(), sep = ""))
-
-ggsave(paste(my.imagedir, "all.lifts.png", sep=""), plot.full, width=12, height=6)
 ```
 
-![All Sets and Reps, by Exercise](./images/all.lifts.png)
+In this view, you can see that a linear progression program was followed at the beginning, followed by more complex programming over time. You can also see a gap around January 2018, which is when I tore my calf playing tennis and had to lay off lower body exercises for a while. The colors indicate different exercise, equipment, and exercise variants. Missed attempts (i.e., reps = 0) are denoted with an X shape.
 
-# Shiny App
+## Strength View
 
-This package comes with a couple of Shiny apps that incorporate the type of information provided above, but let you interact with the charts. One lets you see your progress across all programs, and you can filter by date, program, and exercise:
+The strength view uses a caculated one-rep max to show progress in strength over time. It is a way to compare absolute strength across different set/rep schemes and different goals, such as bulking or cutting weight. In addition, the dashboard is capable of using a corresponding body weight dataset to calculate a strength to weight ratio in similar fashion, which provides a way to compare relative strength over time.
 
-![Shiny - Past Progress](./images/shiny.past.progress.png)
+```{r strength_1rm, fig.width=10, echo = F}
 
-The other Shiny app is a custom program builder that lets you specify a number of different variables for each lift, and plots planned tonnages and max work sets against historical progress. The plot also shows a logarithmic model of your historical data so your planned program doesn't stray too far from what's likely possible. This lets you fine-tune your program in the event you need to recover from injury or focus on improving a specific lift.
+top_sets(weightlifting.log, use.method = "wathan") %>%
+  filter(exercise %in% c("squat", "bench", "press", "deadlift")) %>%
+  ggplot(aes(date, est.max)) +
+    geom_point(aes(fill = program, color = program), alpha = 0.5, stroke = 0, size = 2, na.rm = TRUE) +
+    geom_smooth(formula = y ~ x, method = "loess", se = TRUE, span = 0.25, na.rm = TRUE) +
+    facet_wrap(~ exercise, scales = "free_y") +
+    labs(y = "", x = "") +
+    scale_y_continuous(
+      position="right",
+      minor_breaks=function(x){
+        seq(0, ceiling(max(x)), 25)
+      }) +
+    scale_x_date(
+      date_breaks = "6 month", date_labels = "%b %Y",
+      date_minor_breaks = "2 month"
+    ) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "none"
+    )
 
-![Shiny - Custom Programming ](./images/shiny.program.builder.png)
+```
+
+Broadly speaking, this view shows a lifter with increasing strength over time. Bubbles of different colors denote different programs.
+
+## Other Views
+
+There are many other views shown in the dashboard located in the `shiny` directory. These include:
+
+* Personal Records (PRs) by weight, program, tonnage, reps, and reps across
+* Tonnage broken down by exercise, week, and day
+* Ranges for weight and tonnage broken down by program
+* Calendars that show lift days, weight PRs, tonnage PRs, and rep PRs
+* A competition programming view to assist in selecting lifts for weightlifting competitions
+
+# Creating a New Program
+
+Weightlifters change programming periodically in order to accommodate different goals, such as to increase the amount of work performed, to change set/rep ranges, or to start fresh after a layoff due to illness. The rweightlifting package contains functions designed to assist the coach or lifter in preparing a new program. The starting position for the new program is tied to a specific percentage of the lifter's previous one-rep maximum, which is called the training max. For instance, a typical starting point after a week's vacation might set the training max at 90% of the lifter's calculated 1RM over the last month. The functions contain sensible defaults; the dashboard permits a user to adjust pertinent variables in order to get the desired level of difficulty.
+
+For the lifter identified above, the package provides the following cycle for a new program based on Jim Wendler's basic 3-week 5-3-1 program:
+
+```{r new_program, echo = F}
+
+knitr::kable(
+  head(
+    rweightlifting::program_schedule("wendler_531", weightlifting.log) %>%
+      left_join(
+        weightlifting.log %>%
+          group_by(exercise, equipment, variant, weight) %>%
+          summarize(max.reps = max(reps))
+      , by = c("exercise", "equipment", "variant", "weight"))
+  , 12)
+)
+```
+
+For convenience, we can also add the maximum number of reps at each specific weight the trainee is supposed to lift. This assists with giving the lifter a "rep PR" to shoot for each time in the gym, which is helpful for programs that recommend an AMRAP (as many reps as possible) scheme for work sets such as Wender 5-3-1.
+
+This information can be displayed alongside historical training information to provide a visual representation of a new program's potential for gains over time:
+
+```{r programming_sets_reps, echo = F, fig.width=10}
+
+deload_cycles <- 3
+
+rweightlifting::program_schedule("wendler_531", weightlifting.log, cycles = 12, deload_every = deload_cycles) %>%
+  mutate(
+    date = Sys.Date() + (cycle - 1) * wendler_531()$duration + (wendler_531()$deload_duration * ((cycle - 1) %/% as.numeric(deload_cycles))) + (day - 1)
+  ) %>%
+  bind_rows(weightlifting.log) %>%
+  filter(exercise %in% c("squat", "deadlift")) %>%
+  ggplot(aes(date, weight, color=interaction(equipment, variant), size=reps)) +
+  facet_wrap( ~ exercise, ncol = 1) +
+  geom_point(
+    aes(
+      date, 
+      weight, 
+      color = interaction(equipment, variant, lex.order = TRUE, sep = ","), 
+      shape = reps > 0
+    ), 
+    alpha=0.33
+  ) +
+  scale_shape_manual(values = c(4, 16)) +
+  scale_radius(range = c(1.5, 8), breaks=c(3,6,9,12,15)) +
+  scale_y_continuous(
+    position="right",
+    breaks = function(x) {
+      seq(0, ceiling(max(x)), 100)
+    },
+    minor_breaks=function(x){
+      seq(0, ceiling(max(x)), 25)
+    }
+  ) +
+  scale_x_date(
+    date_breaks = "6 month", date_labels = "%b %Y",
+    date_minor_breaks = "2 month"
+  ) +
+  labs(x = "", y = "") +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "none"
+  ) +
+  geom_vline(aes(xintercept = as.numeric(Sys.Date())), color=alpha("green", 0.5), linetype="dashed")
+
+```
+
+The vertical green line represents today (currently `r format(Sys.Date(), "%d %b %Y")`); projected performance following a new program is plotted to the right of the green line. Another feature displayed here is the ability to program deload weeks every so often -- in this case after every 3 cycles. Note that the projected work doesn't necessarily include accessory or supplemental work that may appear in historical data.
+
+The supported programs include:
+
+```{r programs, echo = F}
+
+program_descriptions <- c()
+
+for (i in available_programs()) {
+  program_descriptions <- c(program_descriptions, eval(call(i))$name)
+}
+
+program_descriptions
+
+```
+
+It is desired that future versions of the package's dashboard will permit creation of custom programs on an exercise-by-exercise basis.
+
+# Interactive Dashboard
+
+This package is designed for interactive use via the dashboard in the `shiny` directory. You'll need to point the data source for both the weightlifting logs and body weight logs to the right directories. 

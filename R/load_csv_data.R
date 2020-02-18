@@ -1,6 +1,10 @@
-# Expected CSV format:
-# date,exercise,variant,set1weight,set1reps,set2weight,set2reps,set...weight,set...reps,setNweight,setNreps
-# E.g., 2017-01-26,bench,barbell,102.5,5,135,5,155,5,180,5,210,3,155,13
+#' Loads weightlifting logs in CSV format into a data frame
+#' @export
+#'
+#' @param datadir A directory containing weightlifting logs in CSV format. The expected format is \code{date, exercise, variant, set1weight, set1reps, ..., setNweight, setNreps}
+#' @param files A list of files containing weightlifting logs in CSV format. Not currently implemented.
+#' @param header Whether the CSV file contains a header. Passed to read.csv.
+#' @return A data frame containing a weightlifting log with one set of an exercise per row. The program name listed in the data frame will correspond to the name of the CSV file from which the data was read.
 
 load_csv_data <- function(files = NA, datadir = NA, header = TRUE) {
 
@@ -23,7 +27,7 @@ load_csv_data <- function(files = NA, datadir = NA, header = TRUE) {
 
   for (i in 1:length(files)) {
 
-    file <- read.csv(
+    file <- utils::read.csv(
       paste(files[i], sep=""),
       header = header,
       sep = ",",
@@ -82,6 +86,13 @@ load_csv_data <- function(files = NA, datadir = NA, header = TRUE) {
   out.file$date <- as.Date(out.file$date)
   out.file[! is.na(out.file$weight) & ! is.na(out.file$reps), ]
 }
+
+
+#' Checks to see if a data frame is a valid weightlifting log. Looks for names.
+#' @export
+#'
+#' @param weightlifting.log A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}
+#' @return Boolean
 
 is_valid_weightlifting_log <- function(weightlifting.log = NULL) {
 
