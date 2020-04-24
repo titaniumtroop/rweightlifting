@@ -1,24 +1,35 @@
-# These functions allow estimates of one-rep maxes using various formulas
+#' @import dplyr
+#' @importFrom zoo rollapply
+#' @importFrom tidyr gather
+#' @importFrom rlang .data
 
-#' List of available estimation techniques for an arbitrary number of repetitions
-#' @export
+############################################################################
+### These functions allow estimates of one- and n-rep maxes using various formulas
+############################################################################
+
+#' @title Available rep-max formulas
+#' @description List of available estimation techniques for an arbitrary number of repetitions
 #'
 #' @return A character vector of available estimation techiques; formulas sourced from https://en.wikipedia.org/wiki/One-repetition_maximum
 #' @examples
 #' "wathan" %in% rep_max_formulas()
+#'
+#' @export
 
 rep_max_formulas <- function() {
   c("epley", "brzycki", "mcglothin", "lombardi", "mayhew", "oconner", "wathan")
 }
 
-#' Provides one-rep max given a single weight and rep
-#' @export
+#' @title one-rep max calculator
+#' @description Provides one-rep max given a single weight and rep
 #'
 #' @param weight Actual weight lifted
 #' @param reps Actual number of repetitions performed
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
 #' @param verbose Defaults to false. If true, will message which estimation technique is used.
 #' @return A one-rep maximum estimate
+#'
+#' @export
 
 one_rep_max <- function(weight, reps, method = "epley", verbose = FALSE) {
 
@@ -60,14 +71,16 @@ one_rep_max <- function(weight, reps, method = "epley", verbose = FALSE) {
   return(my_data$temp_maxes)
 }
 
-#' Provides n-rep max given a one-rep max and the desired rep max
-#' @export
+#' @title n-rep max calculator
+#' @description Provides n-rep max given a one-rep max and the desired rep max
 #'
 #' @param one_RM A one-rep max, either actual or estimated
 #' @param reps The number of repetitions for which an n_rep_max is desired
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
 #' @param verbose Defaults to false. If true, will message which estimation technique is used.
 #' @return An n-rep maximum estimate
+#'
+#' @export
 
 n_rep_max <- function(one_RM, reps, method = "epley", verbose = FALSE) {
 
@@ -109,14 +122,16 @@ n_rep_max <- function(one_RM, reps, method = "epley", verbose = FALSE) {
 }
 
 
-#' An everyday training maximum commonly used to set percentages for weight programs
-#' @export
+#' @title training max calculator
+#' @description An everyday training maximum commonly used to set percentages for weight programs
 #'
 #' @param program The name of a supported program. Supported programs can be listed with \code{\link{available_programs}}
 #' @param weightlifting.log A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}
 #' @param percentage The percentage of estimated one-rep max at which to set the training max. Defaults to 90\%.
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
 #' @return A table of training maxes for each \code{exercise, equipment, variant} combination specified in the program template
+#'
+#' @export
 
 training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90, method = "epley") {
 
@@ -164,19 +179,20 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
   )
 
   est.recent.maxes %>%
-    mutate(training_max = RM.max * percentage) %>%
-    select(exercise, equipment, variant, training_max) %>%
-    group_by(exercise, equipment, variant) %>%
-    summarize(training_max = round(mean(training_max), 1))
+    mutate(training_max = .data$RM.max * percentage) %>%
+    select(.data$exercise, .data$equipment, .data$variant, .data$training_max) %>%
+    group_by(.data$exercise, .data$equipment, .data$variant) %>%
+    summarize(training_max = round(mean(.data$training_max), 1))
 
 }
 
 #' Provides a one-rep maximum for each lift variant in a weightlifting log
-#' @export
 #'
 #' @param lifts_in_program A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}. This can be a weightlifting log, but is ideally filtered to include only the lifts that are available in the program.
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
 #' @return A table of one-rep maxes for each \code{exercise, equipment, variant} combination
+#'
+#' @export
 
 # This function provides a 1RM for each lift in a program
 # For programs that use a different RM to establish a training max, these numbers must be converted
@@ -191,22 +207,24 @@ one_rep_max_for_program <- function(lifts_in_program = NULL, method = "epley") {
   est.recent.maxes <- top.sets %>%
     #select(date, exercise, roll.max) %>%
     unique() %>%
-    group_by(exercise, variant) %>%
-    mutate(roll.max = round(rollapply(est.max, 5, mean, partial = TRUE, align = "left"), 1)) %>%
-    group_by(exercise, variant) %>%
-    top_n(1, wt = date) %>%
+    group_by(.data$exercise, .data$variant) %>%
+    mutate(roll.max = round(rollapply(.data$est.max, 5, mean, partial = TRUE, align = "left"), 1)) %>%
+    group_by(.data$exercise, .data$variant) %>%
+    top_n(1, wt = .data$date) %>%
     ungroup()
 
   est.recent.maxes
 }
 
 
-#' Provides a one-rep maximum for each lift in a program
-#' @export
+#' @title top set calculator
+#' @description Provides a one-rep maximum for each lift in a program
 #'
 #' @param weightlifting.log A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}
 #' @param use.method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
 #' @return A table of the top sets in the weightlifting.log
+#'
+#' @export
 
 top_sets <- function(weightlifting.log = NULL, use.method = NA) {
 
@@ -214,43 +232,43 @@ top_sets <- function(weightlifting.log = NULL, use.method = NA) {
 
   temp <- weightlifting.log %>%
     as_tibble() %>%
-    select(-set) %>%
+    select(-.data$set) %>%
     unique() %>%
     mutate(
-      epley = one_rep_max(method = "epley", weight = weight, reps = reps),
-      brzycki = one_rep_max(method = "brzycki", weight = weight, reps = reps),
-      mcglothin = one_rep_max(method = "mcglothin", weight = weight, reps = reps),
-      lombardi = one_rep_max(method = "lombardi", weight = weight, reps = reps),
-      mayhew = one_rep_max(method = "mayhew", weight = weight, reps = reps),
-      oconner = one_rep_max(method = "oconner", weight = weight, reps = reps),
-      wathan = one_rep_max(method = "wathan", weight = weight, reps = reps)
+      epley = one_rep_max(method = "epley", weight = .data$weight, reps = .data$reps),
+      brzycki = one_rep_max(method = "brzycki", weight = .data$weight, reps = .data$reps),
+      mcglothin = one_rep_max(method = "mcglothin", weight = .data$weight, reps = .data$reps),
+      lombardi = one_rep_max(method = "lombardi", weight = .data$weight, reps = .data$reps),
+      mayhew = one_rep_max(method = "mayhew", weight = .data$weight, reps = .data$reps),
+      oconner = one_rep_max(method = "oconner", weight = .data$weight, reps = .data$reps),
+      wathan = one_rep_max(method = "wathan", weight = .data$weight, reps = .data$reps)
     ) %>%
     gather(rep_max_formulas(), key = "method", value = "est.max")
 
   if (! is.na(use.method) & use.method %in% rep_max_formulas()) {
     temp <- temp %>%
-      filter(method == use.method)
+      filter(.data$method == use.method)
   }
 
   temp <- temp %>%
-    group_by(exercise, date, method) %>%
-    filter(reps > 0) %>%
-    top_n(1, est.max) %>% # Only best set counts per exercise, per day
+    group_by(.data$exercise, .data$date, .data$method) %>%
+    filter(.data$reps > 0) %>%
+    top_n(1, .data$est.max) %>% # Only best set counts per exercise, per day
     unique() %>%
     ungroup() %>%
-    arrange(desc(date)) %>%
-    group_by(exercise, method) %>%
-    mutate(roll.max = round(rollapply(est.max, 8, max, partial = TRUE, align = "left"), 1)) %>%
+    arrange(desc(.data$date)) %>%
+    group_by(.data$exercise, .data$method) %>%
+    mutate(roll.max = round(rollapply(.data$est.max, 8, max, partial = TRUE, align = "left"), 1)) %>%
     mutate(culled = ifelse(
-      est.max >= .9 * roll.max,
+      .data$est.max >= .9 * .data$roll.max,
       FALSE,
       TRUE
     )) %>%
     #mutate(last.max = lead(est.max), next.max = lag(est.max)) %>%
     ungroup() %>%
     #filter(lift.weight >= 0.85 * last.max | lift.weight >= 0.85 * next.max) # Removing deload weeks
-    filter(culled == FALSE) %>% # Removing deload weeks
-    select(-culled, -roll.max)
+    filter(.data$culled == FALSE) %>% # Removing deload weeks
+    select(-.data$culled, -.data$roll.max)
 
   temp
 }

@@ -1,3 +1,10 @@
+rweightlifting 0.2.0
+----------------
+* Move data to inst/extdata per tidyverse package instructions
+* Add @import directives to .R files to pass package checks
+* Add .data$ references to tidyverse variables to pass package checks
+* Remove intensity charts from dashboard, as the concept underlying the visualizations need refinement
+
 rweightlifting 0.1.9
 ----------------
 * Update readme file to github style

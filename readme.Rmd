@@ -8,8 +8,12 @@ keep_md: TRUE
 
 ```{r Setup, include=FALSE, echo = FALSE}
 
-knitr::opts_chunk$set(echo = TRUE)
-my.datadir <- "~/.bin/rweightlifting/raw-data/"
+knitr::opts_chunk$set(
+  echo = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+my.datadir <- "~/.bin/rweightlifting/inst/extdata/"
 my.imagedir <- "~/.bin/rweightlifting/images/"
 
 ```

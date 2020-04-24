@@ -56,7 +56,7 @@ body.weight$date <- as.Date(body.weight$date, "%Y-%m-%d")
 all.dates <- data.frame(date = seq.Date(from = min(body.weight$date), to = Sys.Date(), by = 1))
 
 body.weight <- body.weight %>%
-  full_join(all.dates) %>%
+  full_join(all.dates, by = "date") %>%
   arrange(date)
 
 names(body.weight) <- c("date", "actual") # We're going to calculate a rolling mean for weight to eliminate outliers and calculate strength for most dates where there's no weight measurement
@@ -501,7 +501,7 @@ program.tonnage <- reactive({
 
   rep.maxes <- reactive({
     temp.rep.max <- session.weights() %>%
-    #temp.rep.max <- session.weights %>%
+    # temp.rep.max <- session.weights %>%
       #filter(weight >= input$minweight) %>% # Removed this input and did top_n instead
       #filter(reps > 0) %>%
       group_by(exercise, equipment, variant, weight) %>%
@@ -511,7 +511,7 @@ program.tonnage <- reactive({
       ungroup() %>%
       left_join(
         session.weights(),
-        #session.weights,
+        # session.weights,
         by = c("max.reps" = "reps", "exercise" = "exercise", "equipment" = "equipment", "variant" = "variant", "weight" = "weight")
       ) %>%
       #filter(reps > 0) %>%
@@ -522,6 +522,7 @@ program.tonnage <- reactive({
       ) %>%
       ungroup() %>%
       left_join(
+        # session.weights,
         session.weights(),
         by = c("max.reps" = "reps", "exercise" = "exercise", "equipment" = "equipment", "variant" = "variant", "weight" = "weight", "date" = "date")
       ) %>%
@@ -784,15 +785,19 @@ renderPlotly({
 ```
 
 
-Intensity {data-orientation=rows}
-=======================================================================
 
-Column {.tabset .tabset-fade}
------------------------------------------------------------------------
+```{r plot weekly intensity, eval=F}
 
-### Max Daily Intensity
+# Below is is the header for an intensity page
+# I'm not yet satisfied that this provides helpful information, so I'm hiding it
 
-```{r plot weekly intensity}
+# Intensity {data-orientation=rows}
+# =======================================================================
+# 
+# Column {.tabset .tabset-fade}
+# -----------------------------------------------------------------------
+# 
+# ### Max Daily Intensity
 
 renderPlotly({
   ggplot(
@@ -814,10 +819,10 @@ renderPlotly({
 
 ```
 
+
+```{r intensity vs volume, eval = F}
+
 ### Intensity vs. Volume
-
-```{r intensity vs volume}
-
 
 
 renderPlotly({
@@ -1115,22 +1120,6 @@ renderPlotly({
     width = 2.5
   ) +
   geom_col() +
-  geom_col(
-    data = function(x) {
-      x %>%
-      group_by(exercise) %>%
-      summarize(
-        week = max(week),
-        weekof = max(weekof),
-        volume = max(volume)
-      ) %>%
-      ungroup()
-    },
-    aes(x = week, y = volume, group = exercise),
-    fill = "goldenrod", 
-    alpha = 0.5
-  ) +
-  #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
   labs(title = "", x = "", y = "")
 })
 
@@ -1200,7 +1189,6 @@ renderPlotly({
       width = 2.5
     ) +
     geom_bar(position = "stack", stat = "identity") +
-    #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
     labs(title = "", x = "", y = "")
  })
 
@@ -1338,26 +1326,44 @@ renderPlotly({
     aes(
       x = weight,
       y = max.reps,
-      size = count,
+      # size = count,
       fill = program,
       text = paste(
         "most recent date: ", date,
         "<br>exercise: ", exercise
-        
       )
     )
   ) +
-  facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE) + interaction(equipment, variant), scales = "free_y") +
+  geom_col(position = "dodge", orientation = "x") +
+  # facet_wrap(~ factor(exercise) + interaction(equipment, variant), scales = "free_y") +
   scale_fill_brewer("Program", palette="Paired") +
-  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE) + interaction(equipment, variant), scales = "free_y") +
   labs(title = "", x = "", y = "") +
   coord_flip()
-  
-  ggplotly(p) %>% 
-    layout(legend = list(traceorder = "reversed"))
+
+  ggplotly(p) %>%
+    layout(
+      legend = list(
+        traceorder = "reversed")
+        # orientation = "h"   # show entries horizontally
+      )
 })
 
 ```
+
+```{r reprex, eval=F}
+
+df <- data.frame(
+  x = seq(from = 100, to = 300, length.out = 20), 
+  y = (rep(6.5:10.5, 4)), 
+  z = factor(c(rep(1, 5), rep(2, 5), rep(3, 5), rep(4, 5)))
+)
+
+ggplot2::ggplot(df, ggplot2::aes(x, y, fill = z)) +
+  ggplot2::geom_col(position = "dodge")
+
+```
+
 
 Reps Across PRs {data-orientation=rows, data-navmenu="PRs"}
 =======================================================================

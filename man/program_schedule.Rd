@@ -2,11 +2,18 @@
 % Please edit documentation in R/programming.R
 \name{program_schedule}
 \alias{program_schedule}
-\title{Creates a programming schedule from a program template given a user's historical information.}
+\title{Program scheduling}
 \usage{
-program_schedule(program = NA, weightlifting.log = NA,
-  smallest_plate = 2.5, increment = 0.025, cycles = 4,
-  deload_every = 0, ...)
+program_schedule(
+  program = NA,
+  weightlifting.log = NA,
+  smallest_plate = 2.5,
+  increment = 0.025,
+  cycles = 4,
+  deload_every = 0,
+  percentage = 0.9,
+  ...
+)
 }
 \arguments{
 \item{program}{The name of a supported program. Supported programs can be listed with \code{\link{available_programs}}}
@@ -20,6 +27,8 @@ program_schedule(program = NA, weightlifting.log = NA,
 \item{cycles}{The number of cycles to include in the program.}
 
 \item{deload_every}{If the program supports deloads, the number of cycles between each deload.}
+
+\item{percentage}{training max percentage. Defaults to 0.90.}
 
 \item{...}{Variables to be passed to the \code{\link{training_max}} function, which establishes the baseline weight for the program template}
 }

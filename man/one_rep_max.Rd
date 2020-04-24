@@ -2,7 +2,7 @@
 % Please edit documentation in R/rep_maxes.R
 \name{one_rep_max}
 \alias{one_rep_max}
-\title{Provides one-rep max given a single weight and rep}
+\title{one-rep max calculator}
 \usage{
 one_rep_max(weight, reps, method = "epley", verbose = FALSE)
 }

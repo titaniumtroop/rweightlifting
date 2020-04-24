@@ -1,4 +1,81 @@
 date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2020-03-19,deadlift,barbell,conventional,335,5,385,5,435,6
+2020-03-19,squat,barbell,low bar,330,5,330,5,330,5,330,5
+2020-03-19,hyperextension,machine,reverse,90,15,90,15
+2020-03-17,press,barbell,overhead,140,5,160,5,180,5,180,2,180,2,140,5
+2020-03-17,bench,barbell,decline,215,5,215,5,215,5,215,5,215,5
+2020-03-17,pullup,chinup,chinup,0,5,0,5,0,5,0,5
+2020-03-17,pullup,chinup,neutral,0,5,0,5,0,5
+2020-03-17,pullup,pullup,wide,0,5,0,5,0,5
+2020-03-17,cuban rotation,barbell,standard,50,12,50,12
+2020-03-15,squat,barbell,low bar,285,5,330,5,375,3,375,2,375,2,285,6
+2020-03-15,deadlift,barbell,conventional,385,5,385,5,385,5
+2020-03-15,hyperextension,machine,reverse,90,14,90,14
+2020-03-14,bench,barbell,flat,185,5,210,5,240,5,240,2,240,2,210,6,185,8
+2020-03-14,press,barbell,overhead,160,5,160,3,160,3,160,3,160,3
+2020-03-14,row,machine,supported,240,5,240,5,240,5,240,5,240,5
+2020-03-14,face pull,cable,rotation,82.5,13,82.5,13
+2020-03-12,deadlift,barbell,conventional,385,5
+2020-03-12,squat,barbell,low bar,330,5,330,5
+2020-03-12,hyperextension,machine,reverse,90,12,90,12
+2020-03-10,press,barbell,overhead,160,5,160,5,160,5
+2020-03-10,bench,barbell,decline,215,5,215,5,215,5
+2020-03-10,pullup,chinup,chinup,0,5,0,5
+2020-03-10,pullup,chinup,neutral,0,5,0,5
+2020-03-10,pullup,pullup,wide,0,5,0,5
+2020-03-10,cuban rotation,barbell,standard,45,12,50,11
+2020-03-08,squat,barbell,low bar,330,5,330,5,330,5
+2020-03-08,deadlift,barbell,conventional,385,5,385,5
+2020-03-07,bench,barbell,flat,205,5,205,5,205,5
+2020-03-07,press,barbell,overhead,160,5,160,5,160,5
+2020-03-07,row,machine,supported,240,5,240,5,240,5
+2020-03-07,face pull,cable,rotation,82.5,12,82.5,12
+2020-03-05,deadlift,barbell,conventional,375,5,435,3,475,1,495,1,515,0
+2020-03-05,squat,barbell,low bar,325,5,325,5,325,5
+2020-03-03,press,barbell,overhead,155,5,175,3,195,1,205,1
+2020-03-03,bench,barbell,flat,210,5,210,5,210,5,210,5
+2020-03-03,bench,barbell,slingshot,210,6
+2020-03-03,pullup,chinup,chinup,0,5,0,5,0,5
+2020-03-03,pullup,chinup,neutral,0,4,0,5,0,5
+2020-03-03,pullup,pullup,wide,0,5,0,5,0,5
+2020-03-03,cuban rotation,barbell,standard,45,12,40,12
+2020-03-01,squat,barbell,low bar,325,5,365,3,410,1
+2020-03-01,deadlift,barbell,conventional,375,5,375,5,375,5,375,5
+2020-02-29,bench,barbell,flat,205,5,235,3,260,1
+2020-02-29,press,barbell,overhead,155,5,155,5,155,5,155,5,155,5
+2020-02-29,row,machine,supported,235,5,235,5,235,5,235,5,235,5
+2020-02-29,face pull,cable,rotation,70,14,70,14
+2020-02-29,cuban rotation,barbell,standard,45,12,45,12
+2020-02-27,deadlift,barbell,conventional,350,3,405,3,450,6
+2020-02-27,squat,barbell,low bar,325,5,325,5,325,5,325,5,325,5
+2020-02-25,press,barbell,overhead,145,3,165,3,185,4
+2020-02-25,bench,barbell,flat,210,5,210,5,210,5,210,5,210,5
+2020-02-25,row,machine,supported,230,5,235,5,235,5,235,5,235,5
+2020-02-25,pullup,chinup,chinup,0,4,0,4,0,4
+2020-02-25,pullup,chinup,neutral,0,4,0,4,0,4
+2020-02-25,pullup,pullup,wide,0,4,0,4
+2020-02-25,face pull,cable,rotation,70,12,70,12
+2020-02-25,cuban rotation,barbell,standard,45,12,40,12
+2020-02-23,squat,barbell,low bar,300,3,345,3,390,3
+2020-02-23,deadlift,barbell,conventional,375,5,375,5,375,5,375,5,375,5
+2020-02-21,bench,barbell,flat,195,3,225,3,250,3,275,0,225,3,195,5
+2020-02-21,press,barbell,overhead,155,5,155,5,155,5,155,5,155,5
+2020-02-21,row,machine,supported,235,5,235,5,235,5,235,5,235,5
+2020-02-21,pullup,chinup,chinup,0,4,0,4,0,4,0,4
+2020-02-21,pullup,chinup,neutral,0,4,0,4,0,4
+2020-02-21,pullup,pullup,wide,0,4,0,4,0,4
+2020-02-21,face pull,cable,rotation,70,13,70,13
+2020-02-21,cuban rotation,barbell,standard,45,10,45,10
+2020-02-20,deadlift,barbell,conventional,325,5,375,5,425,8
+2020-02-20,squat,barbell,low bar,325,5,325,5,325,5,325,5,325,5
+2020-02-18,press,barbell,overhead,135,5,155,5,175,6
+2020-02-18,bench,barbell,flat,210,5,210,5,210,5,210,5,210,5
+2020-02-18,row,machine,supported,235,5,235,5,235,5,235,5,235,5
+2020-02-18,pullup,chinup,chinup,0,4,0,4,0,4
+2020-02-18,pullup,chinup,neutral,0,4,0,4,0,4
+2020-02-18,pullup,pullup,wide,0,4,0,4
+2020-02-18,face pull,cable,rotation,70,13,70,13
+2020-02-18,cuban rotation,barbell,standard,40,15,40,15
 2020-02-16,squat,barbell,low bar,280,5,325,5,365,5
 2020-02-16,deadlift,barbell,conventional,375,5,375,5,375,5,375,5,375,5
 2020-02-15,bench,barbell,flat,180,5,205,5,235,5

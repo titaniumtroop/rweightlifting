@@ -1,10 +1,14 @@
-#' Loads weightlifting logs in CSV format into a data frame
-#' @export
+#' @importFrom rlang .data
+
+#' @title Load weightlifting logs
+#' @description Loads weightlifting logs in CSV format into a data frame
 #'
 #' @param datadir A directory containing weightlifting logs in CSV format. The expected format is \code{date, exercise, variant, set1weight, set1reps, ..., setNweight, setNreps}
 #' @param files A list of files containing weightlifting logs in CSV format. Not currently implemented.
 #' @param header Whether the CSV file contains a header. Passed to read.csv.
 #' @return A data frame containing a weightlifting log with one set of an exercise per row. The program name listed in the data frame will correspond to the name of the CSV file from which the data was read.
+#'
+#' @export
 
 load_csv_data <- function(files = NA, datadir = NA, header = TRUE) {
 
@@ -50,9 +54,9 @@ load_csv_data <- function(files = NA, datadir = NA, header = TRUE) {
       }
 
       file <- tidyr::gather(file, "key", "value", numeric.cols, na.rm = TRUE)
-      file <- dplyr::mutate(file, set = readr::parse_number(key))
-      file <- dplyr::mutate(file, key = ifelse(grepl("rep", key), "reps", "weight"))
-      file <- tidyr::spread(file, key, value)
+      file <- dplyr::mutate(file, set = readr::parse_number(.data$key))
+      file <- dplyr::mutate(file, key = ifelse(grepl("rep", .data$key), "reps", "weight"))
+      file <- tidyr::spread(file, .data$key, .data$value)
       out.file <- dplyr::bind_rows(out.file, file)
     }
 

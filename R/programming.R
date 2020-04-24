@@ -1,11 +1,13 @@
+#' @importFrom rlang .data
+
 # To do:
 #   Increment by body group (5% for lower, 2.5% for upper, etc.)
 #   Increment by poundage instead of percentage (10 lbs for lower, 5 lbs for upper, etc.)
 #   training max includes prediction for other elements (e.g., by equipment or variant)
 
 
-#' Creates a programming schedule from a program template given a user's historical information.
-#' @export
+#' @title Program scheduling
+#' @description Creates a programming schedule from a program template given a user's historical information.
 #'
 #' @param program The name of a supported program. Supported programs can be listed with \code{\link{available_programs}}
 #' @param weightlifting.log A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}
@@ -13,8 +15,11 @@
 #' @param increment The percentage to increment the weights over each cycle. 2.5\% is the default, which provides a 5-lb increase on upper body lifts and a 10-lb increase on lower body lifts for a typical male lifter.
 #' @param cycles The number of cycles to include in the program.
 #' @param deload_every If the program supports deloads, the number of cycles between each deload.
+#' @param percentage training max percentage. Defaults to 0.90.
 #' @param ... Variables to be passed to the \code{\link{training_max}} function, which establishes the baseline weight for the program template
 #' @return A schedule for a weightlifting program in terms of \code{cycle, day, exercise, variant, set, reps, percentage, training max, weight}
+#'
+#' @export
 
 program_schedule <- function(
   program = NA,
@@ -23,6 +28,7 @@ program_schedule <- function(
   increment = .025,
   cycles = 4,
   deload_every = 0,
+  percentage = 0.90,
   ...) {
 
   if (! all(! is.na(program), program %in% rweightlifting::available_programs())) {
@@ -55,9 +61,9 @@ program_schedule <- function(
 
       temp.program.schedule <- temp.program$schedule %>%
         left_join(training.max, by = c("exercise", "equipment", "variant")) %>%
-        mutate(weight = plyr::round_any(percentage * training_max, smallest_plate * 2, round)) %>%
+        mutate(weight = plyr::round_any(percentage * .data$training_max, smallest_plate * 2, round)) %>%
         mutate(cycle = i) %>%
-        select(cycle, everything())
+        select(.data$cycle, everything())
 
       program.schedule <- bind_rows(program.schedule, temp.program.schedule)
 
@@ -67,9 +73,9 @@ program_schedule <- function(
       ) {
         temp.program.deload <- temp.program$deload_schedule %>%
           left_join(training.max, by = c("exercise", "equipment", "variant")) %>%
-          mutate(weight = plyr::round_any(percentage * training_max, smallest_plate * 2, round)) %>%
+          mutate(weight = plyr::round_any(percentage * .data$training_max, smallest_plate * 2, round)) %>%
           mutate(cycle = i) %>%
-          select(cycle, everything())
+          select(.data$cycle, everything())
 
         program.schedule <- bind_rows(program.schedule, temp.program.deload)
       }

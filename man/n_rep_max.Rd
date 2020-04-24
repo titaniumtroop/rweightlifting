@@ -2,7 +2,7 @@
 % Please edit documentation in R/rep_maxes.R
 \name{n_rep_max}
 \alias{n_rep_max}
-\title{Provides n-rep max given a one-rep max and the desired rep max}
+\title{n-rep max calculator}
 \usage{
 n_rep_max(one_RM, reps, method = "epley", verbose = FALSE)
 }

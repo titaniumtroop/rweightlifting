@@ -1,32 +1,33 @@
 Package: rweightlifting
 Type: Package
 Title: Analyze Weightlifting Progress and Create Custom Weightlifting Programs
-Version: 0.1.9
-Date: 2020-02-17
+Version: 0.2.0
+Date: 2020-04-24
 Authors@R: person("Nathan", "Chaney", email = "nathan@nathanchaney.com",
                   role = c("aut", "cre"))
 Description: Aggregates and analyzes weightlifting history data.  Rshiny apps 
     provide visualization of historical progress and assist with planning 
     future weightlifting programs. 
-License: CC BY 3.0
+License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.5.0),
     magrittr
 Imports:
-    utils,
+    data.table,
     tibble,
+    dplyr,
+    utils,
     readr,
     plyr,
     tidyr,
-    dplyr,
     zoo,
-    data.table
+    rlang
 Suggests:
     ggplot2,
     RColorBrewer,
     shiny,
     flexdashboard,
     plotly
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0

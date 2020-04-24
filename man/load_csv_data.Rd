@@ -2,7 +2,7 @@
 % Please edit documentation in R/load_csv_data.R
 \name{load_csv_data}
 \alias{load_csv_data}
-\title{Loads weightlifting logs in CSV format into a data frame}
+\title{Load weightlifting logs}
 \usage{
 load_csv_data(files = NA, datadir = NA, header = TRUE)
 }

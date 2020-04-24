@@ -2,7 +2,7 @@
 % Please edit documentation in R/rep_maxes.R
 \name{top_sets}
 \alias{top_sets}
-\title{Provides a one-rep maximum for each lift in a program}
+\title{top set calculator}
 \usage{
 top_sets(weightlifting.log = NULL, use.method = NA)
 }

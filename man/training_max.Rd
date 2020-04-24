@@ -2,10 +2,14 @@
 % Please edit documentation in R/rep_maxes.R
 \name{training_max}
 \alias{training_max}
-\title{An everyday training maximum commonly used to set percentages for weight programs}
+\title{training max calculator}
 \usage{
-training_max(weightlifting.log = NA, program = NA, percentage = 0.9,
-  method = "epley")
+training_max(
+  weightlifting.log = NA,
+  program = NA,
+  percentage = 0.9,
+  method = "epley"
+)
 }
 \arguments{
 \item{weightlifting.log}{A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}}

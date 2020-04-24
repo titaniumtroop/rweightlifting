@@ -2,7 +2,7 @@
 % Please edit documentation in R/rep_maxes.R
 \name{rep_max_formulas}
 \alias{rep_max_formulas}
-\title{List of available estimation techniques for an arbitrary number of repetitions}
+\title{Available rep-max formulas}
 \usage{
 rep_max_formulas()
 }
@@ -14,4 +14,5 @@ List of available estimation techniques for an arbitrary number of repetitions
 }
 \examples{
 "wathan" \%in\% rep_max_formulas()
+
 }
