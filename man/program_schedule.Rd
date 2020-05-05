@@ -12,6 +12,7 @@ program_schedule(
   cycles = 4,
   deload_every = 0,
   percentage = 0.9,
+  prgm_start_date = Sys.Date() + 1,
   ...
 )
 }
@@ -28,7 +29,9 @@ program_schedule(
 
 \item{deload_every}{If the program supports deloads, the number of cycles between each deload.}
 
-\item{percentage}{training max percentage. Defaults to 0.90.}
+\item{percentage}{Training max percentage. Defaults to 0.90.}
+
+\item{prgm_start_date}{Date to start the program. Defaults to tomorrow.}
 
 \item{...}{Variables to be passed to the \code{\link{training_max}} function, which establishes the baseline weight for the program template}
 }

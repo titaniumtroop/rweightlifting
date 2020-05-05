@@ -31,14 +31,16 @@ available_programs <- function() {
 #' Programming template for Lower 5-3-1 Last Set First, Upper 8-6-3 Pyramid
 #' @export
 #'
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.
 
-lower_531_lsf_upper_863_pyramid <- function() {
-  lower_531_lsf_upper_863_pyramid <- list()
-  lower_531_lsf_upper_863_pyramid$name <- "Lower 5-3-1 Last Set First, Upper 8-6-3 Pyramid"
-  lower_531_lsf_upper_863_pyramid$duration <- 21
-  lower_531_lsf_upper_863_pyramid$deload_duration <- 7
-  lower_531_lsf_upper_863_pyramid$RM_reps <- 1
+lower_531_lsf_upper_863_pyramid <- function(...) {
+  program <- list()
+  program$name <- "Lower 5-3-1 Last Set First, Upper 8-6-3 Pyramid"
+  program$duration <- 21
+  program$sessions_per_week <- 4
+  program$deload_duration <- 7
+  program$RM_reps <- 1
 
   # 8-6-3 with Pyramid for upper body
   # Source T-Nation: https://www.t-nation.com/training/8-6-3-for-size-and-strength
@@ -58,7 +60,7 @@ lower_531_lsf_upper_863_pyramid <- function() {
 
 
   #base_531_bench_863$schedule <- read_csv("./data/base_531_bench_863_schedule.csv", col_types = "iccciid")
-  lower_531_lsf_upper_863_pyramid$schedule <- tibble::tibble(
+  program$schedule <- tibble::tibble(
     day = c(
       rep(1L, 5),
       rep(2L, 4),
@@ -129,7 +131,7 @@ lower_531_lsf_upper_863_pyramid <- function() {
     )
 )
 
-  lower_531_lsf_upper_863_pyramid$deload_schedule <- tibble::tibble(
+  program$deload_schedule <- tibble::tibble(
     day = c(
       rep(22, 5),
       rep(23, 4),
@@ -163,21 +165,23 @@ lower_531_lsf_upper_863_pyramid <- function() {
     )
   )
 
-  lower_531_lsf_upper_863_pyramid
+  program
 }
 
 
 #' Programming template for Base 5-3-1, Bench 8-6-3
 #' @export
 #'
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.
 
-base_531_bench_863 <- function() {
-  base_531_bench_863 <- list()
-  base_531_bench_863$name <- "Base 5-3-1, Bench 8-6-3"
-  base_531_bench_863$duration <- 21
-  base_531_bench_863$deload_duration <- 7
-  base_531_bench_863$RM_reps <- 1
+base_531_bench_863 <- function(...) {
+  program <- list()
+  program$name <- "Base 5-3-1, Bench 8-6-3"
+  program$duration <- 21
+  program$sessions_per_week <- 4
+  program$deload_duration <- 7
+  program$RM_reps <- 1
 
   # 8-6-3 with Pyramid for upper body
   # Source T-Nation: https://www.t-nation.com/training/8-6-3-for-size-and-strength
@@ -196,8 +200,8 @@ base_531_bench_863 <- function() {
   # Set 3	85% x 5+	90% x 3+	95% x 1+	60% x 5
 
 
-  #base_531_bench_863$schedule <- read_csv("./data/base_531_bench_863_schedule.csv", col_types = "iccciid")
-  base_531_bench_863$schedule <- structure(list(
+  #program$schedule <- read_csv("./data/base_531_bench_863_schedule.csv", col_types = "iccciid")
+  program$schedule <- structure(list(
     day = c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 4L, 4L, 4L, 4L, 4L, 6L, 6L, 6L, 6L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L, 9L, 11L, 11L, 11L, 11L, 11L, 13L, 13L, 13L, 13L, 15L, 15L, 15L, 15L, 15L, 16L, 16L, 16L, 16L, 18L, 18L, 18L, 18L, 18L, 20L, 20L, 20L, 20L),
     exercise = c("bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift", "bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift", "bench", "bench", "bench", "bench", "bench", "squat", "squat", "squat", "squat", "press", "press", "press", "press", "press", "deadlift", "deadlift", "deadlift", "deadlift"),
     equipment = c("barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell", "barbell"),
@@ -217,7 +221,7 @@ base_531_bench_863 <- function() {
       percentage = structure(list(), class = c("collector_double", "collector"))),
       default = structure(list(), class = c("collector_guess", "collector")), skip = 1), class = "col_spec"))
 
-  base_531_bench_863$deload_schedule <- tibble::tibble(
+  program$deload_schedule <- tibble::tibble(
     day = c(
       rep(22, 3),
       rep(23, 3),
@@ -251,7 +255,7 @@ base_531_bench_863 <- function() {
   )
 
 
-  base_531_bench_863
+  program
 
 }
 
@@ -261,14 +265,16 @@ base_531_bench_863 <- function() {
 #'
 #' @param set_interval the percentage to ramp between sets; lower values are harder
 #' @param increment_percentage the increase in weight percentage on the heavy day of the cycle
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}.
 
-madcow <- function(set_interval = .125, increment_percentage = 0.025) {
+madcow <- function(set_interval = .125, increment_percentage = 0.025, ...) {
   # Sets out a single week's cycle for the Madcow 5x5 program
-  madcow <- list()
-  madcow$name <- "Madcow 5x5"
-  madcow$duration <- 7
-  madcow$RM_reps <- 5
+  program <- list()
+  program$name <- "Madcow 5x5"
+  program$sessions_per_week <- 3
+  program$duration <- 7
+  program$RM_reps <- 5
 
   day <- c(
     rep(1, 15),
@@ -337,8 +343,8 @@ madcow <- function(set_interval = .125, increment_percentage = 0.025) {
     ), 3)
   )
 
-  madcow$schedule <- tibble::tibble(day, exercise, equipment, variant, set, reps, percentage)
-  madcow
+  program$schedule <- tibble::tibble(day, exercise, equipment, variant, set, reps, percentage)
+  program
 }
 
 
@@ -346,17 +352,19 @@ madcow <- function(set_interval = .125, increment_percentage = 0.025) {
 #' @export
 #'
 #' @param increment_percentage the increase in weight percentage on subsequent days in the cycle
-#' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Note that this NLP is based on a a single 4-day cycle; most NLPs consist of repeating an A/B exercise three times per week, or 3 cycles over a two-week period.
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
+#' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Note that this NLP is based on a a single 4-day cycle; most NLPs consist of repeating an A/B exercise three times per week, or 3 cycles over a two-week period. This cycle can be converted to a MWF format using the \code{adjust_schedule} function.
 
-novice_linear_progression <- function(increment_percentage = 0.025) {
+novice_linear_progression <- function(increment_percentage = 0.025, ...) {
   # Sets out a single A/B cycle for NLP
   # Runs on a 12-day period, not 14 (i.e., every other day)
-  NLP <- list()
-  NLP$name <- "Novice Linear Progression"
-  NLP$duration <- 4
-  NLP$RM_reps <- 5
+  program <- list()
+  program$name <- "Novice Linear Progression"
+  program$sessions_per_week <- 3
+  program$duration <- 4
+  program$RM_reps <- 5
 
-  NLP$schedule <- tibble::tibble(
+  program$schedule <- tibble::tibble(
     day = c(
       rep(1, 7),
       rep(3, 7)
@@ -390,25 +398,27 @@ novice_linear_progression <- function(increment_percentage = 0.025) {
     )
   )
 
-  NLP
+  program
 }
 
 
 #' Programming template for 4-Day Linear Progression
 #' @export
 #'
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}.
 
-four_day_LP <- function() {
+four_day_LP <- function(...) {
   # Sets out a single week's cycle for a 4-day LP split
   # One day a week will be a 3x5 intensity day for each exercise (1x5 for deadlift)
   # One day a week will be a 5x5 volume day for each exercise
-  four_day_LP <- list()
-  four_day_LP$name <- "4-Day Linear Progression"
-  four_day_LP$duration <- 7
-  four_day_LP$RM_reps <- 5
+  program <- list()
+  program$name <- "4-Day Linear Progression"
+  program$sessions_per_week <- 4
+  program$duration <- 7
+  program$RM_reps <- 5
 
-  four_day_LP$schedule <- tibble::tibble(
+  program$schedule <- tibble::tibble(
     day = c(
       rep(1, 8),
       rep(2, 8),
@@ -452,25 +462,27 @@ four_day_LP <- function() {
     )
   )
 
-  four_day_LP
+  program
 }
 
 
 #' Programming template for Wendler 5-3-1
 #' @export
 #'
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.
 
-wendler_531 <- function() {
+wendler_531 <- function(...) {
   # Sets out a 3-week cycle for the Wendler 5-3-1 program
   # Deloads added separately
-  wendler_531 <- list()
-  wendler_531$name <- "Wendler 5-3-1"
-  wendler_531$duration <- 21
-  wendler_531$deload_duration <- 7
-  wendler_531$RM_reps <- 1
+  program <- list()
+  program$name <- "Wendler 5-3-1"
+  program$duration <- 21
+  program$sessions_per_week <- 4
+  program$deload_duration <- 7
+  program$RM_reps <- 1
 
-  wendler_531$schedule <- tibble::tibble(
+  program$schedule <- tibble::tibble(
     day = c(
       rep(1, 3),
       rep(2, 3),
@@ -531,7 +543,7 @@ wendler_531 <- function() {
     )
   )
 
-  wendler_531$deload_schedule <- tibble::tibble(
+  program$deload_schedule <- tibble::tibble(
     day = c(
       rep(22, 3),
       rep(23, 3),
@@ -564,24 +576,26 @@ wendler_531 <- function() {
     )
   )
 
-  wendler_531
+  program
 }
 
 
 #' Programming template for Wendler 5-3-1 Pyramid
 #' @export
 #'
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.
 
-wendler_531_pyramid <- function() {
+wendler_531_pyramid <- function(...) {
   # Sets out a 3-week cycle for the Wendler 5-3-1 program
-  wendler_531_pyramid <- list()
-  wendler_531_pyramid$name <- "Wendler 5-3-1 Pyramid"
-  wendler_531_pyramid$duration <- 21
-  wendler_531_pyramid$deload_duration <- 7
-  wendler_531_pyramid$RM_reps <- 1
+  program <- list()
+  program$name <- "Wendler 5-3-1 Pyramid"
+  program$duration <- 21
+  program$sessions_per_week <- 4
+  program$deload_duration <- 7
+  program$RM_reps <- 1
 
-  wendler_531_pyramid$schedule <- tibble::tibble(
+  program$schedule <- tibble::tibble(
     day = c(
       rep(1, 5),
       rep(2, 5),
@@ -642,7 +656,7 @@ wendler_531_pyramid <- function() {
     )
   )
 
-  wendler_531_pyramid$deload_schedule <- tibble::tibble(
+  program$deload_schedule <- tibble::tibble(
     day = c(
       rep(22, 3),
       rep(23, 3),
@@ -675,7 +689,7 @@ wendler_531_pyramid <- function() {
     )
   )
 
-  wendler_531_pyramid
+  program
 }
 
 # Extracts the programming elements of a program list and returns them in a dataframe.

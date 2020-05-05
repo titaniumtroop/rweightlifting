@@ -4,13 +4,15 @@
 \alias{novice_linear_progression}
 \title{Programming template for Novice Linear Progression}
 \usage{
-novice_linear_progression(increment_percentage = 0.025)
+novice_linear_progression(increment_percentage = 0.025, ...)
 }
 \arguments{
 \item{increment_percentage}{the increase in weight percentage on subsequent days in the cycle}
+
+\item{...}{Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.}
 }
 \value{
-a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Note that this NLP is based on a a single 4-day cycle; most NLPs consist of repeating an A/B exercise three times per week, or 3 cycles over a two-week period.
+a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Note that this NLP is based on a a single 4-day cycle; most NLPs consist of repeating an A/B exercise three times per week, or 3 cycles over a two-week period. This cycle can be converted to a MWF format using the \code{adjust_schedule} function.
 }
 \description{
 Programming template for Novice Linear Progression

@@ -4,7 +4,10 @@
 \alias{base_531_bench_863}
 \title{Programming template for Base 5-3-1, Bench 8-6-3}
 \usage{
-base_531_bench_863()
+base_531_bench_863(...)
+}
+\arguments{
+\item{...}{Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.}
 }
 \value{
 a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.

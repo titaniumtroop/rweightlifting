@@ -4,7 +4,10 @@
 \alias{four_day_LP}
 \title{Programming template for 4-Day Linear Progression}
 \usage{
-four_day_LP()
+four_day_LP(...)
+}
+\arguments{
+\item{...}{Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.}
 }
 \value{
 a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}.

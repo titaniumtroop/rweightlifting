@@ -1,3 +1,10 @@
+rweightlifting 0.2.1
+----------------
+* Add additional days per week variable to programs
+* Add new function adjust_schedule to place programmed workouts on specific days of the week; this function needs to be explicitly added to the dashboard, with some error checking (e.g., number of days selected should match days per week in program, or a warning message should appear)
+* Drop Intensity tab from dashboard, since it's not ready for production yet
+* Fix orientation bug in ggplot for rep PR view
+
 rweightlifting 0.2.0
 ----------------
 * Move data to inst/extdata per tidyverse package instructions

@@ -4,7 +4,10 @@
 \alias{wendler_531}
 \title{Programming template for Wendler 5-3-1}
 \usage{
-wendler_531()
+wendler_531(...)
+}
+\arguments{
+\item{...}{Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.}
 }
 \value{
 a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.

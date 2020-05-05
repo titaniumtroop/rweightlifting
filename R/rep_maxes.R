@@ -129,11 +129,13 @@ n_rep_max <- function(one_RM, reps, method = "epley", verbose = FALSE) {
 #' @param weightlifting.log A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}
 #' @param percentage The percentage of estimated one-rep max at which to set the training max. Defaults to 90\%.
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
+#' @param increment the increase in training max weight percentage in subsequent cycles
+#' @param ... Other arguments that may be passed to other functions.
 #' @return A table of training maxes for each \code{exercise, equipment, variant} combination specified in the program template
 #'
 #' @export
 
-training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90, method = "epley") {
+training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90, method = "epley", increment = 0.025, ...) {
 
   if (! is_valid_weightlifting_log(weightlifting.log)) stop("Please enter a valid weightlifting log.")
 
@@ -141,7 +143,7 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
     stop(paste0("Please provide a valid program. Choices are ", paste0(rweightlifting::available_programs(), collapse = ", "), "."))
   }
 
-  temp.program <- eval(call(program))
+  temp.program <- eval(call(program, increment_percentage = increment))
   temp.program.schedule <- temp.program$schedule
 
   if (! all(unique(temp.program.schedule$exercise) %in% unique(weightlifting.log$exercise))) {
@@ -166,9 +168,12 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
   # At this point, we have a valid weightlifting log that contains all required exercises.
   # We need to calculate a recent absolute 1RM for each exercise in the new program, then multiply that by the training max percentage.
 
-  unique_exercise_variants_in_program <- unique(temp.program.schedule[ , c("exercise", "equipment", "variant")])
+  unique_exercise_variants_in_program <- temp.program.schedule %>%
+    distinct(.data$exercise, .data$equipment, .data$variant) %>%
+    mutate_if(is.factor, as.character)
 
   lifts_in_program <- weightlifting.log %>%
+    mutate_if(is.factor, as.character) %>%
     inner_join(unique_exercise_variants_in_program, by = c("exercise", "equipment", "variant"))
 
   est.recent.maxes <- one_rep_max_for_program(lifts_in_program)
@@ -182,7 +187,9 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
     mutate(training_max = .data$RM.max * percentage) %>%
     select(.data$exercise, .data$equipment, .data$variant, .data$training_max) %>%
     group_by(.data$exercise, .data$equipment, .data$variant) %>%
-    summarize(training_max = round(mean(.data$training_max), 1))
+    summarize(training_max = round(mean(.data$training_max), 1)) %>%
+    ungroup() %>%
+    mutate_if(is.factor, as.character)
 
 }
 

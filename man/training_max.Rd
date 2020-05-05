@@ -8,7 +8,9 @@ training_max(
   weightlifting.log = NA,
   program = NA,
   percentage = 0.9,
-  method = "epley"
+  method = "epley",
+  increment = 0.025,
+  ...
 )
 }
 \arguments{
@@ -19,6 +21,10 @@ training_max(
 \item{percentage}{The percentage of estimated one-rep max at which to set the training max. Defaults to 90\%.}
 
 \item{method}{The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}}
+
+\item{increment}{the increase in training max weight percentage in subsequent cycles}
+
+\item{...}{Other arguments that may be passed to other functions.}
 }
 \value{
 A table of training maxes for each \code{exercise, equipment, variant} combination specified in the program template

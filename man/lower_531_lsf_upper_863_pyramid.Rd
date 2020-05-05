@@ -4,7 +4,10 @@
 \alias{lower_531_lsf_upper_863_pyramid}
 \title{Programming template for Lower 5-3-1 Last Set First, Upper 8-6-3 Pyramid}
 \usage{
-lower_531_lsf_upper_863_pyramid()
+lower_531_lsf_upper_863_pyramid(...)
+}
+\arguments{
+\item{...}{Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.}
 }
 \value{
 a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.
