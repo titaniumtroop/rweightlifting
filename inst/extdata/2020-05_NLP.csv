@@ -1,4 +1,49 @@
 date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2020-06-08,squat,barbell,low bar,350,5,350,5,350,5
+2020-06-08,press,barbell,overhead,170,5,170,5,170,5
+2020-06-08,deadlift,barbell,conventional,420,5
+2020-06-05,squat,barbell,low bar,345,5,345,5,345,5
+2020-06-05,bench,barbell,flat,220,5,220,5,220,5
+2020-06-05,deadlift,barbell,conventional,415,5
+2020-06-03,squat,barbell,low bar,340,5,340,5,340,5
+2020-06-03,press,barbell,overhead,165,5,165,5,165,5
+2020-06-03,deadlift,barbell,conventional,410,5
+2020-06-01,squat,barbell,low bar,335,5,335,5,335,5
+2020-06-01,bench,barbell,flat,215,5,215,5,215,5
+2020-06-01,deadlift,barbell,conventional,405,5
+2020-05-29,squat,barbell,low bar,330,5,330,5,330,5
+2020-05-29,press,barbell,overhead,160,5,160,5,160,5
+2020-05-29,deadlift,barbell,conventional,400,5
+2020-05-27,squat,barbell,low bar,325,5,325,5,325,5
+2020-05-27,bench,barbell,flat,210,5,210,5,210,5
+2020-05-27,deadlift,barbell,conventional,395,5
+2020-05-25,squat,barbell,low bar,320,5,320,5,320,5
+2020-05-25,press,barbell,overhead,155,5,155,5,155,5
+2020-05-25,deadlift,barbell,conventional,390,5
+2020-05-22,squat,barbell,low bar,315,5,315,5,315,5
+2020-05-22,bench,barbell,flat,205,5,205,5,205,5
+2020-05-22,deadlift,barbell,conventional,385,5
+2020-05-20,squat,barbell,low bar,310,5,310,5,310,5
+2020-05-20,press,barbell,overhead,150,5,150,5,150,5
+2020-05-20,deadlift,barbell,conventional,380,5
+2020-05-18,squat,barbell,low bar,305,5,305,5,305,5
+2020-05-18,bench,barbell,flat,200,5,200,5,200,5
+2020-05-18,deadlift,barbell,conventional,375,5
+2020-05-15,squat,barbell,low bar,300,5,300,5,300,5
+2020-05-15,press,barbell,overhead,145,5,145,5,145,5
+2020-05-15,deadlift,barbell,conventional,370,5
+2020-05-13,squat,barbell,low bar,295,5,295,5,295,5
+2020-05-13,bench,barbell,flat,195,5,195,5,195,5
+2020-05-13,deadlift,barbell,conventional,365,5
+2020-05-11,squat,barbell,low bar,290,5,290,5,290,5
+2020-05-11,press,barbell,overhead,140,5,140,5,140,5
+2020-05-11,deadlift,barbell,conventional,360,5
+2020-05-08,squat,barbell,low bar,285,5,285,5,285,5
+2020-05-08,bench,barbell,flat,190,5,190,5,190,5
+2020-05-08,deadlift,barbell,conventional,355,5
+2020-05-06,squat,barbell,low bar,280,5,280,5
+2020-05-06,press,barbell,overhead,135,5,135,5,135,5
+2020-05-06,deadlift,barbell,conventional,350,5
 2020-05-04,squat,barbell,low bar,275,5
-2020-05-04,bench,barbell,flat,185,3,185,3,185,3
+2020-05-04,bench,barbell,flat,185,5,185,5,185,5
 2020-05-04,deadlift,barbell,conventional,345,5

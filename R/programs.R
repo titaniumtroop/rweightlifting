@@ -18,7 +18,7 @@ magrittr::`%>%`
 
 available_programs <- function() {
   c("novice_linear_progression",
-    "four_day_LP",
+    "volume_intensity_split",
     "madcow",
     "wendler_531",
     "wendler_531_pyramid",
@@ -408,12 +408,13 @@ novice_linear_progression <- function(increment_percentage = 0.025, ...) {
 #' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
 #' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}.
 
-four_day_LP <- function(...) {
-  # Sets out a single week's cycle for a 4-day LP split
+volume_intensity_split <- function(...) {
+  # Sets out a single week's cycle for a 4-day volume/intensity split
   # One day a week will be a 3x5 intensity day for each exercise (1x5 for deadlift)
   # One day a week will be a 5x5 volume day for each exercise
+  # New PRs once a week on both volume and intensity
   program <- list()
-  program$name <- "4-Day Linear Progression"
+  program$name <- "4-Day Volume-Intensity Split"
   program$sessions_per_week <- 4
   program$duration <- 7
   program$RM_reps <- 5

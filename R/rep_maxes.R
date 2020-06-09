@@ -229,11 +229,13 @@ one_rep_max_for_program <- function(lifts_in_program = NULL, method = "epley") {
 #'
 #' @param weightlifting.log A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}
 #' @param use.method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
+#' @param threshold The cutoff percentage for evaluating a lift as a top set, as compared to a rolling maximum of estimated maximums over time. This value removes volume work, light days, and deloads from top set results.
+#' @param roll.window The rolling number of estimated maximums against which the threshold will be compared. Defaults to 8 in order to capture a reasonable max-effort attempt during a cycle which may contain volume, light, or accessory work on the same lift. Lower values can be used to compensate for layoffs.
 #' @return A table of the top sets in the weightlifting.log
 #'
 #' @export
 
-top_sets <- function(weightlifting.log = NULL, use.method = NA) {
+top_sets <- function(weightlifting.log = NULL, use.method = NA, threshold = 0.9, roll.window = 8) {
 
   if (! is_valid_weightlifting_log(weightlifting.log)) stop("Please enter a valid weightlifting log.")
 
@@ -265,9 +267,11 @@ top_sets <- function(weightlifting.log = NULL, use.method = NA) {
     ungroup() %>%
     arrange(desc(.data$date)) %>%
     group_by(.data$exercise, .data$method) %>%
-    mutate(roll.max = round(rollapply(.data$est.max, 8, max, partial = TRUE, align = "left"), 1)) %>%
+    # Using max from best sets during last 8 dates for each exercise
+    mutate(roll.max = round(rollapply(.data$est.max, roll.window, max, partial = TRUE, align = "left"), 1)) %>%
+    # Removing maxes that don't meet specified threshold
     mutate(culled = ifelse(
-      .data$est.max >= .9 * .data$roll.max,
+      .data$est.max >= threshold * .data$roll.max,
       FALSE,
       TRUE
     )) %>%

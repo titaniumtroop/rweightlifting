@@ -76,7 +76,8 @@ today <- Sys.Date()
 
 ```
 
-```{r initial data munging, echo = FALSE, include=FALSE}
+
+```{r extract programming parameters, echo = FALSE, include=FALSE}
 
 programs <- weightlifting.log %>%
   group_by(program) %>%
@@ -114,64 +115,68 @@ variants <- weightlifting.log %>%
   unlist(use.names = FALSE)
 
 #exercise.descriptors <- exercise_descriptors()
+```
+
+
+```{r initial data munging, echo = FALSE, include=FALSE}
 
 weightlifting.log$exercise <- factor(weightlifting.log$exercise, levels = exercises, ordered = TRUE)
 weightlifting.log$equipment <- factor(weightlifting.log$equipment, levels = equipment, ordered = TRUE)
 weightlifting.log$variants <- factor(weightlifting.log$variant, levels = variants, ordered = TRUE)
-#weightlifting.log$equipment <- factor(weightlifting.log$equipment, levels = levels(exercise.descriptors$exercise_equipment), ordered = TRUE)
 
-top.sets <- top_sets(weightlifting.log) %>%
-  rename(., lift.weight = weight) %>%
-  left_join(., body.weight, by = c("date" = "date")) %>%
-  mutate(strength.to.weight.ratio = round(est.max / rolling.weight, 3)) %>%
-  mutate(intensity = round(lift.weight /est.max, 3))
+# Moved to reactive
+# top.sets <- top_sets(weightlifting.log) %>%
+#   rename(., lift.weight = weight) %>%
+#   left_join(., body.weight, by = c("date" = "date")) %>%
+#   mutate(strength.to.weight.ratio = round(est.max / rolling.weight, 3)) %>%
+#   mutate(intensity = round(lift.weight /est.max, 3))
+# 
+# weightlifting.log <- top.sets %>%
+#   group_by(program, date, exercise, equipment, variant) %>%
+#   summarize(
+#     est.max = round(mean(est.max, na.rm = TRUE), 1)
+#   ) %>%
+#   ungroup() %>%
+#   right_join(weightlifting.log) %>%
+#   arrange(desc(date)) %>%
+#   mutate(
+#     intensity = round(weight / est.max, 3)
+#   ) %>%
+#   mutate(
+#     relevant.tonnage = round(tonnage * intensity)
+#   )
 
-weightlifting.log <- top.sets %>%
-  group_by(program, date, exercise, equipment, variant) %>%
-  summarize(
-    est.max = round(mean(est.max, na.rm = TRUE), 1)
-  ) %>%
-  ungroup() %>%
-  right_join(weightlifting.log) %>%
-  arrange(desc(date)) %>%
-  mutate(
-    intensity = round(weight / est.max, 3)
-  ) %>%
-  mutate(
-    relevant.tonnage = round(tonnage * intensity)
-  )
+# tonnage <- weightlifting.log %>%
+#   group_by(program, date, exercise, equipment, variant) %>%
+#   summarize(
+#     top.set = max(weight),
+#     tonnage = sum(tonnage),
+#     relevant.tonnage = sum(relevant.tonnage, na.rm = TRUE)
+#   ) %>%
+#   ungroup() %>%
+#   arrange(date, exercise, desc(top.set))
 
-tonnage <- weightlifting.log %>%
-  group_by(program, date, exercise, equipment, variant) %>%
-  summarize(
-    top.set = max(weight),
-    tonnage = sum(tonnage),
-    relevant.tonnage = sum(relevant.tonnage, na.rm = TRUE)
-  ) %>%
-  ungroup() %>%
-  arrange(date, exercise, desc(top.set))
+# intensity <- weightlifting.log %>%
+#   group_by(program, date, exercise, equipment, variant) %>%
+#   summarize(
+#     mean.intensity = weighted.mean(intensity, reps),
+#     intensity = max(intensity),
+#     tonnage = sum(tonnage),
+#     volume = sum(reps)
+#   ) %>%
+#   ungroup() %>%
+#   group_by(program, exercise, equipment, variant) %>%
+#   mutate(
+#     volume_scaled = round(rescale(volume, to = c(0, 1), from = c(0, max(volume, na.rm = T))), 3)
+#   ) %>%
+#   ungroup() %>%
+#   mutate(
+#     relevant.tonnage = tonnage * mean.intensity
+#   )%>%
+#   arrange(desc(date))
 
-intensity <- weightlifting.log %>%
-  group_by(program, date, exercise, equipment, variant) %>%
-  summarize(
-    mean.intensity = weighted.mean(intensity, reps),
-    intensity = max(intensity),
-    tonnage = sum(tonnage),
-    volume = sum(reps)
-  ) %>%
-  ungroup() %>%
-  group_by(program, exercise, equipment, variant) %>%
-  mutate(
-    volume_scaled = round(rescale(volume, to = c(0, 1), from = c(0, max(volume, na.rm = T))), 3)
-  ) %>%
-  ungroup() %>%
-  mutate(
-    relevant.tonnage = tonnage * mean.intensity
-  )%>%
-  arrange(desc(date))
-
-session.weights <- weightlifting.log
-session.tonnage <- tonnage
+# session.weights <- weightlifting.log
+# session.tonnage <- tonnage
 
 ```
 
@@ -233,7 +238,21 @@ weightlifting.log %>%
 ```{r reactive weights, echo = FALSE, include=FALSE}
 
 session.weights.filtered <- reactive({
-  weightlifting.log %>%
+  # weightlifting.log %>%
+  session.top.sets() %>%
+    group_by(program, date, exercise, equipment, variant) %>%
+    summarize(
+      est.max = round(mean(est.max, na.rm = TRUE), 1)
+    ) %>%
+    ungroup() %>%
+    right_join(weightlifting.log) %>%
+    arrange(desc(date)) %>%
+    mutate(
+      intensity = round(weight / est.max, 3)
+    ) %>%
+    mutate(
+      relevant.tonnage = round(tonnage * intensity)
+    ) %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
@@ -248,16 +267,22 @@ session.weights <- reactive({
   temp <- session.weights.filtered()
   
   if (input$showProgramming == TRUE) {
-    
     temp <- temp %>%
       bind_rows(projected.log())
   }
-  
   temp
 })
 
 session.top.sets <- reactive({
-  top.sets %>%
+  top_sets(
+    weightlifting.log,
+    roll.window = as.integer(input$top_set_rollwindow),
+    threshold = as.numeric(input$top_set_threshold)
+  ) %>%
+    rename(., lift.weight = weight) %>%
+    left_join(., body.weight, by = c("date" = "date")) %>%
+    mutate(strength.to.weight.ratio = round(est.max / rolling.weight, 3)) %>%
+    mutate(intensity = round(lift.weight /est.max, 3)) %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
@@ -268,7 +293,24 @@ session.top.sets <- reactive({
 })
 
 session.intensity <- reactive({
-  intensity %>%
+  session.weights() %>%
+    group_by(program, date, exercise, equipment, variant) %>%
+    summarize(
+      mean.intensity = weighted.mean(intensity, reps),
+      intensity = max(intensity),
+      tonnage = sum(tonnage),
+      volume = sum(reps)
+    ) %>%
+    ungroup() %>%
+    group_by(program, exercise, equipment, variant) %>%
+    mutate(
+      volume_scaled = round(rescale(volume, to = c(0, 1), from = c(0, max(volume, na.rm = T))), 3)
+    ) %>%
+    ungroup() %>%
+    mutate(
+      relevant.tonnage = tonnage * mean.intensity
+    )%>%
+    arrange(desc(date)) %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
@@ -297,7 +339,7 @@ comp.lifts <- reactive({
   comp$attempt <- rep(c(1,2,3), length(comp_exercises))
   comp <- comp[c("attempt", "exercise", "percentage")]
   
- recent.1RM.est <- top.sets %>%
+ recent.1RM.est <- session.top.sets() %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
@@ -353,7 +395,7 @@ comp.lifts <- reactive({
 ```{r reactive volume, echo = FALSE, include = FALSE}
 
 session.volume <- reactive({
-  weightlifting.log %>%
+  session.weights() %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
@@ -393,7 +435,15 @@ session.volume <- reactive({
 ```{r reactive tonnage, echo = FALSE, include=FALSE}
 
 session.tonnage <- reactive({
-  temp <- tonnage %>%
+  temp <- session.weights() %>%
+    group_by(program, date, exercise, equipment, variant) %>%
+    summarize(
+      top.set = max(weight),
+      tonnage = sum(tonnage),
+      relevant.tonnage = sum(relevant.tonnage, na.rm = TRUE)
+    ) %>%
+    ungroup() %>%
+    arrange(date, exercise, desc(top.set)) %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(
@@ -656,7 +706,7 @@ projected.log <- reactive({
 
 
 
-Sidebar {.sidebar}
+Sidebar {.sidebar, data-width=}
 =====================================
 
 ```{r inputs}
@@ -713,6 +763,26 @@ selectInput(
   selectize = FALSE
 )
 
+sliderInput(
+  "top_set_rollwindow",
+  "Strength: Top Set Lookback Window",
+  1,
+  20,
+  4,
+  step = 1,
+  sep = ""
+)
+
+sliderInput(
+  "top_set_threshold",
+  "Strength: Top Set Threshold",
+  0.5,
+  1,
+  .875,
+  step = .0125,
+  sep = ""
+)
+
 checkboxInput(
   "showProgramming",
   label = "Show Programming estimates?",
@@ -728,6 +798,23 @@ checkboxInput(
 #   step = 5,
 #   sep = ""
 # )
+
+```
+
+
+```{r, eval=F}
+# Temp
+# =======================================================================
+# 
+# Column
+# -----------------------------------------------------------------------
+# 
+# ### Temp
+# 
+
+renderTable({
+  session.top.sets()
+})
 
 ```
 

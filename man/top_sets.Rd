@@ -4,12 +4,21 @@
 \alias{top_sets}
 \title{top set calculator}
 \usage{
-top_sets(weightlifting.log = NULL, use.method = NA)
+top_sets(
+  weightlifting.log = NULL,
+  use.method = NA,
+  threshold = 0.9,
+  roll.window = 8
+)
 }
 \arguments{
 \item{weightlifting.log}{A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}}
 
 \item{use.method}{The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}}
+
+\item{threshold}{The cutoff percentage for evaluating a lift as a top set, as compared to a rolling maximum of estimated maximums over time. This value removes volume work, light days, and deloads from top set results.}
+
+\item{roll.window}{The rolling number of estimated maximums against which the threshold will be compared. Defaults to 8 in order to capture a reasonable max-effort attempt during a cycle which may contain volume, light, or accessory work on the same lift. Lower values can be used to compensate for layoffs.}
 }
 \value{
 A table of the top sets in the weightlifting.log
