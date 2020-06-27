@@ -4,12 +4,21 @@
 \alias{one_rep_max_for_program}
 \title{Provides a one-rep maximum for each lift variant in a weightlifting log}
 \usage{
-one_rep_max_for_program(lifts_in_program = NULL, method = "epley")
+one_rep_max_for_program(
+  lifts_in_program = NULL,
+  method = "epley",
+  roll.window = 5,
+  ...
+)
 }
 \arguments{
 \item{lifts_in_program}{A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}. This can be a weightlifting log, but is ideally filtered to include only the lifts that are available in the program.}
 
 \item{method}{The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}}
+
+\item{roll.window}{The rolling number of estimated maximums against which the threshold will be compared. Defaults to 8 in order to capture a reasonable max-effort attempt during a cycle which may contain volume, light, or accessory work on the same lift. Lower values can be used to compensate for layoffs.}
+
+\item{...}{Other arguments that may be passed to other functions.}
 }
 \value{
 A table of one-rep maxes for each \code{exercise, equipment, variant} combination

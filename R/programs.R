@@ -423,8 +423,8 @@ volume_intensity_split <- function(...) {
     day = c(
       rep(1, 8),
       rep(2, 8),
-      rep(2, 8),
-      rep(2, 6)
+      rep(4, 8),
+      rep(6, 6)
     ),
     exercise = c(
       rep("bench", 3),

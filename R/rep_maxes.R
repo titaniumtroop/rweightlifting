@@ -176,7 +176,7 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
     mutate_if(is.factor, as.character) %>%
     inner_join(unique_exercise_variants_in_program, by = c("exercise", "equipment", "variant"))
 
-  est.recent.maxes <- one_rep_max_for_program(lifts_in_program)
+  est.recent.maxes <- one_rep_max_for_program(lifts_in_program, ...)
   est.recent.maxes$RM.max <- n_rep_max(
     one_RM = est.recent.maxes$roll.max,
     reps = temp.program$RM_reps,
@@ -197,25 +197,27 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
 #'
 #' @param lifts_in_program A data frame containing at least the following elements: \code{program, date, exercise, variant, reps,  weight}. This can be a weightlifting log, but is ideally filtered to include only the lifts that are available in the program.
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
+#' @param roll.window The rolling number of estimated maximums against which the threshold will be compared. Defaults to 8 in order to capture a reasonable max-effort attempt during a cycle which may contain volume, light, or accessory work on the same lift. Lower values can be used to compensate for layoffs.
 #' @return A table of one-rep maxes for each \code{exercise, equipment, variant} combination
+#' @param ... Other arguments that may be passed to other functions.
 #'
 #' @export
 
 # This function provides a 1RM for each lift in a program
 # For programs that use a different RM to establish a training max, these numbers must be converted
-one_rep_max_for_program <- function(lifts_in_program = NULL, method = "epley") {
+one_rep_max_for_program <- function(lifts_in_program = NULL, method = "epley", roll.window = 5, ...) {
 
   if (is.null(lifts_in_program)) {
     stop("Please provide a valid weightlifting log.")
   }
 
-  top.sets <- top_sets(lifts_in_program, use.method = method)
+  top.sets <- top_sets(lifts_in_program, use.method = method, roll.window = roll.window, ...)
 
   est.recent.maxes <- top.sets %>%
     #select(date, exercise, roll.max) %>%
     unique() %>%
     group_by(.data$exercise, .data$variant) %>%
-    mutate(roll.max = round(rollapply(.data$est.max, 5, mean, partial = TRUE, align = "left"), 1)) %>%
+    mutate(roll.max = round(rollapply(.data$est.max, roll.window, mean, partial = TRUE, align = "left", na.rm = T), 1)) %>%
     group_by(.data$exercise, .data$variant) %>%
     top_n(1, wt = .data$date) %>%
     ungroup()
@@ -268,7 +270,7 @@ top_sets <- function(weightlifting.log = NULL, use.method = NA, threshold = 0.9,
     arrange(desc(.data$date)) %>%
     group_by(.data$exercise, .data$method) %>%
     # Using max from best sets during last 8 dates for each exercise
-    mutate(roll.max = round(rollapply(.data$est.max, roll.window, max, partial = TRUE, align = "left"), 1)) %>%
+    mutate(roll.max = round(rollapply(.data$est.max, roll.window, max, partial = TRUE, align = "left", na.rm = T), 1)) %>%
     # Removing maxes that don't meet specified threshold
     mutate(culled = ifelse(
       .data$est.max >= threshold * .data$roll.max,
