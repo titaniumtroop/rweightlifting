@@ -1368,9 +1368,65 @@ renderPlotly({
 Column
 -----------------------------------------------------------------------
 
-### Tonnage PRs
+### Estimated Maxes by Program
 
-```{r plot PR tonnages}
+```{r plot PR est maxes}
+
+renderPlotly({
+  
+  temp <- session.top.sets() %>%
+    group_by(program, exercise) %>%
+    summarize(
+      est.max = max(est.max, na.rm = T),
+      last.date = max(date)
+    ) %>%
+    ungroup() %>%
+    arrange(desc(program)) %>%
+    group_by(exercise) %>%
+    mutate(prev.max = lag(est.max, default = 0)) %>%
+    mutate(diff = est.max - prev.max) %>%
+    mutate(diff.percent = ifelse(is.na(diff), diff, paste(as.character(round(diff / est.max * 100), 1), "%", sep=""))) %>%
+    ungroup() %>%
+    arrange(exercise)
+  
+  p <- ggplot(
+    temp,
+    aes(
+      x = exercise,
+      y = est.max,
+      fill = program,
+      text = paste(
+        "most recent date: ", last.date, "<br>",
+        "percent diff from previous: ", diff.percent
+      )
+    )
+  ) +
+    scale_fill_brewer("Program", palette="Paired") +
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(title = "", x = "", y = "") +
+    coord_flip()
+  
+  ggplotly(p) %>% 
+    layout(
+      legend = list(
+        title = "Program",
+        traceorder = "reversed",
+        orientation = "h",   # show entries horizontally
+        xanchor = "center",  # use center of legend as anchor
+        x = 0.5,
+        yanchor = "top",
+        y = 1.15
+      )
+    )
+
+  
+})
+
+```
+
+
+```{r plot PR tonnages, eval=F}
+### Tonnage PRs
 
 renderPlotly({
   p <- ggplot(
