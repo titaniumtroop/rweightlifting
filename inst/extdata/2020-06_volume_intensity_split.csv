@@ -1,4 +1,69 @@
 date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2020-08-15,bench,barbell,flat,290,1,225,9
+2020-08-14,deadlift,barbell,conventional,515,1
+2020-08-12,press,barbell,overhead,215,1,215,1,215,1,175,5
+2020-08-12,bench,barbell,close grip,210,5,210,5,210,5
+2020-08-12,row,machine,supported,260,5,260,5,260,5
+2020-08-10,squat,barbell,low bar,445,1,445,1,395,3
+2020-08-10,deadlift,barbell,conventional,395,5,395,5,395,5
+2020-08-09,bench,barbell,flat,285,1,290,0,275,1,225,5,225,3,225,2,225,2,225,2
+2020-08-09,press,barbell,overhead,165,5,165,5,165,5
+2020-08-09,pullup,chinup,chinup,0,5,0,5,0,5
+2020-08-07,deadlift,barbell,conventional,515,0
+2020-08-07,squat,barbell,low bar,340,5,340,5,340,5
+2020-08-05,press,barbell,overhead,210,1,210,1,210,1,175,4
+2020-08-05,bench,barbell,close grip,210,5,210,5,210,5,210,5,210,5
+2020-08-05,row,machine,supported,250,5,250,5,250,5,250,5,250,5
+2020-08-03,squat,barbell,low bar,435,2,435,1,435,1
+2020-08-03,deadlift,barbell,conventional,390,5,390,5,390,5
+2020-08-01,bench,barbell,flat,265,3,265,3,265,3,280,1
+2020-08-01,press,barbell,overhead,165,5,165,5,165,5,165,5,165,5
+2020-08-01,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-07-31,deadlift,barbell,conventional,505,2
+2020-07-31,squat,barbell,low bar,335,5,335,5,335,5
+2020-07-28,press,barbell,overhead,205,2,205,1,205,1,175,3
+2020-07-28,bench,barbell,close grip,205,5,205,5,205,5,205,5,205,5
+2020-07-28,row,machine,supported,240,5,240,5,240,5,240,5,240,5
+2020-07-26,squat,barbell,low bar,425,3,425,2,425,2
+2020-07-26,deadlift,barbell,conventional,385,5,385,5,385,5
+2020-07-25,bench,barbell,flat,260,3,260,3,260,3,260,3,260,3
+2020-07-25,press,barbell,overhead,165,5,165,5,165,5,165,5,165,5
+2020-07-25,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-07-23,deadlift,barbell,conventional,495,2
+2020-07-23,squat,barbell,low bar,330,5,330,5,330,5
+2020-07-22,press,barbell,overhead,200,3,200,2,200,2,185,2
+2020-07-22,bench,barbell,close grip,205,5,205,5,205,5,205,5,205,5
+2020-07-22,row,machine,supported,230,5,230,5,230,5,230,5,230,5
+2020-07-20,squat,barbell,low bar,415,3,415,2,415,2
+2020-07-20,deadlift,barbell,conventional,380,5,380,5,380,5
+2020-07-19,bench,barbell,flat,255,3,255,3,255,3,255,3,255,3
+2020-07-19,press,barbell,overhead,160,5,160,5,160,5,160,5,160,5
+2020-07-19,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-07-15,deadlift,barbell,conventional,485,3
+2020-07-15,squat,barbell,low bar,325,5,325,5,325,5
+2020-07-14,press,barbell,overhead,195,3,195,3,195,3,195,3,195,2
+2020-07-14,bench,barbell,close grip,200,5,200,5,200,5,200,5,200,5
+2020-07-14,row,machine,supported,220,5,220,5,220,5,220,5,220,5
+2020-07-12,squat,barbell,low bar,405,3,405,3,405,3
+2020-07-12,deadlift,barbell,conventional,375,5,375,5,375,5
+2020-07-11,bench,barbell,flat,250,5,250,5,250,4
+2020-07-11,press,barbell,overhead,160,5,160,5,160,5,160,5,160,5
+2020-07-11,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-07-09,deadlift,barbell,conventional,475,4,475,2
+2020-07-09,squat,barbell,low bar,320,5,320,5,320,5,320,5,320,5
+2020-07-07,press,barbell,overhead,190,3,190,3,190,3,190,3,190,3
+2020-07-07,bench,barbell,close grip,195,5,195,5,195,5,195,5,195,5
+2020-07-07,row,machine,supported,210,5,210,5,210,5,210,5
+2020-07-05,squat,barbell,low bar,395,4,395,3,395,3
+2020-07-05,deadlift,barbell,conventional,370,5,370,5,370,5
+2020-07-04,bench,barbell,flat,245,5,245,5,245,5
+2020-07-04,press,barbell,overhead,155,5,155,5,155,5,155,5,155,5
+2020-07-04,pullup,chinup,chinup,0,5,0,5,0,5,0,5
+2020-07-02,deadlift,barbell,conventional,465,5
+2020-07-02,squat,barbell,low bar,315,5,315,5,315,5,315,5,315,5
+2020-06-30,press,barbell,overhead,185,5,185,5,185,5
+2020-06-30,bench,barbell,close grip,190,5,190,5,190,5,190,5,190,5
+2020-06-30,row,machine,supported,200,5,200,5,200,5
 2020-06-28,squat,barbell,low bar,390,5,390,5,390,5
 2020-06-28,deadlift,barbell,conventional,365,5,365,5,365,5
 2020-06-27,bench,barbell,flat,240,5,240,5,240,5

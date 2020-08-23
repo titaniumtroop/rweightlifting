@@ -877,7 +877,10 @@ renderPlotly({
       color=alpha("green", 0.5), 
       linetype="dashed"
     ) +
-    labs(title = "", x = "", y = "")
+    labs(title = "", x = "", y = "") +
+    theme(
+      axis.text.x = element_text(angle = 45)
+    )
 
   ggplotly(temp.plot, tooltip = "text") %>% 
     layout(legend = list(traceorder = "reversed"))
@@ -2323,9 +2326,9 @@ sliderInput(
   "first_attempt",
   "First Attempt (% est 1RM):",
   0.85,
-  1.15,
-  .9,
-  step = 0.025,
+  1.1,
+  .925,
+  step = 0.0125,
   sep = ""
 )
 
@@ -2333,9 +2336,9 @@ sliderInput(
   "second_attempt",
   "Second Attempt (% est 1RM):",
   0.85,
-  1.15,
+  1.1,
   .975,
-  step = 0.025,
+  step = 0.0125,
   sep = ""
 )
 
@@ -2343,9 +2346,9 @@ sliderInput(
   "third_attempt",
   "Third Attempt (% est 1RM):",
   0.85,
-  1.15,
-  1.05,
-  step = 0.025,
+  1.1,
+  1.025,
+  step = 0.0125,
   sep = ""
 )
 
