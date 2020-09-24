@@ -30,4 +30,4 @@ Suggests:
     shiny,
     flexdashboard,
     plotly
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

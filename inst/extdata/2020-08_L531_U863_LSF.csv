@@ -1,0 +1,59 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2020-09-24,press,barbell,overhead,175,8,205,2,220,1,165,8,140,8
+2020-09-24,bench,barbell,close grip,190,8,190,8,190,8
+2020-09-24,row,machine,supported,300,5,300,5,300,5,300,5,300,5
+2020-09-24,fly,cable,reverse,20,14,20,14,20,14
+2020-09-22,squat,barbell,low bar,390,6,430,1,345,5,300,5
+2020-09-22,clean,barbell,power,135,3,135,3,135,3,135,3,135,3
+2020-09-21,bench,barbell,flat,230,9,275,1,275,1,220,8,190,9
+2020-09-21,press,barbell,overhead,140,8,140,8,140,8
+2020-09-21,pullup,chinup,chinup,0,6,0,6,0,6
+2020-09-21,face pull,cable,rotation,65,12,65,12,65,12
+2020-09-19,deadlift,barbell,conventional,430,7,505,1,380,5,330,5
+2020-09-19,squat,barbell,low bar,295,8,295,8,295,8
+2020-09-17,press,barbell,overhead,165,9,155,8,205,1,135,10
+2020-09-17,bench,barbell,close grip,190,8,190,8,190,8
+2020-09-17,row,machine,supported,290,5,290,5,290,5,290,5,290,5
+2020-09-17,fly,cable,reverse,20,12,20,12,20,12
+2020-09-16,squat,barbell,low bar,365,8,325,6,280,8
+2020-09-16,clean,barbell,power,135,3,135,3,135,3,135,3,135,3
+2020-09-14,bench,barbell,flat,220,11,255,1,275,1,205,9,175,10
+2020-09-14,press,barbell,overhead,140,8,140,8,140,8
+2020-09-14,pullup,chinup,chinup,0,6,0,6,0,6
+2020-09-14,face pull,cable,rotation,60,14,60,14,60,14
+2020-09-11,deadlift,barbell,conventional,470,3,420,3,370,5
+2020-09-11,squat,barbell,low bar,280,8,280,8,280,8
+2020-09-10,press,barbell,overhead,180,6,200,1,170,6,150,6
+2020-09-10,bench,barbell,close grip,185,8,185,8,185,8
+2020-09-10,row,machine,supported,280,5,280,5,280,5,280,5,280,5
+2020-09-10,fly,cable,reverse,20,12,20,12,20,12
+2020-09-08,squat,barbell,low bar,405,4,355,4,315,4
+2020-09-08,deadlift,barbell,conventional,325,8,325,8,325,8
+2020-09-07,bench,barbell,flat,240,8,265,2,225,8,200,8
+2020-09-07,press,barbell,overhead,135,8,135,8,135,8
+2020-09-07,pullup,chinup,chinup,0,6,0,6,0,6
+2020-09-07,face pull,cable,rotation,60,12,60,12,60,12
+2020-09-05,deadlift,barbell,conventional,445,5,395,5,345,5
+2020-09-05,squat,barbell,low bar,280,8,280,8,280,8
+2020-09-03,press,barbell,overhead,170,8,160,8,140,8
+2020-09-03,bench,barbell,close grip,185,8,185,8,185,8
+2020-09-03,row,machine,supported,270,5,270,5,270,5,270,5
+2020-09-03,fly,cable,reverse,20,12,20,12,20,12
+2020-09-01,squat,barbell,low bar,380,6,335,5,295,5
+2020-09-01,deadlift,barbell,conventional,325,8,325,8,325,8
+2020-08-31,bench,barbell,flat,225,10,245,1,265,1,215,8,185,8
+2020-08-31,press,barbell,overhead,135,8,135,8,135,8
+2020-08-31,pullup,chinup,chinup,0,6,0,6,0,6
+2020-08-31,face pull,cable,rotation,60,12,60,12,60,12
+2020-08-29,deadlift,barbell,conventional,420,8,370,6,315,6
+2020-08-29,squat,barbell,low bar,280,8,280,8,280,8
+2020-08-27,press,barbell,overhead,160,10,150,8,135,10
+2020-08-27,bench,barbell,close grip,185,8,185,8,185,8
+2020-08-27,row,machine,supported,260,5,260,5,260,5
+2020-08-27,fly,cable,reverse,20,12,20,12,20,12
+2020-08-25,squat,barbell,low bar,355,8,315,5,275,5
+2020-08-25,deadlift,barbell,conventional,325,8,325,8
+2020-08-23,bench,barbell,flat,215,12,240,1,265,1,200,10,175,10
+2020-08-23,press,barbell,overhead,135,8,135,8,135,7
+2020-08-23,pullup,chinup,chinup,0,5,0,5,0,5
+2020-08-23,face pull,cable,rotation,50,12,60,12,60,12

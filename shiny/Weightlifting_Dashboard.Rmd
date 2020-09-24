@@ -35,8 +35,8 @@ weightlifting.log <- weightlifting.log %>%
   mutate(
 #    exercise = exercise,
     tonnage = weight * reps,
-    date = as.Date(date),
-    program = factor(program) # arranging by date puts this factor in date order
+    date = as.Date(date)
+    # program = factor(program) # arranging by date puts this factor in date order
   )
 
 ```
@@ -120,9 +120,9 @@ variants <- weightlifting.log %>%
 
 ```{r initial data munging, echo = FALSE, include=FALSE}
 
-weightlifting.log$exercise <- factor(weightlifting.log$exercise, levels = exercises, ordered = TRUE)
-weightlifting.log$equipment <- factor(weightlifting.log$equipment, levels = equipment, ordered = TRUE)
-weightlifting.log$variants <- factor(weightlifting.log$variant, levels = variants, ordered = TRUE)
+# weightlifting.log$exercise <- factor(weightlifting.log$exercise, levels = exercises, ordered = TRUE)
+# weightlifting.log$equipment <- factor(weightlifting.log$equipment, levels = equipment, ordered = TRUE)
+# weightlifting.log$variants <- factor(weightlifting.log$variant, levels = variants, ordered = TRUE)
 
 # Moved to reactive
 # top.sets <- top_sets(weightlifting.log) %>%
@@ -323,8 +323,9 @@ session.intensity <- reactive({
 
 comp.lifts <- reactive({
   
+  # Factor at end due to join error in tidyverse joining factors with different levels introduced around R 4.0
   # comp_exercises <- factor(c("squat", "bench", "deadlift"), levels = c("squat", "bench", "deadlift"), ordered = TRUE)
- comp_exercises <- factor(input$comp_exercises, levels = input$comp_exercises, ordered = TRUE)
+  # comp_exercises <- factor(input$comp_exercises, levels = input$comp_exercises, ordered = TRUE)
   
   comp_percentages <- c(
     # 0.9, 0.975, 1.025
@@ -333,25 +334,26 @@ comp.lifts <- reactive({
     as.numeric(input$third_attempt)
   )
   
-  comp <- expand.grid(comp_exercises, comp_percentages) %>% as_tibble()
+  comp <- expand.grid(input$comp_exercises, comp_percentages) %>% as_tibble()
   names(comp) <- c("exercise", "percentage")
   comp <- comp %>% arrange(exercise)
-  comp$attempt <- rep(c(1,2,3), length(comp_exercises))
+  comp$attempt <- rep(c(1,2,3), length(input$comp_exercises))
   comp <- comp[c("attempt", "exercise", "percentage")]
   
- recent.1RM.est <- session.top.sets() %>%
-    mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
-    mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
+  recent.1RM.est <- session.top.sets() %>%
+    mutate(exercise = as.character(exercise)) %>%
+    # mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
+    # mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
     filter(date >= as.Date(input$date[1], format = "%Y-%m-%d") & date <= as.Date(input$date[2], format = "%Y-%m-%d")) %>%
     filter(program %in% input$program) %>%
     filter(exercise %in% input$exercise) %>%
+    # filter(equipment == "barbell") %>%
     filter(equipment %in% input$equipment) %>%
+    # filter(variant %in% c("flat", "low bar", "conventional", "overhead")) %>%
     filter(variant %in% input$variant) %>%
   # recent.1RM.est <- top.sets %>% 
     arrange(desc(date)) %>% 
-    filter(exercise %in% comp_exercises) %>% 
-    filter(equipment == "barbell") %>%
-    filter(variant %in% c("flat", "low bar", "conventional", "overhead")) %>%
+    filter(exercise %in% input$comp_exercises) %>% 
     group_by(date, exercise, equipment, variant) %>% 
     select(date, exercise, equipment, variant, method, est.max) %>% 
     nest(.) %>% 
@@ -386,7 +388,8 @@ comp.lifts <- reactive({
       est.max = round(est.max, 1),
       lift.weight = round(est.max * percentage / comp_plate) * comp_plate
     ) %>%
-    arrange(desc(exercise))
+    mutate(exercise = factor(exercise, levels = rev(input$comp_exercises), ordered = TRUE)) %>%
+    arrange(desc(exercise)) 
 
 })
 
@@ -1588,7 +1591,7 @@ renderPlotly({
         )
       )
     ) +
-    facet_wrap(~ factor(exercise), scales = "free_y") +
+    facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE), scales = "free_y") +
     scale_fill_brewer("Program", palette="Paired") +
     scale_color_brewer("Program", palette="Paired") +
   #  geom_bar(stat = "identity", position = "dodge") +
