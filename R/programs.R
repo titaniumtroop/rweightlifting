@@ -112,9 +112,9 @@ lower_531_1backoff_upper_863_pyramid <- function(...) {
       rep(6L, 5),
       rep(3L, 4),
       rep(3L, 5),
-      rep(1L, 4),
+      c(5, 3, 1, 5),
       rep(3L, 5),
-      rep(1L, 4)
+      c(5, 3, 1, 5)
     ),
     percentage = c(
       0.65, 0.75, 0.8, 0.75, 0.65,
@@ -253,9 +253,9 @@ lower_531_upper_863_lsf <- function(...) {
       rep(6L, 3),
       rep(3L, 3),
       rep(3L, 3),
-      rep(1L, 3),
+      c(1, 3, 5),
       rep(3L, 3),
-      rep(1L, 3)
+      c(1, 3, 5)
     ),
     percentage = c(
       0.8, 0.75, 0.65,
