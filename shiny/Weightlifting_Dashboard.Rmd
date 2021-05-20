@@ -1551,9 +1551,9 @@ renderPlotly({
     ungroup() %>%
     filter(sets > 1) %>%
     filter(reps_across > 0) %>%
-    group_by(exercise, equipment, variant, weight, sets) %>%
+    group_by(exercise, equipment, variant, weight, sets, reps_across) %>%
     summarize(
-      reps_across = max(reps_across),
+      # reps_across = max(reps_across),
       count = n(),
       last_date = max(date)
     ) %>%

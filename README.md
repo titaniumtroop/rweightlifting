@@ -1,7 +1,7 @@
 rweighlighting
 ================
 Nathan Chaney
-April 24, 2020
+May 20, 2021
 
 # Introduction
 
@@ -27,17 +27,19 @@ header row, as follows:
 weightlifting.log <- load_csv_data(datadir = my.datadir) %>% as_tibble()
 ```
 
-The function creates a data table with one set per row, as
-follows:
+The function creates a data table with one set per row, as follows:
 
-| program             | date       | exercise       | equipment | variant | set | reps | weight |
-| :------------------ | :--------- | :------------- | :-------- | :------ | --: | ---: | -----: |
-| 2020-01\_5-3-1\_cut | 2020-03-19 | hyperextension | machine   | reverse |   1 |   15 |     90 |
-| 2020-01\_5-3-1\_cut | 2020-03-19 | hyperextension | machine   | reverse |   2 |   15 |     90 |
-| 2020-01\_5-3-1\_cut | 2020-03-19 | squat          | barbell   | low bar |   1 |    5 |    330 |
-| 2020-01\_5-3-1\_cut | 2020-03-19 | squat          | barbell   | low bar |   2 |    5 |    330 |
-| 2020-01\_5-3-1\_cut | 2020-03-19 | squat          | barbell   | low bar |   3 |    5 |    330 |
-| 2020-01\_5-3-1\_cut | 2020-03-19 | squat          | barbell   | low bar |   4 |    5 |    330 |
+    #> Warning: tail(., addrownums = V) is deprecated.
+    #> Use tail(., keepnums = V) instead.
+
+| program      | date       | exercise | equipment | variant      | set | reps | weight |
+| :----------- | :--------- | :------- | :-------- | :----------- | --: | ---: | -----: |
+| 2021-05\_531 | 2021-05-19 | deadlift | barbell   | conventional |   5 |    2 |    455 |
+| 2021-05\_531 | 2021-05-19 | squat    | barbell   | low bar      |   1 |    5 |    320 |
+| 2021-05\_531 | 2021-05-19 | squat    | barbell   | low bar      |   2 |    5 |    320 |
+| 2021-05\_531 | 2021-05-19 | squat    | barbell   | low bar      |   3 |    5 |    320 |
+| 2021-05\_531 | 2021-05-19 | squat    | barbell   | low bar      |   4 |    5 |    320 |
+| 2021-05\_531 | 2021-05-19 | squat    | barbell   | low bar      |   5 |    5 |    320 |
 
 # Visualizing Data
 
@@ -104,23 +106,24 @@ difficulty.
 
 For the lifter identified above, the package provides the following of a
 new program based on Jim Wendler’s basic 3-week 5-3-1 program (this is
-the first week
-only):
+the first week only):
 
-| cycle | day | exercise | equipment | variant      | set | reps | percentage | training\_max | weight | max.reps |
-| ----: | --: | :------- | :-------- | :----------- | --: | ---: | ---------: | ------------: | -----: | -------: |
-|     1 |   1 | bench    | barbell   | flat         |   1 |    5 |       0.65 |         246.5 |    160 |       10 |
-|     1 |   1 | bench    | barbell   | flat         |   2 |    5 |       0.75 |         246.5 |    185 |       12 |
-|     1 |   1 | bench    | barbell   | flat         |   3 |    5 |       0.85 |         246.5 |    210 |        9 |
-|     1 |   2 | squat    | barbell   | low bar      |   1 |    5 |       0.65 |         378.7 |    245 |        8 |
-|     1 |   2 | squat    | barbell   | low bar      |   2 |    5 |       0.75 |         378.7 |    285 |        8 |
-|     1 |   2 | squat    | barbell   | low bar      |   3 |    5 |       0.85 |         378.7 |    320 |        5 |
-|     1 |   4 | press    | barbell   | overhead     |   1 |    5 |       0.65 |         187.8 |    120 |        8 |
-|     1 |   4 | press    | barbell   | overhead     |   2 |    5 |       0.75 |         187.8 |    140 |        8 |
-|     1 |   4 | press    | barbell   | overhead     |   3 |    5 |       0.85 |         187.8 |    160 |        6 |
-|     1 |   5 | deadlift | barbell   | conventional |   1 |    5 |       0.65 |         472.1 |    305 |        8 |
-|     1 |   5 | deadlift | barbell   | conventional |   2 |    5 |       0.75 |         472.1 |    355 |        8 |
-|     1 |   5 | deadlift | barbell   | conventional |   3 |    5 |       0.85 |         472.1 |    400 |        8 |
+    #> `summarise()` regrouping output by 'exercise', 'equipment', 'variant' (override with `.groups` argument)
+
+| cycle | day | date       | exercise | equipment | variant      | set | reps | percentage | training\_max | weight | max.reps |
+| ----: | --: | :--------- | :------- | :-------- | :----------- | --: | ---: | ---------: | ------------: | -----: | -------: |
+|     1 |   1 | 2021-05-21 | bench    | barbell   | flat         |   1 |    5 |       0.65 |         267.5 |    175 |       11 |
+|     1 |   1 | 2021-05-21 | bench    | barbell   | flat         |   2 |    5 |       0.75 |         267.5 |    200 |       11 |
+|     1 |   1 | 2021-05-21 | bench    | barbell   | flat         |   3 |    5 |       0.85 |         267.5 |    225 |       11 |
+|     1 |   2 | 2021-05-22 | squat    | barbell   | low bar      |   1 |    5 |       0.65 |         392.0 |    255 |        8 |
+|     1 |   2 | 2021-05-22 | squat    | barbell   | low bar      |   2 |    5 |       0.75 |         392.0 |    295 |        8 |
+|     1 |   2 | 2021-05-22 | squat    | barbell   | low bar      |   3 |    5 |       0.85 |         392.0 |    335 |        7 |
+|     1 |   4 | 2021-05-24 | press    | barbell   | overhead     |   1 |    5 |       0.65 |         199.9 |    130 |        9 |
+|     1 |   4 | 2021-05-24 | press    | barbell   | overhead     |   2 |    5 |       0.75 |         199.9 |    150 |        8 |
+|     1 |   4 | 2021-05-24 | press    | barbell   | overhead     |   3 |    5 |       0.85 |         199.9 |    170 |        8 |
+|     1 |   5 | 2021-05-25 | deadlift | barbell   | conventional |   1 |    5 |       0.65 |         460.9 |    300 |        8 |
+|     1 |   5 | 2021-05-25 | deadlift | barbell   | conventional |   2 |    5 |       0.75 |         460.9 |    345 |        8 |
+|     1 |   5 | 2021-05-25 | deadlift | barbell   | conventional |   3 |    5 |       0.85 |         460.9 |    390 |       10 |
 
 For convenience, we can also add the maximum number of reps at each
 specific weight the trainee is supposed to lift. This assists with
@@ -134,7 +137,7 @@ potential for gains over time:
 
 ![](README-programming_sets_reps-1.png)<!-- -->
 
-The vertical green line represents today (currently 24 Apr 2020);
+The vertical green line represents today (currently 20 May 2021);
 projected performance following a new program is plotted to the right of
 the green line. Another feature displayed here is the ability to program
 deload weeks every so often – in this case after every 3 cycles. Note
@@ -144,12 +147,13 @@ supplemental work that may appear in historical data.
 The supported programs include:
 
     #> [1] "Novice Linear Progression"                      
-    #> [2] "4-Day Linear Progression"                       
+    #> [2] "4-Day Volume-Intensity Split"                   
     #> [3] "Madcow 5x5"                                     
     #> [4] "Wendler 5-3-1"                                  
     #> [5] "Wendler 5-3-1 Pyramid"                          
     #> [6] "Base 5-3-1, Bench 8-6-3"                        
-    #> [7] "Lower 5-3-1 Last Set First, Upper 8-6-3 Pyramid"
+    #> [7] "Lower 5-3-1, Upper 8-6-3, Last Set First"       
+    #> [8] "Lower 5-3-1 with 1 Backoff, Upper 8-6-3 Pyramid"
 
 It is desired that future versions of the package’s dashboard will
 permit creation of custom programs on an exercise-by-exercise basis.

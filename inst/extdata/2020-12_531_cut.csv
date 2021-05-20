@@ -1,0 +1,137 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2021-02-17,bench,barbell,flat,195,5,225,5,255,3
+2021-02-17,bench,barbell,2-inch board,255,2,225,5,195,8
+2021-02-14,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-02-14,deadlift,barbell,conventional,370,5,420,3,470,1
+2021-02-12,press,barbell,overhead,160,5,185,3,205,1,185,3,160,5
+2021-02-12,bench,barbell,slingshot,275,3,275,3,275,3
+2021-02-12,row,machine,supported,320,5,320,5,320,5
+2021-02-12,bench,dumbbell,15-degree,160,9,160,8,160,8
+2021-02-12,face pull,cable,rotation,80,14,80,14,80,14
+2021-02-10,squat,barbell,low bar,320,5,360,3,405,1,360,3,320,5
+2021-02-10,clean,barbell,power,165,5,165,5,165,5,165,5,165,5
+2021-02-10,farmers walk,plate,2-sided,90,2,90,2
+2021-02-10,farmers walk,kettlebell,2-sided,100,2,100,2
+2021-02-08,bench,barbell,flat,220,5,250,3,280,1
+2021-02-08,bench,barbell,2-inch board,250,3,220,7
+2021-02-08,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-02-08,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2021-02-08,bench,dumbbell,15-degree,160,8,160,7,160,7
+2021-02-08,face pull,cable,rotation,80,12,80,12,80,12
+2021-02-07,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-02-07,deadlift,barbell,conventional,345,3,395,3,445,3
+2021-02-05,press,barbell,overhead,150,3,170,3,195,2,195,1,170,3,150,5
+2021-02-05,bench,barbell,slingshot,275,3,275,3,275,3
+2021-02-05,row,machine,supported,270,8,270,8,270,8
+2021-02-05,bench,dumbbell,15-degree,150,10,160,7,160,7
+2021-02-05,face pull,cable,rotation,65,15,65,15,65,15
+2021-02-03,squat,barbell,low bar,300,3,340,3,385,3,340,3,300,3
+2021-02-03,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2021-02-02,bench,barbell,flat,205,3,235,3,265,2
+2021-02-02,bench,barbell,2-inch board,265,1,235,4,205,8
+2021-02-02,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-02-02,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2021-02-02,bench,dumbbell,15-degree,150,8,150,8,160,5
+2021-02-02,face pull,cable,rotation,65,15,65,15,65,15
+2021-01-31,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-01-31,deadlift,barbell,conventional,320,5,370,5,420,5
+2021-01-28,press,barbell,overhead,140,5,160,5,185,3,185,2,160,5,140,6
+2021-01-28,bench,barbell,slingshot,275,3,275,3,275,3
+2021-01-28,row,machine,supported,270,8,270,8,270,8
+2021-01-28,bench,dumbbell,15-degree,140,9,140,9,160,6
+2021-01-28,face pull,cable,rotation,65,14,65,14,65,14
+2021-01-26,squat,barbell,low bar,275,5,320,5,360,5,320,5,275,5
+2021-01-26,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2021-01-25,bench,barbell,flat,190,5,225,5,250,3
+2021-01-25,bench,barbell,2-inch board,250,2,225,5,190,8
+2021-01-25,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-01-25,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2021-01-25,bench,dumbbell,15-degree,140,8,140,8
+2021-01-25,face pull,cable,rotation,65,13,65,13,65,13
+2021-01-23,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-01-23,deadlift,barbell,conventional,405,1,425,1,445,1,465,1,485,1
+2021-01-23,farmers walk,plate,2-sided,90,2,90,2
+2021-01-23,farmers walk,kettlebell,2-sided,100,2,100,2
+2021-01-21,press,barbell,overhead,155,5,180,3,200,1,180,3,155,5
+2021-01-21,bench,barbell,slingshot,295,2,295,2,295,2,275,4,275,4,275,4
+2021-01-21,row,machine,supported,270,7,270,7,270,7
+2021-01-21,face pull,cable,rotation,65,13,65,13,65,13
+2021-01-20,squat,barbell,low bar,335,5,385,3,415,1,385,3,335,5
+2021-01-20,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2021-01-18,bench,barbell,flat,215,5,245,3,275,1,245,3,215,5
+2021-01-18,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-01-18,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2021-01-18,squeeze press,dumbbell,flat,80,12,80,12,80,12
+2021-01-18,face pull,cable,rotation,65,12,65,12,65,12
+2021-01-16,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-01-16,deadlift,barbell,conventional,405,1,425,1,445,1,465,1,485,0
+2021-01-16,hyperextension,machine,reverse,180,16,180,16,180,16
+2021-01-14,press,barbell,overhead,145,3,170,3,190,3,205,1,170,3,145,5
+2021-01-14,bench,barbell,slingshot,295,2,295,2,295,2,275,4,275,4,275,4
+2021-01-14,row,machine,supported,270,6,270,6,270,6
+2021-01-14,face pull,cable,rotation,50,14,50,14,50,14
+2021-01-12,squat,barbell,low bar,290,3,330,3,375,3,405,1,330,3,290,3
+2021-01-12,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2021-01-12,hyperextension,machine,reverse,180,15,180,15,180,15
+2021-01-11,bench,barbell,flat,205,3,230,3,260,3,280,1,230,3,205,6
+2021-01-11,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-01-11,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2021-01-11,squeeze press,dumbbell,flat,80,12,80,12,80,12
+2021-01-11,face pull,cable,rotation,50,14,50,14,50,14
+2021-01-09,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-01-09,deadlift,barbell,conventional,405,2,425,1,445,1,465,1,485,0
+2021-01-09,hyperextension,machine,reverse,180,12,180,12,180,12
+2021-01-07,press,barbell,overhead,135,5,155,5,180,4,205,1,155,5,135,5
+2021-01-07,bench,barbell,slingshot,295,2,295,2,295,2,275,4,275,4,275,4
+2021-01-07,row,machine,supported,270,5,270,5,270,5
+2021-01-07,squeeze press,dumbbell,flat,80,12,80,12,80,12
+2021-01-07,face pull,cable,rotation,50,12,50,12
+2021-01-05,squat,barbell,low bar,275,5,315,5,355,5,315,5,275,5
+2021-01-05,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2021-01-05,hyperextension,machine,reverse,180,12,180,12
+2021-01-04,bench,barbell,flat,185,5,215,5,245,5,265,1,275,1,215,5,185,8
+2021-01-04,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-01-04,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2021-01-04,squeeze press,dumbbell,flat,80,12,80,12,80,12
+2021-01-02,squat,barbell,low bar,365,3,365,3,365,3,365,3
+2021-01-02,deadlift,barbell,conventional,405,2,425,1,445,1,465,1,485,1
+2021-01-02,hyperextension,machine,reverse,140,16,140,16,140,16
+2020-12-31,press,barbell,overhead,155,5,175,3,195,1,210,1,175,3,155,5
+2020-12-31,bench,barbell,slingshot,295,3,295,3,295,2,275,4,275,4,275,4
+2020-12-31,row,cable,alternating,135,12,135,12,135,12
+2020-12-31,squeeze press,dumbbell,flat,80,11,80,11,80,11
+2020-12-29,squat,barbell,low bar,305,5,345,3,385,1,415,1,345,3,305,5
+2020-12-29,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2020-12-29,hyperextension,machine,reverse,140,16,140,16,140,16
+2020-12-28,bench,barbell,flat,210,5,240,3,265,2,280,1,240,3,210,7
+2020-12-28,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2020-12-28,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-12-28,squeeze press,dumbbell,flat,70,12,70,12,70,12
+2020-12-26,squat,barbell,low bar,275,3,315,3,365,4,365,4,365,4
+2020-12-26,deadlift,barbell,conventional,405,2,425,1,445,1,465,1,485,1
+2020-12-26,hyperextension,machine,reverse,140,15,140,15,140,15
+2020-12-24,press,barbell,overhead,145,3,165,3,185,3,165,4,145,5
+2020-12-24,bench,barbell,slingshot,295,3,295,3,295,3,275,5,275,5
+2020-12-24,row,cable,alternating,135,12,135,12,135,12
+2020-12-24,squeeze press,dumbbell,flat,70,12,70,12,70,12
+2020-12-22,squat,barbell,low bar,295,3,325,3,365,4,405,1,325,3,295,3
+2020-12-22,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2020-12-22,hyperextension,machine,reverse,140,14,140,14
+2020-12-21,bench,barbell,flat,195,3,225,3,255,3,275,1,225,5,195,8
+2020-12-21,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2020-12-21,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-12-21,squeeze press,dumbbell,flat,60,12,60,12,60,12
+2020-12-19,squat,barbell,low bar,275,3,315,3,365,4,365,4,365,4
+2020-12-19,deadlift,barbell,conventional,405,2,435,1,465,1,495,0
+2020-12-19,hyperextension,machine,reverse,90,16,90,16,90,16
+2020-12-17,press,barbell,overhead,135,5,155,5,175,5,155,5,135,7
+2020-12-17,bench,barbell,slingshot,295,3,295,3,295,3,275,5,275,4
+2020-12-17,row,cable,alternating,135,11,135,11,135,11
+2020-12-17,squeeze press,dumbbell,flat,60,12,60,12,60,12
+2020-12-15,squat,barbell,low bar,265,5,305,5,345,6,305,5,265,6
+2020-12-15,deadlift,barbell,2-inch deficit,405,4,405,4,405,4
+2020-12-15,hyperextension,machine,reverse,90,15,90,15,90,15
+2020-12-14,bench,barbell,flat,185,5,210,5,240,6,265,1,275,1,210,8,185,8
+2020-12-14,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2020-12-14,pullup,chinup,chinup,0,5,0,5,0,5,0,5,0,5
+2020-12-14,squeeze press,dumbbell,flat,60,12,60,12,60,12

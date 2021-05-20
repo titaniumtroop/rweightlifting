@@ -1,0 +1,84 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2021-04-28,press,barbell,overhead,205,1,215,1,225,1,230,0
+2021-04-28,bench,barbell,flat,275,1,275,1,225,5,225,5,225,5,225,5,225,5
+2021-04-28,row,machine,supported,180,15,180,8,180,6
+2021-04-27,squat,barbell,low bar,405,1,425,1,435,1
+2021-04-27,deadlift,barbell,conventional,405,2,465,1,495,1,515,0
+2021-04-25,bench,barbell,flat,265,4,265,3,265,3,265,2,265,2
+2021-04-25,press,barbell,overhead,155,5,155,5,155,5,155,5,155,5
+2021-04-25,row,machine,supported,140,15,140,8,140,7
+2021-04-21,squat,barbell,low bar,310,5,310,5,310,5,310,5,310,5
+2021-04-21,deadlift,barbell,conventional,475,3,475,2
+2021-04-20,press,barbell,overhead,195,3,195,3,195,3,195,3,195,3
+2021-04-20,bench,barbell,flat,250,1,275,1,295,0,210,8,210,8,210,8
+2021-04-20,row,machine,supported,270,8,270,8,270,8
+2021-04-18,squat,barbell,low bar,380,5,380,5,380,5
+2021-04-18,deadlift,barbell,conventional,375,5,375,5,375,5
+2021-04-16,bench,barbell,flat,260,5,260,4,260,4,260,3
+2021-04-16,press,barbell,overhead,155,5,155,5,155,5,155,5,155,5
+2021-04-16,row,machine,supported,270,7,270,7,270,7
+2021-04-14,squat,barbell,low bar,305,5,305,5,305,5,305,5,305,5
+2021-04-14,deadlift,barbell,conventional,465,3,465,2
+2021-04-13,press,barbell,overhead,195,4,195,3,195,3,195,3,195,2
+2021-04-13,bench,barbell,flat,205,5,205,5,205,5,205,5,205,5
+2021-04-13,row,cable,seated,90,10,90,10,90,10
+2021-04-11,squat,barbell,low bar,375,5,375,5,375,5
+2021-04-11,deadlift,barbell,conventional,365,5,365,5,365,5
+2021-04-11,bench,barbell,flat,255,1,275,1,295,1
+2021-04-10,bench,barbell,flat,260,5,260,5,260,4
+2021-04-10,press,barbell,overhead,150,5,150,5,150,5,150,5,150,5
+2021-04-10,row,machine,supported,270,6,270,6,270,6
+2021-04-07,squat,barbell,low bar,370,5,370,5,370,5
+2021-04-07,press,barbell,overhead,190,5,190,5,190,5
+2021-04-07,clean,barbell,power,185,3,185,3,185,3
+2021-04-04,squat,barbell,low bar,300,5,300,5,300,5,300,5,300,5
+2021-04-04,bench,barbell,flat,255,5,255,5,255,5
+2021-04-04,deadlift,barbell,conventional,455,5
+2021-04-02,squat,barbell,low bar,365,5,365,5,365,5
+2021-04-02,press,barbell,overhead,185,5,185,5,185,5
+2021-04-02,clean,barbell,power,185,3,185,3,185,3
+2021-03-31,squat,barbell,low bar,295,5,295,5,295,5,295,5,295,5
+2021-03-31,bench,barbell,flat,255,5,255,5,255,4
+2021-03-31,deadlift,barbell,conventional,445,5
+2021-03-29,squat,barbell,low bar,360,5,360,5,360,5
+2021-03-29,press,barbell,overhead,180,5,180,5,180,5
+2021-03-29,clean,barbell,power,185,3,185,3,185,3
+2021-03-25,squat,barbell,low bar,290,5,290,5,290,5,290,5,290,5
+2021-03-25,bench,barbell,flat,250,5,250,5,250,5
+2021-03-25,deadlift,barbell,conventional,435,5
+2021-03-23,squat,barbell,low bar,355,5,355,5,355,5
+2021-03-23,press,barbell,overhead,175,5,175,5,175,5
+2021-03-23,clean,barbell,power,185,3,185,3,185,3,185,3,185,3
+2021-03-21,squat,barbell,low bar,285,5,285,5,285,5,285,5,285,5
+2021-03-21,bench,barbell,flat,245,5,245,5,245,5
+2021-03-21,deadlift,barbell,conventional,425,5
+2021-03-18,squat,barbell,low bar,350,5,350,5,350,5
+2021-03-18,press,barbell,overhead,175,5,175,4,175,4,175,2
+2021-03-18,clean,barbell,power,180,3,180,3,180,3
+2021-03-16,squat,barbell,low bar,345,5,345,5,345,5
+2021-03-16,bench,barbell,flat,240,5,240,5,240,5
+2021-03-16,deadlift,barbell,conventional,415,5
+2021-03-14,squat,barbell,low bar,340,5,340,5,340,5
+2021-03-14,press,barbell,overhead,170,5,170,5,170,5
+2021-03-14,clean,barbell,power,175,3,175,3,175,3,175,3,175,3
+2021-03-11,squat,barbell,low bar,335,5,335,5,335,5
+2021-03-11,bench,barbell,flat,235,5,235,5,235,5
+2021-03-11,deadlift,barbell,conventional,405,5
+2021-03-09,squat,barbell,low bar,330,5,330,5,330,5
+2021-03-09,press,barbell,overhead,165,5,165,5,165,5
+2021-03-09,clean,barbell,power,165,3,165,3,165,3,165,3,165,3
+2021-03-07,squat,barbell,low bar,325,5,325,5,325,5
+2021-03-07,bench,barbell,flat,230,5,230,5,230,5
+2021-03-07,deadlift,barbell,conventional,395,5
+2021-03-04,squat,barbell,low bar,320,5,320,5,320,5
+2021-03-04,press,barbell,overhead,160,5,160,5,160,5
+2021-03-04,clean,barbell,power,155,3,155,3,155,3,155,3,155,3
+2021-03-02,squat,barbell,low bar,315,5,315,5,315,5
+2021-03-02,bench,barbell,flat,225,5,225,5,225,5
+2021-03-02,deadlift,barbell,conventional,385,5
+2021-02-28,squat,barbell,low bar,315,5,315,5
+2021-02-28,press,barbell,overhead,155,5,155,5,155,5
+2021-02-28,clean,barbell,power,145,3,145,3,145,3
+2021-02-26,squat,barbell,low bar,315,5
+2021-02-26,bench,barbell,flat,215,5,215,5,215,5
+2021-02-26,deadlift,barbell,conventional,375,5
