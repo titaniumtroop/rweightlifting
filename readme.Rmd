@@ -32,21 +32,52 @@ The rweightlifting package is designed to assist weightlifters and their coaches
 
 # Reading Data
 
-The load_csv_data() function reads all CSV files in the specified directory. Each file should correspond to a specific weightlifting program. The function expects a specific input format that includes a header row, as follows:
+This package is designed for interactive use via the dashboard in the `shiny` directory. You'll need to point the data source for both weightlifting logs and body weight logs to the right directories to use the `shiny` app. 
 
-`date, exercise, variant, set1weight, set1reps, set2weight, set2reps, ..., setNweight, setNreps`
+The `load_csv_data` function reads weightlifting logs. The expected format is one CSV file for each weightlifting program. The `load_csv_data` reads all CSV files in the specified directory. The function expects an input format that includes a header row, as follows:
+
+`date, exercise, equipment, variant, set1weight, set1reps, set2weight, set2reps, ..., setNweight, setNreps`
 
 ```{r}
 
-weightlifting.log <- load_csv_data(datadir = my.datadir) %>% as_tibble()
+weightlifting.log <- load_csv_data(datadir = my.datadir)
 
 ```
+
+```{r read weight data, echo=F, include=F}
+
+ifelse(
+  dir.exists("/data/fitness/"),
+  weight.dir <- "/data/fitness/",
+  weight.dir <- "~/.fitness/Data/"
+)
+
+# Expects a CSV with date,weight as the header row
+body.weight <- read.csv(paste(weight.dir, "body_weight.csv", sep=""), stringsAsFactors = FALSE)
+body.weight$date <- as.Date(body.weight$date, "%Y-%m-%d")
+
+# We're going to calculate a rolling mean for weight
+# This allows us to calculates strength for dates where there's no weight measurement
+all.dates <- data.frame(date = seq.Date(from = min(body.weight$date), to = Sys.Date(), by = 1))
+
+body.weight <- body.weight %>%
+  full_join(all.dates, by = "date") %>%
+  arrange(date)
+
+names(body.weight) <- c("date", "actual") 
+body.weight$rolling.weight <- rollapply(body.weight$actual, 7, mean, by = 1, fill = NA, na.rm = TRUE, align = "right", partial = T)
+
+body.weight <- body.weight %>%
+  mutate(rolling.weight = ifelse(is.na(rolling.weight), NA, round(rolling.weight, 2)))
+
+```
+
 
 The function creates a data table with one set per row, as follows:
 
 ```{r, echo=F}
 
-knitr::kable(tail(weightlifting.log, addrownums = FALSE))
+knitr::kable(tail(weightlifting.log, keepnums = FALSE))
 
 ```
 
@@ -63,7 +94,7 @@ This view shows each set performed; it is a way to show progress (and consistenc
 weightlifting.log %>%
   filter(exercise %in% c("squat", "deadlift")) %>%
   ggplot(aes(date, weight, color=interaction(equipment, variant), size=reps)) +
-  facet_wrap( ~ exercise, ncol = 1) +
+  facet_wrap( ~ exercise, ncol = 1, scales = "free_y") +
   geom_point(
     aes(
       date, 
@@ -93,16 +124,18 @@ weightlifting.log %>%
 
 ```
 
-In this view, you can see that a linear progression program was followed at the beginning, followed by more complex programming over time. You can also see a gap around January 2018, which is when I tore my calf playing tennis and had to lay off lower body exercises for a while. The colors indicate different exercise, equipment, and exercise variants. Missed attempts (i.e., reps = 0) are denoted with an X shape.
+In this view, you can see that a linear progression program was followed at the beginning, followed by more complex programming over time. You can also see a gaps around January 2018 (when I tore my calf playing tennis) and April 2020 (when gyms were closed due to the COVID-19 pandemic). The colors indicate different exercise, equipment, and exercise variants. Missed attempts (i.e., reps = 0) are denoted with an X shape.
 
 ## Strength View
 
-The strength view uses a caculated one-rep max to show progress in strength over time. It is a way to compare absolute strength across different set/rep schemes and different goals, such as bulking or cutting weight. In addition, the dashboard is capable of using a corresponding body weight dataset to calculate a strength to weight ratio in similar fashion, which provides a way to compare relative strength over time.
+The strength view uses a caculated one-rep max to show progress in strength over time. It is a way to compare absolute strength across different set/rep schemes. 
 
-```{r strength_1rm, fig.width=10, echo = F}
+```{r absolute strength, fig.width=10, echo = F}
 
 top_sets(weightlifting.log, use.method = "wathan") %>%
   filter(exercise %in% c("squat", "bench", "press", "deadlift")) %>%
+  filter(equipment %in% c("barbell")) %>%
+  filter(variant %in% c("high bar", "low bar", "flat", "overhead", "conventional")) %>%
   ggplot(aes(date, est.max)) +
     geom_point(aes(fill = program, color = program), alpha = 0.5, stroke = 0, size = 2, na.rm = TRUE) +
     geom_smooth(formula = y ~ x, method = "loess", se = TRUE, span = 0.25, na.rm = TRUE) +
@@ -124,7 +157,43 @@ top_sets(weightlifting.log, use.method = "wathan") %>%
 
 ```
 
-Broadly speaking, this view shows a lifter with increasing strength over time. Bubbles of different colors denote different programs.
+Broadly speaking, this view shows a lifter with increasing absolute strength over time. Bubbles of different colors denote different programs.
+
+A similar view in the `shiny` app shows relative strength, which is obtained by dividing a calculated 1-RM by the lifter's body weight. This view is useful for comparing a lifter's performance to [strength standards](https://www.t-nation.com/training/are-you-strong/), which commonly reference multiples of body weight (e.g., 1x, 2x, 2.5x). It is also useful for monitoring performance across bulking or cutting cycles.
+
+```{r relative strength, fig.width=10, echo = F}
+
+top_sets(weightlifting.log, use.method = "wathan") %>%
+  rename(., lift.weight = weight) %>%
+  filter(exercise %in% c("squat", "bench", "press", "deadlift")) %>%
+  filter(equipment %in% c("barbell")) %>%
+  filter(variant %in% c("high bar", "low bar", "flat", "overhead", "conventional")) %>%
+  left_join(., body.weight, by = c("date" = "date")) %>%
+  mutate(strength.to.weight.ratio = round(est.max / rolling.weight, 3)) %>%
+  mutate(intensity = round(lift.weight / est.max, 3)) %>%
+  ggplot(aes(date, strength.to.weight.ratio)) +
+    geom_point(aes(fill = program, color = program,), 
+    alpha = 0.5, na.rm = TRUE) +
+    geom_smooth(formula = y ~ x, method = "loess", se = TRUE, span = 0.25, na.rm = TRUE) +
+    facet_wrap(~ exercise, scales = "free_y") +
+    labs(y = "", x = "") +
+    scale_y_continuous(
+      position="right",
+      minor_breaks=function(x){
+        seq(0, ceiling(max(x)), 25)
+      }) +
+    scale_x_date(
+      date_breaks = "6 month", date_labels = "%b %Y",
+      date_minor_breaks = "2 month"
+    ) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "none"
+    )
+
+```
+
+Note that the curves for absolute and relative strength are similar but not identical. As one example, the estimated 1RM for the deadlift has hovered around 500 - 525 since December 2018. However, the absolute strength has declined from a high of around 2.5x in June 2018 to around 2.3-2.4x as of the time of writing (this is attributable to the, ahem, COVID nineteen pounds). I generally use the absolute strength view during bulking cycles (for comparison against all-time strength) and the relative strength view during cutting cycles (to make sure I'm not losing ground).
 
 ## Other Views
 
@@ -150,7 +219,7 @@ knitr::kable(
       left_join(
         weightlifting.log %>%
           group_by(exercise, equipment, variant, weight) %>%
-          summarize(max.reps = max(reps))
+          summarize(max.reps = max(reps), .groups = "drop")
       , by = c("exercise", "equipment", "variant", "weight"))
   , 12)
 )
@@ -205,7 +274,7 @@ rweightlifting::program_schedule("wendler_531", weightlifting.log, cycles = 12, 
 
 ```
 
-The vertical green line represents today (currently `r format(Sys.Date(), "%d %b %Y")`); projected performance following a new program is plotted to the right of the green line. Another feature displayed here is the ability to program deload weeks every so often -- in this case after every 3 cycles. Note that the projected work doesn't necessarily include accessory or supplemental work that may appear in historical data.
+The vertical green line represents today (currently `r format(Sys.Date(), "%d %b %Y")`); projected performance resulting from compliance with the new program is plotted to the right of the green line. Another feature displayed here is the ability to program deload weeks every so often -- in this case after every 3 cycles. Note that the projected work doesn't necessarily include accessory or supplemental work that may appear in historical data.
 
 The supported programs include:
 
@@ -223,6 +292,3 @@ program_descriptions
 
 It is desired that future versions of the package's dashboard will permit creation of custom programs on an exercise-by-exercise basis.
 
-# Interactive Dashboard
-
-This package is designed for interactive use via the dashboard in the `shiny` directory. You'll need to point the data source for both the weightlifting logs and body weight logs to the right directories. 

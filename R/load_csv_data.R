@@ -16,7 +16,7 @@ load_csv_data <- function(files = NA, datadir = NA, header = TRUE) {
   #   stop("You must enter a directory for your weightlifting files.")
   # }
 
-  out.file <- data.frame()
+  out.file <- tibble::tibble()
 
   if (! is.na(files)) {
     # Load data from files passed to function (interactive Rshiny)

@@ -15,22 +15,24 @@ against past results.
 
 # Reading Data
 
-The load\_csv\_data() function reads all CSV files in the specified
-directory. Each file should correspond to a specific weightlifting
-program. The function expects a specific input format that includes a
-header row, as follows:
+This package is designed for interactive use via the dashboard in the
+`shiny` directory. You’ll need to point the data source for both
+weightlifting logs and body weight logs to the right directories to use
+the `shiny` app.
 
-`date, exercise, variant, set1weight, set1reps, set2weight, set2reps,
-..., setNweight, setNreps`
+The `load_csv_data` function reads weightlifting logs. The expected
+format is one CSV file for each weightlifting program. The
+`load_csv_data` reads all CSV files in the specified directory. The
+function expects an input format that includes a header row, as follows:
+
+`date, exercise, equipment, variant, set1weight, set1reps, set2weight,
+set2reps, ..., setNweight, setNreps`
 
 ``` r
-weightlifting.log <- load_csv_data(datadir = my.datadir) %>% as_tibble()
+weightlifting.log <- load_csv_data(datadir = my.datadir)
 ```
 
 The function creates a data table with one set per row, as follows:
-
-    #> Warning: tail(., addrownums = V) is deprecated.
-    #> Use tail(., keepnums = V) instead.
 
 | program      | date       | exercise | equipment | variant      | set | reps | weight |
 | :----------- | :--------- | :------- | :-------- | :----------- | --: | ---: | -----: |
@@ -56,25 +58,42 @@ consistency) at a glance, as follows:
 
 In this view, you can see that a linear progression program was followed
 at the beginning, followed by more complex programming over time. You
-can also see a gap around January 2018, which is when I tore my calf
-playing tennis and had to lay off lower body exercises for a while. The
-colors indicate different exercise, equipment, and exercise variants.
-Missed attempts (i.e., reps = 0) are denoted with an X shape.
+can also see a gaps around January 2018 (when I tore my calf playing
+tennis) and April 2020 (when gyms were closed due to the COVID-19
+pandemic). The colors indicate different exercise, equipment, and
+exercise variants. Missed attempts (i.e., reps = 0) are denoted with an
+X shape.
 
 ## Strength View
 
 The strength view uses a caculated one-rep max to show progress in
 strength over time. It is a way to compare absolute strength across
-different set/rep schemes and different goals, such as bulking or
-cutting weight. In addition, the dashboard is capable of using a
-corresponding body weight dataset to calculate a strength to weight
-ratio in similar fashion, which provides a way to compare relative
-strength over time.
+different set/rep schemes.
 
-![](README-strength_1rm-1.png)<!-- -->
+![](README-absolute%20strength-1.png)<!-- -->
 
-Broadly speaking, this view shows a lifter with increasing strength over
-time. Bubbles of different colors denote different programs.
+Broadly speaking, this view shows a lifter with increasing absolute
+strength over time. Bubbles of different colors denote different
+programs.
+
+A similar view in the `shiny` app shows relative strength, which is
+obtained by dividing a calculated 1-RM by the lifter’s body weight. This
+view is useful for comparing a lifter’s performance to [strength
+standards](https://www.t-nation.com/training/are-you-strong/), which
+commonly reference multiples of body weight (e.g., 1x, 2x, 2.5x). It is
+also useful for monitoring performance across bulking or cutting cycles.
+
+![](README-relative%20strength-1.png)<!-- -->
+
+Note that the curves for absolute and relative strength are similar but
+not identical. As one example, the estimated 1RM for the deadlift has
+hovered around 500 - 525 since December 2018. However, the absolute
+strength has declined from a high of around 2.5x in June 2018 to around
+2.3-2.4x as of the time of writing (this is attributable to the, ahem,
+COVID nineteen pounds). I generally use the absolute strength view
+during bulking cycles (for comparison against all-time strength) and the
+relative strength view during cutting cycles (to make sure I’m not
+losing ground).
 
 ## Other Views
 
@@ -108,8 +127,6 @@ For the lifter identified above, the package provides the following of a
 new program based on Jim Wendler’s basic 3-week 5-3-1 program (this is
 the first week only):
 
-    #> `summarise()` regrouping output by 'exercise', 'equipment', 'variant' (override with `.groups` argument)
-
 | cycle | day | date       | exercise | equipment | variant      | set | reps | percentage | training\_max | weight | max.reps |
 | ----: | --: | :--------- | :------- | :-------- | :----------- | --: | ---: | ---------: | ------------: | -----: | -------: |
 |     1 |   1 | 2021-05-21 | bench    | barbell   | flat         |   1 |    5 |       0.65 |         267.5 |    175 |       11 |
@@ -138,11 +155,12 @@ potential for gains over time:
 ![](README-programming_sets_reps-1.png)<!-- -->
 
 The vertical green line represents today (currently 20 May 2021);
-projected performance following a new program is plotted to the right of
-the green line. Another feature displayed here is the ability to program
-deload weeks every so often – in this case after every 3 cycles. Note
-that the projected work doesn’t necessarily include accessory or
-supplemental work that may appear in historical data.
+projected performance resulting from compliance with the new program is
+plotted to the right of the green line. Another feature displayed here
+is the ability to program deload weeks every so often – in this case
+after every 3 cycles. Note that the projected work doesn’t necessarily
+include accessory or supplemental work that may appear in historical
+data.
 
 The supported programs include:
 
@@ -157,9 +175,3 @@ The supported programs include:
 
 It is desired that future versions of the package’s dashboard will
 permit creation of custom programs on an exercise-by-exercise basis.
-
-# Interactive Dashboard
-
-This package is designed for interactive use via the dashboard in the
-`shiny` directory. You’ll need to point the data source for both the
-weightlifting logs and body weight logs to the right directories.
