@@ -88,12 +88,12 @@ also useful for monitoring performance across bulking or cutting cycles.
 Note that the curves for absolute and relative strength are similar but
 not identical. As one example, the estimated 1RM for the deadlift has
 hovered around 500 - 525 since December 2018. However, the absolute
-strength has declined from a high of around 2.5x in June 2018 to around
-2.3-2.4x as of the time of writing (this is attributable to the, ahem,
-COVID nineteen pounds). I generally use the absolute strength view
-during bulking cycles (for comparison against all-time strength) and the
-relative strength view during cutting cycles (to make sure I’m not
-losing ground).
+strength has declined from a high of around 2.5x in June 2019 to around
+2.3-2.4x as of the time of writing (this is attributable primarily to
+the, ahem, COVID nineteen pounds). I generally use the absolute strength
+view during bulking cycles (for comparison against all-time strength)
+and the relative strength view during cutting cycles (to make sure I’m
+not losing ground).
 
 ## Other Views
 

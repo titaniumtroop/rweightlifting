@@ -291,4 +291,3 @@ program_descriptions
 ```
 
 It is desired that future versions of the package's dashboard will permit creation of custom programs on an exercise-by-exercise basis.
-

@@ -1,9 +1,3 @@
-rweightlifting 0.2.3
-----------------
-* Minor updates and bug fixes
-* Revise README.Rmd
-* TODO: Add body weight function for reading data and calculating rolling weight
-
 rweightlifting 0.2.2
 ----------------
 * Add parameters to top_sets function for rolling window size and threshold for calculating which top sets should be returned; adjustment of parameters can be useful after an extended period of time off from training
