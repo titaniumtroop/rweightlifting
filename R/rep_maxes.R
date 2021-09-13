@@ -187,8 +187,7 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
     mutate(training_max = .data$RM.max * percentage) %>%
     select(.data$exercise, .data$equipment, .data$variant, .data$training_max) %>%
     group_by(.data$exercise, .data$equipment, .data$variant) %>%
-    summarize(training_max = round(mean(.data$training_max), 1)) %>%
-    ungroup() %>%
+    summarize(training_max = round(mean(.data$training_max), 1), .groups = "drop") %>%
     mutate_if(is.factor, as.character)
 
 }

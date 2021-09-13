@@ -1,9 +1,94 @@
 date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2021-07-04,squat,barbell,low bar,405,1,430,1,405,1
+2021-07-04,hyperextension,machine,reverse,90,12,140,10,140,10,90,12
+2021-07-03,bench,barbell,flat,275,1,285,1,300,0
+2021-07-03,press,barbell,overhead,185,3,185,3,185,3
+2021-07-03,lat pulldown,cable,conventional,150,13,150,7,150,5
+2021-07-03,face pull,cable,pause,110,13,110,13
+2021-07-03,bicep curl,cable,standing,95,15,95,15
+2021-07-01,deadlift,barbell,conventional,375,5,425,3,475,3,475,1,475,1
+2021-07-01,squat,barbell,low bar,325,5,325,5,325,5
+2021-06-29,press,barbell,overhead,160,5,180,3,205,2,205,1,205,1
+2021-06-29,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
+2021-06-29,row,machine,supported,250,15,250,7,250,5
+2021-06-29,face pull,cable,pause,95,16,95,16,95,16
+2021-06-29,bicep curl,cable,standing,95,14,95,14
+2021-06-27,squat,barbell,low bar,320,5,360,3,405,4,405,2,405,2
+2021-06-26,bench,barbell,flat,210,5,240,3,265,3,265,1,265,1,240,3,210,6
+2021-06-26,press,barbell,overhead,160,5,160,5,160,5,160,5,160,5
+2021-06-26,lat pulldown,cable,conventional,150,12,150,7,150,5
+2021-06-26,face pull,cable,pause,80,16,95,15,95,15
+2021-06-26,bicep curl,cable,standing,95,12,95,12
+2021-06-24,deadlift,barbell,conventional,350,3,405,3,450,6,450,3
+2021-06-24,squat,barbell,low bar,325,5,325,5,325,5,325,5,325,5
+2021-06-22,press,barbell,overhead,150,3,170,3,195,3,195,2,195,2
+2021-06-22,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
+2021-06-22,row,T-bar,supported,90,13,90,7,90,6
+2021-06-22,face pull,cable,pause,80,16,80,16
+2021-06-22,bicep curl,cable,standing,80,16,80,16
+2021-06-21,squat,barbell,low bar,295,3,340,3,380,6,380,3,380,3
+2021-06-21,deadlift,barbell,conventional,405,5,405,5,405,5
+2021-06-19,bench,barbell,flat,195,3,225,3,250,3,250,3,250,2,225,6,195,6
+2021-06-19,press,barbell,overhead,160,5,160,5,160,5
+2021-06-19,lat pulldown,cable,conventional,100,15,115,10,130,6
+2021-06-19,face pull,cable,pause,70,16,80,15,80,15
+2021-06-19,bicep curl,cable,standing,70,15,80,12,90,10
+2021-06-17,deadlift,barbell,conventional,325,5,375,5,425,9
+2021-06-17,squat,barbell,low bar,325,5,325,5,325,5,325,5,325,5
+2021-06-15,press,barbell,overhead,140,5,160,5,180,5,180,3,180,3
+2021-06-15,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
+2021-06-15,row,machine,supported,250,15,250,7,250,5
+2021-06-15,face pull,cable,pause,70,16,70,16,70,16
+2021-06-15,bicep curl,barbell,standing,70,12,70,12
+2021-06-13,squat,barbell,low bar,275,5,320,5,360,7,360,4,360,4
+2021-06-13,deadlift,barbell,conventional,405,5,405,5,405,5
+2021-06-12,bench,barbell,flat,185,5,210,5,240,7,240,4,240,4
+2021-06-12,press,barbell,overhead,160,5,160,5,160,5,160,5,160,5
+2021-06-12,lat pulldown,cable,conventional,135,16,135,10,135,7
+2021-06-12,face pull,cable,pause,70,16,70,16,70,16
+2021-06-12,bicep curl,barbell,standing,60,12,60,12
+2021-06-10,deadlift,barbell,conventional,365,5,415,3,465,4,465,2
+2021-06-10,squat,barbell,low bar,325,5,325,5,325,5,325,5,325,5
+2021-06-09,press,barbell,overhead,155,5,180,3,200,3,200,1,200,1
+2021-06-09,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
+2021-06-09,row,machine,supported,250,15,250,7,250,5
+2021-06-09,face pull,cable,pause,65,16,65,16,65,16
+2021-06-07,squat,barbell,low bar,315,5,355,3,395,4,395,2,395,2
+2021-06-07,deadlift,barbell,conventional,395,5,395,5,395,5
+2021-06-06,bench,barbell,flat,205,5,235,3,260,4,260,2,260,2
+2021-06-06,press,barbell,overhead,160,5,160,5,160,5,160,5,160,5
+2021-06-06,row,machine,supported,250,14,250,7,250,5
+2021-06-06,face pull,cable,pause,65,16,65,16,65,16
+2021-06-04,deadlift,barbell,conventional,340,3,390,3,440,6,440,2,440,2
+2021-06-04,squat,barbell,low bar,320,5,320,5,320,5,320,5,320,5
+2021-06-03,press,barbell,overhead,145,3,165,3,190,4,190,2,190,2
+2021-06-03,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
+2021-06-03,lat pulldown,cable,conventional,120,16,120,10,120,7
+2021-06-03,face pull,cable,pause,65,16,65,16,65,16
+2021-06-01,squat,barbell,low bar,290,3,330,3,375,5,375,3,375,3
+2021-06-01,deadlift,barbell,conventional,395,5,395,5,395,5
+2021-05-31,bench,barbell,flat,190,3,225,3,245,7,245,3,245,3
+2021-05-31,press,barbell,overhead,160,5,160,5,160,5
+2021-05-31,row,machine,supported,250,12,250,7,250,5
+2021-05-31,face pull,cable,pause,60,16,60,16,60,16
+2021-05-26,deadlift,barbell,conventional,320,5,365,5,415,8
+2021-05-26,squat,barbell,low bar,320,5,320,5,320,5
+2021-05-25,press,barbell,overhead,135,5,155,5,180,7,180,4,180,4
+2021-05-25,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
+2021-05-25,row,machine,supported,250,14,250,8,250,5
+2021-05-25,lat pulldown,cable,conventional,120,12,120,7,120,5
+2021-05-25,bicep curl,dumbbell,standing,80,11,80,11
+2021-05-23,squat,barbell,low bar,275,5,315,5,350,8,350,4,350,4
+2021-05-23,deadlift,barbell,conventional,395,5,395,5,395,5
+2021-05-21,bench,barbell,flat,185,5,205,5,235,9,235,5,235,5
+2021-05-21,press,barbell,overhead,160,5,160,5,160,5,160,5,160,5
+2021-05-21,row,cable,seated,120,16,120,10,120,7
+2021-05-21,bicep curl,dumbbell,standing,80,11,80,11
 2021-05-19,deadlift,barbell,conventional,355,5,405,3,455,4,455,2,455,2
 2021-05-19,squat,barbell,low bar,320,5,320,5,320,5,320,5,320,5
 2021-05-18,press,barbell,overhead,155,5,175,3,195,5,195,2,195,2
 2021-05-18,bench,barbell,flat,215,5,215,5,215,5,215,5,215,5
-2021-05-18,row,machine,supported,250,14,250,8,250,8
+2021-05-18,row,machine,supported,250,14,250,8,250,5
 2021-05-18,lat pulldown,cable,conventional,110,16,110,9,110,7
 2021-05-18,bicep curl,dumbbell,standing,80,9,80,9
 2021-05-16,squat,barbell,low bar,305,5,345,3,385,4,385,2,385,2

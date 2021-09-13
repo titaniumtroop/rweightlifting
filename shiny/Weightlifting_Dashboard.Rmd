@@ -81,8 +81,10 @@ today <- Sys.Date()
 
 programs <- weightlifting.log %>%
   group_by(program) %>%
-  summarize(last.date = max(date, na.rm = TRUE)) %>%
-  ungroup() %>%
+  summarize(
+    last.date = max(date, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
   arrange(last.date) %>%
   mutate(
     program = as.character(program)
@@ -242,10 +244,10 @@ session.weights.filtered <- reactive({
   session.top.sets() %>%
     group_by(program, date, exercise, equipment, variant) %>%
     summarize(
-      est.max = round(mean(est.max, na.rm = TRUE), 1)
+      est.max = round(mean(est.max, na.rm = TRUE), 1),
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
-    right_join(weightlifting.log) %>%
+    right_join(weightlifting.log, by = c("program", "date", "exercise", "equipment", "variant")) %>%
     arrange(desc(date)) %>%
     mutate(
       intensity = round(weight / est.max, 3)
@@ -299,9 +301,9 @@ session.intensity <- reactive({
       mean.intensity = weighted.mean(intensity, reps),
       intensity = max(intensity),
       tonnage = sum(tonnage),
-      volume = sum(reps)
+      volume = sum(reps),
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     group_by(program, exercise, equipment, variant) %>%
     mutate(
       volume_scaled = round(rescale(volume, to = c(0, 1), from = c(0, max(volume, na.rm = T))), 3)
@@ -368,15 +370,15 @@ comp.lifts <- reactive({
   if (one_RM_method == "mean") {
     recent.1RM.est <- recent.1RM.est %>% 
       group_by(exercise) %>% 
-      summarize(est.max = mean(est.max, na.rm = TRUE))
+      summarize(est.max = mean(est.max, na.rm = TRUE), .groups = "drop")
   } else if (one_RM_method == "conservative") {
     recent.1RM.est <- recent.1RM.est %>% 
       group_by(exercise) %>% 
-      summarize(est.max = min(est.max, na.rm = TRUE))
+      summarize(est.max = min(est.max, na.rm = TRUE), .groups = "drop")
   } else {
     recent.1RM.est <- recent.1RM.est %>% 
       group_by(exercise) %>% 
-      summarize(est.max = max(est.max, na.rm = TRUE))
+      summarize(est.max = max(est.max, na.rm = TRUE), .groups = "drop")
   }
 
   # comp_plate <- 1.25 * 2
@@ -408,9 +410,9 @@ session.volume <- reactive({
     filter(variant %in% input$variant) %>%
     group_by(date, program, exercise) %>%
     summarize(
-      volume = sum(reps)
-    ) %>%
-    ungroup()
+      volume = sum(reps), 
+      .groups = "drop"
+    )
 })
 
   weekly.volume <- reactive ({
@@ -425,9 +427,9 @@ session.volume <- reactive({
       group_by(program, week, exercise) %>%
       summarize(
         volume = sum(volume),
-        weekof = min(date) - wday(min(date)) + 1,
+        weekof = min(date) - wday(min(date)) + 1, 
+        .groups = "drop"
       ) %>%
-      ungroup() %>%
       arrange(desc(exercise), desc(program), week)
   })
 
@@ -443,9 +445,9 @@ session.tonnage <- reactive({
     summarize(
       top.set = max(weight),
       tonnage = sum(tonnage),
-      relevant.tonnage = sum(relevant.tonnage, na.rm = TRUE)
+      relevant.tonnage = sum(relevant.tonnage, na.rm = TRUE), 
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     arrange(date, exercise, desc(top.set)) %>%
     mutate(exercise = factor(exercise, levels = rev(exercisef()), ordered = TRUE)) %>%
     mutate(program = factor(program, levels = programf(), ordered = TRUE)) %>%
@@ -465,9 +467,9 @@ session.tonnage <- reactive({
       group_by(program, date, exercise, equipment, variant) %>%
       summarize(
         top.set = max(weight),
-        tonnage = sum(tonnage)
+        tonnage = sum(tonnage), 
+        .groups = "drop"
       ) %>%
-      ungroup() %>%
       arrange(date, exercise, desc(top.set))
     
     temp <- temp %>%
@@ -489,9 +491,9 @@ weekly.tonnages <- reactive ({
       top.set = max(top.set),
       tonnage = sum(tonnage),
       relevant.tonnage = sum(relevant.tonnage),
-      weekof = min(date) - wday(min(date)) + 1,
+      weekof = min(date) - wday(min(date)) + 1, 
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     arrange(desc(exercise), desc(program), week)
 })
 
@@ -501,17 +503,17 @@ program.tonnage <- reactive({
     summarize(
       top.set = max(top.set),
       tonnage = sum(tonnage),
-      relevant.tonnage = sum(relevant.tonnage)
-    ) %>%
-    ungroup()
+      relevant.tonnage = sum(relevant.tonnage), 
+      .groups = "drop"
+    )
   
   temp <- temp %>%
     group_by(program, exercise) %>%
     summarize(
       max.tonnage = max(tonnage),
-      max.relevant.tonnage = max(relevant.tonnage)
+      max.relevant.tonnage = max(relevant.tonnage), 
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     left_join(
      temp,
       by = c("program" = "program", "exercise" = "exercise", "max.tonnage" = "tonnage")
@@ -519,9 +521,9 @@ program.tonnage <- reactive({
     distinct() %>%
     group_by(program, exercise, max.tonnage) %>%
     summarise(
-      date = max(date)
+      date = max(date), 
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     arrange(exercise, program)
 })
 
@@ -535,7 +537,8 @@ program.tonnage <- reactive({
       group_by(program, exercise) %>%
       summarize(
         max.lift = max(weight),
-        last.date = max(date)
+        last.date = max(date), 
+        .groups = "drop"
       ) %>%
       arrange(exercise)
 
@@ -559,9 +562,9 @@ program.tonnage <- reactive({
       #filter(reps > 0) %>%
       group_by(exercise, equipment, variant, weight) %>%
       summarize(
-        max.reps = max(reps)
+        max.reps = max(reps), 
+        .groups = "drop"
       ) %>%
-      ungroup() %>%
       left_join(
         session.weights(),
         # weightlifting.log,
@@ -571,9 +574,9 @@ program.tonnage <- reactive({
       group_by(exercise, equipment, variant, weight, max.reps) %>%
       summarise(
         count = n(),
-        date = max(date)
+        date = max(date),
+        .groups = "drop"
       ) %>%
-      ungroup() %>%
       left_join(
         # weightlifting.log,
         session.weights(),
@@ -917,7 +920,7 @@ renderPlotly({
     )
   ) +
   geom_point(alpha = 0.5, color = "transparent") +
-  geom_smooth(se = F, span = 0.25, na.rm = TRUE) +
+  geom_smooth(formula = y ~ x, method = "loess", se = F, span = 0.25, na.rm = TRUE) +
   facet_wrap(~ exercise, ncol = 1) +
   scale_y_continuous(labels = scales::percent) +
   scale_fill_jama() +
@@ -946,7 +949,7 @@ renderPlotly({
     )
   ) +
     geom_point(alpha = 0.33) +
-    geom_smooth(se = F, span = 0.35) + 
+    geom_smooth(formula = y ~ x, method = "loess", se = F, span = 0.35) + 
     scale_y_continuous(labels = scales::percent) +
     facet_wrap(~ exercise)
   
@@ -1032,15 +1035,15 @@ renderPlotly({
       group_by(exercise) %>%
       summarize(
         week = max(week), 
-        tonnage = max(tonnage) + sd(tonnage)^0.5
-      ) %>%
-      ungroup()
+        tonnage = max(tonnage) + sd(tonnage)^0.5, 
+        .groups = "drop"
+      )
     },
     aes(x = week, y = tonnage, group = exercise),
     fill = "goldenrod", 
     alpha = 0.5
   ) +
-  geom_smooth(data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
+  geom_smooth(formula = y ~ x, method = "loess", data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
   #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
   labs(title = "", x = "", y = "")
 })
@@ -1118,15 +1121,15 @@ renderPlotly({
       group_by(exercise) %>%
       summarize(
         week = max(week), 
-        relevant.tonnage = max(relevant.tonnage) + sd(relevant.tonnage)^0.5
-      ) %>%
-      ungroup()
+        relevant.tonnage = max(relevant.tonnage) + sd(relevant.tonnage)^0.5, 
+        .groups = "drop"
+      )
     },
     aes(x = week, y = relevant.tonnage, group = exercise),
     fill = "goldenrod", 
     alpha = 0.5
   ) +
-  geom_smooth(data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
+  geom_smooth(formula = y ~ x, method = "loess", data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
   #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
   labs(title = "", x = "", y = "")
 })
@@ -1145,7 +1148,8 @@ renderPlotly({
     group_by(program, date, exercise) %>%
     summarize(
       top.set = max(top.set),
-      tonnage = sum(tonnage)
+      tonnage = sum(tonnage), 
+      .groups = "drop"
     ) %>%
   arrange(desc(date)) %>%
   ggplot(
@@ -1175,9 +1179,9 @@ renderPlotly({
   group_by(date, program, exercise) %>%
   summarize(
     top.set = max(top.set),
-    tonnage = sum(tonnage)
+    tonnage = sum(tonnage), 
+    .groups = "drop"
   ) %>%
-  ungroup() %>%
   arrange(desc(date)) %>%
   ggplot(
       aes(
@@ -1195,7 +1199,7 @@ renderPlotly({
       )
     ) +
     facet_wrap(~ exercise, scales = "free_y") +
-    stat_smooth(data = function(x) { slice(x, -1) }, span = 0.35, level = NA, na.rm = TRUE) +
+    stat_smooth(formula = y ~ x, method = "loess", data = function(x) { slice(x, -1) }, span = 0.35, level = NA, na.rm = TRUE) +
     #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
     labs(title = "", x = "", y = "")
  })
@@ -1262,15 +1266,15 @@ renderPlotly({
       group_by(exercise) %>%
       summarize(
         week = max(week), 
-        volume = max(volume) + sd(volume)^0.5
-      ) %>%
-      ungroup()
+        volume = max(volume) + sd(volume)^0.5, 
+        .groups = "drop"
+      )
     },
     aes(x = week, y = volume, group = exercise),
     fill = "goldenrod", 
     alpha = 0.5
   ) +
-  geom_smooth(data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
+  geom_smooth(formula = y ~ x, method = "loess", data = function(x) { slice(x, -1) }, geom = "bar", span = 0.35, level = NA, na.rm = TRUE, fullrange = TRUE) +
   #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
   labs(title = "", x = "", y = "")
 })
@@ -1321,7 +1325,7 @@ renderPlotly({
       )
     ) +
     facet_wrap(~ exercise, scales = "free_y") +
-    stat_smooth(data = function(x) { slice(x, -1) }, span = 0.35, level = NA, na.rm = TRUE) +
+    stat_smooth(formula = y ~ x, method = "loess", data = function(x) { slice(x, -1) }, span = 0.35, level = NA, na.rm = TRUE) +
     #scale_fill_brewer(name = "Tonnage", palette = "Paired") +
     labs(title = "", x = "", y = "")
  })
@@ -1350,7 +1354,7 @@ renderPlotly({
       )
     )
   ) +
-  scale_fill_brewer("Program", palette="Paired") +
+  # scale_fill_brewer("Program", palette="Paired") +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "", x = "", y = "") +
   coord_flip()
@@ -1384,9 +1388,9 @@ renderPlotly({
     group_by(program, exercise) %>%
     summarize(
       est.max = max(est.max, na.rm = T),
-      last.date = max(date)
+      last.date = max(date), 
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     arrange(desc(program)) %>%
     group_by(exercise) %>%
     mutate(prev.max = lag(est.max, default = 0)) %>%
@@ -1407,7 +1411,7 @@ renderPlotly({
       )
     )
   ) +
-    scale_fill_brewer("Program", palette="Paired") +
+    # scale_fill_brewer("Program", palette="Paired") +
     geom_bar(stat = "identity", position = "dodge") +
     labs(title = "", x = "", y = "") +
     coord_flip()
@@ -1446,7 +1450,7 @@ renderPlotly({
       )
     )
   ) +
-    scale_fill_brewer("Program", palette="Paired") +
+    # scale_fill_brewer("Program", palette="Paired") +
     geom_bar(stat = "identity", position = "dodge") +
     labs(title = "", x = "", y = "") +
     coord_flip()
@@ -1493,13 +1497,14 @@ renderPlotly({
       fill = program,
       text = paste(
         "most recent date: ", date,
-        "<br>exercise: ", exercise
+        "<br>exercise: ", exercise,
+        "<br>total sets: ", count
       )
     )
   ) +
   geom_col(position = "dodge", orientation = "x") +
   # facet_wrap(~ factor(exercise) + interaction(equipment, variant), scales = "free_y") +
-  scale_fill_brewer("Program", palette="Paired") +
+  # scale_fill_brewer("Program", palette="Paired") +
   facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE) + interaction(equipment, variant), scales = "free_y") +
   labs(title = "", x = "", y = "") +
   coord_flip()
@@ -1546,23 +1551,18 @@ renderPlotly({
     group_by(program, date, exercise, equipment, variant, weight) %>%
     summarize(
       sets = n(),
-      reps_across = min(reps)
+      reps_across = min(reps), 
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     filter(sets > 1) %>%
     filter(reps_across > 0) %>%
     group_by(exercise, equipment, variant, weight, sets, reps_across) %>%
     summarize(
       # reps_across = max(reps_across),
       count = n(),
-      last_date = max(date)
+      last_date = max(date), 
+      .groups = "drop"
     ) %>%
-    # ungroup() %>%
-    # group_by(exercise, equipment, variant, weight, sets, reps_across) %>%
-    # summarize(
-    #   last_date = max(last_date)
-    # ) %>%
-    ungroup() %>%
     left_join(
       session.weights() %>% select(-set) %>% distinct(),
       # weightlifting.log %>% select(-set) %>% distinct(),
@@ -1592,8 +1592,8 @@ renderPlotly({
       )
     ) +
     facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE), scales = "free_y") +
-    scale_fill_brewer("Program", palette="Paired") +
-    scale_color_brewer("Program", palette="Paired") +
+    # scale_fill_brewer("Program", palette="Paired") +
+    # scale_color_brewer("Program", palette="Paired") +
   #  geom_bar(stat = "identity", position = "dodge") +
     geom_point() +
     labs(title = "", x = "", y = "") +
@@ -1644,7 +1644,7 @@ renderPlotly({
 renderPlotly({
   temp <- session.tonnage() %>%
     group_by(date, program, exercise) %>%
-    summarize(tonnage = sum(tonnage)) %>%
+    summarize(tonnage = sum(tonnage), .groups = "drop") %>%
     ggplot(aes(exercise, tonnage, fill = program)) +
       geom_boxplot(alpha = 0.5) +
       coord_flip() +
@@ -1719,7 +1719,7 @@ renderPlotly({
       )
     ), 
     alpha = 0.5, na.rm = TRUE) +
-    geom_smooth(se = TRUE, span = 0.25, na.rm = TRUE) +
+    geom_smooth(formula = y ~ x, method = "loess", se = TRUE, span = 0.25, na.rm = TRUE) +
     facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE), scales = "free_y") +
 #    facet_wrap(~ exercise, scales = "free_y") +
     labs(y = "", x = "")
@@ -1750,7 +1750,7 @@ renderPlotly({
       )
     ), 
     alpha = 0.5, stroke = 0, size = 2, na.rm = TRUE) +
-    geom_smooth(se = TRUE, span = 0.25, na.rm = TRUE) +
+    geom_smooth(formula = y ~ x, method = "loess", se = TRUE, span = 0.25, na.rm = TRUE) +
     facet_wrap(~ factor(exercise, levels = input$exercise, ordered = TRUE), scales = "free_y") +
 #    facet_wrap(~ exercise, scales = "free_y") +
     labs(y = "", x = "")
@@ -1778,7 +1778,7 @@ renderPlotly({
       )
     ), 
     alpha = 0.1, size = 0.5, na.rm = TRUE) +
-    stat_smooth(geom = "line", aes(color = method), se = FALSE, span = 0.25, na.rm = TRUE, alpha = 0.75) +
+    stat_smooth(formula = y ~ x, method = "loess", geom = "line", aes(color = method), se = FALSE, span = 0.25, na.rm = TRUE, alpha = 0.75) +
     #gghighlight(method == input$one_rm_method, use_direct_label = FALSE) +
     facet_wrap(~ exercise, scales = "free_y") +
     labs(y = "", x = "") +
@@ -1805,9 +1805,9 @@ renderPlotly({
       mean.est = mean(est.max),
       lift.weight = mean(lift.weight),
       reps = max(reps),
-      rolling.weight = max(rolling.weight)
+      rolling.weight = max(rolling.weight),
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     arrange(desc(date)) %>%
     ggplot(aes(x = date)) +
       # geom_segment(aes(
@@ -1833,7 +1833,7 @@ renderPlotly({
         alpha = 1,
         shape = 3
       ) +
-      stat_smooth(
+      stat_smooth(formula = y ~ x, method = "loess", 
         mapping = aes(x = date, y = mean.est), 
         geom = "line", 
         se = FALSE, 
@@ -1977,13 +1977,13 @@ renderPlotly({
     filter(reps > 0) %>%
     group_by(exercise, equipment, variant, weight) %>%
     summarize(
-      max.reps = max(reps)
+      max.reps = max(reps),
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
-    group_by(exercise, equipment, variant, max.reps) %>%
     # left_join(weightlifting.log, by = c("exercise", "equipment", "variant", "weight", "max.reps" = "reps")) %>%
     left_join(session.weights(), by = c("exercise", "equipment", "variant", "weight", "max.reps" = "reps")) %>%
     arrange(date) %>%
+    group_by(exercise, equipment, variant, max.reps) %>%
     mutate(rollmax = rollapply(weight, NROW(weightlifting.log), max, align = "right", partial = TRUE)) %>%
     filter(rollmax == weight)
     
@@ -2034,9 +2034,9 @@ renderDataTable({
         avg.reps = round(mean(reps), 1),
         avg.weight = round(mean(weight), 1),
         median.weight = median(weight),
-        sd.weight = round(sd(weight), 1)
+        sd.weight = round(sd(weight), 1),
+        .groups = "drop"
       ) %>%
-      ungroup() %>%
       arrange(desc(total.sets))
 
     exercise.stats
@@ -2060,9 +2060,9 @@ renderDataTable({
       `avg tonnage` = round(mean(tonnage), 1),
       `median tonnage` = round(median(tonnage), 1),
       `max tonnage` = round(max(tonnage, na.rm = T), 1),
-      `sd tonnage` = round(sd(tonnage), 1)
+      `sd tonnage` = round(sd(tonnage), 1),
+      .groups = "drop"
     ) %>%
-    ungroup() %>%
     arrange(desc(`max top set`))
 })
 
@@ -2419,7 +2419,7 @@ output$compLifts <- DT::renderDataTable({
 renderValueBox({
   comp <- comp.lifts() %>%
     filter(attempt == 1) %>%
-    summarize(total = sum(lift.weight))
+    summarize(total = sum(lift.weight), .groups = "drop")
  
   valueBox(
     comp,
@@ -2437,7 +2437,7 @@ renderValueBox({
 renderValueBox({
   comp <- comp.lifts() %>%
     filter(attempt == 2) %>%
-    summarize(total = sum(lift.weight))
+    summarize(total = sum(lift.weight), .groups = "drop")
  
   valueBox(
     comp,
@@ -2455,7 +2455,7 @@ renderValueBox({
 renderValueBox({
   comp <- comp.lifts() %>%
     filter(attempt == 3) %>%
-    summarize(total = sum(lift.weight))
+    summarize(total = sum(lift.weight), .groups = "drop")
  
   valueBox(
     comp,
