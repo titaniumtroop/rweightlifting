@@ -4,12 +4,12 @@
 \alias{n_rep_max}
 \title{n-rep max calculator}
 \usage{
-n_rep_max(one_RM, reps, method = "epley", verbose = FALSE)
+n_rep_max(reps, one_RM = 100, method = "epley", verbose = FALSE)
 }
 \arguments{
-\item{one_RM}{A one-rep max, either actual or estimated}
-
 \item{reps}{The number of repetitions for which an n_rep_max is desired}
+
+\item{one_RM}{A one-rep max, either actual or estimated. Defaults to 100 for easy percentage calculations.}
 
 \item{method}{The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}}
 

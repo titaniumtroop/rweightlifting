@@ -74,7 +74,7 @@ one_rep_max <- function(weight, reps, method = "epley", verbose = FALSE) {
 #' @title n-rep max calculator
 #' @description Provides n-rep max given a one-rep max and the desired rep max
 #'
-#' @param one_RM A one-rep max, either actual or estimated
+#' @param one_RM A one-rep max, either actual or estimated. Defaults to 100 for easy percentage calculations.
 #' @param reps The number of repetitions for which an n_rep_max is desired
 #' @param method The estimation technique to use; a list is available with \code{\link{rep_max_formulas}}
 #' @param verbose Defaults to false. If true, will message which estimation technique is used.
@@ -82,7 +82,7 @@ one_rep_max <- function(weight, reps, method = "epley", verbose = FALSE) {
 #'
 #' @export
 
-n_rep_max <- function(one_RM, reps, method = "epley", verbose = FALSE) {
+n_rep_max <- function(reps, one_RM = 100, method = "epley", verbose = FALSE) {
 
   method <- as.character(method)
   my_data <- data.frame(one_RM = as.numeric(one_RM), reps = as.numeric(reps), temp_maxes = 0)
@@ -178,8 +178,8 @@ training_max <- function(weightlifting.log = NA, program = NA, percentage = 0.90
 
   est.recent.maxes <- one_rep_max_for_program(lifts_in_program, ...)
   est.recent.maxes$RM.max <- n_rep_max(
-    one_RM = est.recent.maxes$roll.max,
     reps = temp.program$RM_reps,
+    one_RM = est.recent.maxes$roll.max,
     method = method
   )
 

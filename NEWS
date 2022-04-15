@@ -1,3 +1,7 @@
+rweightlifting 0.2.3
+----------------
+* Add default 1RM of 100 to n_rep_max calculator for ease of calculating percentages
+
 rweightlifting 0.2.2
 ----------------
 * Add parameters to top_sets function for rolling window size and threshold for calculating which top sets should be returned; adjustment of parameters can be useful after an extended period of time off from training
