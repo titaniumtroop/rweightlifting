@@ -24,7 +24,8 @@ available_programs <- function() {
     "wendler_531_pyramid",
     "base_531_bench_863",
     "lower_531_upper_863_lsf",
-    "lower_531_1backoff_upper_863_pyramid"
+    "lower_531_1backoff_upper_863_pyramid",
+    "ULPPL_852"
   )
 }
 
@@ -835,6 +836,141 @@ wendler_531_pyramid <- function(...) {
   program
 }
 
+
+#' Programming template for Upper-Lower Push-Pull-Legs 8-5-2
+#' @export
+#'
+#' @param ... Some program functions take arguments for percentage schemes; the ellipsis lets other programming functions accept those arguments without tripping error checks.
+#' @return a list of template elements, including \code{name, duration, rep-max} on which percentages are based, \code{schedule}. Also has a \code{deload_duration, deload_schedule}, if desired.
+
+ULPPL_852 <- function(...) {
+  # Sets out a 3-week cycle for the Wendler 5-3-1 program
+  # Deloads added separately
+  program <- list()
+  program$name <- "Upper-Lower Push-Pull-Legs 8-5-2"
+  program$duration <- 21
+  program$sessions_per_week <- 5
+  program$deload_duration <- 7
+  program$RM_reps <- 1
+
+  program$schedule <- tibble::tibble(
+    day = c(
+      rep(1, 3),
+      rep(2, 1),
+      rep(4, 3),
+      rep(5, 3),
+      rep(6, 3),
+      rep(8, 3),
+      rep(9, 1),
+      rep(11, 3),
+      rep(12, 3),
+      rep(13, 3),
+      rep(15, 3),
+      rep(16, 1),
+      rep(18, 3),
+      rep(19, 3),
+      rep(20, 3)
+    ),
+    exercise = c(
+      rep("bench", 3),
+      rep("rack pull", 1),
+      rep("press", 3),
+      rep("row", 3),
+      rep("squat", 3),
+      rep("bench", 3),
+      rep("rack pull", 1),
+      rep("press", 3),
+      rep("row", 3),
+      rep("squat", 3),
+      rep("bench", 3),
+      rep("rack pull", 1),
+      rep("press", 3),
+      rep("row", 3),
+      rep("squat", 3)
+    ),
+    equipment = c(
+      rep("barbell", 39)
+    ),
+    variant = c(
+      rep("flat", 3),
+      rep("5-hole", 1),
+      rep("overhead", 3),
+      rep("pendlay", 3),
+      rep("low bar", 3),
+      rep("flat", 3),
+      rep("5-hole", 1),
+      rep("overhead", 3),
+      rep("pendlay", 3),
+      rep("low bar", 3),
+      rep("flat", 3),
+      rep("5-hole", 1),
+      rep("overhead", 3),
+      rep("pendlay", 3),
+      rep("low bar", 3)
+    ),
+    set = c(
+      1:3,
+      1,
+      rep(1:3, 4),
+      1,
+      rep(1:3, 4),
+      1,
+      rep(1:3, 3)
+    ),
+    reps = c(
+      rep(8, 13),
+      rep(5, 13),
+      rep(2, 13)
+    ),
+    percentage = c(
+      rep(.80, 13),
+      rep(.875, 13),
+      rep(.94, 13)
+    )
+  )
+
+  program$deload_schedule <- tibble::tibble(
+    day = c(
+      rep(22, 3),
+      rep(23, 1),
+      rep(25, 3),
+      rep(26, 3),
+      rep(27, 3)
+    ),
+    exercise = c(
+      rep("bench", 3),
+      rep("rack pull", 1),
+      rep("press", 3),
+      rep("row", 3),
+      rep("squat", 3)
+    ),
+    equipment = c(
+      rep("barbell", 13)
+    ),
+    variant = c(
+      rep("flat", 3),
+      rep("5-hole", 1),
+      rep("overhead", 3),
+      rep("pendlay", 3),
+      rep("low bar", 3)
+    ),
+    set = c(
+      1:3,
+      1,
+      rep(1:3, 3)
+    ),
+    reps = c(
+      rep(5, 13)
+    ),
+    percentage = c(
+      c(.60, .70, .80),
+      0.80,
+      rep(c(.60, .70, .80), 3)
+    )
+  )
+
+  program
+}
 
 
 

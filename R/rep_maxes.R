@@ -1,7 +1,8 @@
 #' @import dplyr
 #' @importFrom zoo rollapply
-#' @importFrom tidyr gather
+#' @importFrom tidyr gather expand_grid pivot_longer
 #' @importFrom rlang .data
+#' @importFrom purrr map2_dbl
 
 ############################################################################
 ### These functions allow estimates of one- and n-rep maxes using various formulas
@@ -285,3 +286,45 @@ top_sets <- function(weightlifting.log = NULL, use.method = NA, threshold = 0.9,
   temp
 }
 
+#' @title percentages calculator
+#' @description Provides a range of 1RM percentages for a given number of reps
+#'
+#' @param reps A vector of reps
+#' @param weight 1RM on which to base percentages
+#' @return A table of 1RM percentage ranges
+#'
+#' @export
+
+percentages <- function(reps = c(2, 5, 8), weight = NA) {
+
+  if (! (is.vector(reps) & is.numeric(reps))) {
+    stop("'reps' must be a vector of integers.")
+  }
+
+  formula <- rep_max_formulas()
+
+  df <- tidyr::expand_grid(
+    formula,
+    reps
+  )
+
+  df <- df %>%
+    mutate(oneRM_percentage = purrr::map2_dbl(.x = .data$formula,, .y = .data$reps, .f = ~ n_rep_max(.y, method = .x))) %>%
+    group_by(reps) %>%
+    summarize(
+      min  = min(.data$oneRM_percentage),
+      mean = mean(.data$oneRM_percentage),
+      max  = max(.data$oneRM_percentage)
+    ) %>%
+    pivot_longer(cols = c(min, mean, max), names_to = "stat", values_to = "percentage")
+
+  if (! is.na(weight) & is.numeric(weight)) {
+    df <- df %>% mutate(weight = .data$percentage / 100 * weight)
+  } else if ((! is.na(weight)) & (! is.numeric(weight))) {
+    stop("Weight must be numeric.")
+  }
+
+  comment(df) <- ("1RM percentage ranges for a given number of reps")
+  df
+
+}

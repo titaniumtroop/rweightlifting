@@ -1,4 +1,115 @@
 date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2022-04-12,squat,barbell,low bar,365,2,365,2,365,2
+2022-04-12,bench,barbell,flat,225,5,225,5,225,5
+2022-04-12,row,inverted,bench,0,11,0,11,0,11
+2022-04-09,rack pull,barbell,5-hole,485,3
+2022-04-09,squat,barbell,low bar,365,1,405,1
+2022-04-08,press,barbell,overhead,150,3,170,3,195,3
+2022-04-08,bench,barbell,flat,205,5,205,5,205,5,205,5,205,5
+2022-04-08,pullup,purple band,wide,0,7,0,7,0,7
+2022-04-08,bicep curl,barbell,standing,80,12,80,12,80,12
+2022-04-08,shoulder rotation,red band,external,0,13,0,13,0,13
+2022-04-05,squat,barbell,low bar,295,3,335,3,375,3,375,2,375,2
+2022-04-05,clean,barbell,power,155,3,155,3,155,3,155,3,155,3
+2022-04-04,bench,barbell,flat,205,3,230,3,255,3,255,3,255,3
+2022-04-04,press,barbell,overhead,135,8,135,8,135,8
+2022-04-04,row,inverted,bench,0,11,0,11,0,11
+2022-04-04,bicep curl,barbell,standing,80,11,80,11,80,11
+2022-04-04,shoulder rotation,red band,external,0,13,0,13,0,13
+2022-03-31,rack pull,barbell,5-hole,455,5
+2022-03-31,squat,barbell,low bar,315,5,315,5,315,5
+2022-03-29,press,barbell,overhead,140,5,160,5,180,5,180,3,180,3
+2022-03-29,bench,barbell,flat,205,8,205,8,205,8
+2022-03-29,pullup,purple band,wide,0,7,0,7,0,7
+2022-03-29,bicep curl,barbell,standing,80,11,80,11,80,11
+2022-03-27,squat,barbell,low bar,275,5,315,5,355,5,355,3,355,3
+2022-03-27,clean,barbell,power,145,3,145,3,145,3,145,3,145,3
+2022-03-26,bench,barbell,flat,185,5,215,5,245,5,245,5,245,5
+2022-03-26,press,barbell,overhead,135,8,135,8,135,8
+2022-03-26,row,inverted,floor,0,12
+2022-03-26,row,inverted,bench,0,10,0,10
+2022-03-26,bicep curl,barbell,standing,75,12,75,12,75,12
+2022-03-26,shoulder rotation,red band,external,0,13,0,13,0,13
+2022-03-24,rack pull,barbell,6-hole,455,1,495,1,545,0
+2022-03-24,squat,barbell,low bar,315,5,315,5,315,5
+2022-03-22,press,barbell,overhead,155,5,175,3,200,2,200,1
+2022-03-22,bench,barbell,flat,205,8,205,8,205,8
+2022-03-22,pullup,green band,wide,0,10
+2022-03-22,pullup,purple band,wide,0,6,0,6
+2022-03-22,bicep curl,barbell,standing,75,12,75,12,75,12
+2022-03-21,squat,barbell,low bar,305,5,245,3,390,1,390,1,390,1
+2022-03-21,clean,barbell,power,185,3,135,5,135,5
+2022-03-19,bench,barbell,flat,210,5,235,3,265,2,265,2,265,2
+2022-03-19,press,barbell,overhead,135,8,135,8,135,8
+2022-03-19,row,inverted,floor,0,11
+2022-03-19,row,inverted,bench,0,9,0,9
+2022-03-19,bicep curl,barbell,standing,65,15,65,15,65,15
+2022-03-18,deadlift,barbell,conventional,430,3
+2022-03-18,squat,barbell,low bar,315,5,315,5,315,5
+2022-03-16,press,barbell,overhead,145,3,165,3,190,3,190,2,190,2
+2022-03-16,bench,barbell,flat,205,8,205,8,205,8
+2022-03-16,pullup,pullup,medium,0,5
+2022-03-16,pullup,pullup,neutral,0,4
+2022-03-16,pullup,chinup,chinup,0,3
+2022-03-16,bicep curl,barbell,standing,75,11,75,11,75,11
+2022-03-16,shoulder rotation,red band,external,0,12,0,12
+2022-03-15,squat,barbell,low bar,285,3,325,3,264,3,265,2,365,2
+2022-03-15,deadlift,barbell,2-inch deficit,405,3,405,3,405,3
+2022-03-13,bench,barbell,flat,195,3,225,3,250,3,250,2,250,2
+2022-03-13,press,barbell,overhead,135,8,135,8,135,8
+2022-03-13,row,inverted,floor,0,10,0,10
+2022-03-12,deadlift,barbell,conventional,405,5
+2022-03-12,squat,barbell,low bar,315,5,315,5,315,5
+2022-03-10,press,barbell,overhead,135,5,155,5,175,5
+2022-03-10,bench,barbell,flat,205,8,205,8,205,8
+2022-03-10,pullup,pullup,medium,0,5
+2022-03-10,pullup,pullup,neutral,0,4
+2022-03-10,pullup,chinup,chinup,0,3
+2022-03-10,bicep curl,barbell,standing,95,5,75,10,75,10
+2022-03-09,deadlift,barbell,2-inch deficit,405,5
+2022-03-09,squat,barbell,low bar,405,1
+2022-03-08,bench,barbell,flat,275,1
+2022-03-05,squat,barbell,low bar,405,1
+2022-03-05,bench,barbell,flat,275,1,285,1
+2022-03-05,deadlift,barbell,conventional,455,1,495,1
+2022-03-03,press,barbell,overhead,135,5,135,5,135,5
+2022-02-28,squat,barbell,low bar,405,1,405,1
+2022-02-24,bench,barbell,flat,185,5,210,5,235,9,235,5,235,5
+2022-02-24,press,barbell,overhead,135,8,135,8,135,8
+2022-02-24,row,machine,supported,290,8,290,8,290,8
+2022-02-24,face pull,cable,supported,140,13,140,13,140,13
+2022-02-22,squat,barbell,low bar,365,2,365,2,365,2
+2022-02-22,deadlift,barbell,2-inch deficit,405,3,405,3,405,3
+2022-02-20,press,barbell,overhead,155,5,175,3,195,3,195,2,195,2
+2022-02-20,bench,barbell,flat,210,8,210,8,210,8
+2022-02-20,pullup,chinup,chinup,0,5,0,5,0,5
+2022-02-20,bicep curl,cable,standing,95,1,95,14
+2022-02-20,hyperextension,machine,reverse,150,12,150,12
+2022-02-18,squat,barbell,low bar,405,1,405,1
+2022-02-15,bench,barbell,flat,205,5,230,3,260,3,260,3,260,3
+2022-02-15,press,barbell,overhead,135,9,135,9,135,9
+2022-02-15,row,machine,supported,290,8,290,8,290,8
+2022-02-15,face pull,cable,supported,140,12,140,12,140,12
+2022-02-13,deadlift,barbell,conventional,420,5
+2022-02-13,squat,barbell,low bar,335,5,335,5,335,5,335,5
+2022-02-11,press,barbell,overhead,140,3,165,3,185,5,185,3,185,3
+2022-02-11,bench,barbell,flat,210,8,210,8,210,8
+2022-02-11,pullup,chinup,chinup,0,5,0,5,0,5
+2022-02-11,bicep curl,cable,standing,95,14,95,14,95,14
+2022-02-09,squat,barbell,low bar,280,3,320,3,360,3,360,3,360,3
+2022-02-09,deadlift,barbell,2-inch deficit,405,5,405,5
+2022-02-06,bench,barbell,flat,195,3,225,3,245,6,245,4,245,4
+2022-02-06,press,barbell,overhead,135,9,135,9,135,9
+2022-02-06,row,machine,supported,290,8,290,8,290,8
+2022-02-06,face pull,cable,supported,140,12,140,12,140,12
+2022-02-04,deadlift,barbell,conventional,405,8
+2022-02-04,squat,barbell,low bar,335,5,335,5,335,5
+2022-02-01,press,barbell,overhead,135,5,155,5,175,6,175,4,175,4
+2022-02-01,bench,barbell,flat,210,8,210,8,210,7
+2022-01-28,bench,barbell,flat,175,5,205,5,230,8,230,5,230,5
+2022-01-28,press,barbell,overhead,135,8,135,8,135,8
+2022-01-28,row,machine,supported,290,8,290,8,290,8
+2022-01-28,face pull,cable,supported,135,13,135,13,135,13
 2022-01-25,deadlift,barbell,conventional,435,6
 2022-01-25,squat,barbell,low bar,330,5,330,5,330,5,330,5,330,5
 2022-01-23,press,barbell,overhead,150,5,170,3,190,5,190,3,190,3

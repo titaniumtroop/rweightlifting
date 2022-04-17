@@ -1,8 +1,8 @@
 Package: rweightlifting
 Type: Package
 Title: Analyze Weightlifting Progress and Create Custom Weightlifting Programs
-Version: 0.2.3
-Date: 2022-04-14
+Version: 0.2.4
+Date: 2022-04-17
 Authors@R: person("Nathan", "Chaney", email = "nathan@nathanchaney.com",
                   role = c("aut", "cre"))
 Description: Aggregates and analyzes weightlifting history data.  Rshiny apps 
@@ -16,14 +16,15 @@ Depends:
     magrittr
 Imports:
     data.table,
-    tibble,
     dplyr,
-    utils,
-    readr,
     plyr,
+    purrr,
+    readr,
+    rlang,
+    tibble,
     tidyr,
-    zoo,
-    rlang
+    utils,
+    zoo
 Suggests:
     ggplot2,
     RColorBrewer,

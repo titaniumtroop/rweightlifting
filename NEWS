@@ -1,3 +1,9 @@
+rweightlifting 0.2.4
+----------------
+* New percentages function for calculating 1RM percentage ranges for specified number of reps
+* New 8-5-2 Upper-Lower Push-Pull-Legs (5 days)
+* Add rack pull and row to default views in dashboard
+
 rweightlifting 0.2.3
 ----------------
 * Add default 1RM of 100 to n_rep_max calculator for ease of calculating percentages

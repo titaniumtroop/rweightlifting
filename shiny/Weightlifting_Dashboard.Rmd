@@ -739,7 +739,7 @@ selectInput(
   "exercise",
   "Exercise",
   choices = exercises,
-  selected = c("deadlift", "squat", "bench", "press"),
+  selected = c("deadlift", "squat", "bench", "press", "row", "rack pull"),
   multiple = TRUE,
   selectize = TRUE
 )

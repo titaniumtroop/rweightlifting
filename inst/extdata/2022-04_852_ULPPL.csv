@@ -1,0 +1,8 @@
+date,exercise,equipment,variant,set1weight,set1reps,set2weight,set2reps,set3weight,set3reps,set4weight,set4reps,set5weight,set5reps,set6weight,set6reps,set7weight,set7reps,set8weight,set8reps,set9weight,set9reps,set10weight,set10reps,set11weight,set11reps,set12weight,set12reps
+2022-04-16,rack pull,barbell,5-hole,385,10
+2022-04-16,squat,barbell,low bar,315,5,315,5,315,5
+2022-04-15,bench,barbell,flat,205,8,205,8,205,8
+2022-04-15,press,barbell,Z-press,65,8,85,8,95,8
+2022-04-15,row,inverted,bench,0,12,0,12,0,12
+2022-04-15,bicep curl,barbell,standing,80,12,80,12,80,12
+2022-04-15,shoulder rotation,red band,external,0,12,0,12,0,12
